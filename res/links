@@ -1,0 +1,8 @@
+# image processing
+    edge detection för markeringar:
+        erosion ner till skeleton
+        http://felix.abecassis.me/2011/09/opencv-morphological-skeleton/
+        detektion av tunna linjer (edinburgh)
+        http://homepages.inf.ed.ac.uk/rbf/HIPR2/linedet.htm
+        canny detector
+        https://en.wikipedia.org/wiki/Canny_edge_detector
