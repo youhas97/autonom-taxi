@@ -1,7 +1,11 @@
 \documentclass[kravspec/krav.tex]{subfiles}
 
+\newcounter{reqcat} % nummer för varje kravkategori
+\newcounter{reqitem} % individuella kravnummer
+
 \newenvironment{reqlist}
 {
+    \stepcounter{reqcat}
     \begin{tabular}{|l|l|p{10cm}|l|}
     \hline
     \bfseries nr &
@@ -14,7 +18,7 @@
 }
 \newcommand{\req}[3]{
     \hline
-    num & #1 & #3 & #2 \\
+    \stepcounter{reqitem}\thereqcat.\thereqitem & #1 & #3 & #2 \\
 }
 
 \begin{document}
