@@ -2,7 +2,7 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[swedish]{babel}
-\usepackage{fancyhdr}
+\usepackage{subfiles}
 
 % från kurshemsida:
 %   Här definieras vad som ska konstrueras i ert projekt. Varje grupp skriver
@@ -10,46 +10,30 @@
 %   Kravspecifikationen ska godkännas av beställaren. Efter godkännandet får
 %   kravspecifikationen inte ändras utan beställarens medgivande.
 
-\lhead{TSEA29}
-\rhead{HT18}
-\pagestyle{fancy}
-
-\date{\today}
-
 \begin{document}
+
 \begin{center}
-\vspace*{15mm}
-{\Huge Kravspecifikation: Autonom taxibil}\\
-\vspace{15mm}
-{\large 19 september 2018}\\
-\vspace{15mm}
-Noah Hellman: noahe116 \\
-Dennis Derecichei: dende301 \\
-Yousef Hashem: youha847 \\
-Jakob Arvidsson: jakar180 \\
-Johan Can: johca907 \\
-Emir Hadzisalihovic: emiha868 \\
-Juan Basaez Serey: juaba731
+    \thispagestyle{empty}
+    \vspace*{20mm}
+    {\Huge Kravspecifikation: Autonom taxibil}\\
+    \vspace{20mm}
+    {\large 15 september 2018}\\
+    \vspace{20mm}
+    Noah Hellman: noahe116 \\
+    Dennis Derecichei: dende301 \\
+    Yousef Hashem: youha847 \\
+    Jakob Arvidsson: jakar180 \\
+    Johan Can: johca907 \\
+    Emir Hadzisalihovic: emiha868 \\
+    Juan Basaez Serey: juaba731
+    \newpage
 \end{center}
 
-\vspace{2cm}
 \tableofcontents
 \newpage
 
-\section{Bakgrund}
-
-\section{Skiss}
-\subsection{Arkitektur}
-\subsection{Moduler}
-
-\section{Kravlista}
-\begin{enumerate}
-    \item Taxibilen ska autonomt kunna frakta en passagerare till ett mål och
-        sedan tillbaka.
-    \item Bilen ska stanna för hinder.
-    \item Bilen ska passera hinder om det finns plats på det andra
-        körfältet.
-    \item Bilen ska hantera fyravägskorsningar.
-\end{enumerate}
-
+\subfile{sections/intro}
+\subfile{sections/overview}
+\subfile{sections/subsystems}
+\subfile{sections/requirements}
 \end{document}
