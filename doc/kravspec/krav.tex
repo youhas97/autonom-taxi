@@ -1,42 +1,12 @@
 \documentclass[12pt]{article}
 
-\usepackage[utf8]{inputenc}
-\usepackage[swedish]{babel}
-\usepackage{graphicx} %pdf-import
-\usepackage{float} % Figure H option
-\usepackage{subfiles}
-\usepackage[total={16cm, 22cm}]{geometry}
-
-% från kurshemsida:
-%   Här definieras vad som ska konstrueras i ert projekt. Varje grupp skriver
-%   en egen kravspecifikation med projektdirektivet som utgangspunkt.
-%   Kravspecifikationen ska godkännas av beställaren. Efter godkännandet får
-%   kravspecifikationen inte ändras utan beställarens medgivande.
+\input{kravspec/format.tex}
 
 \begin{document}
-
-\begin{center}
-    \thispagestyle{empty}
-    \vspace*{20mm}
-    {\Huge Kravspecifikation: Autonom taxibil}\\
-    \vspace{20mm}
-    {\large 15 september 2018}\\
-    \vspace{20mm}
-    Noah Hellman: noahe116 \\
-    Dennis Derecichei: dende301 \\
-    Yousef Hashem: youha847 \\
-    Jakob Arvidsson: jakar180 \\
-    Johan Can: johca907 \\
-    Emir Hadzisalihovic: emiha868 \\
-    Juan Basaez Serey: juaba731
-    \newpage
-\end{center}
-
-\tableofcontents
-\newpage
-
-\subfile{sections/intro}
-\subfile{sections/overview}
-\subfile{sections/subsystems}
-\subfile{sections/requirements}
+\subfile{kravspec/sections/frontpage}
+\tableofcontents\newpage
+\subfile{kravspec/sections/intro}
+\subfile{kravspec/sections/overview}
+\subfile{kravspec/sections/subsystems}
+\subfile{kravspec/sections/requirements}
 \end{document}
