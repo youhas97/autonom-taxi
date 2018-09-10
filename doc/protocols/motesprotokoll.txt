@@ -31,8 +31,15 @@ $3 Dagordning fastställs till följande:
 	
 	Yousef Hashem utses till att vara förhandlare och bokningsansvarig, 
 	Han fastslår att han har möte med vår beställare 11 september 2018.
-	Mötet Noah Hellman till Arkitekt.
-	Mötet förklarar Jakob Arvidsson som ansvarig för ledning, coaching och slutbeslut.
+		Yousef ska ställa följande frågor
+		-Vad är passagerare
+		-Vad är "säkert"
+
+	
+	Mötet utser Noah Hellman till Arkitekt.
+	
+	Mötet förklarar Jakob Arvidsson ansvarig för ledning, coaching och slutbeslut.
+	
 	08:58 mötet tilldelar ansvarsområdet för användargränssnitt till Johan Can.
 
 	Mötet förklarar Dennis och Emir hårdvaruansvariga.
@@ -61,4 +68,4 @@ $3 Dagordning fastställs till följande:
 
 §6 Nytt möte, imorgon 11 september 13:00-17:00 issytan 3
 
-§7 Ordförande avslutat mötet klockan 10:00, gruppen går till arbete att skriva i kravspec.
+§7 Ordförande avslutar mötet klockan 10:00, gruppen går till arbete att skriva i kravspec.
