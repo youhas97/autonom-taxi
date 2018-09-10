@@ -1,0 +1,71 @@
+Mötesprotokoll nr.1 2018-09-10
+
+Ordförande: Noah Hellman
+Sekreterare: Emir Hadzisalihovic
+§1 Ordförande öppnar mötet klockan 08:15
+
+§2 Närvarande vid mötet:
+Yousef Hashem, Noah Hellman, Dennis Derecichei, Jakob Arvidsson, (08:46 Johan Can)
+
+$3 Dagordning fastställs till följande:
+	*Boka möte
+	*Ställa upp krav och krav
+	*Bestämma roller och ansvarsområden
+	*Möte med vår beställare samt vilka frågor vi ska ställa till honom
+	*Boka grupprum till nästa gång.
+
+§4 Ansvarsområden diskuteras 
+	- Förslag på följande roller
+		*Dokument
+		*Bokning
+		*förhandling
+		*Arkitektur
+		*Specifika moduler
+		*Användargränssnitt
+		*Testansvarig
+		*Hårdvaruansvarig
+	
+	Yousef, Dennis och Jakob tycker att rollen för specifika moduler och arktiekturrollen är oklara.
+
+	- Johan Can kommer in i rummet klockan 08:46,
+	
+	Yousef Hashem utses till att vara förhandlare och bokningsansvarig, 
+	Han fastslår att han har möte med vår beställare 11 september 2018.
+		Yousef ska ställa följande frågor
+		-Vad är passagerare
+		-Vad är "säkert"
+
+	
+	Mötet utser Noah Hellman till Arkitekt.
+	
+	Mötet förklarar Jakob Arvidsson ansvarig för ledning, coaching och slutbeslut.
+	
+	08:58 mötet tilldelar ansvarsområdet för användargränssnitt till Johan Can.
+
+	Mötet förklarar Dennis och Emir hårdvaruansvariga.
+
+	Juan som är frånvarande utses till dokumentansvarig, dvs han ska se till att dokumenteringen
+	blir gjord.
+
+	Mötet utser Emir Hadzisalihovic till sekreterare.
+
+	Mötet förklarar rollen "Specifika moduler" vakant för nu. Mötet vill avvakta tills vi har bestämt vilka moduler vi har fått.
+
+
+§5 Uppställning av krav
+	Jakob läser upp projektdirektiven och Dennis och Noah klargör att vi måste ha specifika krav som är mätbara.
+	Diskussion om hur svängning sköts och var motorer ska placeras, extrakrav diskuteras.
+	Följande krav har ställts hittills;
+		1. Blåtandslänk mellan dator och bil.
+		2. Fjärrstyrning via blåtand.
+		3. Ska kunnna backa, åka framåt, svänga vänster och höger.
+		4. Ej köra in i hinder.
+		5. Skicka värden för körd sistans,hastighet,beslut, avstånd till hinder  till datorn.
+		6. 3 moduler, beslutsenhet, styrenhet, sensorenhet. Modulerna ska vara oberoende av varandra.
+		7. Nå destination med passagerare.
+		8. Navigera med en kamera.
+		9. EXTRAKRAV Köra runt hinder.
+
+§6 Nytt möte, imorgon 11 september 13:00-17:00 issytan 3
+
+§7 Ordförande avslutar mötet klockan 10:00, gruppen går till arbete att skriva i kravspec.
