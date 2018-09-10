@@ -1,6 +1,17 @@
+% svensk encoding, svenska titlar
 \usepackage[utf8]{inputenc}
-\usepackage[swedish]{babel} % svenska titlar, encoding
+\usepackage[swedish]{babel}
+
+% figurer / grafik
 \usepackage{graphicx} %pdf-import
 \usepackage{float} % Figure H option
-\usepackage{subfiles} % separera filer, subfile kommando
+
+% separera filer, subfile kommando
+\usepackage{subfiles}
+
+% sidomargins
 \usepackage[total={16cm, 21cm}]{geometry}
+
+% labeling env för definitioner
+\usepackage{scrextend}
+\addtokomafont{labelinglabel}{\bfseries}
