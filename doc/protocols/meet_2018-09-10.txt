@@ -34,8 +34,10 @@ $3 Dagordning fastställs till följande:
 		Yousef ska ställa följande frågor
 		-Vad är passagerare
 		-Vad är "säkert"
+		-Vad räknas som ett hinder? Kan vi ha som avgränsning att man inte tar hänsyn till
+		"låga hinder och gropar" utan endast hinder to är i höjd med bilen. Dvs krav
+		på att vägen ska vara rak och platt
 
-	
 	Mötet utser Noah Hellman till Arkitekt.
 	
 	Mötet förklarar Jakob Arvidsson ansvarig för ledning, coaching och slutbeslut.
