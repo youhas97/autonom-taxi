@@ -42,4 +42,22 @@ ifrån att vägen består av hinder som är i lämplig höjd för våra sensorer
 upptäcka. Med andra ord, vi antar att vägen är jämn och fin där eventuella
 gropar inte finns.
 
+\subsection{Generella krav på hela systemet}
+
+\begin{reqlist}
+    \req{Taxin skicka aktuell mätdata till den bärbara datorn. Mätdata
+    inkluderar avstånd till vägkant, avstånd till hinder, avlagd sträcka,
+    styrbeslut och motorernas styrning}
+    \req{Taxin skall via fjärrstyrning kunna köra framåt, bakåt och svänga
+    vänster eller höger.}
+    \req{Under autonom körning skall taxin navigera vägnätet enligt
+    högertrafik.}
+    \req{Under autonom körning skall taxin ej köra in i hinder.}
+    \reqspec{original}{2}{Om ett hinder blockerar taxins körfält under autonom
+    körning skall taxibilen köra runt objektet genom att köra i det andra
+    körfältet.}
+    \req{Under autonom körning skall taxin navigera genom vägnätet från en
+    godtycklig position till en godtycklig given destination.}
+\end{reqlist}
+
 \end{document}
