@@ -1,54 +1,20 @@
 \documentclass[kravspec/krav.tex]{subfiles}
 
-\newcounter{reqcat} % nummer för varje kravkategori
-\newcounter{reqitem} % individuella kravnummer
-
-\newenvironment{reqlist}
-{
-    \setlength{\tabcolsep}{12pt}
-    \renewcommand{\arraystretch}{1.6}
-    \stepcounter{reqcat}
-    \begin{longtable}{p{8mm}p{13mm}p{9cm}p{18mm}}
-        \bfseries nr &
-        \bfseries modif. &
-        \bfseries krav &
-        \bfseries prioritet \\\hline
-        \endhead
-}{
-    \end{longtable}
-}
-\newcommand{\reqspec}[3]{
-    \stepcounter{reqitem}\thereqcat.\thereqitem & #1 & #3 & #2 \\
-}
-\newcommand{\req}[1]{\reqspec{original}{1}{#1}}
-
 \begin{document}
-\section{Krav}
-TODO: introtext
-
-\subsection{Prestandakrav}
-TODO: introtext
+\section{Prestandakrav}
+Nedan följer de prestandakrav taxibilen bör uppnå vid avslutat projekt.
+Prestandakraven har vardera en prioritet där 1 mostvarar något som skall vara
+klart och 2 motsvarar att det bör vara klart.
 
 \begin{reqlist}
-    \req{Taxin skall åtminstone varje sekund skicka aktuell mätdata till den
-    bärbara datorn. Mätdata inkluderar avstånd till vägkant, avstånd till
-    hinder, TODO: fyll i resten}
-    \req{Taxin skall via fjärrstyrning kunna köra framåt, bakåt och svänga
-    vänster eller höger.}
-    \req{Taxin ska processera åtminstone en bild per sekund.}
-    \req{Under autonom körning skall taxin navigera vägnätet enligt
-    högertrafik.}
-    \req{Under autonom körning skall taxin ej köra in i hinder. (NOTE: är
-    hinder permanenta? isf köra om)}
-    \reqspec{original}{2}{Om ett hinder blockerar taxins körfält under autonom
-    körning skall taxibilen köra runt objektet genom att köra i det andra
-    körfältet.}
-    \req{Under autonom körning skall taxin navigera genom vägnätet från en
-    godtycklig position till en godtycklig given destination.}
+    \req{Taxin ska under fyra försök klara av uppdraget åtminstone tre gånger.}
+    \req{Taxin ska endast använda kortaste vägen under uppdraget.}
+    \reqspec{original}{2}{Taxin ska klara uppdraget fyra gånger på fyra försök.}
 \end{reqlist}
 
-\subsection{Krav på utökning}
-TODO: introtext
+\section{Krav på utökning}
+Nedan följer de krav som berör möjligheten att utöka enheten efter att
+produkten är levererad.
 
 \begin{reqlist}
     \req{Enheten ska bestå av separata moduler som kommunicerar via ett
