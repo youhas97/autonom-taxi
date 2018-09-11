@@ -1,0 +1,37 @@
+\documentclass[kravspec/krav.tex]{subfiles}
+
+%tabell för dokumenthistorik
+\newenvironment{dokumenthistorik}{%
+\begin{center}
+  \large Dokumenthistorik\\[2ex]
+  \renewcommand{\arraystretch}{2}
+  \begin{small}
+    \begin{tabular}{|l|l|p{60mm}|l|l|}
+      \hline
+      \textbf{Version} &
+      \textbf{Datum} &
+      \textbf{Utförda förändringar} &
+      \textbf{Utförda av} &
+      \textbf{Granskad} \\
+      }%
+      {%
+      \hline
+    \end{tabular}
+  \end{small}
+\end{center}
+}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{dokumenthistorik}
+    \versioninfo{0.1}{2018-09-10}{Första utkast.}{Grupp 2}{Hela
+    gruppen}
+    \versioninfo{0.2}{2018-09-11}{Andra utkast.}{Grupp 2}{Hela
+    gruppen}
+\end{dokumenthistorik}
+
+\newpage
+
+\end{document}

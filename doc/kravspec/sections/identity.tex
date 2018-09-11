@@ -1,0 +1,40 @@
+\documentclass[kravspec/krav.tex]{subfiles}
+
+%tabell för projektidentitet
+\newenvironment{projektidentitet}{%
+{\ }\vspace{30mm}
+\renewcommand{\arraystretch}{2}
+\begin{center}
+  {\huge Projektidentitet\\[1ex]}
+  \textsl{\VARgruppnummer, \LIPSdatum, \VARprojekttitel}\\[1cm]
+    \begin{tabular}{lp{60mm}l}
+      \hline
+      \textbf{Namn} &
+      \textbf{Ansvarsområde} &
+      \textbf{Epost} \\
+	\hline
+      }%
+      {%
+      \hline
+    \end{tabular}
+\end{center}
+}
+\newcommand{\gruppmedlem}[3]{{#1} & {#2} & {#3} \\}
+
+\begin{document}
+
+\thispagestyle{empty}
+
+\begin{projektidentitet}
+\gruppmedlem{\VARprojektledare}{Projektledare}{jakar180@student.liu.se}
+\gruppmedlem{\VARkundansvarig}{Kundansvarig}{youha8476@student.liu.se}
+\gruppmedlem{\VARarkitekt}{Arkitekt}{noahe116@student.liu.se}
+\gruppmedlem{\VARdokumentansvarig}{Dokumentansvarig}{juaba731@student.liu.se}
+\gruppmedlem{\VARgranssnitt}{Gränssnitt}{johca907@student.liu.se}
+\gruppmedlem{\VARhardware}{Hårdvara}{dende301@student.liu.se}
+\gruppmedlem{\VARsekreterare}{Sekreterare}{emiha868@student.liu.se}
+\end{projektidentitet}
+
+\newpage
+
+\end{document}

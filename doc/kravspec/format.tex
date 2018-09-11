@@ -56,41 +56,5 @@
 }
 \newcommand{\req}[1]{\reqspec{original}{1}{#1}}
 
-%tabell för dokumenthistorik
-\newenvironment{dokumenthistorik}{%
-\begin{center}
-  \large Dokumenthistorik\\[1ex]
-  \begin{small}
-    \begin{tabular}{|l|l|p{60mm}|l|l|}
-      \hline
-      \textbf{Version} & \textbf{Datum} & \textbf{Utförda förändringar} & \textbf{Utförda av} & \textbf{Granskad} \\
-      }%
-      {%
-      \hline
-    \end{tabular}
-  \end{small}
-\end{center}
-}
 %argument version, datum, utförda förändringar, utförda av, granskad
 \newcommand{\versioninfo}[5]{\hline {#1} & {#2} & {#3} & {#4} & {#5} \\}
-
-
-
-%tabell för projektidentitet
-\newenvironment{projektidentitet}{%
-{\ }\vspace{40mm}
-
-\begin{center}
-  {\huge Projektidentitet\\[1ex]}
-  \textsl{\VARgruppnummer, \LIPSdatum, \VARprojekttitel}\\[1cm]
-    \begin{tabular}{|l|p{60mm}|l|}
-      \hline
-      \textbf{Namn} & \textbf{Ansvar} & \textbf{Mejl} \\
-	\hline
-      }%
-      {%
-      \hline
-    \end{tabular}
-\end{center}
-}
-\newcommand{\gruppmedlem}[3]{\hline {#1} & {#2} & {#3} \\}
