@@ -1,10 +1,27 @@
 \documentclass[12pt]{article}
 
 \input{kravspec/format.tex}
+\input{kravspec/vars.tex}
+
+\newcommand{\LIPSdokumenttyp}{Kravspecifikation}
+\newcommand{\LIPSversion}{0.2}
+\newcommand{\LIPSdatum}{11 september 2018}
+\newcommand{\LIPSgranskare}{}
+\newcommand{\LIPSgodkannare}{}
+\newcommand{\LIPSgranskatdatum}{}
+\newcommand{\LIPSgodkantdatum}{}
+
 
 \begin{document}
 \subfile{kravspec/sections/frontpage}
 \tableofcontents\newpage
+\begin{dokumenthistorik}
+    \versioninfo{0.1}{2018-09-10}{Första utkast.}{Grupp 2}{Hela
+    gruppen}
+    \versioninfo{0.2}{2018-09-11}{Andra utkast.}{Grupp 2}{Hela
+    gruppen}
+\end{dokumenthistorik}
+\newpage
 \subfile{kravspec/sections/intro}\clearpage
 \subfile{kravspec/sections/overview}\clearpage
 \subfile{kravspec/sections/subsystems}

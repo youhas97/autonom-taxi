@@ -16,3 +16,38 @@
 % labeling env för definitioner
 \usepackage{scrextend}
 \addtokomafont{labelinglabel}{\bfseries}
+
+% highlighting for links
+\usepackage[colorlinks=false,urlcolor=blue,linkcolor=black,citecolor=blue,filecolor=blue]{hyperref}
+\hypersetup{breaklinks=true}
+\urlstyle{same}
+
+% page header and foot
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\rhead{\sc \LIPSdatum}
+\chead{\textsl{\VARprojekttitel}}
+\lhead{\textbf{\sc\footnotesize\leftmark}}
+\lfoot{\textbf{\sc TSEA29}\\ \LIPSdokumenttyp}
+\rfoot{\textbf{\sc Grupp 2}\\\VARdokumentansvarig}
+
+%tabell för dokumenthistorik
+\newenvironment{dokumenthistorik}{%
+\begin{center}
+  Dokumenthistorik\\[1ex]
+  \begin{small}
+    \begin{tabular}{|l|l|p{60mm}|l|l|}
+      \hline
+      \textbf{Version} & \textbf{Datum} & \textbf{Utförda förändringar} & \textbf{Utförda av} & \textbf{Granskad} \\
+      }%
+      {%
+      \hline
+    \end{tabular}
+  \end{small}
+\end{center}
+}
+%argument version, datum, utförda förändringar, utförda av, granskad
+\newcommand{\versioninfo}[5]{\hline {#1} & {#2} & {#3} & {#4} & {#5} \\}
+
