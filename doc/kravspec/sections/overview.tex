@@ -46,16 +46,18 @@ upptäcka dem. Vägen antas vara plan utan gropar.
 \begin{reqlist}
     \req{Bilen ska kunna skicka aktuell mätdata till den bärbara datorn.
     Mätdata inkluderar avstånd till vägkant, avstånd till hinder, avlagd
-    sträcka, styrbeslut och motorernas styrning}
+    sträcka, styrbeslut och motorernas styrning.}
+    \req{Successiv inmatning av reglerparametrarna skall vara möjlig (inmatning
+    utan ny kompilering}
     \req{Mätdatan skall presenteras på datorns skärm på ett användarvänligt
     sätt.}
     \req{Användaren skall kunna växla mellan autonom och manuell körning på
-    bilen.}
+    bilen utan att koden ska behöva kompileras om.}
     \req{Bilen skall via fjärrstyrning (manuell körning)  kunna köra framåt,
     bakåt, stanna och svänga vänster eller höger.}
     \req{Bilen skall ha en kamera som tar bilder åtminstone åt en riktning }
     \req{Under autonom körning ska taxin kunna köra från en punkt till en annan
-    i ett känt tvåfiligt vägnät}
+    i ett känt tvåfiligt vägnät.}
     \req{Under autonom körning skall bilen navigera vägnätet enligt
     högertrafik.}
     \req{Under autonom körning skall bilen ej köra in i hinder.}
@@ -65,6 +67,7 @@ upptäcka dem. Vägen antas vara plan utan gropar.
     \req{Under autonom körning skall bilen navigera genom vägnätet från en
     förutsatt positioner till en annan förutsatt destination, via kortaste
     väg.}
+    \req{Bilen skall kunna stanna vid en stopplinje}
     \req{Bilen skall kunna svänga av in i en parkeringsficka och stanna där.}
     \req{Bilen skall klara av att navigera i rondeller där högertrafik gäller.}
     \reqspec{original}{2}{Bilen skall kunna delta i en tävling där tiden för
@@ -73,7 +76,15 @@ upptäcka dem. Vägen antas vara plan utan gropar.
     hämtning och avlämning.}
     \req{Bilen ska vara moduluppbyggd där varje modul innehåller en egen
     processor. En kommunikationsmodul, en styrmodul samt en sensormodul skall
-    ingå}
+    ingå.}
+    \req{En karta skall kunna skickas från en bärbar dator till bilen.}
+    \req{Under körning skall positionsdata fortlöpande skickas till en bärbar
+    dator och visas på en karta.}
+    \reqspec{original}{2}{Direktsändning av kamerabilden skall visas på en
+    bärbar dator.}
+    \req{Bilen ska använda sig av en styralgoritm så att den föredrar att
+    befinna sig centralt i filen.}
+
 \end{reqlist}
 
 \end{document}
