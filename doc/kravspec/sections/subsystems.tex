@@ -1,6 +1,7 @@
 \documentclass[kravspec/krav.tex]{subfiles}
 
 \begin{document}
+
 \clearpage
 \section{Kommunikationsmodul}
 \begin{figure}[H]
@@ -9,11 +10,13 @@
     \caption{Kommunikationsmodul}
     \label{fig:kommunikationsmodul}
 \end{figure}
+
 \subsection{Beskrivning}
 Kommunikationsmodulen består av en mikrodator, ett bluetooth chipset samt en
 kamera. Kommunikationsmodulen är huvudorganet i systemet och agerar som
 dirigent. Modulen kommunicerar med alla andra moduler samt datorn och kopplar
 samman dem.
+
 \subsection{Gränssnitt}
 Dess uppgift består av bland annat bildbearbetning, dirigering av information
 till andra moduler samt kommunikation med en dator. Till datorn skickas
@@ -25,6 +28,7 @@ används datorn som kontroller vid manuell körning av bilen.
     \req{Kommunikationsmodulen skall...}
     \req{}
 \end{reqlist}
+
 \clearpage
 \section{Styrmodul}
 \begin{figure}[h]
@@ -35,14 +39,22 @@ används datorn som kontroller vid manuell körning av bilen.
 \end{figure}
 
 \subsection{Beskrivning}
-Styrmodulen har som uppgift att ställa hjulen i rätt position samt att Taxin håller rätt hastighet. Styrmodulen är kopplad till kommunikationsmodulen ifrån den får information om hur Taxins hjul ska bete sig.
+Styrmodulen har som uppgift att ställa hjulen i rätt position samt att Taxin
+håller rätt hastighet. Styrmodulen är kopplad till kommunikationsmodulen ifrån
+den får information om hur Taxins hjul ska bete sig.
+
 \subsection{Gränssnitt}
-Styrmodulen består av en kontroller, en drivmotor och en styrmotor. Styrmotorns uppgift är att hjulen ska vara i rätt position så att Taxin åker i önskad riktning. Drivmotorn är den motor som gör att bilen får en hastighet. Alltså köra fram eller bakåt.
+Styrmodulen består av en kontroller, en drivmotor och en styrmotor. Styrmotorns
+uppgift är att hjulen ska vara i rätt position så att Taxin åker i önskad
+riktning. Drivmotorn är den motor som gör att bilen får en hastighet. Alltså
+köra fram eller bakåt.
+
 \subsection{Krav}
 \begin{reqlist}
     \req{Styrsystemet ska vara så exakt att Taxin kan följa banan.}
     \req{}
 \end{reqlist}
+
 \clearpage
 \section{Sensormodul}
 \subsection{Beskrivning}
