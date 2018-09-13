@@ -11,17 +11,13 @@
 \newcommand{\LIPSgranskatdatum}{}
 \newcommand{\LIPSgodkantdatum}{}
 
-
 \begin{document}
 \subfile{kravspec/sections/frontpage}
+\subfile{kravspec/sections/abstract}
+\subfile{kravspec/sections/identity}
+\setcounter{page}{1}
 \tableofcontents\newpage
-\begin{dokumenthistorik}
-    \versioninfo{0.1}{2018-09-10}{Första utkast.}{Grupp 2}{Hela
-    gruppen}
-    \versioninfo{0.2}{2018-09-11}{Andra utkast.}{Grupp 2}{Hela
-    gruppen}
-\end{dokumenthistorik}
-\newpage
+\subfile{kravspec/sections/mod_hist}
 \subfile{kravspec/sections/intro}\clearpage
 \subfile{kravspec/sections/overview}\clearpage
 \subfile{kravspec/sections/subsystems}
