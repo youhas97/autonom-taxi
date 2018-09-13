@@ -3,7 +3,8 @@
 \begin{document}
 
 \section{Översikt av systemet}
-Här beskrivs produkten övergripande där generella krav ställs på produkten och dess avgränsningar.
+Här beskrivs produkten övergripande där generella krav ställs på produkten och
+dess avgränsningar.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\linewidth]{kravspec/figures/overview-schema.pdf}
@@ -25,40 +26,47 @@ Lämplig hårdvara med kompletterande mjukvara kommer finnas i den kompletta
 produkten. Bland annat ska även tekniskt dokumenation ingå i produkten.
 
 \subsection{Beroenden till andra system}
-Fjärstyrning av bilen skall vara beroende av en dator som har stöd för bluetooth.
-Autonoma läget aktiveras från användargränsnittet tillgänglig på datorn med
-bluetooth. Kameran kommer vara beroende till en mikroprocessor som ingår i systemet.
+Fjärstyrning av bilen skall vara beroende av en dator som har stöd för
+bluetooth.  Autonoma läget aktiveras från användargränsnittet tillgänglig på
+datorn med bluetooth. Kameran kommer vara beroende till en mikroprocessor som
+ingår i systemet.
 
 \subsection{Ingående delsystem}
-Systemet kommer ska bestå av delsystem enligt figur
-\ref{fig:overview}. Sensormodulen ska hämta data om omgivningen, bland annat en sensor som mäter avstånd
-till objekt i omgivning och tejpföljare som sensorer. Lämplig data av omgivning
+Systemet ska bestå av delsystem enligt figur \ref{fig:overview}. Sensormodulen
+ska hämta data om omgivningen, bland annat en sensor som mäter avstånd till
+objekt i omgivning och tejpföljare som sensorer. Lämplig data av omgivning
 skickas till kommunikationsmodell. Produkten har även en styrmodul som ser till
 att bilen kan styras beroende på data från kommunikationsmodul.
 
 \subsection{Avgränsningar}
-Små väghinder som låga grova vägkanter och gropar tas ej hänsyn till. Vägen förväntas bestå av hinder som är
-fördefinierade i banspecifikationen. Vägen antas vara plan utan gropar och markerad med tejp. Parkeringsfickan
-förväntas vara markerad med en specifik färg som skiljer sig från färgen på vägmarkeringarna. Dessutom
-ställs inga krav på att kameran ska ingå i en specifik modul, om den behöver vara beroende till kommunikationensenheten så placeras den i den modulen. Om det behövs så får kameran vara en egen modul, men ett krav på detta ställs inte.
-
+Små väghinder som låga grova vägkanter och gropar tas ej hänsyn till. Vägen
+förväntas bestå av hinder som är fördefinierade i banspecifikationen. Vägen
+antas vara plan utan gropar och markerad med tejp. Parkeringsfickan förväntas
+vara markerad med en specifik färg som skiljer sig från färgen på
+vägmarkeringarna.
 
 \subsection{Generella krav på hela systemet}
+Nedan följer de generella krav som taxin ska eller bör uppfylla.  Kraven har
+vardera en prioritet där 1 mostvarar något som skall vara klart och 2 att det
+vore önskvärt att det är avklarat.
 
+\setcounter{reqcat}{1}
 \begin{reqlist}
     \req{Taxin ska kunna skicka aktuell mätdata till den bärbara datorn.
     Mätdata inkluderar avstånd till vägkant, avstånd till hinder, avlagd
     sträcka, styrbeslut och motorernas styrning.}
     \req{Det ska finnas ett användargränssnitt på den bärbara datorn som visar
     mätdata mottaget från taxin.}
+    \req{Banans vägnät skall kunna matas in via användargränssnittet och
+    därefter användas av taxin för att navigera banan.}
     \req{Användargränssnittet skall visa en karta över banans vägnät.}
     \req{Under körning skall positionsdata fortlöpande skickas till en bärbar
-    dator och visas användargränssnittets karta.}
+    dator och visas på användargränssnittets karta.}
     \req{Användaren skall kunna växla mellan autonom och manuell körning via
     användargränssnittet.}
     \req{Successiv inmatning av reglerparametrarna skall vara möjlig via
     användargränssnittet.}
-    \req{Bilen skall kunnas fjärrstyras via användargränssnittet. Kommandon
+    \req{Bilen skall kunna fjärrstyras via användargränssnittet. Kommandon
     inkluderar köra framåt, bakåt, stanna och svänga vänster eller höger.}
     \req{Under autonom körning ska taxin kunna köra från en punkt till en annan
     i ett känt tvåfiligt vägnät.}
@@ -66,10 +74,10 @@ ställs inga krav på att kameran ska ingå i en specifik modul, om den behöver
     högertrafik.}
     \req{Under autonom körning skall bilen stanna ifall hinder befinner sig på
     vägen, tills hindret är borta.}
-    \reqspec{original}{2}{Bilen ska kunna köra om ett hinder istället för att stanna, om det sker utan att bryta mot trafikregler.}
+    \reqspec{original}{2}{Bilen ska kunna köra om ett hinder istället för att
+    stanna, om det sker utan att bryta mot trafikregler.}
     \req{Under autonom körning skall bilen navigera genom vägnätet från en
-    förutsatt positioner till en annan förutsatt destination, via kortaste
-    väg.}
+    förutsatt position till en annan förutsatt destination.}
     \req{Bilen skall kunna stanna vid en stopplinje}
     \req{Bilen skall kunna svänga av in i en parkeringsficka och stanna där.}
     \req{Bilen skall klara av att navigera i rondeller där högertrafik gäller.}
