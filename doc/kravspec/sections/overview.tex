@@ -3,7 +3,7 @@
 \begin{document}
 
 \section{Översikt av systemet}
-
+Här beskriver vi produkten övergripande samt 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\linewidth]{kravspec/figures/overview-schema.pdf}
@@ -29,8 +29,8 @@ Autonoma läget aktiveras från användargränsnittet tillgänglig på datorn me
 bluetooth.
 
 \subsection{Ingående delsystem}
-En kommunikationsenhet, en styrmodul och en sensormodul enligt figur
-\ref{fig:overview}. Sensormodulen ska hämta in data om omgivningen, bland annat
+Systemet kommer bestå av följande delsystem enligt figur
+\ref{fig:overview}; Sensormodulen ska hämta data om omgivningen, bland annat
 en kamera som tar bilder av vad som är framifrån, en sensor som mäter avstånd
 till objekt i omgivning och tejpföljare som sensorer. Lämplig data av omgivning
 skickas till kommunikationsmodell. Produkten har även en styrmodul som ser till
@@ -44,11 +44,12 @@ upptäcka dem. Vägen antas vara plan utan gropar.
 \subsection{Generella krav på hela systemet}
 
 \begin{reqlist}
-    \req{Taxin skicka aktuell mätdata till den bärbara datorn. Mätdata
+    \req{Taxin skickar aktuell mätdata till den bärbara datorn. Mätdata
     inkluderar avstånd till vägkant, avstånd till hinder, avlagd sträcka,
     styrbeslut och motorernas styrning}
     \req{Taxin skall via fjärrstyrning kunna köra framåt, bakåt, stanna och
     svänga vänster eller höger.}
+    \req{Taxin skall ha en kamera som tar bilder åtminstone åt en riktning }
     \req{Under autonom körning skall taxin navigera vägnätet enligt
     högertrafik.}
     \req{Under autonom körning skall taxin ej köra in i hinder.}
