@@ -1,0 +1,16 @@
+\documentclass[12pt]{article}
+
+\input{format.tex}
+\input{projektplan/format.tex}
+\input{vars.tex}
+\input{projektplan/vars.tex}
+
+\begin{document}
+\subfile{projektplan/sections/frontpage}
+\subfile{projektplan/sections/identity}
+\setcounter{page}{1}
+\tableofcontents\newpage
+\subfile{projektplan/sections/mod_hist}
+\subfile{projektplan/sections/intro}\clearpage
+\subfile{projektplan/sections/overview.tex}
+\end{document}
