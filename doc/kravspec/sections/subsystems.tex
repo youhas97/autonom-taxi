@@ -18,7 +18,12 @@ information till andra moduler samt kommunikation med en dator.
 Till datorn skickas positionen på bilen, avlagd sträcka, avstånd till
 vägkant/hinder etc. Dessutom används datorn som kontroller vid manuell körning
 av bilen.
-
+\subsection{Gränssnitt}
+\subsection{Krav}
+\begin{reqlist}
+    \req{Kommunikationsmodulen skall...}
+    \req{}
+\end{reqlist}
 \clearpage
 \section{Styrmodul}
 \begin{figure}[h]
@@ -29,8 +34,14 @@ av bilen.
 \end{figure}
 
 \subsection{Beskrivning}
-Styrmodulen har som uppgift att ställa hjulen i rätt position samt att Taxin håller rätt hastighet. Styrmodulen är kopplad till kommunikationsmodulen ifrån den får information om hur Taxins hjul ska bete sig. Styrmodulen består av en kontroller, en drivmotor och en styrmotor. Styrmotorns uppgift är att hjulen ska vara i rätt position så att TAxin åker i önskad riktning. Drivmotorn är den motor som gör att bilen får en hastighet. Alltså köra fram eller bakåt.
-
+Styrmodulen har som uppgift att ställa hjulen i rätt position samt att Taxin håller rätt hastighet. Styrmodulen är kopplad till kommunikationsmodulen ifrån den får information om hur Taxins hjul ska bete sig.
+\subsection{Gränssnitt}
+Styrmodulen består av en kontroller, en drivmotor och en styrmotor. Styrmotorns uppgift är att hjulen ska vara i rätt position så att Taxin åker i önskad riktning. Drivmotorn är den motor som gör att bilen får en hastighet. Alltså köra fram eller bakåt.
+\subsection{Krav}
+\begin{reqlist}
+    \req{Styrsystemet ska vara så exakt att Taxin kan följa banan.}
+    \req{}
+\end{reqlist}
 \clearpage
 \section{Sensormodul}
 \subsection{Beskrivning}
