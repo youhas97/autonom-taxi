@@ -1,42 +1,6 @@
-% svensk encoding, svenska titlar
-\usepackage[utf8]{inputenc}
-\usepackage[swedish]{babel}
-
-% figurer
-\usepackage{graphicx} % pdf-import
-\usepackage{float} % Figure H option
-\usepackage{longtable} % splitta tabeller vid sidbrytning
-
-% separera filer, subfile kommando
-\usepackage{subfiles}
-
-% sidomargins
-\usepackage[total={16cm, 21cm}]{geometry}
-
-% labeling env för definitioner
-\usepackage{scrextend}
-\addtokomafont{labelinglabel}{\bfseries}
-
-% highlighting for links
-\usepackage[colorlinks=true,urlcolor=blue,linkcolor=black,citecolor=blue,filecolor=blue]{hyperref}
-\hypersetup{breaklinks=true}
-\urlstyle{same}
-
-% page header and foot
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0.2pt}
-\renewcommand{\footrulewidth}{0.2pt}
-\rhead{\sc \LIPSdatum}
-\chead{\textsl{\VARprojekttitel}}
-\lhead{\textbf{\sc\footnotesize\leftmark}}
-\lfoot{\textbf{\sc TSEA29}\\ \LIPSdokumenttyp}
-\rfoot{\textbf{\sc \VARgruppnummer}}
-
 %tabell för krav
 \newcounter{reqcat} % nummer för varje kravkategori
 \newcounter{reqitem} % individuella kravnummer
-
 \newenvironment{reqlist}
 {
     \setlength{\tabcolsep}{12pt}
@@ -56,6 +20,3 @@
     \stepcounter{reqitem}\thereqcat.\thereqitem & #1 & #3 & #2 \\
 }
 \newcommand{\req}[1]{\reqspec{original}{1}{#1}}
-
-%argument version, datum, utförda förändringar, utförda av, granskad
-\newcommand{\versioninfo}[5]{\hline {#1} & {#2} & {#3} & {#4} & {#5} \\}
