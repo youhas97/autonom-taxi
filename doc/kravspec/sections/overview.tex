@@ -3,7 +3,7 @@
 \begin{document}
 
 \section{Översikt av systemet}
-
+Här beskriver vi produkten övergripande samt 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\linewidth]{kravspec/figures/overview-schema.pdf}
@@ -21,7 +21,7 @@ bilen ska köra autonomt i vägnätet samt undvika hinder.
 
 \subsection{Produktkomponenter}
 Lämplig hårdvara med kompletterande mjukvara kommer finnas i den kompletta
-produkten.Bland annat ska även tekniskt dokumenation ingå i produkten.
+produkten. Bland annat ska även tekniskt dokumenation ingå i produkten.
 
 \subsection{Beroenden till andra system}
 Fjärstyrning av bilen skall vara beroende av en dator som har stöd för bluetooth.
@@ -29,8 +29,8 @@ Autonoma läget aktiveras från användargränsnittet tillgänglig på datorn me
 bluetooth.
 
 \subsection{Ingående delsystem}
-En kommunikationsenhet, en styrmodul och en sensormodul enligt figur
-\ref{fig:overview}. Sensormodulen ska hämta in data om omgivningen, bland annat
+Systemet kommer bestå av följande delsystem enligt figur
+\ref{fig:overview}; Sensormodulen ska hämta data om omgivningen, bland annat
 en kamera som tar bilder av vad som är framifrån, en sensor som mäter avstånd
 till objekt i omgivning och tejpföljare som sensorer. Lämplig data av omgivning
 skickas till kommunikationsmodell. Produkten har även en styrmodul som ser till
@@ -44,21 +44,36 @@ upptäcka dem. Vägen antas vara plan utan gropar.
 \subsection{Generella krav på hela systemet}
 
 \begin{reqlist}
-    \req{Taxin skicka aktuell mätdata till den bärbara datorn. Mätdata
-    inkluderar avstånd till vägkant, avstånd till hinder, avlagd sträcka,
-    styrbeslut och motorernas styrning}
-    \req{Taxin skall via fjärrstyrning kunna köra framåt, bakåt och svänga
-    vänster eller höger.}
-    \req{Under autonom körning skall taxin navigera vägnätet enligt
+    \req{Bilen ska kunna skicka aktuell mätdata till den bärbara datorn.
+    Mätdata inkluderar avstånd till vägkant, avstånd till hinder, avlagd
+    sträcka, styrbeslut och motorernas styrning}
+    \req{Mätdatan skall presenteras på datorns skärm på ett användarvänligt
+    sätt.}
+    \req{Användaren skall kunna växla mellan autonom och manuell körning på
+    bilen.}
+    \req{Bilen skall via fjärrstyrning (manuell körning)  kunna köra framåt,
+    bakåt, stanna och svänga vänster eller höger.}
+    \req{Bilen skall ha en kamera som tar bilder åtminstone åt en riktning }
+    \req{Under autonom körning ska taxin kunna köra från en punkt till en annan
+    i ett känt tvåfiligt vägnät}
+    \req{Under autonom körning skall bilen navigera vägnätet enligt
     högertrafik.}
-    \req{Under autonom körning skall taxin ej köra in i hinder.}
+    \req{Under autonom körning skall bilen ej köra in i hinder.}
     \reqspec{original}{2}{Om ett hinder blockerar taxins körfält under autonom
     körning skall taxibilen köra runt objektet genom att köra i det andra
     körfältet.}
-    \req{Under autonom körning skall taxin navigera genom vägnätet från en
-    godtycklig position till en godtycklig given destination.}
+    \req{Under autonom körning skall bilen navigera genom vägnätet från en
+    förutsatt positioner till en annan förutsatt destination, via kortaste
+    väg.}
+    \req{Bilen skall kunna svänga av in i en parkeringsficka och stanna där.}
+    \req{Bilen skall klara av att navigera i rondeller där högertrafik gäller.}
+    \reqspec{original}{2}{Bilen skall kunna delta i en tävling där tiden för
+    varje uppdrag mäts.}
     \reqspec{original}{3}{Bilen skall aktivera blinkers vid svängning samt
     hämtning och avlämning.}
+    \req{Bilen ska vara moduluppbyggd där varje modul innehåller en egen
+    processor. En kommunikationsmodul, en styrmodul samt en sensormodul skall
+    ingå}
 \end{reqlist}
 
 \end{document}

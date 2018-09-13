@@ -1,23 +1,33 @@
 \documentclass[kravspec/krav.tex]{subfiles}
 
 \begin{document}
+
 \clearpage
 \section{Kommunikationsmodul}
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.6\linewidth]{kravspec/figures/kommunikationsmodul.pdf}
+    \includegraphics[height=0.4\linewidth]{kravspec/figures/kommunikationsmodul.pdf}
     \caption{Kommunikationsmodul}
     \label{fig:kommunikationsmodul}
 \end{figure}
+
 \subsection{Beskrivning}
 Kommunikationsmodulen består av en mikrodator, ett bluetooth chipset samt en
 kamera. Kommunikationsmodulen är huvudorganet i systemet och agerar som
-dirigent. Dess uppgift består av bland annat bildbearbetning, dirigering av
-information till andra moduler samt kommunikation med en dator.
+dirigent. Modulen kommunicerar med alla andra moduler samt datorn och kopplar
+samman dem.
 
-Till datorn skickas positionen på bilen, avlagd sträcka, avstånd till
-vägkant/hinder etc. Dessutom används datorn som kontroller vid manuell körning
-av bilen.
+\subsection{Gränssnitt}
+Dess uppgift består av bland annat bildbearbetning, dirigering av information
+till andra moduler samt kommunikation med en dator. Till datorn skickas
+positionen på bilen, avlagd sträcka, avstånd till vägkant/hinder etc. Dessutom
+används datorn som kontroller vid manuell körning av bilen.
+
+\subsection{Krav}
+\begin{reqlist}
+    \req{Kommunikationsmodulen skall...}
+    \req{}
+\end{reqlist}
 
 \clearpage
 \section{Styrmodul}
@@ -25,17 +35,51 @@ av bilen.
     \centering
     \includegraphics[width=0.6\linewidth]{kravspec/figures/styrmodul.pdf}
     \caption{Styrmodul}
-Styrmodulen har som uppgift att ställa hjulen i rätt position samt att Taxin håller rätt hastighet. Styrmodulen är kopplad till kommunikationsmodulen ifrån den får information om hur Taxins hjul ska bete sig. Styrmodulen består av en kontroller, en drivmotor och en styrmotor. Styrmotorns uppgift är att hjulen ska vara i rätt position så att TAxin åker i önskad riktning. Drivmotorn är den motor som gör att bilen får en hastighet. Alltså köra fram eller bakåt.
     \label{fig:styrmodul}
 \end{figure}
 
+\subsection{Beskrivning}
+Styrmodulen har som uppgift att ställa hjulen i rätt position samt att Taxin
+håller rätt hastighet. Styrmodulen är kopplad till kommunikationsmodulen ifrån
+den får information om hur Taxins hjul ska bete sig.
+
+\subsection{Gränssnitt}
+Styrmodulen består av en kontroller, en drivmotor och en styrmotor. Styrmotorns
+uppgift är att hjulen ska vara i rätt position så att Taxin åker i önskad
+riktning. Drivmotorn är den motor som gör att bilen får en hastighet. Alltså
+köra fram eller bakåt.
+
+\subsection{Krav}
+\begin{reqlist}
+    \req{Styrsystemet ska vara så exakt att Taxin kan följa banan.}
+    \req{}
+\end{reqlist}
+
 \clearpage
 \section{Sensormodul}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\linewidth]{kravspec/figures/sensormodul.pdf}
+    \caption{Sensormodul}
+    \label{fig:sensormodul}
+\end{figure}
+
 \subsection{Beskrivning}
-Sensormodulen består av enhetens alla sensorer och en microprocessor. Dess
-uppgift är att hantera information från de olika sensorerna och även
-ut
+Sensormodulen ska bestå av en mikrodator och sensorer till enheten utöver
+kameran. Sensorerna skall väljas utefter de krav som behöver uppfyllas.
+Eventuellt kan kontrollmodulen behöva utföra behandling av information innan
+den skickas till kontrollmodulen.
+
 \subsection{Gränssnitt}
-\subsection{Krav}
+Sensorerna ska vara kopplade till mikrodatorn som behandlar datan och skickar
+den vidare till kommunikationsmodulen.
+
+\subsection{Krav på styrmodul}
+\begin{reqlist}
+    \req{Sensormodulen ska kunna behandla indata från sensorer och sammanställa
+    dessa till ett bestämt gränssnitt.}
+    \req{Sensormodulens mikrodator ska ta emot informationen från varje sensor
+    och vidarebefodra den till kommunikationsmodulen.}
+\end{reqlist}
 
 \end{document}
