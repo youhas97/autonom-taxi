@@ -6,8 +6,10 @@
 \section{Kommunikationsmodul}
 \begin{figure}[H]
     \centering
-    \includegraphics[height=0.4\linewidth]{kravspec/figures/kommunikationsmodul.pdf}
-    \caption{Kommunikationsmodul}
+    \includegraphics[height=0.4\linewidth]
+        {kravspec/figures/kommunikationsmodul.pdf}
+    \caption{En möjlig uppsättning av kommunikationsmodulen och dess
+    gränssnitt.}
     \label{fig:kommunikationsmodul}
 \end{figure}
 
@@ -18,10 +20,11 @@ dirigent. Modulen kommunicerar med alla andra moduler samt datorn och kopplar
 samman dem.
 
 \subsection{Gränssnitt}
-Dess uppgift består av bland annat bildbearbetning, dirigering av information
-till andra moduler samt kommunikation med en dator. Till datorn skickas
-positionen på bilen, avlagd sträcka, avstånd till vägkant/hinder etc. Dessutom
-används datorn som kontroller vid manuell körning av bilen.
+Dess uppgift består av bildbearbetning, dirigering av information till andra
+moduler samt kommunikation med en dator. Figur \ref{fig:kommunikationsmodul}
+visar hur den kan vara kopplad. Till datorn skickas positionen på bilen, avlagd
+sträcka, avstånd till vägkant/hinder etc. Dessutom används datorn som
+kontroller vid manuell körning av bilen.
 
 \subsection{Krav på kommunikationsmodul}
 \begin{reqlist}
@@ -33,14 +36,15 @@ används datorn som kontroller vid manuell körning av bilen.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\linewidth]{kravspec/figures/styrmodul.pdf}
-    \caption{Styrmodul}
+    \caption{Ett förslag på hur styrmodulen kan se ut.}
     \label{fig:styrmodul}
 \end{figure}
 
 \subsection{Beskrivning}
-Styrmodulen består av en kontroller, en drivmotor och en svängmotor. Drivmotorn
-är den motor som gör att bilen rör sig framåt eller bakåt, medan svängmotorn
-kontrollererar styraxeln och påverkar bilens svängradie.
+Styrmodulen består av en kontroller, en drivmotor och en svängmotor som visat i
+figur \ref{fig:styrmodul}. Drivmotorn är den motor som gör att bilen rör sig
+framåt eller bakåt, medan svängmotorn kontrollererar styraxeln och påverkar
+bilens svängradie.
 
 \subsection{Gränssnitt}
 Styrmodulen är kopplad till kommunikationsmodulen som ger information om hur
@@ -59,7 +63,7 @@ taxins hjul ska bete sig.
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\linewidth]{kravspec/figures/sensormodul.pdf}
-    \caption{Sensormodul}
+    \caption{En möjlig struktur för sensormodulen.}
     \label{fig:sensormodul}
 \end{figure}
 
@@ -71,7 +75,8 @@ kontrollmodulen.
 
 \subsection{Gränssnitt}
 Sensorerna ska vara kopplade till mikrodatorn som behandlar datan och skickar
-den vidare till kommunikationsmodulen.
+den vidare till kommunikationsmodulen som kan ses i figur
+\ref{fig:sensormodul}.
 
 \subsection{Krav på sensormodul}
 \begin{reqlist}
