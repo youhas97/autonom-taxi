@@ -43,13 +43,12 @@ Små väghinder som låga grova vägkanter och gropar tas ej hänsyn till. Väge
 förväntas bestå av hinder som är fördefinierade i banspecifikationen. Vägen
 antas vara plan utan gropar och markerad med tejp. Parkeringsfickan förväntas
 vara markerad med en specifik färg som skiljer sig från färgen på
-vägmarkeringarna. Dessutom ställs inga krav på att kameran ska ingå i en
-specifik modul, om den behöver vara beroende till kommunikationensenheten så
-placeras den i den modulen. Om det behövs så får kameran vara en egen modul,
-men ett krav på detta ställs inte.
-
+vägmarkeringarna.
 
 \subsection{Generella krav på hela systemet}
+Nedan följer de generella krav som taxin ska eller bör uppfylla.  Kraven har
+vardera en prioritet där 1 mostvarar något som skall vara klart och 2 att det
+vore önskvärt att det är avklarat.
 
 \setcounter{reqcat}{1}
 \begin{reqlist}
@@ -58,7 +57,8 @@ men ett krav på detta ställs inte.
     sträcka, styrbeslut och motorernas styrning.}
     \req{Det ska finnas ett användargränssnitt på den bärbara datorn som visar
     mätdata mottaget från taxin.}
-    \req{Banans vägnöt skall kunna matas in via användargränssnittet.}
+    \req{Banans vägnät skall kunna matas in via användargränssnittet och
+    därefter användas av taxin för att navigera banan.}
     \req{Användargränssnittet skall visa en karta över banans vägnät.}
     \req{Under körning skall positionsdata fortlöpande skickas till en bärbar
     dator och visas på användargränssnittets karta.}
@@ -66,7 +66,7 @@ men ett krav på detta ställs inte.
     användargränssnittet.}
     \req{Successiv inmatning av reglerparametrarna skall vara möjlig via
     användargränssnittet.}
-    \req{Bilen skall kunnas fjärrstyras via användargränssnittet. Kommandon
+    \req{Bilen skall kunna fjärrstyras via användargränssnittet. Kommandon
     inkluderar köra framåt, bakåt, stanna och svänga vänster eller höger.}
     \req{Under autonom körning ska taxin kunna köra från en punkt till en annan
     i ett känt tvåfiligt vägnät.}
@@ -77,8 +77,7 @@ men ett krav på detta ställs inte.
     \reqspec{original}{2}{Bilen ska kunna köra om ett hinder istället för att
     stanna, om det sker utan att bryta mot trafikregler.}
     \req{Under autonom körning skall bilen navigera genom vägnätet från en
-    förutsatt positioner till en annan förutsatt destination, via kortaste
-    väg.}
+    förutsatt position till en annan förutsatt destination.}
     \req{Bilen skall kunna stanna vid en stopplinje}
     \req{Bilen skall kunna svänga av in i en parkeringsficka och stanna där.}
     \req{Bilen skall klara av att navigera i rondeller där högertrafik gäller.}

@@ -38,20 +38,22 @@ används datorn som kontroller vid manuell körning av bilen.
 \end{figure}
 
 \subsection{Beskrivning}
-Styrmodulen har som uppgift att ställa hjulen i rätt position samt att Taxin
-håller rätt hastighet. Styrmodulen är kopplad till kommunikationsmodulen ifrån
-den får information om hur Taxins hjul ska bete sig.
+Styrmodulen består av en kontroller, en drivmotor och en svängmotor. Drivmotorn
+är den motor som gör att bilen rör sig framåt eller bakåt, medan svängmotorn
+kontrollererar styraxeln och påverkar bilens svängradie.
 
 \subsection{Gränssnitt}
-Styrmodulen består av en kontroller, en drivmotor och en styrmotor. Styrmotorns
-uppgift är att hjulen ska vara i rätt position så att Taxin åker i önskad
-riktning. Drivmotorn är den motor som gör att bilen får en hastighet. Alltså
-köra fram eller bakåt.
+Styrmodulen är kopplad till kommunikationsmodulen ifrån den
+får information om hur Taxins hjul ska bete sig.
 
-\subsection{Krav}
+\subsection{Krav på styrmodul}
 \begin{reqlist}
-    \req{Styrsystemet ska vara så exakt att Taxin kan följa banan.}
-    \req{}
+    \req{Styrmodulen ska sköta direktkommunikationen med bilens motorer utifrån
+    kommandon som ges av kommunikationsmodulen.}
+    \req{Styrmodulen ska ställa hjulen i rätt position samt se till att taxin
+    håller rätt hastighet.}
+    \req{Styrmotorns uppgift är att hjulen ska vara i rätt position så att
+    taxin åker i önskad riktning.}
 \end{reqlist}
 
 \clearpage
@@ -64,10 +66,10 @@ köra fram eller bakåt.
 \end{figure}
 
 \subsection{Beskrivning}
-Sensormodulen ska bestå av en mikrodator och sensorer till enheten utöver
-kameran. Sensorerna skall väljas utefter de krav som behöver uppfyllas.
-Eventuellt kan kontrollmodulen behöva utföra behandling av information innan
-den skickas till kontrollmodulen.
+Sensormodulen ska bestå av en mikrodator och enhetens sensorer utöver kameran.
+Sensorerna skall väljas utefter de krav som behöver uppfyllas. Eventuellt kan
+sensormodulen behöva utföra behandling av information innan den skickas till
+kontrollmodulen.
 
 \subsection{Gränssnitt}
 Sensorerna ska vara kopplade till mikrodatorn som behandlar datan och skickar
@@ -80,7 +82,7 @@ den vidare till kommunikationsmodulen.
     \req{Sensormodulens mikrodator ska ta emot informationen från varje sensor
     och vidarebefodra den till kommunikationsmodulen.}
     \reqspec{original}{2}{En LCD-display på bilen skall visa värden från valda
-    sensorer}
+    sensorer.}
 \end{reqlist}
 
 \end{document}
