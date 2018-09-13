@@ -49,19 +49,46 @@ ställs inga krav på att kameran ska ingå i en specifik modul, om den behöver
     \req{Taxin ska kunna skicka aktuell mätdata till den bärbara datorn.
     Mätdata inkluderar avstånd till vägkant, avstånd till hinder, avlagd
     sträcka, styrbeslut och motorernas styrning}
-    \req{Taxin skall via fjärrstyrning kunna köra framåt, bakåt, stanna och
-    svänga vänster eller höger.}
-    \req{Taxin skall ha en kamera som tar bilder åtminstone åt en riktning }
-    \req{Under autonom körning skall taxin navigera vägnätet enligt
-    högertrafik.}
     \req{Under autonom körning skall taxin ej köra in i hinder.}
-    \reqspec{original}{2}{Om ett hinder blockerar taxins körfält under autonom
-    körning skall taxibilen köra runt objektet genom att köra i det andra
+    \req{Successiv inmatning av reglerparametrarna skall vara möjlig (inmatning
+    utan ny kompilering}
+    \req{Mätdatan skall presenteras på datorns skärm på ett användarvänligt
+    sätt.}
+    \req{Användaren skall kunna växla mellan autonom och manuell körning på
+    bilen utan att koden ska behöva kompileras om.}
+    \req{Bilen skall via fjärrstyrning (manuell körning)  kunna köra framåt,
+    bakåt, stanna och svänga vänster eller höger.}
+    \req{Under autonom körning ska taxin kunna köra från en punkt till en annan
+    i ett känt tvåfiligt vägnät.}
+    \req{Under autonom körning skall bilen navigera vägnätet enligt
+    högertrafik.}
+    \req{Under autonom körning skall bilen stanna ifall hinder befinner sig på
+    vägen, tills hindret är borta.}
+    \reqspec{original}{2}{Om ett hinder blockerar bilen körfält under autonom
+    körning skall bilen köra runt objektet genom att köra i det andra
     körfältet.}
-    \req{Under autonom körning skall taxin navigera genom vägnätet från en
-    godtycklig position till en godtycklig given destination.}
+    \req{Under autonom körning skall bilen navigera genom vägnätet från en
+    förutsatt positioner till en annan förutsatt destination, via kortaste
+    väg.}
+    \req{Bilen skall kunna stanna vid en stopplinje}
+    \req{Bilen skall kunna svänga av in i en parkeringsficka och stanna där.}
+    \req{Bilen skall klara av att navigera i rondeller där högertrafik gäller.}
+    \reqspec{original}{2}{Bilen skall kunna delta i en tävling där tiden för
+    varje uppdrag mäts.}
     \reqspec{original}{3}{Bilen skall aktivera blinkers vid svängning samt
     hämtning och avlämning.}
+    \req{Bilen ska vara moduluppbyggd där varje modul innehåller en egen
+    processor. En kommunikationsmodul, en styrmodul samt en sensormodul skall
+    ingå.}
+    \req{En karta skall kunna skickas från en bärbar dator till bilen.}
+    \req{Bilen skall ha en kamera som tar bilder åtminstone åt en riktning.}
+    \req{Under körning skall positionsdata fortlöpande skickas till en bärbar
+    dator och visas på en karta.}
+    \reqspec{original}{2}{Direktsändning av kamerabilden skall visas på en
+    bärbar dator.}
+    \req{Bilen ska använda sig av en styralgoritm så att den föredrar att
+    befinna sig centralt i filen.}
+
 \end{reqlist}
 
 \end{document}
