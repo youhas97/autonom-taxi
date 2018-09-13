@@ -65,8 +65,8 @@ köra fram eller bakåt.
 \end{figure}
 
 \subsection{Beskrivning}
-Sensormodulen ska bestå av enhetens alla sensorer utöver kameran och en
-mikrodator. Sensorerna skall väljas utefter de krav som behöver uppfyllas.
+Sensormodulen ska bestå av en mikrodator och sensorer till enheten utöver
+kameran. Sensorerna skall väljas utefter de krav som behöver uppfyllas.
 Mikrodatorns uppgift är att vidarebefodra sensorernas information till
 kontrollmodulen via ett specificerat gränssnitt. Eventuellt kan kontrollmodulen
 behöva utföra behandling av information innan den skickas till kontrollmodulen.
@@ -74,8 +74,10 @@ behöva utföra behandling av information innan den skickas till kontrollmodulen
 \subsection{Gränssnitt}
 \subsection{Krav på styrmodul}
 \begin{reqlist}
-    \req{Sensormodulen ska kunna behandla indata från sensorer och sammanställa dessa till en bestämt gränssnitt.}
-    \req{}
+    \req{Sensormodulen ska kunna behandla indata från sensorer och sammanställa
+    dessa till en bestämt gränssnitt.}
+    \req{Sensormodulens mikrodator ska ta emot informationen från varje sensor
+    och vidarebefodra den till kommunikationsmodulen.}
 \end{reqlist}
 
 \end{document}
