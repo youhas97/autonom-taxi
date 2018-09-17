@@ -23,7 +23,7 @@ bilen ska köra autonomt i vägnätet samt undvika hinder.
 
 \subsection{Produktkomponenter}
 Produkten kommer bestå av en taxibil och mjukvara till en bärbar dator, samt
-tekniskt dokumentation och en användarmanual.
+teknisk dokumentation och en användarmanual.
 
 \subsection{Beroenden till andra system}
 Fjärstyrning av bilen skall vara beroende av en dator som har stöd för
@@ -52,9 +52,9 @@ och 2 att det vore önskvärt att det är avklarat.
 
 \setcounter{reqcat}{1}
 \begin{reqlist}
-    \req{Taxin ska kunna skicka aktuell mätdata till den bärbara datorn.
-    Mätdata inkluderar avstånd till vägkant, avstånd till hinder, avlagd
-    sträcka, styrbeslut och motorernas styrning.}
+    \req{Taxin ska kunna skicka aktuell mätdata fortlöpande till den bärbara
+    datorn. Mätdata inkluderar avstånd till vägkant, avstånd till hinder,
+    avlagd sträcka, styrbeslut och motorernas styrning.}
     \req{Det ska finnas ett användargränssnitt på den bärbara datorn som visar
     mätdata mottaget från taxin.}
     \req{Banans vägnät skall kunna matas in via användargränssnittet och
@@ -68,21 +68,18 @@ och 2 att det vore önskvärt att det är avklarat.
     användargränssnittet.}
     \req{Bilen skall kunna fjärrstyras via användargränssnittet. Kommandon
     inkluderar köra framåt, bakåt, stanna och svänga vänster eller höger.}
-    \req{Under autonom körning ska taxin kunna köra från en punkt till en annan
-    i ett känt tvåfiligt vägnät.}
+    \req{Under autonom körning ska taxin autonomt kunna köra från en punkt till
+    en annan i ett känt tvåfiligt vägnät, via kortaste väg.}
     \req{Under autonom körning skall bilen navigera vägnätet enligt
     högertrafik.}
     \req{Under autonom körning skall bilen stanna ifall hinder befinner sig på
     vägen, tills hindret är borta.}
     \reqspec{original}{2}{Bilen ska kunna köra om ett hinder istället för att
     stanna, om det sker utan att bryta mot trafikregler.}
-    \req{Under autonom körning skall bilen navigera genom vägnätet från en
     förutsatt position till en annan förutsatt destination.}
     \req{Bilen skall kunna stanna vid en stopplinje}
     \req{Bilen skall kunna svänga av in i en parkeringsficka och stanna där.}
     \req{Bilen skall klara av att navigera i rondeller där högertrafik gäller.}
-    \reqspec{original}{2}{Bilen skall kunna delta i en tävling där tiden för
-    varje uppdrag mäts.}
     \reqspec{original}{2}{Bilen skall aktivera blinkers vid svängning samt
     hämtning och avlämning.}
     \req{Bilen ska vara moduluppbyggd där varje modul innehåller en egen
@@ -93,6 +90,7 @@ och 2 att det vore önskvärt att det är avklarat.
     bärbar dator.}
     \req{Bilen ska använda sig av en styralgoritm så att den föredrar att
     befinna sig centralt i filen.}
+    \req{Projektet skall utföras enligt LIPS-modellen.}
 \end{reqlist}
 
 \end{document}
