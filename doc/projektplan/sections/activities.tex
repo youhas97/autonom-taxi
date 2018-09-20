@@ -6,26 +6,30 @@
 {
     \setlength{\tabcolsep}{12pt}
     \renewcommand{\arraystretch}{1.6}
-    \begin{longtable}{p{6mm}p{13mm}p{7cm}p{18mm}p{8mm}}
+    \begin{longtable}{p{6mm}p{20mm}p{64mm}p{6mm}p{6mm}}
         \bfseries Nr &
         \bfseries Aktivitet &
         \bfseries Beskrivning &
-        \bfseries Beroenden &
-	    \bfseries Beräknad tid
+        \bfseries Tid &
+        \bfseries Beroende
 	\\\hline\endhead
 }{
     \end{longtable}
 }
-\newcommand{\activity}[4]{
+\newcommand{\activity}[5]{
     \refstepcounter{activityno}\label{#1}
-    \theactivityno & #1 & #2 & #3 & #4 \\
+    \theactivityno & #2 & #5 & #3 & #4 \\
 }
 
 \begin{document}
 
 \begin{activitylist}
-    \activity{Kommunikationsmodul}{}{}{10}
-    \activity{Kamera}{Fixa kamera}{\ref{Kommunikationsmodul}}{10}
+    \activity{act:cam}{Kamera}{10}{}{
+        fixa kamera hej hej
+    }
+    \activity{act:comm}{Kommunika\-tionsmodul}{10}{\ref{act:cam}}{
+        fixa allt hej då
+    }
 \end{activitylist}
 
 \newpage
