@@ -1,19 +1,19 @@
 \documentclass[12pt]{article}
 
-\input{format.tex}
+\input{common/format.tex}
 \input{projektplan/format.tex}
-\input{vars.tex}
+\input{common/vars.tex}
 \input{projektplan/vars.tex}
 
 \begin{document}
-\subfile{projektplan/sections/frontpage}
-\subfile{projektplan/sections/identity}
+\subfile{common/sections/frontpage}
+\subfile{common/sections/identity}
 \setcounter{page}{1}
 \tableofcontents\newpage
 \subfile{projektplan/sections/mod_hist}
 \subfile{projektplan/sections/intro}\clearpage
 \subfile{projektplan/sections/fas}\clearpage
-\subfile{projektplan/sections/activities}\clearpage
 \subfile{projektplan/sections/resursrapport}\clearpage
 \subfile{projektplan/sections/milstolpar}\clearpage
+\subfile{projektplan/sections/activities}\clearpage
 \end{document}

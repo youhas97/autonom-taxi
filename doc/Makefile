@@ -19,5 +19,5 @@ skiss: systemskiss/skiss.tex systemskiss/sections/*.tex
 	pdflatex ${TEXARGS} systemskiss/skiss.tex
 	make clean
 clean:
-	rm -f *.blg *.dvi *.xml *.log *.aux *.out *.toc
+	rm -f **.blg *.dvi *.xml *.log *.aux *.out *.toc *.bbl
 	rm -f img/*converted*
