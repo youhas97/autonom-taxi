@@ -1,0 +1,41 @@
+Kommunikationsmodul:
+- Kamera (hårdvara)
+- Kommunikation med andra moduler
+- Bildbearbetning
+- Reglera körning?
+- Bearbeta sensorvärden
+- Raspberry ej kompatibel med 5V, filtrering krävs till 3.3V
+
+Styrmodul:
+- Aktivera motor
+- Rotera svängaxel
+- Bromsa med back
+- Reglera körning?
+- PWM från enchipsdator till motor
+- Vilken databuss? SPI, I2C, UART
+- Rita kretsschema
+
+Sensormodul:
+- Filtrering av brus
+- Skicka värden
+- Hantera sensorer*
+- Databuss eller UART
+- Rita kretsschema KiCAD
+
+Utbildning:
+- OpenCV för bildbehandling
+- Logikanalysator
+- AVR
+- OS-Raspberry, Yocto
+- SPI och I2C
+- KiCAD
+- Bluetooth eller WLAN
+
+Laptop:
+- Trådlös länk
+- Gränssnitt
+- Karta
+- Ritning av karta
+- Avläsning
+- Ström av kartan till systemet
+- Pi hämtar kartan från web med wget SD
