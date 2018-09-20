@@ -2,11 +2,13 @@
 
 % tabell för aktivitet
 \newcounter{activityno} % nummer för varje aktivitet
+\newcounter{activitycatno} % nummer för kategory
 \newenvironment{activitylist}
 {
     \setlength{\tabcolsep}{12pt}
     \renewcommand{\arraystretch}{1.6}
-    \begin{longtable}{p{6mm}p{25mm}p{73mm}p{6mm}p{6mm}}
+    \begin{longtable}{p{18mm}p{25mm}p{73mm}p{6mm}p{6mm}}
+
         \bfseries Nr &
         \bfseries Aktivitet &
         \bfseries Beskrivning &
@@ -16,9 +18,13 @@
 }{
     \end{longtable}
 }
+
 \newcommand{\activity}[5]{
     \refstepcounter{activityno}\label{#1}
-    \theactivityno & #2 & #5 & #3 & #4 \\
+    \noindent\theactivitycatno.\theactivityno & #2 & #5 & #3 & #4 \\
+}
+\newcommand{\actcat}[1]{
+    \hline\multicolumn{5}{c}{#1}\\\hline\stepcounter{activitycatno}%
 }
 
 \begin{document}
@@ -26,39 +32,39 @@
 \section{Aktiviteter}
 
 \begin{activitylist}
-    \activity{act:cam}{Kamera}{?}{}{
-        fixa kamera hej hej
-    }
-    \activity{act:ip}{Bildbe\-arbetning}{?}{\ref{act:cam}}{
-        bilder yes?
-    }
-    \activity{act:regl}{Reglering}{?}{\ref{act:ip}}{
-        bilder yes?
-    }
-    \activity{act:sp}{Bearbeta sensorvärden}{?}{}{
-        sensore si yes?
-    }
-    \activity{act:voltage}{Konvertera spänning}{?}{}{
-        Se till att Raspberry Pi:n kan kommunicera via 5V-buss.
-    }
-    \activity{act:drive}{Justera drivmotor}{?}{}{
-        Reglera farten genom att kontrollera drivmotorn.
-    }
-    \activity{act:steer}{Justera svängmotor}{?}{}{
-        Reglera svängradien genom att kontrollera svängmotorn.
-    }
-    \activity{act:break}{Justera svängmotor}{?}{}{
-        Se till att bilen kan bromsa.
-    }
-    \activity{act:break}{Justera svängmotor}{?}{}{
-        Se till att bilen kan bromsa.
-    }
-    \activity{act:filter}{Filtrera brus}{?}{}{
-        Filtrera brus från analoga sensorer.
-    }
-    \activity{act:send}{Skicka värden}{?}{}{
-        Skicka värden till kommunikationsmodulen.
-    }
+    \actcat{Kommunikationsmodul}
+    \activity{act:cam}{Kamera}{?}{}{fixa kamera hej hej}
+    \activity{act:ip}{Bildbe\-arbetning}{?}{\ref{act:cam}}{bilder yes?}
+    \activity{act:regl}{Reglering}{?}{\ref{act:ip}}{bilder yes?}
+    \activity{act:sp}{Bearbeta sensorvärden}{?}{}{sensore si yes?}
+    \activity{act:voltage}{Konvertera spänning}{?}{}{Se till att Raspberry Pi:n
+    kan kommunicera via 5V-buss.}
+
+    \actcat{Styrmodul}
+    \activity{act:drive}{Justera drivmotor}{?}{}{Reglera farten genom att
+    kontrollera drivmotorn.}
+    \activity{act:steer}{Justera svängmotor}{?}{}{Reglera svängradien genom att
+    kontrollera svängmotorn.}
+    \activity{act:break}{Bromsa}{?}{}{Se till att bilen kan
+    bromsa.}
+
+    \actcat{Sensormodul}
+    \activity{act:filter}{Filtrera brus}{?}{}{Filtrera brus från analoga
+    sensorer.}
+    \activity{act:send}{Skicka värden}{?}{}{Skicka värden till
+    kommunikationsmodulen.}
+
+    \actcat{Fjärrklient}
+    \activity{act:wireless}{Trådlös länk}{?}{}{}
+    \activity{act:ui}{Användar\-gränssnitt}{?}{}{}
+    \activity{act:map-in}{Mata in karta}{?}{}{}
+    \activity{act:map}{Rita karta}{?}{}{}
+
+    \actcat{Utbildning}
+    \activity{act:opencv}{Trådlös länk}{?}{}{}
+    \activity{act:avr}{AVR}{?}{}{}
+    \activity{act:proto}{Överföringsprotokoll}{?}{}{}
+    \activity{act:kicad}{KiCad}{?}{}{}
 \end{activitylist}
 
 \newpage
