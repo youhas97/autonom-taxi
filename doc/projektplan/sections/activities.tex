@@ -1,70 +1,113 @@
 \documentclass[projektplan/plan.tex]{subfiles}
 
 % tabell för aktivitet
-\newcounter{activityno} % nummer för varje aktivitet
-\newcounter{activitycatno} % nummer för kategory
+\newcounter{activitycatno} % nummer för kategori
+\newcounter{activityno}[activitycatno] % nummer för varje aktivitet
+\renewcommand\theactivityno{\theactivitycatno.\arabic{activityno}}
+
 \newenvironment{activitylist}
 {
     \setlength{\tabcolsep}{12pt}
     \renewcommand{\arraystretch}{1.6}
-    \begin{longtable}{p{18mm}p{25mm}p{73mm}p{6mm}p{6mm}}
-
+    \begin{longtable}{p{18mm}p{25mm}p{65mm}p{6mm}p{7mm}}
         \bfseries Nr &
         \bfseries Aktivitet &
         \bfseries Beskrivning &
         \bfseries Tid &
-        \bfseries Beroende
+        \bfseries Ber.
 	\\\hline\endhead
 }{
     \end{longtable}
 }
 
 \newcommand{\activity}[5]{
-    \refstepcounter{activityno}\label{#1}
-    \noindent\theactivitycatno.\theactivityno & #2 & #5 & #3 & #4 \\
+    \refstepcounter{activityno}\label{act:#1}
+    %nr            % akt    % beskr % tid   % beroenden
+    \theactivityno & #2     & #5    & #3    & #4 \\
 }
 \newcommand{\actcat}[1]{
-    \hline\multicolumn{5}{c}{#1}\\\hline\stepcounter{activitycatno}%
-}
+    \hline\multicolumn{5}{c}{#1}\refstepcounter{activitycatno}\\\hline}
+
+\newcommand{\arefproc}[1]{\ref{act:#1} }
+\NewDocumentCommand\aref{>{\SplitList{,}}m}{\ProcessList{#1}{\arefproc}}
 
 \begin{document}
 
 \section{Aktiviteter}
+Nedan följer en lista av alla de aktiviter som hela projektet har delats upp i.
+Aktiviteter är uppdelade i olika kategorier och är numrerade efter kategori.
+Tidskolumnent visar en uppskattning av antalet timmar som aktiviteten förväntas
+att ta. Kolumnen för beroenden visar vilka andra aktiviteter som måste vara
+avklarade innan en aktivitet kan bli avklarad.
 
 \begin{activitylist}
     \actcat{Kommunikationsmodul}
-    \activity{act:cam}{Kamera}{?}{}{fixa kamera hej hej}
-    \activity{act:ip}{Bildbe\-arbetning}{?}{\ref{act:cam}}{bilder yes?}
-    \activity{act:regl}{Reglering}{?}{\ref{act:ip}}{bilder yes?}
-    \activity{act:sp}{Bearbeta sensorvärden}{?}{}{sensore si yes?}
-    \activity{act:voltage}{Konvertera spänning}{?}{}{Se till att Raspberry Pi:n
-    kan kommunicera via 5V-buss.}
+    \activity{comm:cam}{Kamera}{5}{}{Installera kamera och gör dess bilder
+    bearbetningsbara.}
+    \activity{comm:reg}{PD-reglering.}{3}{\aref{ip:err,ctrl:drive,ctrl:steer}}
+    {Reglera styrning utefter felvärde.}
+    \activity{comm:map}{Tolka karta}{8}{\aref{ui:map-in}}{Tolka inmatad karta.}
+    \activity{comm:map}{Bestäm position.}{4}{\aref{comm:map}}{Bestäm taxins
+    position från i tolkad karta.}
+
+    \actcat{Bildbearbetning}
+    \activity{ip:edge}{Upptäck kanter.}{10}{\aref{comm:cam}}{Upptäck
+    kanter i bilder.}
+    \activity{ip:line}{Upptäck linjer.}{10}{\aref{ip:edge}}{Upptäck
+    linjemarkeringar på vägen.}
+    \activity{ip:2d}{Transformera linjer till
+    2D.}{10}{\ref{act:ip:line}}{Transformera 3d-perspektiv till en ortografisk
+    2d-bild sedd uppifrån.}
+    \activity{ip:err}{Avgör felvärde.}{10}{\aref{ip:2d}}{Beräkna
+    felvärde från 2D karta.}
 
     \actcat{Styrmodul}
-    \activity{act:drive}{Justera drivmotor}{?}{}{Reglera farten genom att
-    kontrollera drivmotorn.}
-    \activity{act:steer}{Justera svängmotor}{?}{}{Reglera svängradien genom att
-    kontrollera svängmotorn.}
-    \activity{act:break}{Bromsa}{?}{}{Se till att bilen kan
-    bromsa.}
+    \activity{ctrl:drive}{Drivmotor}{2}{}{Reglera taxins fart genom att
+    kontrollera drivmotorn utifrån kommunikationsmodulens kommandon.}
+    \activity{ctrl:steer}{Svängmotor}{2}{}{Reglera svängradien genom att
+    kontrollera svängmotorn utifrån kommandon.}
+    \activity{ctrl:break}{Broms}{2}{\aref{ctrl:drive}}{Se till att bilen
+    kan bromsa.}
 
     \actcat{Sensormodul}
-    \activity{act:filter}{Filtrera brus}{?}{}{Filtrera brus från analoga
+    \activity{sens:filter}{Filtrera brus}{3}{}{Filtrera brus från analoga
     sensorer.}
-    \activity{act:send}{Skicka värden}{?}{}{Skicka värden till
+    \activity{sens:conv}{Konvertera värden}{2}{}{Konvertera sensorvärden
+    till SI-enheter.}
+    \activity{sens:send}{Skicka värden}{2}{}{Skicka värden till
     kommunikationsmodulen.}
 
-    \actcat{Fjärrklient}
-    \activity{act:wireless}{Trådlös länk}{?}{}{}
-    \activity{act:ui}{Användar\-gränssnitt}{?}{}{}
-    \activity{act:map-in}{Mata in karta}{?}{}{}
-    \activity{act:map}{Rita karta}{?}{}{}
+    \actcat{Användargränssnitt}
+    \activity{ui:rc}{Styra taxi}{10}{}{Kör och styr taxin från gränssnittet.}
+    \activity{ui:param}{Mata in parametrar}{2}{}{Mata in konstantparametrer
+    under körning.}
+    \activity{ui:data}{Visa mätdata}{2}{}{Visa upp mätdata från taxin.}
+    \activity{ui:map-in}{Mata in karta}{10}{}{Mata in en karta av banan.}
+    \activity{ui:map}{Rita karta}{10}{}{Rita en karta på gränssnittet med
+    taxins nuvarande position markerad.}
+
+    \actcat{Anslutningar}
+    \activity{io:voltage}{Konvertera spänning}{5}{}{Se till att Raspberry Pi:n
+    kan kommunicera via 5V-buss.}
+    \activity{io:wireless}{Trådlös länk}{8}{}{Implementera en trådlös länk
+    mellan kommunikationsmodulen och fjärrklienten.}
 
     \actcat{Utbildning}
-    \activity{act:opencv}{Trådlös länk}{?}{}{}
-    \activity{act:avr}{AVR}{?}{}{}
-    \activity{act:proto}{Överföringsprotokoll}{?}{}{}
-    \activity{act:kicad}{KiCad}{?}{}{}
+    \activity{edu:opencv}{OpenCV}{3}{}{Förstå hur OpenCV fungerar.}
+    \activity{edu:avr}{AVR}{3}{}{Förstå arkitektur och I/O för
+    AVR-processorer.}
+    \activity{edu:proto}{Överförings\-protokoll}{3}{}{Undersök protokoll som
+    I$^2$C, SPI, UART m.m.}
+    \activity{edu:kicad}{KiCad}{3}{}{Lära sig använda KiCad.}
+
+    \actcat{Dokument}
+    \activity{doc:designspec}{Designspe\-cifikation}{50}{}{Skapa detaljerad
+    design demonstrerad i en specifikation.}
+    \activity{doc:tecdoc}{Teknisk dokumentation}{50}{}{Dokumentera
+    implementationen.}
+    \activity{doc:study}{Efterstudie}{30}{}{Utför en efterstudie.}
+    \activity{doc:manual}{Användar\-manual}{20}{}{Skriv en användarmanual.}
+    \activity{doc:time-reports}{Tidsrapporter}{10}{}{Rapportera tid varje vecka.}
 \end{activitylist}
 
 \newpage
