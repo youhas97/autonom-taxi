@@ -14,5 +14,5 @@ plan: projektplan/plan.tex projektplan/sections/*.tex
 	make clean
 
 clean:
-	rm -f *.blg *.dvi *.xml *.log *.aux *.out *.toc
+	rm -f **.blg *.dvi *.xml *.log *.aux *.out *.toc *.bbl
 	rm -f img/*converted*
