@@ -1,0 +1,33 @@
+\documentclass[projektplan/plan.tex]{subfiles}
+
+% tabell för aktivitet
+\newcounter{activityno} % nummer för varje aktivitet
+\newenvironment{activitylist}
+{
+    \setlength{\tabcolsep}{12pt}
+    \renewcommand{\arraystretch}{1.6}
+    \begin{longtable}{p{6mm}p{13mm}p{7cm}p{18mm}p{8mm}}
+        \bfseries Nr &
+        \bfseries Aktivitet &
+        \bfseries Beskrivning &
+        \bfseries Beroenden &
+	    \bfseries Beräknad tid
+	\\\hline\endhead
+}{
+    \end{longtable}
+}
+\newcommand{\activity}[4]{
+    \refstepcounter{activityno}\label{#1}
+    \theactivityno & #1 & #2 & #3 & #4 \\
+}
+
+\begin{document}
+
+\begin{activitylist}
+    \activity{Kommunikationsmodul}{}{}{10}
+    \activity{Kamera}{Fixa kamera}{\ref{Kommunikationsmodul}}{10}
+\end{activitylist}
+
+\newpage
+
+\end{document}
