@@ -1,0 +1,83 @@
+\documentclass[projektplan/plan.tex]{subfiles}
+
+\newcounter{milestoneNo} % nummer för varje milstolpe
+
+\newenvironment{milestonelist}
+{
+    \setlength{\tabcolsep}{12pt}
+    \renewcommand{\arraystretch}{1.6}
+    \begin{longtable}{p{8mm}p{75mm}p{25mm}}
+        \bfseries Nr &
+        \bfseries Beskrivning &
+        \bfseries Datum 
+	\\\hline\endhead
+}{
+    \end{longtable}
+}
+
+\newcommand{\milestone}[2]{
+    \stepcounter{milestoneNo}
+    %nr            % beskr  % datum 
+    \arabic{milestoneNo} & #1     & #2 \\
+}
+
+\begin{document}
+
+\section{Milstolpestabell}
+
+\begin{milestonelist}
+
+\milestone{Designspecifikationen är klar}{2018-11-06}
+\milestone{Diskreta komponenter kopplade}{2018-09-30}
+\milestone{Verifiering av elektronik och att bussarna fungerarar}{2018-10-31}
+
+\milestone{Utvecklingsmiljöer för processor och mikrokontroller
+    färdigt}{2018-10-31}
+\milestone{Kommunikation mellan moduler och interna mikrokontroller samt
+    processor fungerar som den ska.}{2018-10-31}
+
+\milestone{Bil vid dennna milstolpe ska kunna åka i alla
+    riktningar}{2018-10-31}
+
+\milestone{Bilen ska vid det här läget fjärrstyras.}{2018-10-31}
+
+\milestone{Kameran ska ta bilder nu och bilderna behandlas för att känna igen
+    skelett}{2018-10-31}
+
+\milestone{En lämplig datastruktur för representation av kartan och dess noder
+    ska vara färdig. Man ska mha datorn kunna bygga en egen dator, helst
+    användarvänligt.}{2018-10-31}
+
+\milestone{Mätvärden skickas till datorn som representeras i SI-enhet i valfri
+    användargränssnitt.}{2018-10-31}
+
+\milestone{Representation av kartan kan skickas till systemet.}{2018-10-31}
+
+\milestone{Någon form av PD-reglering infört.}{2018-10-31}
+
+\milestone{Reglerparameterna till PD-reglering kan skickas
+    fortlöpande.}{2018-10-31}
+
+\milestone{Bilen kan hålla sig inom vägfilen}{2018-10-31}
+
+\milestone{Bilen kan åka i rondeller}{2018-10-31}
+
+\milestone{Bil åker tillbaka till startposition}{2018-10-31}
+
+\milestone{Stannar inför hinder}{2018-10-31}
+
+\milestone{Bilen klarar av att parkera i fickan.}{2018-10-31}
+
+\milestone{Bilen tar kortaste vägen till sina mål}{2018-10-31}
+
+\milestone{Bilen undviker hinder genom att på ett säkert sätt åka runt
+    hindret.}{2018-10-31}
+
+\milestone{Bilen klarar av uppdraget som definierad enligt banspecifikationen
+    tre av fyra försök}{2018-10-31}
+
+\end{milestonelist}
+
+\newpage
+
+\end{document}
