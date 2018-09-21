@@ -1,64 +1,7 @@
 \documentclass[projektplan/plan.tex]{subfiles}
-
-\newcounter{milestoneNo} % nummer för varje milstolpe
-
-\newenvironment{milestonelist}
-{
-    \setlength{\tabcolsep}{12pt}
-    \renewcommand{\arraystretch}{1.6}
-    \begin{longtable}{p{8mm}p{75mm}p{25mm}}
-        \bfseries Nr &
-        \bfseries Beskrivning &
-        \bfseries Datum 
-	\\\hline\endhead
-}{
-    \end{longtable}
-}
-
-\newcommand{\milestone}[2]{
-    \stepcounter{milestoneNo}
-    %nr            % beskr  % datum 
-    \arabic{milestoneNo} & #1     & #2 \\
-}
-
 \begin{document}
-
 \section{Milstolpar och beslutspunkter}
 \subsection{Milstolpar}
-\begin{milestonelist}
-\milestone{Designspecifikationen är klar}{2018-11-06}
-\milestone{Diskreta komponenter kopplade}{2018-09-30}
-\milestone{Verifiering av elektronik och att bussarna fungerarar}{2018-10-31}
-\milestone{Utvecklingsmiljöer för processor och mikrokontroller
-    färdigt}{2018-10-31}
-\milestone{Kommunikation mellan moduler och interna mikrokontroller samt
-    processor fungerar som den ska.}{2018-10-31}
-\milestone{Bil vid dennna milstolpe ska kunna åka i alla
-    riktningar}{2018-10-31}
-\milestone{Bilen ska vid det här läget fjärrstyras.}{2018-10-31}
-\milestone{Kameran ska ta bilder nu och bilderna behandlas för att känna igen
-    skelett}{2018-10-31}
-\milestone{En lämplig datastruktur för representation av kartan och dess noder
-    ska vara färdig. Man ska mha datorn kunna bygga en egen dator, helst
-    användarvänligt.}{2018-10-31}
-\milestone{Mätvärden skickas till datorn som representeras i SI-enhet i valfri
-    användargränssnitt.}{2018-10-31}
-\milestone{Representation av kartan kan skickas till systemet.}{2018-10-31}
-\milestone{Någon form av PD-reglering infört.}{2018-10-31}
-\milestone{Reglerparameterna till PD-reglering kan skickas
-    fortlöpande.}{2018-10-31}
-\milestone{Bilen kan hålla sig inom vägfilen}{2018-10-31}
-\milestone{Bilen kan åka i rondeller}{2018-10-31}
-\milestone{Bil åker tillbaka till startposition}{2018-10-31}
-\milestone{Stannar inför hinder}{2018-10-31}
-\milestone{Bilen klarar av att parkera i fickan.}{2018-10-31}
-\milestone{Bilen tar kortaste vägen till sina mål}{2018-10-31}
-\milestone{Bilen undviker hinder genom att på ett säkert sätt åka runt
-    hindret.}{2018-10-31}
-\milestone{Bilen klarar av uppdraget som definierad enligt banspecifikationen
-    tre av fyra försök}{2018-10-31}
-\end{milestonelist}
-
 \subsection{Beslutspunkter}
 En beslutspunkt är ett moment där projektgruppen har ett kort möte med
 beställaren. Projektledaren ser till att de dokument som är fundamenten för
@@ -115,5 +58,53 @@ också leveransen.
     \end{tabular}
 \end{center}    
 
-\newpage
+
+\section{Tidplan}
+
+\section{Förändringsplan}
+
+\section{Kvalitetsplan}
+För att bibehålla en hög kvalitet ska material såsom kod, dokument, presentationer etc. granskas av någon eller några av medlemmarna i gruppen.
+Även testning av mjukvara och hårdvara ska utföras.
+
+\subsection{Granskningar}
+Allt material som produceras av gruppen ska granskas av samtliga medlemmar. Detta för att andra medlemmar kan ha åsikter på förbättringar som författaren inte tänkt på eller inte har kunskap om. På så sätt fås en högre kvalitet. I första hand ska den medlem som har mest kunskap inom det område granska.
+
+\subsubsection{Kod}	
+Granskning av kod kan innefatta optimering såsom minska redundans samt effektivisera. Det kan innefatta att skriva om så att kod kan skrivas på ett kortare sätt eller med modulärt.
+
+\subsubsection{Dokument}	
+Genom att granska dokument kan fel såsom stavfel, formuleringar och meningsuppbyggnader rättas till. Detta är speciellt önskvärt då en utomstående kan upptäcka fel som författaren kan ha svårt att hitta.
+
+\subsubsection{Presentationer}	
+Presentationer granskas för att säkerhetsställa att inga felaktigheter i fakta, utförande eller ambitioner presenteras.
+
+\subsubsection{Schema}	
+Schemat ska granskas av alla medlemmar för att kunna anpassas efter allas scheman. Detta för att se till att så många som möjligt kan närvara vid samtliga tillfällen. 
+
+\subsection{Testplan}
+För att testa mjukvaran ska testprogram skrivas som matar in indata och förväntar sig en viss utdata. Skiljer sig förväntad utdata från faktiskt data ses detta som ett fel. Varje modul kommer testas enskilt för att sedan testa kommunikation mellan dessa. Testning av hårdvara sker genom att se till att de olika hårdvarukomponenter kan kommunicera sinsemellan samt att de beter sig som annonserad.
+
+När både mjuk- och hårdvara har testats och det har verifieras att dessa fungerar separat ska de testas tillsammans. Tills konstruktionen har färdigställts går det inte har sätta upp när dessa tester ska utföras men testerna kan ändå definieras.
+
+Testar som ska utföras:
+•	Röra sig korrekt när den detekterar ett streck i en viss färg.
+•	Parkera i en parkeringsficka.
+•	Kan åka framåt, bakåt och åt båda sidorna.
+•	Kartan kan presenteras korrekt utifrån den data som läses in.
+•	Åka runt banan utan att stanna.
+•	Hålla sig inom en fil.
+•	Undvika hinder.
+•	Testa kommunikation mellan modulerna.
+•	Få kontakt med bilen från datorn.
+
+\section{Riskanalys}
+fill me
+
+\section{Prioriteringar}
+fill me
+
+\section{Projektavslut}
+fill me
+
 \end{document}
