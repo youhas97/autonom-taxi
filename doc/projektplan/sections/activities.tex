@@ -42,9 +42,15 @@ avklarade innan en aktivitet kan bli avklarad.
 
 \begin{activitylist}
     \actcat{Kommunikationsmodul}
+    \activity{comm:sw}{Mjukvara}{40}{}{Designa och implementera ett
+    basprogram som körs på Raspberry Pi-processorn.}
+    \activity{comm:design}{Design}{20}{}{Designa konstruktionsmodulen.}
+    \activity{comm:constr}{Konstruktion}{20}{}{Konstruera hårdvaran av
+    kommunikationsmodulen.}
     \activity{comm:cam}{Kamera}{8}{}{Installera kamera och gör dess bilder
     bearbetningsbara.}
-    \activity{comm:map}{Tolka karta}{8}{\aref{ui:map-in}}{Tolka inmatad karta.}
+    \activity{comm:map}{Tolka karta}{10}{\aref{ui:map-in}}{Tolka inmatad karta,
+    skapa en lämplig representation.}
     \activity{comm:remote}{Fjärrstyrning}{5}{}{Skicka och ta emot
     fjärrstyrningskommandon.}
 
@@ -60,6 +66,11 @@ avklarade innan en aktivitet kan bli avklarad.
     felvärde från 2D karta.}
 
     \actcat{Styrmodul}
+    \activity{comm:sw}{Mjukvara}{30}{}{Designa och implementera ett basprogram
+    som körs på.}
+    \activity{ctrl:design}{Design}{10}{}{Designa styrmodulen.}
+    \activity{ctrl:constr}{Konstruktion}{10}{}{Konstruera hårdvaran av
+    styrmodulen.}
     \activity{ctrl:drive}{Drivmotor}{2}{}{Reglera taxins fart genom att
     kontrollera drivmotorn utifrån kommunikationsmodulens kommandon.}
     \activity{ctrl:steer}{Svängmotor}{2}{}{Reglera svängradien genom att
@@ -68,6 +79,11 @@ avklarade innan en aktivitet kan bli avklarad.
     kan bromsa.}
 
     \actcat{Sensormodul}
+    \activity{comm:sw}{Mjukvara}{30}{}{Designa och implementera ett basprogram
+    som körs på sensormodulens mikrokontroller.}
+    \activity{sens:design}{Design}{10}{}{Designa sensormodulen.}
+    \activity{sens:constr}{Konstruktion}{10}{}{Konstruera hårdvaran av
+    sensormodulen.}
     \activity{sens:filter}{Filtrera brus}{4}{}{Filtrera brus från analoga
     sensorer.}
     \activity{sens:sens}{Installera sensorer.}{10}{}{Koppla sensorer och gör
@@ -99,7 +115,7 @@ avklarade innan en aktivitet kan bli avklarad.
     för att kommunicera mellan kommunikations- och styrmodul.}
 
     \actcat{Autonom körning}
-    \activity{sdc:tsp}{Hitta närmaste väg.}{10}{}{Hitta närmaste vägen mellan
+    \activity{sdc:tsp}{Hitta närmaste väg}{10}{}{Hitta närmaste vägen mellan
     två stopplinjer i en karta.}
     \activity{sdc:roundabout}{Kör igenom rondell}{10}{}{Kör autonomnt genom
     rondeller med godtycklig utfart.}
@@ -107,7 +123,8 @@ avklarade innan en aktivitet kan bli avklarad.
     position i karta.}
     \activity{sdc:reg}{Följ vägfil}{10}{\aref{ip:err,ctrl:drive,ctrl:steer}}
     {Reglera styrning utefter felvärde och följ höger vägfil.}
-    \activity{sdc:stop-line}{Upptäck stopplinjer.}{5}{}{}
+    \activity{sdc:stop-line}{Upptäck stopplinjer}{5}{}{Upptäck stopplinjer i
+    vägen.}
     \activity{sdc:nav}{Navigera}{20}{\aref{sdc:map,sdc:reg,sdc:stop-line}}{Navigera
     till godtycklig stopplinje.}
     \activity{sdc:pocket}{Parkera}{10}{\aref{sdc:stop-line}}{Parkera i
@@ -124,7 +141,7 @@ avklarade innan en aktivitet kan bli avklarad.
 
     \actcat{Utbildning}
     \activity{edu:instr}{Mätinstrument}{5}{}{Lära sig använda mätinstrument.}
-    \activity{edu:opencv}{OpenCV}{3}{}{Förstå hur OpenCV fungerar.}
+    \activity{edu:opencv}{OpenCV}{10}{}{Förstå hur OpenCV fungerar.}
     \activity{edu:avr}{AVR}{3}{}{Förstå arkitektur och I/O för
     AVR-processorer.}
     \activity{edu:proto}{Överförings\-protokoll}{3}{}{Undersök protokoll som
