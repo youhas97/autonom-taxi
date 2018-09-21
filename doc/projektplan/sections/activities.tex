@@ -80,7 +80,7 @@ avklarade innan en aktivitet kan bli avklarad.
     på LCD-display.}
 
     \actcat{Användargränssnitt}
-    \activity{ui:rc}{Styra taxi}{10}{}{Kör och styr taxin från gränssnittet.}
+    \activity{ui:rc}{Styra taxi}{10}{}{Gränssnitt för att styra taxi.}
     \activity{ui:param}{Mata in parametrar}{2}{}{Mata in konstantparametrer
     under körning.}
     \activity{ui:data}{Visa mätdata}{2}{}{Visa upp mätdata från taxin.}
@@ -106,7 +106,7 @@ avklarade innan en aktivitet kan bli avklarad.
     \activity{sdc:map}{Avgör position.}{8}{\aref{comm:map}}{Bestäm taxins
     position i karta.}
     \activity{sdc:reg}{Följ vägfil}{10}{\aref{ip:err,ctrl:drive,ctrl:steer}}
-    {Reglera styrning utefter felvärde och följ vägfilar.}
+    {Reglera styrning utefter felvärde och följ höger vägfil.}
     \activity{sdc:stop-line}{Upptäck stopplinjer.}{5}{}{}
     \activity{sdc:nav}{Navigera}{20}{\aref{sdc:map,sdc:reg,sdc:stop-line}}{Navigera
     till godtycklig stopplinje.}
@@ -114,7 +114,16 @@ avklarade innan en aktivitet kan bli avklarad.
     stoppficka vid stopplinje.}
     \activity{ui:obstacle}{Hantera hinder}{8}{}{Upptäck och stanna för hinder.}
 
+    \actcat{Testning}
+    \activity{test:unit}{Unit-tester}{40}{}{Designa och implementera unit tester
+    för alla moduler.}
+    \activity{test:int}{Integrations\-testning}{30}{}{Utför integrationstest
+    mellan de olika modulerna.}
+    \activity{test:system}{Systemtestning}{30}{}{Utför systemtest av hela
+    systemet.}
+
     \actcat{Utbildning}
+    \activity{edu:instr}{Mätinstrument}{5}{}{Lära sig använda mätinstrument.}
     \activity{edu:opencv}{OpenCV}{3}{}{Förstå hur OpenCV fungerar.}
     \activity{edu:avr}{AVR}{3}{}{Förstå arkitektur och I/O för
     AVR-processorer.}
