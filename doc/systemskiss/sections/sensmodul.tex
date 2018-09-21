@@ -2,7 +2,7 @@
 
 \begin{document}
 \section{Sensormodul}
-Sensormodulen innehåller alla de sensorer som bilen behöver för att kunna mäta avstånd i sin omgivning. Denär direkt kopplad till kommunikationsmodulen via en databuss.
+Sensormodulen innehåller alla de sensorer som bilen behöver för att kunna mäta avstånd i sin omgivning. Den är direkt kopplad till kommunikationsmodulen via en databuss.
 \subsection{Översiktlig beskrivning av modulen}
 \begin{figure}[h]
     \centering
@@ -10,6 +10,8 @@ Sensormodulen innehåller alla de sensorer som bilen behöver för att kunna mä
     \caption{Övergripande bild över sensormodulen}
     \label{fig:sensorskiss}
 \end{figure}
+
+Sensorerna ska vara kopplade till olika brusfilter som gör signalern tydligare. När signalerna är filterade ska de skickas via en databuss till modulens processor. Databussen ska även vara kopplad till en LCD skärm där värdena ska visas för att förenkla felsökning av modulen. Modulen ska ha en direkt koppling till kommunikationsmodulen via en databuss. Figur \ref{fig:sensorskiss} visar en grov bild över hur modulen ska se ut.
 
 
 \end{document}

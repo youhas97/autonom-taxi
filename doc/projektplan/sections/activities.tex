@@ -42,13 +42,11 @@ avklarade innan en aktivitet kan bli avklarad.
 
 \begin{activitylist}
     \actcat{Kommunikationsmodul}
-    \activity{comm:cam}{Kamera}{5}{}{Installera kamera och gör dess bilder
+    \activity{comm:cam}{Kamera}{8}{}{Installera kamera och gör dess bilder
     bearbetningsbara.}
-    \activity{comm:reg}{PD-reglering.}{3}{\aref{ip:err,ctrl:drive,ctrl:steer}}
-    {Reglera styrning utefter felvärde.}
     \activity{comm:map}{Tolka karta}{8}{\aref{ui:map-in}}{Tolka inmatad karta.}
-    \activity{comm:map}{Bestäm position.}{4}{\aref{comm:map}}{Bestäm taxins
-    position från i tolkad karta.}
+    \activity{comm:remote}{Fjärrstyrning}{5}{}{Skicka och ta emot
+    fjärrstyrningskommandon.}
 
     \actcat{Bildbearbetning}
     \activity{ip:edge}{Upptäck kanter.}{10}{\aref{comm:cam}}{Upptäck
@@ -70,15 +68,19 @@ avklarade innan en aktivitet kan bli avklarad.
     kan bromsa.}
 
     \actcat{Sensormodul}
-    \activity{sens:filter}{Filtrera brus}{3}{}{Filtrera brus från analoga
+    \activity{sens:filter}{Filtrera brus}{4}{}{Filtrera brus från analoga
     sensorer.}
-    \activity{sens:conv}{Konvertera värden}{2}{}{Konvertera sensorvärden
-    till SI-enheter.}
-    \activity{sens:send}{Skicka värden}{2}{}{Skicka värden till
+    \activity{sens:sens}{Installera sensorer.}{10}{}{Koppla sensorer och gör
+    dess värden tillgängliga.}
+    \activity{sens:conv}{Konvertera värden}{3}{\aref{sens:sens}}{Konvertera
+    sensorvärden till SI-enheter.}
+    \activity{sens:send}{Skicka värden}{5}{\aref{sens:conv}}{Skicka värden till
     kommunikationsmodulen.}
+    \activity{sens:lcd}{LCD-display}{4}{\aref{sens:sens}}{Visa utvalda värden
+    på LCD-display.}
 
     \actcat{Användargränssnitt}
-    \activity{ui:rc}{Styra taxi}{10}{}{Kör och styr taxin från gränssnittet.}
+    \activity{ui:rc}{Styra taxi}{10}{}{Gränssnitt för att styra taxi.}
     \activity{ui:param}{Mata in parametrar}{2}{}{Mata in konstantparametrer
     under körning.}
     \activity{ui:data}{Visa mätdata}{2}{}{Visa upp mätdata från taxin.}
@@ -91,8 +93,37 @@ avklarade innan en aktivitet kan bli avklarad.
     kan kommunicera via 5V-buss.}
     \activity{io:wireless}{Trådlös länk}{8}{}{Implementera en trådlös länk
     mellan kommunikationsmodulen och fjärrklienten.}
+    \activity{io:comm-sens}{Komm-sensor}{15}{}{Implementera seriellt protokoll
+    för att kommunicera mellan kommunikations- och sensormodul.}
+    \activity{io:comm-styr}{Komm-styr}{15}{}{Implementera seriellt protokoll
+    för att kommunicera mellan kommunikations- och styrmodul.}
+
+    \actcat{Autonom körning}
+    \activity{sdc:tsp}{Hitta närmaste väg.}{10}{}{Hitta närmaste vägen mellan
+    två stopplinjer i en karta.}
+    \activity{sdc:roundabout}{Kör igenom rondell}{10}{}{Kör autonomnt genom
+    rondeller med godtycklig utfart.}
+    \activity{sdc:map}{Avgör position.}{8}{\aref{comm:map}}{Bestäm taxins
+    position i karta.}
+    \activity{sdc:reg}{Följ vägfil}{10}{\aref{ip:err,ctrl:drive,ctrl:steer}}
+    {Reglera styrning utefter felvärde och följ höger vägfil.}
+    \activity{sdc:stop-line}{Upptäck stopplinjer.}{5}{}{}
+    \activity{sdc:nav}{Navigera}{20}{\aref{sdc:map,sdc:reg,sdc:stop-line}}{Navigera
+    till godtycklig stopplinje.}
+    \activity{sdc:pocket}{Parkera}{10}{\aref{sdc:stop-line}}{Parkera i
+    stoppficka vid stopplinje.}
+    \activity{ui:obstacle}{Hantera hinder}{8}{}{Upptäck och stanna för hinder.}
+
+    \actcat{Testning}
+    \activity{test:unit}{Unit-tester}{40}{}{Designa och implementera unit tester
+    för alla moduler.}
+    \activity{test:int}{Integrations\-testning}{30}{}{Utför integrationstest
+    mellan de olika modulerna.}
+    \activity{test:system}{Systemtestning}{30}{}{Utför systemtest av hela
+    systemet.}
 
     \actcat{Utbildning}
+    \activity{edu:instr}{Mätinstrument}{5}{}{Lära sig använda mätinstrument.}
     \activity{edu:opencv}{OpenCV}{3}{}{Förstå hur OpenCV fungerar.}
     \activity{edu:avr}{AVR}{3}{}{Förstå arkitektur och I/O för
     AVR-processorer.}
@@ -103,11 +134,16 @@ avklarade innan en aktivitet kan bli avklarad.
     \actcat{Dokument}
     \activity{doc:designspec}{Designspe\-cifikation}{50}{}{Skapa detaljerad
     design demonstrerad i en specifikation.}
-    \activity{doc:tecdoc}{Teknisk dokumentation}{50}{}{Dokumentera
-    implementationen.}
+    \activity{doc:circuit}{Designa kretsscheman}{20}{}{Designa och rita
+    kretsscheman för elektronik.}
+    \activity{doc:diagram}{Rita diagram}{20}{}{Rita dokuementerande diagram
+    över kompontenter.}
+    \activity{doc:tecdoc}{Teknisk
+    dokumentation}{50}{\aref{doc:diagram}}{Dokumentera implementationen.}
     \activity{doc:study}{Efterstudie}{30}{}{Utför en efterstudie.}
     \activity{doc:manual}{Användar\-manual}{20}{}{Skriv en användarmanual.}
-    \activity{doc:time-reports}{Tidsrapporter}{10}{}{Rapportera tid varje vecka.}
+    \activity{doc:time}{Tidsrapporter}{10}{}{Rapportera tid varje vecka.}
+    \activity{doc:status}{Statusrapporter}{5}{}{Rapportera status vid begäran.}
 \end{activitylist}
 
 \newpage
