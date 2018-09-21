@@ -42,9 +42,11 @@ avklarade innan en aktivitet kan bli avklarad.
 
 \begin{activitylist}
     \actcat{Kommunikationsmodul}
-    \activity{comm:cam}{Kamera}{5}{}{Installera kamera och gör dess bilder
+    \activity{comm:cam}{Kamera}{8}{}{Installera kamera och gör dess bilder
     bearbetningsbara.}
     \activity{comm:map}{Tolka karta}{8}{\aref{ui:map-in}}{Tolka inmatad karta.}
+    \activity{comm:remote}{Fjärrstyrning}{5}{}{Skicka och ta emot
+    fjärrstyrningskommandon.}
 
     \actcat{Bildbearbetning}
     \activity{ip:edge}{Upptäck kanter.}{10}{\aref{comm:cam}}{Upptäck
@@ -91,6 +93,10 @@ avklarade innan en aktivitet kan bli avklarad.
     kan kommunicera via 5V-buss.}
     \activity{io:wireless}{Trådlös länk}{8}{}{Implementera en trådlös länk
     mellan kommunikationsmodulen och fjärrklienten.}
+    \activity{io:comm-sens}{Komm-sensor}{15}{}{Implementera seriellt protokoll
+    för att kommunicera mellan kommunikations- och sensormodul.}
+    \activity{io:comm-styr}{Komm-styr}{15}{}{Implementera seriellt protokoll
+    för att kommunicera mellan kommunikations- och styrmodul.}
 
     \actcat{Autonom körning}
     \activity{sdc:tsp}{Hitta närmaste väg.}{10}{}{Hitta närmaste vägen mellan
@@ -106,6 +112,7 @@ avklarade innan en aktivitet kan bli avklarad.
     till godtycklig stopplinje.}
     \activity{sdc:pocket}{Parkera}{10}{\aref{sdc:stop-line}}{Parkera i
     stoppficka vid stopplinje.}
+    \activity{ui:obstacle}{Hantera hinder}{8}{}{Upptäck och stanna för hinder.}
 
     \actcat{Utbildning}
     \activity{edu:opencv}{OpenCV}{3}{}{Förstå hur OpenCV fungerar.}
