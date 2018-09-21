@@ -44,11 +44,7 @@ avklarade innan en aktivitet kan bli avklarad.
     \actcat{Kommunikationsmodul}
     \activity{comm:cam}{Kamera}{5}{}{Installera kamera och gör dess bilder
     bearbetningsbara.}
-    \activity{comm:reg}{PD-reglering.}{3}{\aref{ip:err,ctrl:drive,ctrl:steer}}
-    {Reglera styrning utefter felvärde.}
     \activity{comm:map}{Tolka karta}{8}{\aref{ui:map-in}}{Tolka inmatad karta.}
-    \activity{comm:map}{Bestäm position.}{4}{\aref{comm:map}}{Bestäm taxins
-    position från i tolkad karta.}
 
     \actcat{Bildbearbetning}
     \activity{ip:edge}{Upptäck kanter.}{10}{\aref{comm:cam}}{Upptäck
@@ -96,6 +92,21 @@ avklarade innan en aktivitet kan bli avklarad.
     \activity{io:wireless}{Trådlös länk}{8}{}{Implementera en trådlös länk
     mellan kommunikationsmodulen och fjärrklienten.}
 
+    \actcat{Autonom körning}
+    \activity{sdc:Hitta närmaste väg.}{10}{}{Hitta närmaste vägen i en
+    karta.}
+    \activity{sdc:Kör igenom rondell.}{10}{}{Kör autonomnt genom rondeller
+    med godtycklig utfart.}
+    \activity{sdc:map}{Avgör position.}{8}{\aref{comm:map}}{Bestäm taxins
+    position i karta.}
+    \activity{sdc:reg}{Följ vägfil}{10}{\aref{ip:err,ctrl:drive,ctrl:steer}}
+    {Reglera styrning utefter felvärde och följ vägfilar.}
+    \activity{sdc:stop-line}{Upptäck stopplinjer.}{5}{}{}
+    \activity{sdc:nav}{Navigera}{20}{\aref{sdc:map,sdc:reg,sdc:stop-line}}{Navigera
+    till godtycklig stopplinje.}
+    \activity{sdc:pockect}{Parkera}{10}{\aref{sdc:stop-line}}{Parkera i
+    stoppficka vid stopplinje.}
+
     \actcat{Utbildning}
     \activity{edu:opencv}{OpenCV}{3}{}{Förstå hur OpenCV fungerar.}
     \activity{edu:avr}{AVR}{3}{}{Förstå arkitektur och I/O för
@@ -113,6 +124,7 @@ avklarade innan en aktivitet kan bli avklarad.
     \activity{doc:manual}{Användar\-manual}{20}{}{Skriv en användarmanual.}
     \activity{doc:time}{Tidsrapporter}{10}{}{Rapportera tid varje vecka.}
     \activity{doc:status}{Statusrapporter}{5}{}{Rapportera status vid begäran.}
+
 \end{activitylist}
 
 \newpage
