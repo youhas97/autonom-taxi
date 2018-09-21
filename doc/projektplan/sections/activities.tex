@@ -70,12 +70,16 @@ avklarade innan en aktivitet kan bli avklarad.
     kan bromsa.}
 
     \actcat{Sensormodul}
-    \activity{sens:filter}{Filtrera brus}{3}{}{Filtrera brus från analoga
+    \activity{sens:filter}{Filtrera brus}{4}{}{Filtrera brus från analoga
     sensorer.}
-    \activity{sens:conv}{Konvertera värden}{2}{}{Konvertera sensorvärden
-    till SI-enheter.}
-    \activity{sens:send}{Skicka värden}{2}{}{Skicka värden till
+    \activity{sens:sens}{Installera sensorer.}{10}{}{Koppla sensorer och gör
+    dess värden tillgängliga.}
+    \activity{sens:conv}{Konvertera värden}{3}{\aref{sens:sens}}{Konvertera
+    sensorvärden till SI-enheter.}
+    \activity{sens:send}{Skicka värden}{5}{\aref{sens:conv}}{Skicka värden till
     kommunikationsmodulen.}
+    \activity{sens:lcd}{LCD-display}{4}{\aref{sens:sens}}{Visa utvalda värden
+    på LCD-display.}
 
     \actcat{Användargränssnitt}
     \activity{ui:rc}{Styra taxi}{10}{}{Kör och styr taxin från gränssnittet.}
@@ -107,7 +111,8 @@ avklarade innan en aktivitet kan bli avklarad.
     implementationen.}
     \activity{doc:study}{Efterstudie}{30}{}{Utför en efterstudie.}
     \activity{doc:manual}{Användar\-manual}{20}{}{Skriv en användarmanual.}
-    \activity{doc:time-reports}{Tidsrapporter}{10}{}{Rapportera tid varje vecka.}
+    \activity{doc:time}{Tidsrapporter}{10}{}{Rapportera tid varje vecka.}
+    \activity{doc:status}{Statusrapporter}{5}{}{Rapportera status vid begäran.}
 \end{activitylist}
 
 \newpage
