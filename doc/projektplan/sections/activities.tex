@@ -36,22 +36,20 @@
 \section{Aktiviteter}
 Nedan följer en lista av alla de aktiviter som hela projektet har delats upp i.
 Aktiviteter är uppdelade i olika kategorier och är numrerade efter kategori.
-Tidskolumnent visar en uppskattning av antalet timmar som aktiviteten förväntas
+Tidskolumnen visar en uppskattning av antalet timmar som aktiviteten förväntas
 att ta. Kolumnen för beroenden visar vilka andra aktiviteter som måste vara
 avklarade innan en aktivitet kan bli avklarad.
 
 \begin{activitylist}
     \actcat{Kommunikationsmodul}
-    \activity{comm:sw}{Mjukvara}{40}{}{Designa och implementera ett
-    basprogram som körs på Raspberry Pi-processorn.}
     \activity{comm:design}{Design}{20}{}{Designa konstruktionsmodulen.}
-    \activity{comm:constr}{Konstruktion}{20}{}{Konstruera hårdvaran av
-    kommunikationsmodulen.}
-    \activity{comm:cam}{Kamera}{8}{}{Installera kamera och gör dess bilder
-    bearbetningsbara.}
-    \activity{comm:map}{Tolka karta}{10}{\aref{ui:map-in}}{Tolka inmatad karta,
-    skapa en lämplig representation.}
-    \activity{comm:remote}{Fjärrstyrning}{5}{}{Skicka och ta emot
+    \activity{comm:constr}{Konstruktion}{20}{\aref{comm:design}}{Konstruera
+    hårdvaran av kommunikationsmodulen.}
+    \activity{comm:sw}{Mjukvara}{40}{\aref{comm:design}}{Designa och
+    implementera ett basprogram som körs på Raspberry Pi-processorn.}
+    \activity{comm:cam}{Kamera}{8}{\aref{comm:sw}}{Installera kamera och gör
+    dess bilder bearbetningsbara.}
+    \activity{comm:remote}{Fjärrstyrning}{5}{\aref{comm:sw}}{Skicka och ta emot
     fjärrstyrningskommandon.}
 
     \actcat{Bildbearbetning}
@@ -60,34 +58,36 @@ avklarade innan en aktivitet kan bli avklarad.
     \activity{ip:line}{Upptäck linjer.}{10}{\aref{ip:edge}}{Upptäck
     linjemarkeringar på vägen.}
     \activity{ip:2d}{Transformera linjer till
-    2D.}{10}{\ref{act:ip:line}}{Transformera 3d-perspektiv till en ortografisk
-    2d-bild sedd uppifrån.}
-    \activity{ip:err}{Avgör felvärde.}{10}{\aref{ip:2d}}{Beräkna
-    felvärde från 2D karta.}
+    karta.}{10}{\ref{act:ip:line}}{Transformera perspektivbild av linjer till
+    en ortografisk projektion sedd uppifrån.}
+    \activity{ip:err}{Avgör felvärde.}{10}{\aref{ip:2d}}{Beräkna felvärde från
+    linjekarta.}
 
     \actcat{Styrmodul}
-    \activity{comm:sw}{Mjukvara}{30}{}{Designa och implementera ett basprogram
-    som körs på.}
     \activity{ctrl:design}{Design}{10}{}{Designa styrmodulen.}
-    \activity{ctrl:constr}{Konstruktion}{10}{}{Konstruera hårdvaran av
-    styrmodulen.}
-    \activity{ctrl:drive}{Drivmotor}{2}{}{Reglera taxins fart genom att
-    kontrollera drivmotorn utifrån kommunikationsmodulens kommandon.}
-    \activity{ctrl:steer}{Svängmotor}{2}{}{Reglera svängradien genom att
-    kontrollera svängmotorn utifrån kommandon.}
-    \activity{ctrl:break}{Broms}{2}{\aref{ctrl:drive}}{Se till att bilen
-    kan bromsa.}
+    \activity{ctrl:constr}{Konstruktion}{10}{\aref{ctrl:design}}{Konstruera
+    hårdvaran av styrmodulen.}
+    \activity{ctrl:sw}{Mjukvara}{30}{\aref{ctrl:design}}{Designa och
+    implementera ett basprogram som körs på styrmodulens mikrokontroller.}
+    \activity{ctrl:drive}{Drivmotor}{2}{\aref{ctrl:constr,ctrl:sw}}{Reglera
+    taxins fart genom att kontrollera drivmotorn utifrån kommunikationsmodulens
+    kommandon.}
+    \activity{ctrl:steer}{Svängmotor}{2}{\aref{ctrl:constr,ctrl:sw}}{Reglera
+    svängradien genom att kontrollera svängmotorn utifrån kommandon.}
+    \activity{ctrl:break}{Broms}{2}{\aref{ctrl:drive}}{Se till att bilen kan
+    bromsa.}
 
     \actcat{Sensormodul}
-    \activity{comm:sw}{Mjukvara}{30}{}{Designa och implementera ett basprogram
-    som körs på sensormodulens mikrokontroller.}
     \activity{sens:design}{Design}{10}{}{Designa sensormodulen.}
-    \activity{sens:constr}{Konstruktion}{10}{}{Konstruera hårdvaran av
-    sensormodulen.}
-    \activity{sens:filter}{Filtrera brus}{4}{}{Filtrera brus från analoga
-    sensorer.}
-    \activity{sens:sens}{Installera sensorer.}{10}{}{Koppla sensorer och gör
-    dess värden tillgängliga.}
+    \activity{sens:constr}{Konstruktion}{10}{\aref{sens:design}}{Konstruera
+    hårdvaran av sensormodulen.}
+    \activity{sens:sw}{Mjukvara}{30}{\aref{sens:design}}{Designa och
+    implementera ett basprogram som körs på sensormodulens mikrokontroller.}
+    \activity{sens:sens}{Installera
+    sensorer.}{10}{\aref{sens:constr,sens:constr}}{Koppla sensorer och gör dess
+    värden tillgängliga.}
+    \activity{sens:filter}{Filtrera brus}{4}{\aref{sens:sens}}{Filtrera brus
+    från analoga sensorer.}
     \activity{sens:conv}{Konvertera värden}{3}{\aref{sens:sens}}{Konvertera
     sensorvärden till SI-enheter.}
     \activity{sens:send}{Skicka värden}{5}{\aref{sens:conv}}{Skicka värden till
@@ -115,11 +115,13 @@ avklarade innan en aktivitet kan bli avklarad.
     för att kommunicera mellan kommunikations- och styrmodul.}
 
     \actcat{Autonom körning}
-    \activity{sdc:tsp}{Hitta närmaste väg}{10}{}{Hitta närmaste vägen mellan
-    två stopplinjer i en karta.}
+    \activity{sdc:map}{Tolka karta}{10}{\aref{ui:map-in}}{Tolka inmatad karta,
+    skapa en lämplig representation.}
+    \activity{sdc:tsp}{Hitta närmaste väg}{10}{\aref{sdc:map}}{Hitta närmaste
+    vägen mellan två stopplinjer i karta.}
     \activity{sdc:roundabout}{Kör igenom rondell}{10}{}{Kör autonomnt genom
     rondeller med godtycklig utfart.}
-    \activity{sdc:map}{Avgör position.}{8}{\aref{comm:map}}{Bestäm taxins
+    \activity{sdc:map}{Avgör position.}{8}{\aref{sdc:map}}{Bestäm taxins
     position i karta.}
     \activity{sdc:reg}{Följ vägfil}{10}{\aref{ip:err,ctrl:drive,ctrl:steer}}
     {Reglera styrning utefter felvärde och följ höger vägfil.}
@@ -161,7 +163,7 @@ avklarade innan en aktivitet kan bli avklarad.
     \activity{doc:manual}{Användar\-manual}{20}{}{Skriv en användarmanual.}
 
     \actcat{Administrativt}
-    \activity{adm:meet}{Möten}{40}{}{Ha regelbundna möten.}
+    \activity{adm:meet}{Möten}{40}{}{Genomföra regelbundna möten.}
     \activity{adm:time}{Tidsrapporter}{10}{}{Rapportera tid varje vecka.}
     \activity{adm:status}{Statusrapporter}{5}{}{Rapportera status vid begäran.}
 \end{activitylist}
