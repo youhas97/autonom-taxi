@@ -54,11 +54,11 @@ av totalt \SI{50000000}{\hour}.
     systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
 
     \actcat{Design}
-    \activity{hwdes:all}{Systemet}{20}{}{Designa sammankopplingen mellan alla
-    moduler.}
-    \activity{hwdes:mod}{Kommunikations\-modul}{40}{}{Designa hårdvaran av
+    \activity{hwdes:all}{Systemhårdvara}{20}{}{Designa sammankopplingen mellan
+    alla moduler.}
+    \activity{hwdes:mod}{Modulshårdvara}{40}{}{Designa hårdvaran av
     kommunikationsmodulen, styrmodulen och sensormodulen.}
-    \activity{swdes:comm}{Kommunikations\-modul}{50}{}{Designa strukturerna för
+    \activity{swdes:comm}{Mjukvara}{50}{}{Designa strukturerna för
     fjärrklientens, kommunikationsmodulens, styrmodulens och sensormodulens
     program.}
 
@@ -86,14 +86,14 @@ av totalt \SI{50000000}{\hour}.
     \actcat{Allmänt}
     \activity{all:install}{Koppla och installera}{}{}{Konstruera hårdvaran av
     hela systemet, kommunikationsmodulen, styrmodulens och sensormodulen.}
-    \activity{all:sw}{Implementera mjukvarubas}{}{}{Implementera mjukvarubaser
-    som ska köras på fjärrklienten, kommunikationsmodulen, styrmodulen och
-    sensormodulen.}
+    \activity{all:sw}{Implementera mjukvarubaser}{}{}{Implementera
+    mjukvarubaser som körs på fjärrklienten, kommunikationsmodulen, styrmodulen
+    och sensormodulen.}
 
     \actcat{Kommunikationsmodul}
-    \activity{comm:cam}{Kamera}{8}{\aref{sw:comm}}{Gör kamerans bilder
+    \activity{comm:cam}{Kamera}{8}{\aref{all:sw}}{Gör kamerans bilder
     bearbetningsbara.}
-    \activity{comm:remote}{Fjärrstyrning}{5}{\aref{sw:comm}}{Skicka och ta emot
+    \activity{comm:remote}{Fjärrstyrning}{5}{\aref{all:sw}}{Skicka och ta emot
     fjärrstyrningskommandon.}
 
     \actcat{Bildbearbetning}
@@ -112,26 +112,26 @@ av totalt \SI{50000000}{\hour}.
     skapa en lämplig representation.}
     \activity{sdc:tsp}{Hitta närmaste väg}{10}{\aref{sdc:map}}{Hitta närmaste
     vägen mellan två stopplinjer i karta.}
-    \activity{sdc:roundabout}{Kör igenom rondell}{10}{\aref{sw:sdc}}{Kör
+    \activity{sdc:roundabout}{Kör igenom rondell}{10}{\aref{all:sw}}{Kör
     autonomt genom rondeller via godtycklig in- och utfart.}
-    \activity{sdc:gps}{Avgör position.}{8}{\aref{sw:sdc,sdc:map}}{Bestäm taxins
+    \activity{sdc:gps}{Avgör position.}{8}{\aref{all:sw,sdc:map}}{Bestäm taxins
     position i karta.}
-    \activity{sdc:reg}{Följ vägfil}{10}{\aref{sw:sdc,ip:err,ctrl:drive,
+    \activity{sdc:reg}{Följ vägfil}{10}{\aref{all:sw,ip:err,ctrl:drive,
     ctrl:steer}} {Reglera styrning utefter felvärde och följ höger vägfil.}
-    \activity{sdc:stop-line}{Upptäck stopplinjer}{5}{\aref{sw:sdc}}{Upptäck
+    \activity{sdc:stop-line}{Upptäck stopplinjer}{5}{\aref{all:sw}}{Upptäck
     stopplinjer i vägen.}
     \activity{sdc:nav}{Navigera}{20}{\aref{sdc:gps,sdc:reg,sdc:stop-line}}{Navigera
     till godtycklig stopplinje.}
     \activity{sdc:pocket}{Parkera}{10}{\aref{sdc:stop-line}}{Parkera i
     stoppficka vid stopplinje.}
-    \activity{ui:obstacle}{Hantera hinder}{8}{\aref{sw:sdc}}{Upptäck och stanna
+    \activity{ui:obstacle}{Hantera hinder}{8}{\aref{all:sw}}{Upptäck och stanna
     för hinder.}
 
     \actcat{Styrmodul}
-    \activity{ctrl:drive}{Drivmotor}{2}{\aref{constr:ctrl,sw:ctrl}}{Reglera
+    \activity{ctrl:drive}{Drivmotor}{2}{\aref{all:install,sw:ctrl}}{Reglera
     taxins fart genom att kontrollera drivmotorn utifrån kommunikationsmodulens
     kommandon.}
-    \activity{ctrl:steer}{Svängmotor}{2}{\aref{constr:ctrl,sw:ctrl}}{Reglera
+    \activity{ctrl:steer}{Svängmotor}{2}{\aref{all:install,sw:ctrl}}{Reglera
     svängradien genom att kontrollera svängmotorn utifrån kommandon.}
     \activity{ctrl:break}{Broms}{2}{\aref{ctrl:drive}}{Se till att bilen kan
     bromsa.}
@@ -139,13 +139,13 @@ av totalt \SI{50000000}{\hour}.
     \actcat{Sensormodul}
     \activity{sens:design}{3D-utskrifter}{5}{}{Rita och skriv ut lämpliga
     fotfästen för sensorer}
-    \activity{sens:filter}{Filtrera brus}{4}{\aref{constr:sens}}{Filtrera brus
+    \activity{sens:filter}{Filtrera brus}{4}{\aref{all:install}}{Filtrera brus
     från analoga sensorer.}
-    \activity{sens:conv}{Konvertera värden}{3}{\aref{constr:sens}}{Konvertera
+    \activity{sens:conv}{Konvertera värden}{3}{\aref{all:install}}{Konvertera
     sensorvärden till SI-enheter.}
     \activity{sens:send}{Skicka värden}{5}{\aref{sens:conv}}{Skicka värden till
     kommunikationsmodulen.}
-    \activity{sens:lcd}{LCD-display}{4}{\aref{constr:sens}}{Visa utvalda värden
+    \activity{sens:lcd}{LCD-display}{4}{\aref{all:install}}{Visa utvalda värden
     på LCD-display.}
 
     \actcat{Användargränssnitt}
@@ -163,13 +163,13 @@ av totalt \SI{50000000}{\hour}.
     \actcat{Anslutningar}
     \activity{io:voltage}{Konvertera spänning}{5}{}{Se till att Raspberry Pi:n
     kan kommunicera via 5V-buss.} \activity{io:wireless}{Trådlös
-    länk}{8}{\aref{sw:comm,constr:comm}}{Implementera en trådlös länk mellan
+    länk}{8}{\aref{sw:comm,all:install}}{Implementera en trådlös länk mellan
     kommunikationsmodulen och fjärrklienten.}
-    \activity{io:comm-sens}{Komm-sensor}{15}{\aref{sw:comm,constr:comm,
-    sw:sens,constr:sens}}{Implementera seriellt protokoll för att kommunicera
+    \activity{io:comm-sens}{Komm-sensor}{15}{\aref{sw:comm,all:install,
+    sw:sens,all:install}}{Implementera seriellt protokoll för att kommunicera
     mellan kommunikations- och sensormodul.}
-    \activity{io:comm-styr}{Komm-styr}{15}{\aref{sw:comm,constr:comm,sw:ctrl,
-    constr:ctrl}}{Implementera seriellt protokoll för att kommunicera mellan
+    \activity{io:comm-styr}{Komm-styr}{15}{\aref{sw:comm,all:install,sw:ctrl,
+    all:install}}{Implementera seriellt protokoll för att kommunicera mellan
     kommunikations- och styrmodul.}
 
     \actcat{Testning}
