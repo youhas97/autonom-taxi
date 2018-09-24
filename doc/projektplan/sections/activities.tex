@@ -34,22 +34,62 @@
 \begin{document}
 
 \section{Aktiviteter}
-Nedan följer en lista av alla de aktiviter som hela projektet har delats upp i.
+Nedan följer listor av alla de aktiviter som hela projektet har delats upp i.
 Aktiviteter är uppdelade i olika kategorier och är numrerade efter kategori.
 Tidskolumnen visar en uppskattning av antalet timmar som aktiviteten förväntas
 att ta. Kolumnen för beroenden visar vilka andra aktiviteter som måste vara
 avklarade innan en aktivitet kan bli avklarad.
 
+\subsection{Designfas}
+Nedan följer de aktiviteter som är del av designfasen. Dessa aktiviteter består
+av totalt \SI{445}{\hour}.
+
+% TODO timmar
 \begin{activitylist}
+    \actcat{Dokument}
+    \activity{doc:spec}{Skriva}{50}{}{Skriva, formatera och sammanställa
+    designspecifikation.}
+    \activity{doc:bdiag}{Rita blockdiagram}{20}{}{Rita blockdiagram över hela systemet,
+    kommunikationsmodulen, styrmodulen och sensormodulen.}
+    \activity{doc:cdiag}{Rita kretsscheman}{20}{}{Rita kretsschema över hela
+    systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
+
+    \actcat{Design}
+    \activity{des:hwsys}{Systemhårdvara}{20}{}{Designa sammankopplingen mellan
+    alla moduler.}
+    \activity{des:hwmod}{Modulshårdvara}{60}{}{Designa hårdvaran av
+    kommunikationsmodulen, styrmodulen och sensormodulen.}
+    \activity{des:sw}{Mjukvara}{50}{}{Designa strukturerna för fjärrklientens,
+    kommunikationsmodulens, styrmodulens och sensormodulens program.}
+
+    \actcat{Utbildning}
+    \activity{edu:instr}{Mätinstrument}{6}{}{Lära sig använda mätinstrument.}
+    \activity{edu:opencv}{OpenCV}{6}{}{Förstå hur OpenCV fungerar.}
+    \activity{edu:avr}{AVR}{6}{}{Förstå arkitektur och I/O för
+    AVR-processorer.}
+    \activity{edu:proto}{Överförings\-protokoll}{6}{}{Undersök protokoll som
+    I$^2$C, SPI, UART m.m.}
+    \activity{edu:kicad}{KiCad}{6}{}{Lära sig använda KiCad.}
+
+    \actcat{Administrativt}
+    \activity{adm:meet}{Möte}{20}{}{Genomföra möten.}
+    \activity{adm:time}{Tidsrapporter}{28}{}{Rapportera tid varje vecka.}
+\end{activitylist}
+
+% TODO timmar
+\subsection{Implementationsfas}
+\begin{activitylist}
+    \actcat{Allmänt}
+    \activity{all:install}{Koppla och installera}{}{}{Konstruera hårdvaran av
+    hela systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
+    \activity{all:sw}{Implementera mjukvarubaser}{}{}{Implementera
+    mjukvarubaser som körs på fjärrklienten, kommunikationsmodulen, styrmodulen
+    och sensormodulen.}
+
     \actcat{Kommunikationsmodul}
-    \activity{comm:design}{Design}{20}{}{Designa konstruktionsmodulen.}
-    \activity{comm:constr}{Konstruktion}{20}{\aref{comm:design}}{Konstruera
-    hårdvaran av kommunikationsmodulen.}
-    \activity{comm:sw}{Mjukvara}{40}{\aref{comm:design}}{Designa och
-    implementera ett basprogram som körs på Raspberry Pi-processorn.}
-    \activity{comm:cam}{Kamera}{8}{\aref{comm:sw}}{Installera kamera och gör
-    dess bilder bearbetningsbara.}
-    \activity{comm:remote}{Fjärrstyrning}{5}{\aref{comm:sw}}{Skicka och ta emot
+    \activity{comm:cam}{Kamera}{8}{\aref{all:sw}}{Gör kamerans bilder
+    bearbetningsbara.}
+    \activity{comm:remote}{Fjärrstyrning}{5}{\aref{all:sw}}{Skicka och ta emot
     fjärrstyrningskommandon.}
 
     \actcat{Bildbearbetning}
@@ -57,89 +97,77 @@ avklarade innan en aktivitet kan bli avklarad.
     kanter i bilder.}
     \activity{ip:line}{Upptäck linjer.}{10}{\aref{ip:edge}}{Upptäck
     linjemarkeringar på vägen.}
-    \activity{ip:2d}{Transformera linjer till
-    karta.}{10}{\ref{act:ip:line}}{Transformera perspektivbild av linjer till
+    \activity{ip:2d}{Transformera linjer.}{10}{\ref{act:ip:line}}{Transformera
+    perspektivbild av linjer till
     en ortografisk projektion sedd uppifrån.}
     \activity{ip:err}{Avgör felvärde.}{10}{\aref{ip:2d}}{Beräkna felvärde från
     linjekarta.}
 
-    \actcat{Styrmodul}
-    \activity{ctrl:design}{Design}{10}{}{Designa styrmodulen.}
-    \activity{ctrl:constr}{Konstruktion}{10}{\aref{ctrl:design}}{Konstruera
-    hårdvaran av styrmodulen.}
-    \activity{ctrl:sw}{Mjukvara}{30}{\aref{ctrl:design}}{Designa och
-    implementera ett basprogram som körs på styrmodulens mikrokontroller.}
-    \activity{ctrl:drive}{Drivmotor}{2}{\aref{ctrl:constr,ctrl:sw}}{Reglera
-    taxins fart genom att kontrollera drivmotorn utifrån kommunikationsmodulens
-    kommandon.}
-    \activity{ctrl:steer}{Svängmotor}{2}{\aref{ctrl:constr,ctrl:sw}}{Reglera
-    svängradien genom att kontrollera svängmotorn utifrån kommandon.}
-    \activity{ctrl:break}{Broms}{2}{\aref{ctrl:drive}}{Se till att bilen kan
-    bromsa.}
-
-    \actcat{Sensormodul}
-    \activity{sens:design}{Design}{10}{}{Designa sensormodulen.}
-    \activity{sens:design}{3D-skrivare}{5}{}{Rita i CAD lämpliga fotfästen för
-sensorer}
-    \activity{sens:constr}{Konstruktion}{10}{\aref{sens:design}}{Konstruera
-    hårdvaran av sensormodulen.}
-    \activity{sens:sw}{Mjukvara}{30}{\aref{sens:design}}{Designa och
-    implementera ett basprogram som körs på sensormodulens mikrokontroller.}
-    \activity{sens:sens}{Installera
-    sensorer.}{10}{\aref{sens:constr,sens:constr}}{Koppla sensorer och gör dess
-    värden tillgängliga.}
-    \activity{sens:filter}{Filtrera brus}{4}{\aref{sens:sens}}{Filtrera brus
-    från analoga sensorer.}
-    \activity{sens:conv}{Konvertera värden}{3}{\aref{sens:sens}}{Konvertera
-    sensorvärden till SI-enheter.}
-    \activity{sens:send}{Skicka värden}{5}{\aref{sens:conv}}{Skicka värden till
-    kommunikationsmodulen.}
-    \activity{sens:lcd}{LCD-display}{4}{\aref{sens:sens}}{Visa utvalda värden
-    på LCD-display.}
-
-    \actcat{Användargränssnitt}
-    \activity{ui:rc}{Styra taxi}{10}{}{Gränssnitt för att styra taxi.}
-    \activity{ui:param}{Mata in parametrar}{2}{}{Mata in konstantparametrer
-    under körning.}
-    \activity{ui:data}{Visa mätdata}{2}{}{Visa upp mätdata från taxin.}
-    \activity{ui:map-in}{Mata in karta}{10}{}{Mata in en karta av banan.}
-    \activity{ui:map}{Rita karta}{10}{}{Rita en karta på gränssnittet med
-    taxins nuvarande position markerad.}
-
-    \actcat{Anslutningar}
-    \activity{io:voltage}{Konvertera spänning}{5}{}{Se till att Raspberry Pi:n
-    kan kommunicera via 5V-buss.}
-    \activity{io:wireless}{Trådlös
-    länk}{8}{\aref{comm:sw,comm:constr}}{Implementera en trådlös länk mellan
-    kommunikationsmodulen och fjärrklienten.}
-    \activity{io:comm-sens}{Komm-sensor}{15}{\aref{comm:sw,comm:constr,
-    sens:sw,sens:constr}}{Implementera seriellt protokoll för att kommunicera
-    mellan kommunikations- och sensormodul.}
-    \activity{io:comm-styr}{Komm-styr}{15}{\aref{comm:sw,comm:constr,ctrl:sw,
-    ctrl:constr}}{Implementera seriellt protokoll för att kommunicera mellan
-    kommunikations- och styrmodul.}
-
     \actcat{Autonom körning}
-    \activity{sdc:sw}{Mjukvara}{10}{\aref{comm:sw,comm:constr}}{Designa och
-    implementera bas för mjukvarudel som ska hantera taxins autonomomitet.}
     \activity{sdc:map}{Tolka karta}{10}{\aref{ui:map-in}}{Tolka inmatad karta,
     skapa en lämplig representation.}
     \activity{sdc:tsp}{Hitta närmaste väg}{10}{\aref{sdc:map}}{Hitta närmaste
     vägen mellan två stopplinjer i karta.}
-    \activity{sdc:roundabout}{Kör igenom rondell}{10}{\aref{sdc:sw}}{Kör
+    \activity{sdc:roundabout}{Kör igenom rondell}{10}{\aref{all:sw}}{Kör
     autonomt genom rondeller via godtycklig in- och utfart.}
-    \activity{sdc:gps}{Avgör position.}{8}{\aref{sdc:sw,sdc:map}}{Bestäm taxins
+    \activity{sdc:gps}{Avgör position.}{8}{\aref{all:sw,sdc:map}}{Bestäm taxins
     position i karta.}
-    \activity{sdc:reg}{Följ vägfil}{10}{\aref{sdc:sw,ip:err,ctrl:drive,
+    \activity{sdc:reg}{Följ vägfil}{10}{\aref{all:sw,ip:err,ctrl:drive,
     ctrl:steer}} {Reglera styrning utefter felvärde och följ höger vägfil.}
-    \activity{sdc:stop-line}{Upptäck stopplinjer}{5}{\aref{sdc:sw}}{Upptäck
+    \activity{sdc:stop-line}{Upptäck stopplinjer}{5}{\aref{all:sw}}{Upptäck
     stopplinjer i vägen.}
     \activity{sdc:nav}{Navigera}{20}{\aref{sdc:gps,sdc:reg,sdc:stop-line}}{Navigera
     till godtycklig stopplinje.}
     \activity{sdc:pocket}{Parkera}{10}{\aref{sdc:stop-line}}{Parkera i
     stoppficka vid stopplinje.}
-    \activity{ui:obstacle}{Hantera hinder}{8}{\aref{sdc:sw}}{Upptäck och stanna
+    \activity{ui:obstacle}{Hantera hinder}{8}{\aref{all:sw}}{Upptäck och stanna
     för hinder.}
+
+    \actcat{Styrmodul}
+    \activity{ctrl:drive}{Drivmotor}{2}{\aref{all:install,all:sw}}{Reglera
+    taxins fart genom att kontrollera drivmotorn utifrån kommunikationsmodulens
+    kommandon.}
+    \activity{ctrl:steer}{Svängmotor}{2}{\aref{all:install,all:sw}}{Reglera
+    svängradien genom att kontrollera svängmotorn utifrån kommandon.}
+    \activity{ctrl:break}{Broms}{2}{\aref{ctrl:drive}}{Se till att bilen kan
+    bromsa.}
+
+    \actcat{Sensormodul}
+    \activity{sens:design}{3D-utskrifter}{5}{}{Rita och skriv ut lämpliga
+    fotfästen för sensorer}
+    \activity{sens:filter}{Filtrera brus}{4}{\aref{all:install}}{Filtrera brus
+    från analoga sensorer.}
+    \activity{sens:conv}{Konvertera värden}{3}{\aref{all:install}}{Konvertera
+    sensorvärden till SI-enheter.}
+    \activity{sens:send}{Skicka värden}{5}{\aref{sens:conv}}{Skicka värden till
+    kommunikationsmodulen.}
+    \activity{sens:lcd}{LCD-display}{4}{\aref{all:install}}{Visa utvalda värden
+    på LCD-display.}
+
+    \actcat{Användargränssnitt}
+    \activity{ui:rc}{Styra taxi}{10}{\aref{all:sw}}{Gränssnitt för att styra
+    taxi.}
+    \activity{ui:param}{Mata in parametrar}{2}{\aref{all:sw}}{Mata in
+    konstantparametrer under körning.}
+    \activity{ui:data}{Visa mätdata}{2}{\aref{all:sw}}{Visa upp mätdata från
+    taxin.}
+    \activity{ui:map-in}{Mata in karta}{10}{\aref{all:sw}}{Mata in en karta av
+    banan.}
+    \activity{ui:map}{Rita karta}{10}{\aref{all:sw}}{Rita en karta på
+    gränssnittet med taxins nuvarande position markerad.}
+
+    \actcat{Anslutningar}
+    \activity{io:voltage}{Konvertera spänning}{5}{}{Se till att Raspberry Pi:n
+    kan kommunicera via 5V-buss.}
+    \activity{io:wireless}{Trådlös
+    länk}{8}{\aref{all:sw,all:install}}{Implementera en trådlös länk mellan
+    kommunikationsmodulen och fjärrklienten.}
+    \activity{io:comm-sens}{Komm-sensor}{15}{\aref{all:sw,all:install}}{Implementera
+    seriellt protokoll för att kommunicera mellan kommunikations- och
+    sensormodul.}
+    \activity{io:comm-styr}{Komm-styr}{15}{\aref{all:install,all:sw}}{Implementera
+    seriellt protokoll för att kommunicera mellan kommunikations- och
+    styrmodul.}
 
     \actcat{Testning}
     \activity{test:unit}{Unit-tester}{40}{}{Designa och implementera unit tester
@@ -149,30 +177,15 @@ sensorer}
     \activity{test:system}{Systemtestning}{30}{}{Utför systemtest av hela
     systemet.}
 
-    \actcat{Utbildning}
-    \activity{edu:instr}{Mätinstrument}{5}{}{Lära sig använda mätinstrument.}
-    \activity{edu:opencv}{OpenCV}{10}{}{Förstå hur OpenCV fungerar.}
-    \activity{edu:avr}{AVR}{3}{}{Förstå arkitektur och I/O för
-    AVR-processorer.}
-    \activity{edu:proto}{Överförings\-protokoll}{3}{}{Undersök protokoll som
-    I$^2$C, SPI, UART m.m.}
-    \activity{edu:kicad}{KiCad}{3}{}{Lära sig använda KiCad.}
-
     \actcat{Dokument}
-    \activity{doc:designspec}{Designspe\-cifikation}{100}{}{Skapa detaljerad
-    design demonstrerad i en specifikation.}
-    \activity{doc:circuit}{Designa kretsscheman}{20}{}{Designa och rita
-    kretsscheman för elektronik.}
-    \activity{doc:diagram}{Rita diagram}{20}{}{Rita dokuementerande diagram
-    över kompontenter.}
-    \activity{doc:tecdoc}{Teknisk
-    dokumentation}{50}{\aref{doc:diagram}}{Dokumentera implementationen.}
-    \activity{doc:study}{Efterstudie}{30}{}{Utför en efterstudie.}
+    \activity{doc:tecdoc}{Teknisk dokumentation}{50}{}{Dokumentera
+    implementationen.}
+    \activity{doc:study}{Efterstudie}{20}{}{Utför en efterstudie.}
     \activity{doc:manual}{Användar\-manual}{20}{}{Skriv en användarmanual.}
 
     \actcat{Administrativt}
-    \activity{adm:meet}{Möten}{40}{}{Genomföra regelbundna möten.}
-    \activity{adm:time}{Tidsrapporter}{10}{}{Rapportera tid varje vecka.}
+    \activity{adm:meet}{Möten}{20}{}{Genomföra möten.}
+    \activity{adm:time}{Tidsrapporter}{20}{}{Rapportera tid varje vecka.}
     \activity{adm:status}{Statusrapporter}{5}{}{Rapportera status vid begäran.}
 \end{activitylist}
 
