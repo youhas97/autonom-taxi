@@ -2,7 +2,7 @@
 
 % tabell för aktivitet
 \newcounter{activitycatno} % nummer för kategori
-\newcounter{activityno}%[activitycatno] % nummer för varje aktivitet
+\newcounter{activityno}[activitycatno] % nummer för varje aktivitet
 \renewcommand\theactivityno{\theactivitycatno.\arabic{activityno}}
 
 \newenvironment{activitylist}
@@ -42,8 +42,9 @@ avklarade innan en aktivitet kan bli avklarad.
 
 \subsection{Designfas}
 Nedan följer de aktiviteter som är del av designfasen. Dessa aktiviteter består
-av totalt \SI{50000000}{\hour}.
+av totalt \SI{445}{\hour}.
 
+% TODO timmar
 \begin{activitylist}
     \actcat{Dokument}
     \activity{doc:spec}{Skriva}{50}{}{Skriva, formatera och sammanställa
@@ -54,13 +55,12 @@ av totalt \SI{50000000}{\hour}.
     systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
 
     \actcat{Design}
-    \activity{hwdes:all}{Systemhårdvara}{20}{}{Designa sammankopplingen mellan
+    \activity{des:hwsys}{Systemhårdvara}{20}{}{Designa sammankopplingen mellan
     alla moduler.}
-    \activity{hwdes:mod}{Modulshårdvara}{40}{}{Designa hårdvaran av
+    \activity{des:hwmod}{Modulshårdvara}{60}{}{Designa hårdvaran av
     kommunikationsmodulen, styrmodulen och sensormodulen.}
-    \activity{swdes:comm}{Mjukvara}{50}{}{Designa strukturerna för
-    fjärrklientens, kommunikationsmodulens, styrmodulens och sensormodulens
-    program.}
+    \activity{des:sw}{Mjukvara}{50}{}{Designa strukturerna för fjärrklientens,
+    kommunikationsmodulens, styrmodulens och sensormodulens program.}
 
     \actcat{Utbildning}
     \activity{edu:instr}{Mätinstrument}{6}{}{Lära sig använda mätinstrument.}
@@ -76,16 +76,12 @@ av totalt \SI{50000000}{\hour}.
     \activity{adm:time}{Tidsrapporter}{28}{}{Rapportera tid varje vecka.}
 \end{activitylist}
 
+% TODO timmar
 \subsection{Implementationsfas}
 \begin{activitylist}
-    \actcat{Administrativt}
-    \activity{adm:meet}{Möten}{40}{}{Genomföra regelbundna möten.}
-    \activity{adm:time}{Tidsrapporter}{10}{}{Rapportera tid varje vecka.}
-    \activity{adm:status}{Statusrapporter}{5}{}{Rapportera status vid begäran.}
-
     \actcat{Allmänt}
     \activity{all:install}{Koppla och installera}{}{}{Konstruera hårdvaran av
-    hela systemet, kommunikationsmodulen, styrmodulens och sensormodulen.}
+    hela systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
     \activity{all:sw}{Implementera mjukvarubaser}{}{}{Implementera
     mjukvarubaser som körs på fjärrklienten, kommunikationsmodulen, styrmodulen
     och sensormodulen.}
@@ -128,10 +124,10 @@ av totalt \SI{50000000}{\hour}.
     för hinder.}
 
     \actcat{Styrmodul}
-    \activity{ctrl:drive}{Drivmotor}{2}{\aref{all:install,sw:ctrl}}{Reglera
+    \activity{ctrl:drive}{Drivmotor}{2}{\aref{all:install,all:sw}}{Reglera
     taxins fart genom att kontrollera drivmotorn utifrån kommunikationsmodulens
     kommandon.}
-    \activity{ctrl:steer}{Svängmotor}{2}{\aref{all:install,sw:ctrl}}{Reglera
+    \activity{ctrl:steer}{Svängmotor}{2}{\aref{all:install,all:sw}}{Reglera
     svängradien genom att kontrollera svängmotorn utifrån kommandon.}
     \activity{ctrl:break}{Broms}{2}{\aref{ctrl:drive}}{Se till att bilen kan
     bromsa.}
@@ -149,28 +145,29 @@ av totalt \SI{50000000}{\hour}.
     på LCD-display.}
 
     \actcat{Användargränssnitt}
-    \activity{ui:rc}{Styra taxi}{10}{\aref{sw:ui}}{Gränssnitt för att styra
+    \activity{ui:rc}{Styra taxi}{10}{\aref{all:sw}}{Gränssnitt för att styra
     taxi.}
-    \activity{ui:param}{Mata in parametrar}{2}{\aref{sw:ui}}{Mata in
+    \activity{ui:param}{Mata in parametrar}{2}{\aref{all:sw}}{Mata in
     konstantparametrer under körning.}
-    \activity{ui:data}{Visa mätdata}{2}{\aref{sw:ui}}{Visa upp mätdata från
+    \activity{ui:data}{Visa mätdata}{2}{\aref{all:sw}}{Visa upp mätdata från
     taxin.}
-    \activity{ui:map-in}{Mata in karta}{10}{\aref{sw:ui}}{Mata in en karta av
+    \activity{ui:map-in}{Mata in karta}{10}{\aref{all:sw}}{Mata in en karta av
     banan.}
-    \activity{ui:map}{Rita karta}{10}{\aref{sw:ui}}{Rita en karta på
+    \activity{ui:map}{Rita karta}{10}{\aref{all:sw}}{Rita en karta på
     gränssnittet med taxins nuvarande position markerad.}
 
     \actcat{Anslutningar}
     \activity{io:voltage}{Konvertera spänning}{5}{}{Se till att Raspberry Pi:n
-    kan kommunicera via 5V-buss.} \activity{io:wireless}{Trådlös
-    länk}{8}{\aref{sw:comm,all:install}}{Implementera en trådlös länk mellan
+    kan kommunicera via 5V-buss.}
+    \activity{io:wireless}{Trådlös
+    länk}{8}{\aref{all:sw,all:install}}{Implementera en trådlös länk mellan
     kommunikationsmodulen och fjärrklienten.}
-    \activity{io:comm-sens}{Komm-sensor}{15}{\aref{sw:comm,all:install,
-    sw:sens,all:install}}{Implementera seriellt protokoll för att kommunicera
-    mellan kommunikations- och sensormodul.}
-    \activity{io:comm-styr}{Komm-styr}{15}{\aref{sw:comm,all:install,sw:ctrl,
-    all:install}}{Implementera seriellt protokoll för att kommunicera mellan
-    kommunikations- och styrmodul.}
+    \activity{io:comm-sens}{Komm-sensor}{15}{\aref{all:sw,all:install}}{Implementera
+    seriellt protokoll för att kommunicera mellan kommunikations- och
+    sensormodul.}
+    \activity{io:comm-styr}{Komm-styr}{15}{\aref{all:install,all:sw}}{Implementera
+    seriellt protokoll för att kommunicera mellan kommunikations- och
+    styrmodul.}
 
     \actcat{Testning}
     \activity{test:unit}{Unit-tester}{40}{}{Designa och implementera unit tester
@@ -183,8 +180,13 @@ av totalt \SI{50000000}{\hour}.
     \actcat{Dokument}
     \activity{doc:tecdoc}{Teknisk dokumentation}{50}{}{Dokumentera
     implementationen.}
-    \activity{doc:study}{Efterstudie}{30}{}{Utför en efterstudie.}
+    \activity{doc:study}{Efterstudie}{20}{}{Utför en efterstudie.}
     \activity{doc:manual}{Användar\-manual}{20}{}{Skriv en användarmanual.}
+
+    \actcat{Administrativt}
+    \activity{adm:meet}{Möten}{20}{}{Genomföra möten.}
+    \activity{adm:time}{Tidsrapporter}{20}{}{Rapportera tid varje vecka.}
+    \activity{adm:status}{Statusrapporter}{5}{}{Rapportera status vid begäran.}
 \end{activitylist}
 
 \newpage
