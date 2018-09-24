@@ -109,31 +109,37 @@ sensorer}
     \actcat{Anslutningar}
     \activity{io:voltage}{Konvertera spänning}{5}{}{Se till att Raspberry Pi:n
     kan kommunicera via 5V-buss.}
-    \activity{io:wireless}{Trådlös länk}{8}{}{Implementera en trådlös länk
-    mellan kommunikationsmodulen och fjärrklienten.}
-    \activity{io:comm-sens}{Komm-sensor}{15}{}{Implementera seriellt protokoll
-    för att kommunicera mellan kommunikations- och sensormodul.}
-    \activity{io:comm-styr}{Komm-styr}{15}{}{Implementera seriellt protokoll
-    för att kommunicera mellan kommunikations- och styrmodul.}
+    \activity{io:wireless}{Trådlös
+    länk}{8}{\aref{comm:sw,comm:constr}}{Implementera en trådlös länk mellan
+    kommunikationsmodulen och fjärrklienten.}
+    \activity{io:comm-sens}{Komm-sensor}{15}{\aref{comm:sw,comm:constr,
+    sens:sw,sens:constr}}{Implementera seriellt protokoll för att kommunicera
+    mellan kommunikations- och sensormodul.}
+    \activity{io:comm-styr}{Komm-styr}{15}{\aref{comm:sw,comm:constr,ctrl:sw,
+    ctrl:constr}}{Implementera seriellt protokoll för att kommunicera mellan
+    kommunikations- och styrmodul.}
 
     \actcat{Autonom körning}
+    \activity{sdc:sw}{Mjukvara}{10}{\aref{comm:sw,comm:constr}}{Designa och
+    implementera bas för mjukvarudel som ska hantera taxins autonomomitet.}
     \activity{sdc:map}{Tolka karta}{10}{\aref{ui:map-in}}{Tolka inmatad karta,
     skapa en lämplig representation.}
     \activity{sdc:tsp}{Hitta närmaste väg}{10}{\aref{sdc:map}}{Hitta närmaste
     vägen mellan två stopplinjer i karta.}
-    \activity{sdc:roundabout}{Kör igenom rondell}{10}{}{Kör autonomnt genom
-    rondeller med godtycklig utfart.}
-    \activity{sdc:map}{Avgör position.}{8}{\aref{sdc:map}}{Bestäm taxins
+    \activity{sdc:roundabout}{Kör igenom rondell}{10}{\aref{sdc:sw}}{Kör
+    autonomt genom rondeller via godtycklig in- och utfart.}
+    \activity{sdc:gps}{Avgör position.}{8}{\aref{sdc:sw,sdc:map}}{Bestäm taxins
     position i karta.}
-    \activity{sdc:reg}{Följ vägfil}{10}{\aref{ip:err,ctrl:drive,ctrl:steer}}
-    {Reglera styrning utefter felvärde och följ höger vägfil.}
-    \activity{sdc:stop-line}{Upptäck stopplinjer}{5}{}{Upptäck stopplinjer i
-    vägen.}
-    \activity{sdc:nav}{Navigera}{20}{\aref{sdc:map,sdc:reg,sdc:stop-line}}{Navigera
+    \activity{sdc:reg}{Följ vägfil}{10}{\aref{sdc:sw,ip:err,ctrl:drive,
+    ctrl:steer}} {Reglera styrning utefter felvärde och följ höger vägfil.}
+    \activity{sdc:stop-line}{Upptäck stopplinjer}{5}{\aref{sdc:sw}}{Upptäck
+    stopplinjer i vägen.}
+    \activity{sdc:nav}{Navigera}{20}{\aref{sdc:gps,sdc:reg,sdc:stop-line}}{Navigera
     till godtycklig stopplinje.}
     \activity{sdc:pocket}{Parkera}{10}{\aref{sdc:stop-line}}{Parkera i
     stoppficka vid stopplinje.}
-    \activity{ui:obstacle}{Hantera hinder}{8}{}{Upptäck och stanna för hinder.}
+    \activity{ui:obstacle}{Hantera hinder}{8}{\aref{sdc:sw}}{Upptäck och stanna
+    för hinder.}
 
     \actcat{Testning}
     \activity{test:unit}{Unit-tester}{40}{}{Designa och implementera unit tester
@@ -153,7 +159,7 @@ sensorer}
     \activity{edu:kicad}{KiCad}{3}{}{Lära sig använda KiCad.}
 
     \actcat{Dokument}
-    \activity{doc:designspec}{Designspe\-cifikation}{50}{}{Skapa detaljerad
+    \activity{doc:designspec}{Designspe\-cifikation}{100}{}{Skapa detaljerad
     design demonstrerad i en specifikation.}
     \activity{doc:circuit}{Designa kretsscheman}{20}{}{Designa och rita
     kretsscheman för elektronik.}
