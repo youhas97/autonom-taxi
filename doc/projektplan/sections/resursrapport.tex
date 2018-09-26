@@ -1,66 +1,80 @@
 \documentclass[projektplan/plan.tex]{subfiles}
 \begin{document}
+
 \section{Dokumentplan}
 {\renewcommand{\arraystretch}{1.6}
-\begin{longtable}{p{4.5cm}p{1.5cm}p{5cm}p{2.2cm}p{1.2cm}}
+\begin{longtable}{p{2.5cm}p{1.8cm}p{5cm}p{2.2cm}p{2.0cm}}
     \bfseries Dokument &
-    \bfseries Ansvarig / Godkänns av &
+    \bfseries Ansvarig &
     \bfseries Syfte &
     \bfseries Målgrupp &
-    \bfseries Färdig-datum \\\hline
+    \bfseries Färdig \\\hline
     Teknisk dokumentation &
-    Juan Basaez &
+    \VARdokumentansvarig &
     Ge konstruktionsunderlag, samt dokumentation för underhåll och
     felsökning. &
     Beställare &
     2018-12-13
     \\
-    Användarhandledning &
-    Juan Basaez &
+    Användar\-handledning &
+    \VARdokumentansvarig &
     Ge beskrivning av produktens användning. &
     Beställare, användare &
     2018-12-13
     \\
-    Designspecifikation &
-    Juan Basaez &
+    Design\-specifikation &
+    \VARdokumentansvarig &
     Beskriva implementeringen av hårdvaran samt mjukvaran till systemet. &
     Underhållare, utvecklare &
     2018-11-09
     \\
     Projektplan &
-    Juan Basaez &
+    \VARdokumentansvarig &
     Beskriva hur projektet kommer att utföras och vilka strategier som
     tillämpas &
     Beställare &
     2018-10-04
     \\
     Tidplan &
-    Juan Basaez &
+    \VARdokumentansvarig &
     Planera hur arbetet ska fördelas och när det ska utföras. &
     Löne\-avdelning, projekt\-ledaren &
     2018-10-04
     \\
     Systemskiss &
-    Juan Basaez &
+    \VARdokumentansvarig &
     En skiss över implementationen av systemet &
     Beställare, utvecklare &
     2018-10-04
     \\
-    
-    \endhead
 \end{longtable}}
+
 \newpage
 \section{Utvecklingsmetodik}
-Grundmetodiken för projektet är att följa LIPS-modellen. Det är den mest centrala delen för arbetets tillvägagångssätt. Utöver det ska gruppen dela upp ansvaret för olika arbetsområden.
+Grundmetodiken för projektet är att följa LIPS-modellen. Det är den mest
+centrala delen för arbetets tillvägagångssätt. Utöver det ska gruppen dela upp
+ansvaret för olika arbetsområden.
+
 \subsection{Uppdelning}
-Projektgruppen kommer mestadels att jobba i mindre delgrupper. Alla delgrupper kommer ha ansvar för olika moduler. Eftersom det är främst tre moduler som ska konstrueras kommer gruppen delas in i tre delgrupper. Delgrupperna kommer bildas utefter vilken kunskap medlemmarna har om respektive modul för att underlätta arbetet.
+Projektgruppen kommer mestadels att jobba i mindre delgrupper. Alla delgrupper
+kommer ha ansvar för olika moduler. Eftersom det är främst tre moduler som ska
+konstrueras kommer gruppen delas in i tre delgrupper. Delgrupperna kommer
+bildas utefter vilken kunskap medlemmarna har om respektive modul för att
+underlätta arbetet.
+
 \subsection{Programmeringsspråk}
-Olika språk ska användas för olika områden i systemet. Kommandon och gränssnittet för den bärbara datorn kanförslagsvis skrivas i Python medan mikrokontrollerna och alla behandlingar av sensordata kan förslagsvis skrivas i C.
+Olika språk ska användas för olika områden i systemet. Kommandon och
+gränssnittet för den bärbara datorn kanförslagsvis skrivas i Python medan
+mikrokontrollerna och alla behandlingar av sensordata kan förslagsvis skrivas i
+C.
 
 \newpage
 \section{Utbildningsplan}
-Eftersom gruppen inte har full kunskap om alla områden som behövs inom projektet behöver medlemmarna lära sig om olika funktioner och program. Inlärningen kommer ta tid och måste därför planeras och effektiviseras. Det som gruppen kommer behöva lära sig är följande:
-
+\noindent
+Eftersom gruppen inte har full kunskap om alla områden som behövs inom
+projektet behöver medlemmarna lära sig om olika funktioner och program.
+Inlärningen kommer ta tid och måste därför planeras och effektiviseras. Det som
+gruppen kommer behöva lära sig är följande:
 \begin{labeling}{långt namn mer}
     \item[Open CV] Förstå hur OpenCV fungerar.
     \item[AVR] Förstå arkitektur och I/O för
@@ -70,35 +84,62 @@ Eftersom gruppen inte har full kunskap om alla områden som behövs inom projekt
     \item[KiCad] Lära sig använda KiCad.
     \item[Mätinstrument] Kunna använda de mätintrument som krävs.
 \end{labeling}
-
-För att gruppledlemmarna ska kunna hålla allt de lär sig färskt i minnet ska inlärningen ske så nära intill motsvarande aktivitet som möjligt. Då undviker man att lägga onödig tid på repetition och kan istället använda den tiden till effektivt arbete. Tid för inlärningen står i tidsplanen.
+För att gruppledlemmarna ska kunna hålla allt de lär sig färskt i minnet ska
+inlärningen ske så nära intill motsvarande aktivitet som möjligt. Då undviker
+man att lägga onödig tid på repetition och kan istället använda den tiden till
+effektivt arbete. Tid för inlärningen står i tidsplanen.
 
 \section{Rapporteringsplan}
-För att både utvecklare och beställare ska ha en bra uppfattning om hur projektet ligger till ska det med jämna intervall skrivas tidsrapporter. Dessa skrivs främst av projektledaren givet att gruppmedlemmarna lämnar en personlig beskrivning av sitt arbete tillsammans med tidsrapport som underlag. Rapporterna ska skrivas varje veckoslut och ska innehålla alla den gångna veckans aktiviteter. Den slutgiltiga tidsrapporten ska sedan skickas till beställaren som enkelt kan se hur utvecklarna har jobbat och hur tiden har fördelats. Tider för när tidsrapporterna ska skrivas hittas i tidsplanen.
-Det ska också skrivas statusrapporter. Dessa ska lämnas på begäran av beställaren och ska skrivas av projektledaren. Statusrapporterna ska ge en överblick av projektets nuvarande skede och hjälper beställaren att se hur långt projektet har kommit. Tidsplanering för statusrapporterna finns i tidsplanen.
+För att både utvecklare och beställare ska ha en bra uppfattning om hur
+projektet ligger till ska det med jämna intervall skrivas tidsrapporter. Dessa
+skrivs främst av projektledaren givet att gruppmedlemmarna lämnar en personlig
+beskrivning av sitt arbete tillsammans med tidsrapport som underlag.
+Rapporterna ska skrivas varje veckoslut och ska innehålla alla den gångna
+veckans aktiviteter. Den slutgiltiga tidsrapporten ska sedan skickas till
+beställaren som enkelt kan se hur utvecklarna har jobbat och hur tiden har
+fördelats. Tider för när tidsrapporterna ska skrivas hittas i tidsplanen.  Det
+ska också skrivas statusrapporter. Dessa ska lämnas på begäran av beställaren
+och ska skrivas av projektledaren. Statusrapporterna ska ge en överblick av
+projektets nuvarande skede och hjälper beställaren att se hur långt projektet
+har kommit. Tidsplanering för statusrapporterna finns i tidsplanen.
+
 \section{Mötesplan}
-Gruppen kommer mestadels att arbeta i mindre grupper på separata platser under projekttiden. Olika medlemmar kommer arbeta på olika moduler parallellt med varandra. För att hålla kolla på hur alla ligger till och för att ha bra överblick över hur projektet ligger till tidsenligt så behöver gruppen träffas i möten. Möten kommer att hållas en gång varannan vecka på minst 40-60 minuter. Då mötena hålls tätt blir det lättare att se om projektet går i en annan riktning än vad som är tänkt, vilket gör att gruppen minimerar tiden som går åt till att korrigera arbetet. På mötena kommer gruppmedlemmarna att rapportera för varandra vad de har gjort, vad som gått bra och vad som gått dåligt. Det är också ett bra tillfälle att diskutera om något behöver justeras i tidsplanen eller om något krav behöver omförhandlas. För detaljerad bild av tidsplaneringen av mötena se tidsplanen.
+Gruppen kommer mestadels att arbeta i mindre grupper på separata platser under
+projekttiden. Olika medlemmar kommer arbeta på olika moduler parallellt med
+varandra. För att hålla kolla på hur alla ligger till och för att ha bra
+överblick över hur projektet ligger till tidsenligt så behöver gruppen träffas
+i möten. Möten kommer att hållas en gång varannan vecka på minst 40-60 minuter.
+Då mötena hålls tätt blir det lättare att se om projektet går i en annan
+riktning än vad som är tänkt, vilket gör att gruppen minimerar tiden som går åt
+till att korrigera arbetet. På mötena kommer gruppmedlemmarna att rapportera
+för varandra vad de har gjort, vad som gått bra och vad som gått dåligt. Det är
+också ett bra tillfälle att diskutera om något behöver justeras i tidsplanen
+eller om något krav behöver omförhandlas. För detaljerad bild av
+tidsplaneringen av mötena se tidsplanen.
+
 \section{Resursplan}
 Det här avsnittet innehåller information om resurser inom projektet.
+
 \subsection{Personer}
-Gruppen består utav 6 personer som totalt ska arbeta 960 timmar med projektet efter beslutspunkt 2.
+Gruppen består utav 7 personer som totalt ska arbeta 1120 timmar med projektet
+efter beslutspunkt 2.
 
 \begin{itemize}
-\item Jakob Arvidsson
-\item Yousef Hashem
-\item Noah Hellman
-\item Juan Basaez
-\item Johan Can
-\item Dennis Dereichei
-\item Emir Hadzisalihovic
+    \item Jakob Arvidsson
+    \item Yousef Hashem
+    \item Noah Hellman
+    \item Juan Basaez
+    \item Johan Can
+    \item Dennis Dereichei
+    \item Emir Hadzisalihovic
 \end{itemize}
-
-Gruppen har bestämt att alla ska jobba samma antal timmar under projektet, det vill säga att varje gruppmedlem ska jobba 160 timmar.
-\newline\newline
+Gruppen har bestämt att alla ska jobba samma antal timmar under projektet, det
+vill säga att varje gruppmedlem ska jobba 160 timmar.
 
 En handlerade ska finnas tillgänglig som resurs under projektprocessen.
 Projektgruppen ska ha möjligheten om att kontakta handledaren vid behov.
-Dessutom kan gruppen hänvisas till en expert om handledaren anser det vara  nödvändigt.
+Dessutom kan gruppen hänvisas till en expert om handledaren anser det vara
+nödvändigt.
 
 \subsection{Material}
 Även om designen av konstruktionen inte än har bestämts vet man redan att
@@ -113,6 +154,6 @@ labbsalen Muxen (där mätutrustning finns), olika mötessalar och universitets
 utrymmen vid testning av bilen.
 
 \subsection{Ekonomi}
-Projektet har en budget på max 1120 timmar.
+Projektet har en budget på 1120 timmar.
 
 \end{document}

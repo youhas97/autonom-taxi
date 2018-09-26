@@ -4,74 +4,89 @@
 \section{Fasplan}
 Fasplanen beskriver grovt de aktiviteter som ingår i de olika faserna och ger
 en översikt på projektfaserna.
+
 \subsection{Under projektet}
 Under projektets gång kommer en del aktiviteter tas hand om. De flesta är
 implementationer eller hårdvarukopplingar mellan flera hårdvarukomponenter.
+
 \subsubsection*{Utbildning}
 Lära sig hur man använder mjukvaror som exempelvis OpenCV, AVR, KiCAD etc.
 Inlärning av hur OS-Raspberry funkar och andra teoretiska delar angående
 mikrodatorerna samt överföringsprotokollen måste göras.
+
 \subsubsection*{Kamera}
 En kamera ska monteras på chassit, kopplas samman med mikrodatorn i
 kommunikationsmodulen.
+
 \subsubsection*{Kommunikation mellan moduler}
 Intermodulär kommunikation ska implementeras så flera moduler kan kommunicera
 med varandra.
+
 \subsubsection*{Bildbearbetning}
 Bilddata från kameran ska bearbetas med OpenCV och bilddatan tolkas till
 relevant data.
+
 \subsubsection*{Bearbeta sensorvärden}
 Sensorvärdena ska bearbetas och värdena ska tolkas till relevant data.
+
 \subsubsection*{Filtrera ner spänning}
 Eftersom mikrodatorns GPIO (general-purpose input/output) pinnar max kan ta
 emot 3.3V måste ett filter skapas för att filtrera ner spänningsnivån från 5V
 till 3.3V.
+
 \subsubsection*{Aktivera motor}
 Skicka styrparametrar från styrmodulens processor till motorn och få den att
 driva hjulen.
+
 \subsubsection*{Rotera svängaxel}
 Skicka styrparametrar från styrmodulens processor till motorn och få den att
 rotera svängaxeln.
+
 \subsubsection*{Bromsa genom att backa}
 Försöka skicka styrmoduler till motorn och få den att driva hjulen bak
 samtidigt som hjulen rullar framåt för att imitera bromsning.
+
 \subsubsection*{Reglera körning}
 Implementera reglering av körning så bilen tar hänsyn till vägmarkeringar och
 inte kör av vägen.
+
 \subsubsection*{Pulsbreddsmodulering (PWM)}
 Implementera pulsbreddsmodulering så att hastigheten till motorerna kan
 justeras.
+
 \subsubsection*{Databuss}
 Bestäm vilket överföringsprotokoll som ska användas för databusar, samt
 implementera databussar.
+
 \subsubsection*{Kretsschema}
 Designa, rita och konstruera kretsscheman till styrmodulen, sensormodulen samt
 kommunikationsmodulen. KiCAD kan användas för att rita kretsscheman.
+
 \subsubsection*{Sensorvärden}
 Behandling av värdena sensorerna ger ut måste ske. Värdena sensorerna ger måste
 filtreras från brus, därefter kan de användas för att indikera objekt på vägen.
 Därefter ska sensorvärdena skickas till kommunikationsmodulen.
+
 \subsubsection*{Bärbar dator}
 En trådlös länk mellan mikrodatorn och en bärbar dator måste sättas upp. Ett
 gränssnitt för att kommunicera med mikrodatorn via den bärbara datorn ska
 skapas. Användaren ska kunna mata in en karta till gränssnittet och
 gränssnittet ska kunna visa bilens position på kartan.
 
-
 \subsection{Efter projektet}
 Vissa aktivitetar sker efter projektet och beskrivs i grova drag i det här
 avsnittet.
+
 \subsubsection*{Levererans}
 Den färdiga produkten ska levereras till beställaren efter konstruktionens
-slut. Ett acceptanstest görs med beställaren så att beställaren är nöjs med den
+slut. Ett acceptanstest görs med beställaren så att beställaren är nöjd med den
 levererade produkten. En tekniskt dokumentation och en användarhandledning ska
 skickas till beställaren. Hårdvaran ska återlämnas till ISY efter
 konstruktionens slut.
+
 \subsubsection*{Efterstudie}
 Reflektion och återkoppling av projektet ska göras och lämnas in till
 beställaren efter projektets slut. Analys av arbete och problem, samt vad
 projektgruppen har uppnåt under projektets gång. En sammanfattning av viktiga
 erfarenheter och goda råd till liknande projekt ska inkluderas i efterstudien.
-
-
 \end{document}
