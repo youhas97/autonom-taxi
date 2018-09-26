@@ -44,36 +44,21 @@ Presentationer granskas för att säkerhetsställa att inga felaktigheter i fakt
 utförande eller ambitioner presenteras.
 
 \subsubsection{Schema}	
-Schemat ska granskas av alla medlemmar för att kunna anpassas efter allas
-scheman. Detta för att se till att så många som möjligt kan närvara vid
-samtliga tillfällen. 
+Schemat ska granskas av alla medlemmar för att kunna anpassas utefter
+medlemmarnas scheman. Detta för att se till att så många som möjligt kan
+närvara vid samtliga tillfällen. 
 
 \subsection{Testplan}
 För att testa mjukvaran ska testprogram skrivas som matar in indata och
 förväntar sig en viss utdata. Skiljer sig förväntad utdata från faktiskt data
-ses detta som ett fel. Varje modul kommer testas enskilt för att sedan testa
-kommunikation mellan dessa. Testning av hårdvara sker genom att se till att de
-olika hårdvarukomponenter kan kommunicera sinsemellan samt att de beter sig som
-annonserat.
+ses detta som ett fel. Dessa tester kommer därefter användas för att verifiera
+att inga fel har förekommit vid varje modifikation.
 
-När både mjuk- och hårdvara har testats och det har verifieras att dessa
-fungerar separat ska de testas tillsammans. Tills konstruktionen har
-färdigställts går det inte att sätta upp när dessa tester ska utföras men
-testerna kan ändå definieras.
+Varje modul kommer testas enskilt för att sedan testa kommunikation mellan
+dessa. Testning av hårdvara sker genom att se till att de olika
+hårdvarukomponenterna kan kommunicera sinsemellan samt att de beter sig som
+specificerat.
 
-\vspace{5mm}
-\noindent
-Tester som ska utföras:
-\begin{itemize}
-    \item Röra sig korrekt när den detekterar ett streck i en viss färg.
-    \item Parkera i en parkeringsficka.
-    \item Kan åka framåt, bakåt och åt båda sidorna.
-    \item Kartan kan presenteras korrekt utifrån den data som läses in.
-    \item Åka runt banan utan att stanna.
-    \item Hålla sig inom en fil.
-    \item Undvika hinder.
-    \item Testa kommunikation mellan modulerna.
-    \item Få kontakt med bilen från datorn.
-\end{itemize}
-
+När både mjuk- och hårdvara har testats och det har verifierats att dessa
+fungerar separat ska de testas tillsammans.
 \end{document}
