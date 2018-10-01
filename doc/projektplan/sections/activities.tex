@@ -1,9 +1,7 @@
 \documentclass[projektplan/plan.tex]{subfiles}
 
 % tabell för aktivitet
-\newcounter{activitycatno} % nummer för kategori
-\newcounter{activityno}[activitycatno] % nummer för varje aktivitet
-\renewcommand\theactivityno{\theactivitycatno.\arabic{activityno}}
+\newcounter{activityno}
 
 \newenvironment{activitylist}
 {
@@ -26,7 +24,7 @@
     \theactivityno & #2     & #5    & #3    & #4 \\
 }
 \newcommand{\actcat}[1]{
-    \hline\multicolumn{5}{c}{#1}\refstepcounter{activitycatno}\\\hline}
+    \hline\multicolumn{5}{c}{#1}\\\hline}
 
 \newcommand{\arefproc}[1]{\ref{act:#1} }
 \NewDocumentCommand\aref{>{\SplitList{,}}m}{\ProcessList{#1}{\arefproc}}
