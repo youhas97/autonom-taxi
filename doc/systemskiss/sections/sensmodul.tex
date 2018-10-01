@@ -11,7 +11,15 @@ Sensormodulen innehåller alla de sensorer som bilen behöver för att kunna mä
     \label{fig:sensorskiss}
 \end{figure}
 \noindent
-Sensorerna ska vara kopplade till olika brusfilter som gör signalern tydligare. När signalerna är filterade ska de skickas via en databuss till modulens processor. Databussen ska även vara kopplad till en LCD skärm där värdena ska visas för att förenkla felsökning av modulen. Modulen ska ha en direkt koppling till kommunikationsmodulen via en databuss. Figur \ref{fig:sensorskiss} visar en grov bild över hur modulen ska se ut.
+Sensorerna ska vara kopplade till olika brusfilter som ska filtrera bort
+störningar av sensorvärdena. Den bakre sensor är tänkt att vara en
+IR-avståndsmätare. Bilen kommer använda denna sensor till att upptäcka när den
+har kört förbi hinder. Avståndsmätare där framme ska kunna mäta avstånd till
+hinder. Det kommer vara antingen en ultraljudssenosr eller en IR-sensor som
+åtminstone kan som minst mäta 5 cm och iaf 30 cm framåt eller längre.
+Sensorvärden kommer skickas via en databuss till modulens
+processor. En LCD-skärm ska kopplas till mikrokontrollern eller direkt till
+bussen. På LCD-skärmen ska sensorvärden visas för att förenkla felsökning av modulen. Modulen ska ha en direkt koppling till kommunikationsmodulen via en databuss. Figur \ref{fig:sensorskiss} visar en grov bild över hur modulen ska se ut.
 
 
 \end{document}
