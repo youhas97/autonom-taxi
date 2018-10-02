@@ -38,25 +38,6 @@ Tidskolumnen visar en uppskattning av antalet timmar som aktiviteten förväntas
 att ta. Kolumnen för beroenden visar vilka andra aktiviteter som måste vara
 avklarade innan en aktivitet kan bli avklarad.
 
-\subsection{Allmänna aktiviteter}
-Här visas aktiviteter som är utspridda över både designfasen och
-utförandefasen.
-\begin{activitylist}
-    \actcat{Utbildning}
-    \activity{edu:instr}{Mätinstrument}{6}{}{Lära sig använda mätinstrument.}
-    \activity{edu:opencv}{OpenCV}{6}{}{Förstå hur OpenCV fungerar.}
-    \activity{edu:avr}{AVR}{6}{}{Förstå arkitektur och I/O för
-    AVR-processorer.}
-    \activity{edu:proto}{Överförings\-protokoll}{6}{}{Undersök protokoll som
-    I$^2$C, SPI, UART m.m.}
-    \activity{edu:kicad}{KiCad}{6}{}{Lära sig använda KiCad.}
-
-    \actcat{Administrativt}
-    \activity{adm:meet}{Möte}{40}{}{Genomföra möten.}
-    \activity{adm:time}{Tidsrapporter}{20}{}{Rapportera tid varje vecka.}
-    \activity{adm:status}{Statusrapporter}{5}{}{Rapportera status vid begäran.}
-\end{activitylist}
-
 \newpage
 \subsection{Designfas}
 Nedan följer de aktiviteter som är en del av designfasen. Dessa aktiviteter,
@@ -73,12 +54,15 @@ under designfasen.
     kommunikationsmodulens, styrmodulens och sensormodulens program.}
 
     \actcat{Dokument}
-    \activity{doc:spec}{Skriva}{75}{}{Skriva, formatera och sammanställa
-    designspecifikationen.}
+    \activity{doc:spec}{Rapporter}{75}{}{Skriva, formatera och sammanställa
+    rapporter.}
     \activity{doc:bdiag}{Rita blockdiagram}{45}{}{Rita blockdiagram över hela systemet,
     kommunikationsmodulen, styrmodulen och sensormodulen.}
     \activity{doc:cdiag}{Rita kretsscheman}{45}{}{Rita kretsschema över hela
     systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
+
+    \actcat{Övrigt}
+    \activity{adm:meet}{Möte}{40}{}{Genomföra möten.}
 \end{activitylist}
 
 \newpage
@@ -158,15 +142,20 @@ Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
     för alla moduler.}
     \activity{test:int}{Integrations\-testning}{30}{}{Utför integrationstest
     mellan de olika modulerna.}
-    \activity{test:system}{Systemtestning}{30}{}{Utför systemtest av hela
+    \activity{test:system}{Helsystemtestning}{30}{}{Utför systemtest av hela
     systemet.}
 
     \actcat{Dokument}
     \activity{doc:tecdoc}{Teknisk dokumentation}{50}{}{Dokumentera
     implementationen.}
-    \activity{doc:study}{Efterstudie/presentation}{20}{}{Utför en efterstudie
-    och förbered en presentation.}
+    \activity{doc:study}{Efterstudie och presentation}{20}{}{Utför en
+    efterstudie och förbered en presentation.}
     \activity{doc:manual}{Användar\-manual}{20}{}{Skriv en användarmanual.}
+    \activity{doc:report}{Tids- och statusrapporter}{20}{}{Skriva
+    tids- och statusrapporter.}
+
+    \actcat{Övrigt}
+    \activity{adm:meet}{Möte}{40}{}{Genomföra möten.}
 \end{activitylist}
 
 \newpage
