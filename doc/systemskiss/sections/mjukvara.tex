@@ -2,12 +2,12 @@
 \begin{document}
 \section{Mjukvara}
 \subsection{Klient}
-Klienten på den bärbara datorn ska sköta användargränssnittet. Klienten ska
-grafiskt rita kartan samt positionen av taxins bil. Man ska kunna mata in
-reglerparemeter och fjärrstyra antingen via det grafiska gränssnittet eller via
-terminalen. Klienten kan även ansvara för att räkna ut den kortaste vägen,
-därefter klienten i samband med överföring av karta även skicka den
-kortaste vägen.
+Klienten på den bärbara datorn ska sköta användargränssnittet och kommunicera
+med kommunikationsmodulen. Klienten ska grafiskt rita kartan samt positionen av
+taxins bil. Reglerparemeter ska kunna matas in och bilen ska kunna fjärrstyras
+via gränssnittet. Klienten kan även ansvara för att räkna ut den kortaste
+vägen, därefter i samband med överföring av karta dessutom skicka den kortaste
+vägen.
 
 Klienten kan exempelvis skrivas i Python, det har bibliotek som TKinter för
 GUI. Bibliotek som matplotlib kan dessutom vara användbara för att plotta
@@ -15,16 +15,16 @@ grafer av värdena som skickas från bilen.
 
 \subsection{Kommunikationsmodul}
 Kommunikationsmodulen som består av en Raspberry Pi är den centrala enheten och
-den är även taxins beslutsenhet. Programmet som körs ska ta in alla datavärden
-från kopplade moduler och agera utefter värdena. Programmet ska skrivas i C
-eller Python där huvudprogrammet är en while-loop. Programmet ska även bearbeta
+den är även taxins beslutsenhet. Programmet som körs ska ta in alla
+sensorvärden från sensormodulen och kameran, och därefter agera utefter
+värdena. Programmet ska skrivas i C eller Python. Programmet ska även bearbeta
 bilddata med hjälp av biblioteket OpenCV. Utifrån bilddatan byggs skelett för
 att känna igen vägfiler och hinder samt färgerna på linjerna.
 
 \subsection{Sensormodul}
 Mjukvaran på sensormodulens mikrokontroller kommer att ta emot och bearbeta
-värden från sensorerna. Den kommer att sköta kommunikationen till
-kommunikationsmodulen. Mjukvaran lär skrivas i C.
+värden från modulens sensorer. Den kommer att sköta kommunikationen till
+kommunikationsmodulen och lär skrivas i C.
 
 
 \subsection{Styrmodul}
