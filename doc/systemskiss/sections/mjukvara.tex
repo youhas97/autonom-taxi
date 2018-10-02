@@ -17,13 +17,15 @@ som skickas från bilen.
 \subsection{Kommunikationsmodul}
 Kommunikationsmodulen som består av en Raspberry Pi är den centrala enheten och
 den är även beslutsenheten. Programmet som körs ska ta in alla datavärden från
-kopplade moduler och agera utefter värdena. Programmet ska skrivas i C där
-huvudprogrammet är en while-loop. Programmet ska även bearbeta bilddata med
-hjälp av biblioteket OpenCV. Utifrån bilddatan ska man bygga skelett och känna
-igen vägfiler, hinder samt färgerna på linjerna.  
+kopplade moduler och agera utefter värdena. Programmet ska skrivas i C eller
+Python där huvudprogrammet är en while-loop. Programmet ska även bearbeta
+bilddata med hjälp av biblioteket OpenCV. Utifrån bilddatan ska man bygga
+skelett och känna igen vägfiler, hinder samt färgerna på linjerna.  
 
 \subsection{Sensormodul}
-#TODO Mjukvaran på sensormodulens mikrok
+Mjukvaran på sensormodulens mikrokontroller kommer att ta emot och bearbeta
+värden från sensorerna. Den kommer att sköta kommunikationen till
+kommunikationsmodulen. Mjukvaran lär skrivas i C.
 
 \subsection{Testning}
 Under utvecklingen kommer saker att testas, bland annat modultester för att
