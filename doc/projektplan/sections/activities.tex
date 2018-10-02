@@ -7,7 +7,7 @@
 {
     \setlength{\tabcolsep}{12pt}
     \renewcommand{\arraystretch}{1.6}
-    \begin{longtable}{p{18mm}p{25mm}p{65mm}p{6mm}p{7mm}}
+    \begin{longtable}{p{18mm}p{25mm}p{65mm}p{6mm}p{5mm}}
         \bfseries Nr &
         \bfseries Aktivitet &
         \bfseries Beskrivning &
@@ -54,7 +54,7 @@ under designfasen.
     kommunikationsmodulens, styrmodulens och sensormodulens program.}
 
     \actcat{Dokument}
-    \activity{doc:spec}{Rapporter}{75}{}{Skriva, formatera och sammanställa
+    \activity{doc:report}{Rapporter}{75}{}{Skriva, formatera och sammanställa
     rapporter.}
     \activity{doc:bdiag}{Rita blockdiagram}{45}{}{Rita blockdiagram över hela systemet,
     kommunikationsmodulen, styrmodulen och sensormodulen.}
@@ -62,7 +62,7 @@ under designfasen.
     systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
 
     \actcat{Övrigt}
-    \activity{adm:meet}{Möte}{40}{}{Genomföra möten.}
+    \activity{des:meet}{Möte}{40}{}{Genomföra möten.}
 \end{activitylist}
 
 \newpage
@@ -84,8 +84,8 @@ Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
     fjärrstyrningskommandon.}
 
     \actcat{Bildbearbetning}
-    \activity{ip:edge}{Upptäck kanter.}{15}{\aref{comm:cam}}{Upptäck kanter i
-    bilder.}
+    \activity{ip:edge}{Upptäck kanter.}{15}{\aref{all:install}}{Upptäck kanter
+    i bilder.}
     \activity{ip:line}{Upptäck linjer.}{15}{\aref{ip:edge}}{Upptäck
     linjemarkeringar på vägen.}
     \activity{ip:2d}{Transformera linjer.}{15}{\ref{act:ip:line}}{Transformera
@@ -94,16 +94,15 @@ Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
     linjekarta.}
 
     \actcat{Autonom körning}
-    \activity{sdc:gps}{Avgör position.}{8}{\aref{all:sw,sdc:map}}{Tolka karta
-    och bestäm taxins position i kartan.}
-    \activity{sdc:tsp}{Hitta kortaste väg}{10}{\aref{sdc:map}}{Implementera
-    algoritm för taxin att hitta kortaste vägen mellan två stopplinjer i
-    karta.}
-    \activity{sdc:reg}{Följ vägfil}{10}{\aref{all:sw,ip:err,ctrl:drive,
-    ctrl:steer}}{Reglera styrning utefter felvärde och följ höger vägfil,
-    inklusive rondeller.}
-    \activity{sdc:nav}{Navigera}{20}{\aref{sdc:gps,sdc:reg,sdc:stop-line}}{Navigera
-    till godtycklig stopplinje eller parkeringsficka med eventuella hinder.}
+    \activity{sdc:gps}{Avgör position.}{8}{\aref{all:sw}}{Tolka karta och
+    bestäm taxins position i kartan.}
+    \activity{sdc:tsp}{Hitta kortaste väg}{10}{}{Implementera algoritm för
+    taxin att hitta kortaste vägen mellan två stopplinjer i karta.}
+    \activity{sdc:reg}{Följ
+    vägfil}{10}{\aref{all:sw,ip:err,ctrl:drive}}{Reglera styrning utefter
+    felvärde och följ höger vägfil, inklusive rondeller.}
+    \activity{sdc:nav}{Navigera}{20}{\aref{sdc:gps,sdc:reg}}{Navigera till
+    godtycklig stopplinje eller parkeringsficka med eventuella hinder.}
 
     \actcat{Styrmodul}
     \activity{ctrl:drive}{Driva bilen}{5}{\aref{all:install,all:sw}}{Reglera
@@ -112,10 +111,10 @@ Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
 
     \actcat{Sensormodul}
     \activity{sens:filter}{Bearbeta
-    sensorvärden}{10}{\aref{all:install}}{Filtrera brus från analoga sensorer
-    och konvertera värden till SI-enheter..}
-    \activity{sens:send}{Skicka värden}{10}{\aref{sens:conv}}{Skicka värden
-    till kommunikationsmodulen.}
+    sensorvärden}{10}{\aref{all:sw,all:install}}{Filtrera brus från analoga
+    sensorer och konvertera värden till SI-enheter.}
+    \activity{sens:send}{Skicka värden}{10}{\aref{all:sw,all:install}}{Skicka
+    värden till kommunikationsmodulen.}
 
     \actcat{Användargränssnitt}
     \activity{ui:rc}{Styra taxi}{10}{\aref{all:sw}}{Implementera gränssnitt för
@@ -148,14 +147,14 @@ Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
     \actcat{Dokument}
     \activity{doc:tecdoc}{Teknisk dokumentation}{50}{}{Dokumentera
     implementationen.}
-    \activity{doc:study}{Efterstudie och presentation}{20}{}{Utför en
+    \activity{doc:study-pres}{Efterstudie och presentation}{20}{}{Utför en
     efterstudie och förbered en presentation.}
     \activity{doc:manual}{Användar\-manual}{20}{}{Skriv en användarmanual.}
-    \activity{doc:report}{Tids- och statusrapporter}{20}{}{Skriva
-    tids- och statusrapporter.}
+    \activity{doc:status-time}{Tids- och statusrapporter}{20}{}{Skriva tids-
+    och statusrapporter.}
 
     \actcat{Övrigt}
-    \activity{adm:meet}{Möte}{40}{}{Genomföra möten.}
+    \activity{impl:meet}{Möte}{40}{}{Genomföra möten.}
 \end{activitylist}
 
 \newpage
