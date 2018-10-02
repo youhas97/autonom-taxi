@@ -1,0 +1,38 @@
+\documentclass[systemskiss/skiss.tex]{subfiles}
+\begin{document}
+\section{Mjukvara}
+\subsection{Klient}
+Klienten på den bärbara datorn ska sköta användargränssnittet. Klienten ska
+grafiskt rita kartan samt positionen. Man ska kunna mata in
+reglerparemeter och fjärrstyra antingen via det grafiska gränssnittet eller via
+terminalen. Klienten ska även ansvara för att räkna ut den kortaste vägen,
+därefter kan klienten i samband med överföring av karta även skicka den
+kortaste vägen. För att undvika krångel ska klienten vara skrivet i ett språk
+och python verkar gruppen vara överens om ty det är enkelt och har en hel del
+bibliotek som kan användas till detta ändamålet. För det grafiska gränssnittet
+kan man använda biblioteket tkinter. Vi kan även använda scipy för att plotta
+grafer av värdena som skickas från bilen
+
+\subsection{Kommunikationsmodul}
+Kommunikationsmodulen som består av en raspberry pi är den centrala enheten och
+den är även beslutsenheten. Programmet som körs ska ta in alla datavärden från
+kopplade moduler och agera utefter värdena. Programmet ska skrivas i C där
+huvudprogrammet är en while-loop. Programmet ska även bearbeta bilddata med
+hjälp av biblioteket openCV. Utifrån bilddatan ska man bygga skelett och känna
+igen vägfler, hinder samt färgerna på linjerna.  
+
+
+\subsection{Mikrokontroller}
+Mjukvaran till mikrokontrollerna behöver flashas, antagligen via JTAG. Det vore
+smidigt ifall vi kunde flasha dessa mikrokontroller från kommunikationsmodulen
+istället för att behöva flasha de var för sig med en dator. Vi ska välja
+mikrokontroller som har en kompilator för C, t.ex avrgcc. 
+
+\subsection{Testning}
+Under utvecklingen kommer saker att testas, bland annat modultester för att
+tidigt upptäcka mjukvaru- eller hårdvarufel. Om det lönar sig med att
+automatisera tester så kommer vi göra det. I slutfasen av projektet kommer en
+hel del tid gå åt till integrerande tester och en generell test över hela
+systemet.
+
+\end{document}
