@@ -26,4 +26,13 @@ Mjukvaran på sensormodulens mikrokontroller kommer att ta emot och bearbeta
 värden från sensorerna. Den kommer att sköta kommunikationen till
 kommunikationsmodulen. Mjukvaran lär skrivas i C.
 
+
+\subsection{Styrmodul}
+Mjukvaran på styrmodulen kommer att ta emot beslut från kommunikationmodulen och
+utifrån besluten skicka lämpliga värden till drivmotorn och svängmotorn.
+Mjukvaran ansvarar även för att skicka värden till LCD-skärmen dessutom ska 
+mikrokontrollern skicka värdena till kommunikationsmodulen eftersom
+kommunikationsmodulen ska kunna räkna ut hastighet, svängningsradie och
+därefter även räkna ut var den befinner sig i banan. Mjukvaran lär skrivas i C.
+ 
 \end{document}
