@@ -46,23 +46,23 @@ under designfasen.
 
 \begin{activitylist}
     \actcat{Design}
-    \activity{des:hwsys}{Systemhårdvara}{45}{}{Designa sammankopplingen mellan
+    \activity{des:hwsys}{Systemhårdvara}{20}{}{Designa sammankopplingen mellan
     alla moduler.}
-    \activity{des:hwmod}{Modulshårdvara}{75}{}{Designa hårdvaran av
+    \activity{des:hwmod}{Modulshårdvara}{40}{}{Designa hårdvaran av
     kommunikationsmodulen, styrmodulen och sensormodulen.}
-    \activity{des:sw}{Mjukvara}{65}{}{Designa strukturerna för fjärrklientens,
+    \activity{des:sw}{Mjukvara}{40}{}{Designa strukturerna för fjärrklientens,
     kommunikationsmodulens, styrmodulens och sensormodulens program.}
 
     \actcat{Dokument}
-    \activity{doc:report}{Rapporter}{75}{}{Skriva, formatera och sammanställa
+    \activity{doc:report}{Rapporter}{40}{}{Skriva, formatera och sammanställa
     rapporter.}
-    \activity{doc:bdiag}{Rita blockdiagram}{45}{}{Rita blockdiagram över hela systemet,
+    \activity{doc:bdiag}{Rita blockdiagram}{20}{}{Rita blockdiagram över hela systemet,
     kommunikationsmodulen, styrmodulen och sensormodulen.}
-    \activity{doc:cdiag}{Rita kretsscheman}{45}{}{Rita kretsschema över hela
+    \activity{doc:cdiag}{Rita kretsscheman}{20}{}{Rita kretsschema över hela
     systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
 
     \actcat{Övrigt}
-    \activity{des:meet}{Möte}{40}{}{Genomföra möten.}
+    \activity{des:meet}{Möte}{21}{}{Genomföra möten.}
 \end{activitylist}
 
 \newpage
@@ -71,70 +71,64 @@ Utförandefasen består av nedanstående aktiviteter och delar av allmänna akti
 Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
 \begin{activitylist}
     \actcat{Allmänt}
-    \activity{all:install}{Koppla och installera}{50}{}{Konstruera hårdvaran av
+    \activity{all:install}{Koppla och installera}{55}{}{Konstruera hårdvaran av
     hela systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
     \activity{all:sw}{Implementera mjukvarubaser}{60}{}{Implementera
     mjukvarubaser som körs på fjärrklienten, kommunikationsmodulen, styrmodulen
     och sensormodulen.}
 
     \actcat{Kommunikationsmodul}
-    \activity{comm:sw}{Mjukvara}{13}{\aref{all:sw}}{Implementera mjukvara på
+    \activity{comm:sw}{Mjukvara}{40}{\aref{all:sw}}{Implementera mjukvara på
     kommunikationsmodul utöver bildbearbetning och autonom körning. Bland annat
     göra kamerans bilder bearbetningsbara samt skicka och ta emot
     fjärrstyrningskommandon.}
 
     \actcat{Bildbearbetning}
-    \activity{ip:edge}{Upptäck kanter.}{15}{\aref{all:install}}{Upptäck kanter
+    \activity{ip:edge}{Upptäck kanter.}{35}{\aref{all:install}}{Upptäck kanter
     i bilder.}
-    \activity{ip:line}{Upptäck linjer.}{15}{\aref{ip:edge}}{Upptäck
+    \activity{ip:line}{Upptäck linjer.}{25}{\aref{ip:edge}}{Upptäck
     linjemarkeringar på vägen.}
-    \activity{ip:2d}{Transformera linjer.}{15}{\ref{act:ip:line}}{Transformera
+    \activity{ip:2d}{Transformera linjer.}{20}{\ref{act:ip:line}}{Transformera
     perspektivbild av linjer till en ortografisk projektion sedd uppifrån.}
-    \activity{ip:err}{Avgör felvärde.}{15}{\aref{ip:2d}}{Beräkna felvärde från
+    \activity{ip:err}{Avgör felvärde.}{20}{\aref{ip:2d}}{Beräkna felvärde från
     linjekarta.}
 
     \actcat{Autonom körning}
-    \activity{sdc:gps}{Avgör position.}{8}{\aref{all:sw}}{Tolka karta och
+    \activity{sdc:gps}{Avgör position.}{20}{\aref{all:sw}}{Tolka karta och
     bestäm taxins position i kartan.}
-    \activity{sdc:tsp}{Hitta kortaste väg}{10}{}{Implementera algoritm för
+    \activity{sdc:tsp}{Hitta kortaste väg}{20}{}{Implementera algoritm för
     taxin att hitta kortaste vägen mellan två stopplinjer i karta.}
     \activity{sdc:reg}{Följ
-    vägfil}{10}{\aref{all:sw,ip:err,ctrl:drive}}{Reglera styrning utefter
+    vägfil}{30}{\aref{all:sw,ip:err,ctrl:drive}}{Reglera styrning utefter
     felvärde och följ höger vägfil, inklusive rondeller.}
-    \activity{sdc:nav}{Navigera}{20}{\aref{sdc:gps,sdc:reg}}{Navigera till
+    \activity{sdc:nav}{Navigera}{40}{\aref{sdc:gps,sdc:reg}}{Navigera till
     godtycklig stopplinje eller parkeringsficka med eventuella hinder.}
 
     \actcat{Styrmodul}
-    \activity{ctrl:drive}{Driva bilen}{5}{\aref{all:install,all:sw}}{Reglera
+    \activity{ctrl:drive}{Driva bilen}{40}{\aref{all:install,all:sw}}{Reglera
     taxins fart och taxins svängradie genom att kontrollera drivmotorn och
     svängmotorn utifrån kommunikationsmodulens kommandon.}
 
     \actcat{Sensormodul}
     \activity{sens:filter}{Bearbeta
-    sensorvärden}{10}{\aref{all:sw,all:install}}{Filtrera brus från analoga
+    sensorvärden}{40}{\aref{all:sw,all:install}}{Filtrera brus från analoga
     sensorer och konvertera värden till SI-enheter.}
-    \activity{sens:send}{Skicka värden}{10}{\aref{all:sw,all:install}}{Skicka
+    \activity{sens:send}{Skicka värden}{30}{\aref{all:sw,all:install}}{Skicka
     värden till kommunikationsmodulen.}
 
     \actcat{Användargränssnitt}
-    \activity{ui:rc}{Styra taxi}{10}{\aref{all:sw}}{Implementera gränssnitt för
+    \activity{ui:rc}{Styra taxi}{15}{\aref{all:sw}}{Implementera gränssnitt för
     att styra taxin.}
-    \activity{ui:param}{Inmatning}{5}{\aref{all:sw}}{Gränssnitt för att mata in
+    \activity{ui:param}{Inmatning}{30}{\aref{all:sw}}{Gränssnitt för att mata in
     konstantparametrer och en karta under körning.}
-    \activity{ui:data}{Visa mätdata och karta}{5}{\aref{all:sw}}{Visa upp
+    \activity{ui:data}{Visa mätdata och karta}{30}{\aref{all:sw}}{Visa upp
     mätdata från taxin samt rita ut en karta över banan med taxins nuvarande
     position.}
 
     \actcat{Anslutningar}
     \activity{io:wireless}{Trådlös
-    länk}{10}{\aref{all:sw,all:install}}{Implementera en trådlös länk mellan
+    länk}{40}{\aref{all:sw,all:install}}{Implementera en trådlös länk mellan
     kommunikationsmodulen och fjärrklienten.}
-    \activity{io:comm-sens}{Komm-sensor}{15}{\aref{all:sw,all:install}}{Implementera
-    seriellt protokoll för att kommunicera mellan kommunikations- och
-    sensormodul.}
-    \activity{io:comm-styr}{Komm-styr}{15}{\aref{all:install,all:sw}}{Implementera
-    seriellt protokoll för att kommunicera mellan kommunikations- och
-    styrmodul.}
 
     \actcat{Testning}
     \activity{test:int}{Integrations\-testning}{10}{}{Utför integrationstest
@@ -143,7 +137,7 @@ Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
     systemet.}
 
     \actcat{Dokument}
-    \activity{doc:tecdoc}{Teknisk dokumentation}{50}{}{Dokumentera
+    \activity{doc:tecdoc}{Teknisk dokumentation}{70}{}{Dokumentera
     implementationen.}
     \activity{doc:study-pres}{Efterstudie och presentation}{20}{}{Utför en
     efterstudie och förbered en presentation.}
@@ -152,7 +146,7 @@ Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
     och statusrapporter.}
 
     \actcat{Övrigt}
-    \activity{impl:meet}{Möte}{40}{}{Genomföra möten.}
+    \activity{impl:meet}{Möte}{35}{}{Genomföra möten.}
 \end{activitylist}
 
 \newpage
