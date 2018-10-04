@@ -12,14 +12,21 @@ Kommunikationsmodulen har tre huvudsakliga uppgifter; bildbehandling,
 kommunicera med fjärrklienten och kontrollera taxin autonomt.
 
 \paragraph{Bildbehandling} skall utföras av kommunikationsmodulen för att
-avgöra bilens position i vägfilen och upptäcka stopplinjer. Med hjälp av 
-ett felvärde skapas
+avgöra bilens position i vägfilen och upptäcka stopplinjer. Med hjälp av
+kamerans bilder på vägen skapas ett felvärde som kan användas för att justera
+taxins riktning.
 
-\paragraph{Kommunikation med fjärrklient}
+\paragraph{Kommunikation med fjärrklienten} sköts av kommunikationsmodulen för
+att skicka sensorvärden och annan relevant information. Modulen skall även ta
+emot en karta som användaren har matat in via fjärrklienten som kan användas
+för den autonoma körningen.
 
-\paragraph{Autonomitet}
+\paragraph{Autonomitet} utförs av kommunikationsmodulen för att utföra
+uppdraget. Kommunikationsmodulen hämtar sensordata från sensormodulen och
+bildbehandlar kamerabilderna för att utföra beslut i realtid. Besluten kommer
+därefter att utföras med kommandon som skickas till styrmodulen.
 
-\subsubsection{Schema}
+\subsubsection{Schema} 
 
 \subsubsection{Komponentbudget}
 
