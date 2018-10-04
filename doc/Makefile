@@ -1,8 +1,8 @@
 TEXARGS=--shell-escape
 
 design: designspec/*.tex designspec/sections/*.tex
-	pdflatex ${TEXARGS} designspec/design.tex
-	pdflatex ${TEXARGS} designspec/design.tex
+	pdflatex ${TEXARGS} designspec/spec.tex
+	pdflatex ${TEXARGS} designspec/spec.tex
 	make clean
 
 krav: kravspec/krav.tex kravspec/sections/*.tex
