@@ -5,11 +5,28 @@
 \input{common/vars.tex}
 \input{designspec/vars.tex}
 
+% Disposition:
+%   Det ska finnas en sammanfattning, en beskrivning av delsystemen med
+%   detaljer, en beskrivning hur delsystemen kommunicerar med varanda och sist
+%   bilagor.
+
+% Övergripande check av att dokumentet har rätt andemening:
+%
+%   -Är dokumentet ett så bra stöd som det kan bli för det fortsatta arbetet?
+%
+%   -Vilka saker kan bli svåra att ändra på senare? Se till att dessa är
+%   övervägda och 
+
 \begin{document}
-\subfile{common/sections/frontpage}
-\subfile{common/sections/identity}
-\setcounter{page}{1}
-\tableofcontents\newpage
-\subfile{designspec/sections/mod_hist}\clearpage
-\subfile{designspec/sections/intro}\clearpage
+    \subfile{common/sections/frontpage}
+    \subfile{common/sections/identity}
+    \setcounter{page}{1}
+    \tableofcontents\newpage
+
+    \subfile{\sections/mod_hist}\clearpage
+    \subfile{\sections/intro}\clearpage
+    \subfile{\sections/overview}\clearpage
+    \subfile{\sections/subsys.tex}\clearpage
+    \subfile{\sections/comm.tex}\clearpage
+    \subfile{\sections/impl.tex}\clearpage
 \end{document}
