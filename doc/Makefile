@@ -1,5 +1,10 @@
 TEXARGS=--shell-escape
 
+design: designspec/*.tex designspec/sections/*.tex
+	pdflatex ${TEXARGS} designspec/design.tex
+	pdflatex ${TEXARGS} designspec/design.tex
+	make clean
+
 krav: kravspec/krav.tex kravspec/sections/*.tex
 	pdflatex ${TEXARGS} kravspec/krav.tex
 	bibtex krav

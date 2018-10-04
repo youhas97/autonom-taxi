@@ -1,0 +1,15 @@
+\documentclass[12pt]{article}
+
+\input{common/format.tex}
+\input{designspec/format.tex}
+\input{common/vars.tex}
+\input{designspec/vars.tex}
+
+\begin{document}
+\subfile{common/sections/frontpage}
+\subfile{common/sections/identity}
+\setcounter{page}{1}
+\tableofcontents\newpage
+\subfile{designspec/sections/mod_hist}\clearpage
+\subfile{designspec/sections/intro}\clearpage
+\end{document}
