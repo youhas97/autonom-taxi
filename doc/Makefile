@@ -25,4 +25,4 @@ skiss: systemskiss/skiss.tex systemskiss/sections/*.tex
 	make clean
 clean:
 	rm -f **.blg *.dvi *.xml *.log *.aux *.out *.toc *.bbl
-	rm -f img/*converted*
+	rm -f common/img/*converted*
