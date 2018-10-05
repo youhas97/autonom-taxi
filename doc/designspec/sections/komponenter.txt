@@ -29,3 +29,4 @@ S9702, Analog RGB-sensor
 
 Kommunkationsmodul:
 
+LD33V, Spänningsregulator, +5 → +3.3V
