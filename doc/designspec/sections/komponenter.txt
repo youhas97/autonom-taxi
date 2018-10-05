@@ -1,0 +1,31 @@
+Styrmodul:
+
+
+
+
+
+
+
+
+
+
+
+
+Sensormodul:
+
+SRF04, Avståndsmätare med ultraljud
+S9702, Analog RGB-sensor
+
+
+
+
+
+
+
+
+
+
+
+
+Kommunkationsmodul:
+
