@@ -38,10 +38,9 @@ Tidskolumnen visar en uppskattning av antalet timmar som aktiviteten förväntas
 att ta. Kolumnen för beroenden visar vilka andra aktiviteter som måste vara
 avklarade innan en aktivitet kan bli avklarad.
 
-\newpage
 \subsection{Designfas}
 Nedan följer de aktiviteter som är en del av designfasen. Dessa aktiviteter,
-delar av allmänna aktiviter samt en buffer summerar till 420 inplanerade timmar
+delar av allmänna aktiviter samt en buffer summerar till 220 inplanerade timmar
 under designfasen.
 
 \begin{activitylist}
@@ -56,8 +55,8 @@ under designfasen.
     \actcat{Dokument}
     \activity{doc:report}{Rapporter}{40}{}{Skriva, formatera och sammanställa
     rapporter.}
-    \activity{doc:bdiag}{Rita blockdiagram}{20}{}{Rita blockdiagram över hela systemet,
-    kommunikationsmodulen, styrmodulen och sensormodulen.}
+    \activity{doc:bdiag}{Rita blockdiagram}{20}{}{Rita blockdiagram över hela
+    systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
     \activity{doc:cdiag}{Rita kretsscheman}{20}{}{Rita kretsschema över hela
     systemet, kommunikationsmodulen, styrmodulen och sensormodulen.}
 
@@ -67,8 +66,9 @@ under designfasen.
 
 \newpage
 \subsection{Utförandefas}
-Utförandefasen består av nedanstående aktiviteter och delar av allmänna aktiviteter.
-Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
+Utförandefasen består av nedanstående aktiviteter och delar av allmänna
+aktiviteter.  Dessa aktiviteter samt en buffer summerar till 900 inplanerade
+timmar.
 \begin{activitylist}
     \actcat{Allmänt}
     \activity{all:install}{Koppla och installera}{55}{}{Konstruera hårdvaran av
@@ -84,13 +84,13 @@ Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
     fjärrstyrningskommandon.}
 
     \actcat{Bildbearbetning}
-    \activity{ip:edge}{Upptäck kanter.}{35}{\aref{all:install}}{Upptäck kanter
+    \activity{ip:edge}{Upptäck kanter.}{25}{\aref{all:install}}{Upptäck kanter
     i bilder.}
-    \activity{ip:line}{Upptäck linjer.}{35}{\aref{ip:edge}}{Upptäck
+    \activity{ip:line}{Upptäck linjer.}{25}{\aref{ip:edge}}{Upptäck
     linjemarkeringar på vägen.}
     \activity{ip:2d}{Transformera linjer.}{20}{\ref{act:ip:line}}{Transformera
     perspektivbild av linjer till en ortografisk projektion sedd uppifrån.}
-    \activity{ip:err}{Avgör felvärde.}{30}{\aref{ip:2d}}{Beräkna felvärde från
+    \activity{ip:err}{Avgör felvärde.}{20}{\aref{ip:2d}}{Beräkna felvärde från
     linjekarta.}
 
     \actcat{Autonom körning}
@@ -98,11 +98,10 @@ Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
     bestäm taxins position i kartan.}
     \activity{sdc:tsp}{Hitta kortaste väg}{20}{}{Implementera algoritm för
     taxin att hitta kortaste vägen mellan två stopplinjer i karta.}
-    \activity{sdc:reg}{Följ
-    vägfil}{30}{\aref{all:sw,ip:err,ctrl:drive}}{Reglera styrning utefter
-    felvärde och följ höger vägfil, inklusive rondeller.}
-    \activity{sdc:nav}{Navigera}{40 (TODO: öka)}{\aref{sdc:gps,sdc:reg}}{Navigera
-    till godtycklig stopplinje eller parkeringsficka med eventuella hinder.}
+    \activity{sdc:reg}{Följvägfil}{70}{\aref{all:sw,ip:err,ctrl:drive}}{Reglera
+    styrning utefter felvärde och följ höger vägfil, inklusive rondeller.}
+    \activity{sdc:nav}{Navigera}{40}{\aref{sdc:gps,sdc:reg}}{Navigera till
+    godtycklig stopplinje eller parkeringsficka med eventuella hinder.}
 
     \actcat{Styrmodul}
     \activity{ctrl:drive}{Driva bilen}{40}{\aref{all:install,all:sw}}{Reglera
@@ -119,8 +118,8 @@ Dessa aktiviteter samt en buffer summerar till 700 inplanerade timmar.
     \actcat{Användargränssnitt}
     \activity{ui:rc}{Styra taxi}{15}{\aref{all:sw}}{Implementera gränssnitt för
     att styra taxin.}
-    \activity{ui:param}{Inmatning}{30}{\aref{all:sw}}{Gränssnitt för att mata in
-    konstantparametrer och en karta under körning.}
+    \activity{ui:param}{Inmatning}{30}{\aref{all:sw}}{Gränssnitt för att mata
+    in konstantparametrer och en karta under körning.}
     \activity{ui:data}{Visa mätdata och karta}{30}{\aref{all:sw}}{Visa upp
     mätdata från taxin samt rita ut en karta över banan med taxins nuvarande
     position.}
