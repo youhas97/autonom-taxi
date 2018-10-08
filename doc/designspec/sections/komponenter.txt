@@ -25,7 +25,9 @@ svart färg, en pulsgivare kan byggas)
 
 LCD JM162A, 2 rader × 16 tecken. 
 
+GP2D120, Optisk avståndsmätare 4-30 cm (för sidan av bilen)
 
+GP2Y0A41SK, Optisk avståndsmätare 4-30 cm (för sidan av bilen)
 
 
 
