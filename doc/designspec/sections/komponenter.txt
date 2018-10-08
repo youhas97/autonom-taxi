@@ -14,13 +14,16 @@ ATMega16, AVR
 Sensormodul:
 
 SRF04, Avståndsmätare med ultraljud
+
 S9702, Analog RGB-sensor
+
 ATMega16, AVR
+
 Reflexsensor, Denna sensor används bla som tejpsensor för kamprobotar, (kan
 användas för att mäta hastigheten på bilen genom att tejpa ett däck med vit och
 svart färg, en pulsgivare kan byggas)
 
-
+LCD JM162A, 2 rader × 16 tecken. 
 
 
 
@@ -32,3 +35,5 @@ svart färg, en pulsgivare kan byggas)
 Kommunkationsmodul:
 
 LD33V, Spänningsregulator, +5 → +3.3V
+
+Raspberry Pi Camera V2 Video Module
