@@ -2,7 +2,9 @@
 
 \begin{document}
 \section{Sensormodul}
-Sensormodulen innehåller alla de sensorer som bilen behöver för att kunna mäta avstånd i sin omgivning. Den är direkt kopplad till kommunikationsmodulen via en databuss.
+Sensormodulen innehåller alla de sensorer som bilen behöver för att kunna mäta
+avstånd i sin omgivning. Den är direkt kopplad till kommunikationsmodulen via
+en databuss.
 \subsection{Översiktlig beskrivning av modulen}
 \begin{figure}[h]
     \centering
@@ -10,16 +12,20 @@ Sensormodulen innehåller alla de sensorer som bilen behöver för att kunna mä
     \caption{Övergripande bild över sensormodulen}
     \label{fig:sensorskiss}
 \end{figure}
-\noindent
-Sensorerna ska vara kopplade till olika brusfilter som ska filtrera bort
-störningar av sensorvärdena. Den bakre sensor är tänkt att vara en
+\noindent Sensorerna ska vara kopplade till olika brusfilter som ska filtrera
+bort störningar av sensorvärdena. Den bakre sensor är tänkt att vara en
 IR-avståndsmätare. Bilen kommer använda denna sensor till att upptäcka när den
 har kört förbi hinder. Avståndsmätare där framme ska kunna mäta avstånd till
-hinder. Det kommer vara antingen en ultraljudssenosr eller en IR-sensor som
-åtminstone kan som minst mäta 5 cm och iaf 30 cm framåt eller längre.
-Sensorvärden kommer skickas via en databuss till modulens
-processor. En LCD-skärm ska kopplas till mikrokontrollern eller direkt till
-bussen. På LCD-skärmen ska sensorvärden visas för att förenkla felsökning av modulen. Modulen ska ha en direkt koppling till kommunikationsmodulen via en databuss. Figur \ref{fig:sensorskiss} visar en grov bild över hur modulen ska se ut.
+hinder. Det kommer vara antingen en ultraljudssensor eller en IR-sensor som
+åtminstone kan som minst mäta 5 cm och iaf 30 cm framåt eller längre. Bilen
+kommer även vara utrustad med någon form av ordometer som ska mäta hur långt
+bilen har kört i banan. Den ska placeras vid något av bilens däck och mäta
+antalet varv däcket snurrar. Sensorvärden kommer skickas via en databuss till
+modulens processor. En LCD-skärm ska kopplas till mikrokontrollern eller direkt
+till bussen. På LCD-skärmen ska sensorvärden visas för att förenkla felsökning
+av modulen. Modulen ska ha en direkt koppling till kommunikationsmodulen via en
+databuss. Figur \ref{fig:sensorskiss} visar en grov bild över hur modulen ska
+se ut.
 
 
 \end{document}
