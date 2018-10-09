@@ -3,12 +3,17 @@
 \begin{document}
 
 \section{Styrmodul}
-Styrmodulen är en modul som har i uppgift att ta emot styrsignaler ifrån
-kommunikationsmodulen och skicka dessa till bilens drivmotor och svängmotor.
+Styrmodulen är en modul som har i uppgift att driva och styra bilen utefter
+kommandon från kommunikationsmodulen. Den består av en drivmotor, en styrmotor
+och en mikrokontroller.
 
 \subsection{Funktion}
+Mikrokontrollerns syfte är att hantera den direkta kontrollen av styrreglagen
+för taxins motorer. Styrmodulen ska kontrollera både drivmotorn och svängmotorn
+utifrån kommandon som ges av kommunikationsmodulen.
 
 \subsection{Hårdvaruimplementation}
+
 \subsubsection{Kopplingsschema}
 
 \subsubsection{Budget}
@@ -43,10 +48,5 @@ alla de noder som objektet har en anslutande båge till.
 \subsubsection{Avbrott}
 
 \subsubsection{Huvud-loop}
-
-\subsection{Funktion}
-Styrmodulens syfte är att hantera den direkta kontrollen av styrreglagen för
-taxins motorer. Styrmodulen ska kontrollera både drivmotorn och svängmotorn
-utifrån kommandon som ges av kommunikationsmodulen.
 
 \end{document}
