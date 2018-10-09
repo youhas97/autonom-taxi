@@ -12,8 +12,35 @@
 %   gruppen få utveckla under projektets gång).
 
 \begin{document}
+
 \section{Kommunikation}
 
-hej hej
+\section{Kommunikationsmodul till styrmodul}
+Kommunikationsmodulen ska skicka en hastighet $v$ och en styrradie $r$ till
+styrmodulen med jämna mellanrum. Styrenheten ska försöka hålla hastighet och
+radie som specificerat av det senaste mottagna värdet. Figur \ref{bf:comm-ctrl}
+visar bitsekvensen för datan som sänds.
+
+\begin{figure}[H]
+    \centering
+    \begin{bytefield}{16}
+        \bitheader{0,7,8,15} \\
+        \bitbox{8}{$v$}
+        \bitbox{8}{$r$}
+    \end{bytefield}
+    \label{bf:comm-ctrl}
+    \caption{Bitsekvensen för datan som skickas från kommunikationsmodulen till
+    styrmodulen.}
+\end{figure}
+
+\paragraph{Hastigheten $v$} består av ett signerat 8-bitars heltal i
+tvåkomplementsform. Värdet -128 motsvarar högsta fart bakåt, 0 motsvarar att
+stå still och 127 motsvarar högsta fart framåt.
+
+\paragraph{Styrradien $v$} består av ett signerat 8-bitars heltal i
+tvåkomplementsform. Värdet -128 motsvarar maximal svängning åt vänster, 0
+motsvarar raka hjul, 127 motsvarar maximal svängning åt höger.
+
+\section{Sensormodul till kommunikationsmodul}
 
 \end{document}
