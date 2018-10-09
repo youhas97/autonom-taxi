@@ -23,12 +23,27 @@ utifrån kommandon som ges av kommunikationsmodulen.
 \subsubsection{Bedömning}
 
 \subsection{Mjukvaruimplementation}
+För att hitta kortaste vägen ska kartan matas in i fjärrklienten. Kartan
+representeras med ett nätverk där varje nod motsvarar en tejpbit. Programmet
+skrivs i Python.
 
 \subsubsection{Flödesschema}
 
 \subsubsection{Algoritmer}
 
 \subsubsection{Datastrukturer}
+Kartan består av noder, nodtyper och avstånd. Kartan i sig är en lista av
+noder. Det finns tre olika nodtyper, stopplinje, parkingsficka och rondell.
+Dessa representeras genom numreringen 1, 2, respektive 3. Varje nod kan
+associeras med ett avstånd til en viss nod.  
+
+\begin{labeling}{Nodtyper}
+
+\item [Noder] 
+Noder är en klass som består av nodtyp och vilka grannar den har. Grannar är
+alla de noder som objektet har en anslutande båge till.
+
+\end{labeling}
 
 \subsubsection{Avbrott}
 
