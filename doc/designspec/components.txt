@@ -4,6 +4,15 @@ ATMega16, AVR
 
 L293 H-brygga, (för att driva motorn)
 
+Servostyrning, (för att svänga, vet inte om det är en komponent)
+(https://docs.isy.liu.se/pub/VanHeden/DataSheets/servostyrning.pdf)
+
+JTAG Ice, (för att kunna debugga on-chip utan att skicka grejer genom
+mikrokontrollern)
+
+IQEXO-3, Kristalloscillator (klockpuls)
+
+
 
 Sensormodul:
 
