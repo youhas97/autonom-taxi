@@ -12,8 +12,65 @@
 %   gruppen få utveckla under projektets gång).
 
 \begin{document}
-\section{Kommunikation}
 
-hej hej
+\section{Kommunikation}
+TODO intro för kommuikation 
+
+\subsection{Kommunikationsmodul till styrmodul}
+Kommunikationsmodulen ska skicka en hastighet $v$ och en styrradie $r$ till
+styrmodulen med jämna mellanrum. Styrenheten ska försöka hålla hastighet och
+radie som specificerat av det senaste mottagna värdet. Figur \ref{bf:comm-ctrl}
+visar bitsekvensen för datan som sänds.
+
+\begin{figure}[H]
+    \centering
+    \begin{bytefield}[endianness=big]{16}
+        \bitheader{0,7,8,15} \\
+        \bitbox{8}{$v$}
+        \bitbox{8}{$r$}
+    \end{bytefield}
+    \label{bf:comm-ctrl}
+    \caption{Bitsekvensen för datan som skickas fortlöpande från
+    kommunikationsmodulen till styrmodulen.}
+\end{figure}
+
+\paragraph{Hastigheten $v$} består av ett signerat 8-bitars heltal i
+tvåkomplementsform. Värdet -128 motsvarar högsta fart bakåt, 0 motsvarar att
+stå still och 127 motsvarar högsta fart framåt.
+
+\paragraph{Styrradien $v$} består av ett signerat 8-bitars heltal i
+tvåkomplementsform. Värdet -128 motsvarar maximal svängning åt vänster, 0
+motsvarar raka hjul, 127 motsvarar maximal svängning åt höger.
+
+\subsection{Sensormodul till kommunikationsmodul}
+Sensormodulen ska fortlöpande skicka värden för varje sensor till
+kommunikationsmodulen. Fig \ref{bf:sens-comm} visar bitsekvensen som sensormodulen
+skickar.
+
+\begin{figure}[H]
+    \centering
+    \begin{bytefield}[endianness=big]{32}
+        \bitheader{0,7,8,15,16,23,24,31} \\
+        \bitbox{8}{$d_f$}
+        \bitbox{8}{$d_r$}
+        \bitbox{8}{$l$}
+        \bitbox{8}{$n$}
+    \end{bytefield}
+    \label{bf:sens-comm}
+    \caption{Bitsekvensen för datan som skickas fortlöpande till
+    kommunikationsmodulen till sensormodulen.}
+\end{figure}
+
+\paragraph{Frontavståndet $d_f$} är ett 8-bitars osignerat heltal som
+representerar avståndet från sensorn på taxins framsida. TODO min max?
+
+\paragraph{Sidoavståndet $d_r$} är ett 8-bitars osignerat heltal som
+representerar avståndet från sensorn på taxins högersida. TODO min max?
+
+\paragraph{Ljusstyrkan $l$} är ett 8-bitars osignerat heltal som representerar
+ljusstyrkan från sensorn på taxins undersida. TODO min max?
+
+\paragraph{Varvtalet $n$} är ett 8-bitars osignerat heltal som specificerar
+antalet varv som taxins hjul har rullat sen förra sändelsen.
 
 \end{document}

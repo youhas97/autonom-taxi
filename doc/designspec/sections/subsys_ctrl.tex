@@ -3,12 +3,17 @@
 \begin{document}
 
 \section{Styrmodul}
-Styrmodulen är en modul som har i uppgift att ta emot styrsignaler ifrån
-kommunikationsmodulen och skicka dessa till bilens drivmotor och svängmotor.
+Styrmodulen är en modul som har i uppgift att driva och styra bilen utefter
+kommandon från kommunikationsmodulen. Den består av en drivmotor, en styrmotor
+och en mikrokontroller.
 
 \subsection{Funktion}
+Mikrokontrollerns syfte är att hantera den direkta kontrollen av styrreglagen
+för taxins motorer. Styrmodulen ska kontrollera både drivmotorn och svängmotorn
+utifrån kommandon som ges av kommunikationsmodulen.
 
 \subsection{Hårdvaruimplementation}
+
 \subsubsection{Kopplingsschema}
 
 \subsubsection{Budget}
@@ -18,20 +23,30 @@ kommunikationsmodulen och skicka dessa till bilens drivmotor och svängmotor.
 \subsubsection{Bedömning}
 
 \subsection{Mjukvaruimplementation}
+För att hitta kortaste vägen ska kartan matas in i fjärrklienten. Kartan
+representeras med ett nätverk där varje nod motsvarar en tejpbit. Programmet
+skrivs i Python.
 
 \subsubsection{Flödesschema}
 
 \subsubsection{Algoritmer}
 
 \subsubsection{Datastrukturer}
+Kartan består av noder, nodtyper och avstånd. Kartan i sig är en lista av
+noder. Det finns tre olika nodtyper, stopplinje, parkingsficka och rondell.
+Dessa representeras genom numreringen 1, 2, respektive 3. Varje nod kan
+associeras med ett avstånd til en viss nod.  
+
+\begin{labeling}{Nodtyper}
+
+\item [Noder] 
+Noder är en klass som består av nodtyp och vilka grannar den har. Grannar är
+alla de noder som objektet har en anslutande båge till.
+
+\end{labeling}
 
 \subsubsection{Avbrott}
 
 \subsubsection{Huvud-loop}
-
-\subsection{Funktion}
-Styrmodulens syfte är att hantera den direkta kontrollen av styrreglagen för
-taxins motorer. Styrmodulen ska kontrollera både drivmotorn och svängmotorn
-utifrån kommandon som ges av kommunikationsmodulen.
 
 \end{document}
