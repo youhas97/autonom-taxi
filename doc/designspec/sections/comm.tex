@@ -16,7 +16,21 @@
 \section{Kommunikation}
 TODO intro för kommuikation 
 
-\subsection{Kommunikationsmodul till styrmodul}
+\subsection{Trådlös länk}
+
+\subsubsection{Protokoll}
+
+\subsection{Databuss mellan moduler}
+Mellan sensormodulen, kommunikationsmodulen och styrmodulen ligger en databuss
+som använder \iic. Kommunikationsmodulen agerar som master medan sensormodulen
+och styrmodulen agerar som slave. Sensormodulen kommer skicka sensorvärden till
+kommunikationsmodulen och kommunikationsmodulen skickar styrkommandon till
+styrmodulen. Eventuellt kan data överföras till sensormodulen eller från
+styrmodulen vid debuggning. Med {\iic} krävs ingen extra signal för att skicka i
+båda riktningar som med UART. Eftersom full duplex inte är nödvändigt behövs
+inte heller någon extra signal som med SPI.
+
+\subsubsection{Kommunikationsmodul till styrmodul}
 Kommunikationsmodulen ska skicka en hastighet $v$ och en styrradie $r$ till
 styrmodulen med jämna mellanrum. Styrenheten ska försöka hålla hastighet och
 radie som specificerat av det senaste mottagna värdet. Figur \ref{bf:comm-ctrl}
@@ -42,7 +56,7 @@ stå still och 127 motsvarar högsta fart framåt.
 tvåkomplementsform. Värdet -128 motsvarar maximal svängning åt vänster, 0
 motsvarar raka hjul, 127 motsvarar maximal svängning åt höger.
 
-\subsection{Sensormodul till kommunikationsmodul}
+\subsubsection{Sensormodul till kommunikationsmodul}
 Sensormodulen ska fortlöpande skicka värden för varje sensor till
 kommunikationsmodulen. Fig \ref{bf:sens-comm} visar bitsekvensen som sensormodulen
 skickar.
@@ -53,7 +67,7 @@ skickar.
         \bitheader{0,7,8,15,16,23,24,31} \\
         \bitbox{8}{$d_f$}
         \bitbox{8}{$d_r$}
-        \bitbox{8}{$l$}
+        \bitbox{8}{$a$}
         \bitbox{8}{$n$}
     \end{bytefield}
     \label{bf:sens-comm}
@@ -62,12 +76,14 @@ skickar.
 \end{figure}
 
 \paragraph{Frontavståndet $d_f$} är ett 8-bitars osignerat heltal som
-representerar avståndet från sensorn på taxins framsida. TODO min max?
+representerar avståndet från sensorn på taxins framsida. Heltalet representerar
+avståndet som frontsensorn läser i centimeter.
 
 \paragraph{Sidoavståndet $d_r$} är ett 8-bitars osignerat heltal som
-representerar avståndet från sensorn på taxins högersida. TODO min max?
+representerar avståndet från sensorn på taxins högersida. Heltalet
+representerar avståndet som sidosensorn läser i centimeter.
 
-\paragraph{Ljusstyrkan $l$} är ett 8-bitars osignerat heltal som representerar
+\paragraph{Ljusstyrkan $a$} är ett 8-bitars osignerat heltal som representerar
 ljusstyrkan från sensorn på taxins undersida. TODO min max?
 
 \paragraph{Varvtalet $n$} är ett 8-bitars osignerat heltal som specificerar
