@@ -31,30 +31,33 @@ båda riktningar som med UART. Eftersom full duplex inte är nödvändigt behöv
 inte heller någon extra signal som med SPI.
 
 \subsubsection{Kommunikationsmodul till styrmodul}
-Kommunikationsmodulen ska skicka en hastighet $v$ och en styrradie $r$ till
-styrmodulen med jämna mellanrum. Styrenheten ska försöka hålla hastighet och
-radie som specificerat av det senaste mottagna värdet. Figur \ref{bf:comm-ctrl}
-visar bitsekvensen för datan som sänds.
+Kommunikationsmodulen ska skicka ett felvärde $e_v$ för hastigheten och ett
+felvärde $e_r$ för styrradien till styrmodulen med jämna mellanrum. Styrenheten
+ska försöka justera hastigheten radien som specificerat av det senaste mottagna
+värdet. Figur \ref{bf:comm-ctrl} visar bitsekvensen för datan som sänds.
 
 \begin{figure}[H]
     \centering
     \begin{bytefield}[endianness=big]{16}
         \bitheader{0,7,8,15} \\
-        \bitbox{8}{$v$}
-        \bitbox{8}{$r$}
+        \bitbox{8}{$e_v$}
+        \bitbox{8}{$e_r$}
     \end{bytefield}
     \label{bf:comm-ctrl}
     \caption{Bitsekvensen för datan som skickas fortlöpande från
     kommunikationsmodulen till styrmodulen.}
 \end{figure}
 
-\paragraph{Hastigheten $v$} består av ett signerat 8-bitars heltal i
-tvåkomplementsform. Värdet -128 motsvarar högsta fart bakåt, 0 motsvarar att
-stå still och 127 motsvarar högsta fart framåt.
+\paragraph{Hastighetsfelet $e_v$} består av ett signerat 8-bitars heltal i
+tvåkomplementsform. Värdet är ett felvärde för hastigheten som beräknas
+$e_v=v_\textit{önskad}-v_\textit{nuvarande}$. Negativa värden betyder att bilen
+kör för snabbt och positiva värden betyder att farten ska öka.
 
-\paragraph{Styrradien $v$} består av ett signerat 8-bitars heltal i
-tvåkomplementsform. Värdet -128 motsvarar maximal svängning åt vänster, 0
-motsvarar raka hjul, 127 motsvarar maximal svängning åt höger.
+\paragraph{Styrfelet $e_r$} består av ett signerat 8-bitars heltal i
+tvåkomplementsform. Värdet är ett felvärde för styrradien som beräknas av
+kommunikationsmodulen utifrån bilens förhållande till väglinjerna. Ett
+nollvärde betyder att hjulen står rätt, negativt att hjulen bör svänga mer åt
+vänster och positivt att hjulen bör svänga mer åt höger.
 
 \subsubsection{Sensormodul till kommunikationsmodul}
 Sensormodulen ska fortlöpande skicka värden för varje sensor till
