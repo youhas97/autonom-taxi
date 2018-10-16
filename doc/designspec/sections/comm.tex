@@ -18,7 +18,10 @@ TODO intro för kommuikation
 delvis mellan enhet (komm) och laptop, även mellan moduler, (inom moduler?)
 
 \subsection{Trådlös länk}
-TODO intro
+Taxin och fjärrklienten kommer att kommunicera via TCP/IP.
+Kommunikationsmodulen och fjärrklienten ansluter till ett gemensamt WLAN.
+Därefter binder kommunikationsmodulen sin IP-address och en port till en sockel
+som fjärrklienten kan ansluta till.
 
 \subsubsection{Protokoll}
 TODO specificera vad som ska skickas: till exempel
@@ -32,13 +35,13 @@ TODO specificera vad som ska skickas: till exempel
 
 % TODO lägg till diagram som visar buss utan detaljer
 \subsection{Mellan taxins moduler}
-Mellan sensormodulen, kommunikationsmodulen och styrmodulen ligger en databuss
-som använder {\iic}. Varje modul är kopplad till en SDA-signal för data och en
-SCL-signal för synkronisering. Kommunikationsmodulen agerar som \emph{master}
-medan sensormodulen och styrmodulen agerar som \emph{slaves}. Sensormodulen
-skickar sensorvärden till kommunikationsmodulen och kommunikationsmodulen
-skickar styrkommandon till styrmodulen. Eventuellt kan data överföras till
-sensormodulen eller från styrmodulen vid felsökning.
+Mellan sensormodulen, kommunikationsmodulen och styrmodulen används
+gränssnittet {\iic}, även känt som TWI. Varje modul är kopplad till en
+SDA-signal för data och en SCL-signal för synkronisering. Kommunikationsmodulen
+agerar som \emph{master} medan sensormodulen och styrmodulen agerar som
+\emph{slaves}. Sensormodulen skickar sensorvärden till kommunikationsmodulen
+och kommunikationsmodulen skickar styrkommandon till styrmodulen. Eventuellt
+kan data överföras till sensormodulen eller från styrmodulen vid felsökning.
 
 Ett alternativ till {\iic} är UART. Då ersätts SDA-signalen med två Tx till Rx
 signaler till och från kommunikationsmodulen. Om data behöver skickas i motsatt
