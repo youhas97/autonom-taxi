@@ -5,7 +5,8 @@
 \section{Kommunikationsmodul}
 Kommunikationsmodulen ska agera som taxins hjärna. Den styr bilen under autonom
 körning och kommunicerar med fjärrklienten. Sensorvärden från sensormodulen
-tolkas av kommunikationsmodulen som därefter skickar beslut till styrmodulen.
+tolkas av kommunikationsmodulen som därefter skickar felvärden till
+styrmodulen.
 
 \subsection{Funktion}
 Kommunikationsmodulen har tre huvudsakliga uppgifter; bildbehandling,
@@ -18,13 +19,13 @@ taxins riktning.
 
 \paragraph{Kommunikation med fjärrklienten} sköts av kommunikationsmodulen för
 att skicka sensorvärden och annan relevant information. Modulen skall även ta
-emot en karta som användaren har matat in via fjärrklienten som kan användas 
-för den autonoma körningen.
+emot ett uppdrag som har skapats utifrån en karta och destination som
+användaren har matat in via fjärrklienten.
 
 \paragraph{Autonomitet} utförs av kommunikationsmodulen för att utföra
 uppdraget. Kommunikationsmodulen hämtar sensordata från sensormodulen och
 bildbehandlar kamerabilderna för att utföra beslut i realtid. Besluten kommer
-därefter att utföras med kommandon som skickas till styrmodulen.
+därefter att översättas till felvärden som skickas till styrmodulen.
 
 \subsection{Hårdvaruimplementation} 
 Kommunikationsmodulen kommer att implementeras med hjälp av en Raspberry Pi 3,
@@ -40,11 +41,16 @@ spänningen från 3.3V som är den spänningen Raspberry Pi 3 stödjer, till 5V 
 är den spänningen sensormodulen och styrmodulen använder.
 % TODO hänvisa till kretsschema i bilaga
 
-\paragraph{Fjärranslutning}
 Kommunikationen med fjärrklienten kommer att ske med en inbyggd Wi-Fi eller
 Bluetooth-modul på Raspberry Pi-enheten. Anslutningen kommer att ske via wifi
 och skapas med en dator med operativsystemet Raspbian och program som
 WPA-supplicant kan användas för att sätta upp anslutningen.
+
+\subsubsection{Komponenter}
+\paragraph{Raspberry Pi 3} bla bla TODO
+\paragraph{Raspberry Pi Camera V2 Video Module} TODO
+\paragraph{Raspberry Pi GPIO} TODO
+\paragraph{BSS138 Logic level converter} TODO
 
 \subsection{Mjukvaruimplementation}
 
