@@ -27,9 +27,19 @@ kommunikationsmodulen och skicka dessa till bilens drivmotor och svängmotor.
 
 \subsubsection{Avbrott}
 
+\begin{itemize}
+    \item \textbf{TWI\_Interrupt} Avbrottet sker när TWI-bussen adresserar
+    styrmodulen. I avbrottet måste statusregistret TWSR maskas för att kunna
+    avgöra vilken funktion som ska utföras. T.ex. skicka/ta emot data e.t.c. 
+
+    \item \textbf{Output\_Compare\_Interrupt} Avbrottet sker när en PWM puls
+    ska skickas ut till servon eller motorn. Avbrottet sker varje gång
+    motsvarande timer-register har nått sitt maximum och startar om från noll. 
+\end{itemize}
 \subsubsection{Huvud-loop}
 
 \subsection{Funktion}
+
 Styrmodulens syfte är att hantera den direkta kontrollen av styrreglagen för
 taxins motorer. Styrmodulen ska kontrollera både drivmotorn och svängmotorn
 utifrån kommandon som ges av kommunikationsmodulen.
