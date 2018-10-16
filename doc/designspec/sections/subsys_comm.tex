@@ -5,7 +5,8 @@
 \section{Kommunikationsmodul}
 Kommunikationsmodulen ska agera som taxins hjärna. Den styr bilen under autonom
 körning och kommunicerar med fjärrklienten. Sensorvärden från sensormodulen
-tolkas av kommunikationsmodulen som därefter skickar beslut till styrmodulen.
+tolkas av kommunikationsmodulen som därefter skickar felvärden till
+styrmodulen.
 
 \subsection{Funktion}
 Kommunikationsmodulen har tre huvudsakliga uppgifter; bildbehandling,
@@ -18,31 +19,38 @@ taxins riktning.
 
 \paragraph{Kommunikation med fjärrklienten} sköts av kommunikationsmodulen för
 att skicka sensorvärden och annan relevant information. Modulen skall även ta
-emot en karta som användaren har matat in via fjärrklienten som kan användas 
-för den autonoma körningen.
+emot ett uppdrag som har skapats utifrån en karta och destination som
+användaren har matat in via fjärrklienten.
 
 \paragraph{Autonomitet} utförs av kommunikationsmodulen för att utföra
 uppdraget. Kommunikationsmodulen hämtar sensordata från sensormodulen och
 bildbehandlar kamerabilderna för att utföra beslut i realtid. Besluten kommer
-därefter att utföras med kommandon som skickas till styrmodulen.
+därefter att översättas till felvärden som skickas till styrmodulen.
 
 \subsection{Hårdvaruimplementation} 
 Kommunikationsmodulen kommer att implementeras med hjälp av en Raspberry Pi 3,
 där en bluetooth och wifikomponent redan finns integrerat. Kameran kommer att
 kopplas direkt till kameraporten som finns på Raspberry Pi-kortet.
 GPIO-pinnarna  kommer att användas för att ansluta till övriga moduler.
-Eftersom I2C-protokollet kommer att användas, kommer endast GPIO2 och GPIO3-pinnarna att användas eftersom de är data respektive klockan för de pinnarna
-som stödjer I2C-protokollet. Det kommer att finnas en nivåskiftare som klockan
+Eftersom {\iic}-protokollet kommer att användas, kommer endast GPIO2 och
+GPIO3-pinnarna att användas eftersom de är data respektive klockan för de
+pinnarna som stödjer {\iic}. Det kommer att finnas en nivåskiftare som klockan
 och datan från GPIO pinnarna skiftar spänning i. Nivåskiftaren kommer att
-försörjas med en spänning från en 3.3V pin, samt en 5V pin
-för att kunna skifta spänningen från 3.3V som är den spänningen Raspberry Pi 3
-stödjer, till 5V som är den spänningen sensormodulen och styrmodulen använder. 
+försörjas med en spänning från en 3.3V pin, samt en 5V pin för att kunna skifta
+spänningen från 3.3V som är den spänningen Raspberry Pi 3 stödjer, till 5V som
+är den spänningen sensormodulen och styrmodulen använder.
+% TODO hänvisa till kretsschema i bilaga
 
-\paragraph{Fjärranslutning}
-Kommunikationen med fjärrklienten kommer att ske med en inbyggd wifi och
-bluetooth-modul på raspberry-pi 3. Anslutningen kommer att ske via wifi och skapas med en dator
-med operativsystemet linux och program som WPA-supplicant kan användas för att
-sätta upp anslutningen.
+Kommunikationen med fjärrklienten kommer att ske med en inbyggd Wi-Fi eller
+Bluetooth-modul på Raspberry Pi-enheten. Anslutningen kommer att ske via wifi
+och skapas med en dator med operativsystemet Raspbian och program som
+WPA-supplicant kan användas för att sätta upp anslutningen.
+
+\subsubsection{Komponenter}
+\paragraph{Raspberry Pi 3} bla bla TODO
+\paragraph{Raspberry Pi Camera V2 Video Module} TODO
+\paragraph{Raspberry Pi GPIO} TODO
+\paragraph{BSS138 Logic level converter} TODO
 
 \subsection{Mjukvaruimplementation}
 

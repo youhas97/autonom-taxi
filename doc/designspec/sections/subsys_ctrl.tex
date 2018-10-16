@@ -21,14 +21,9 @@ styrmodulen följande komponenter:
 
 \begin{itemize}
 	\item \textbf{ATMega16} Modulens microprocessor. 
-
-	\item \textbf{JTAG} Modulens microprocessor. 
+	\item \textbf{JTAG} Finns för att kunna flasha microprocessorn. 
 	\item \textbf{LCD-display} Ska visa parametrar under körning i
 	felsökningssyfte.
-	\item \textbf{Switch} Ska kopplas till microprocessorns reset pinne för att
-	ge en stabil reset signal.
-	\item \textbf{EXO3} Kristalloscillator som ska ge klockpulser till
-	microprocessorn.
 \end{itemize}
 
 \subsubsection{Kontroll}
@@ -58,5 +53,12 @@ Se kopplingsschemat för att mer detaljerat se använda portar.
 I huvudloopen kommer värdena från kommunikationsmodulen göras om till
 motsvarande tidsintervall i PWM. Beroende på hur snabbt det går så kommer
 huvudloopen vänta på avbrott.
+
+
+\subsection{Komponenter}
+\paragraph{ATMega16} bla bla TODO
+\paragraph{Drivmotor} bla bla TODO
+\paragraph{Servo} bla bla TODO
+\paragraph{LCD JM162A} bla bla TODO
 
 \end{document}
