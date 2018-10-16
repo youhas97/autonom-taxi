@@ -33,54 +33,29 @@ TODO specificera vad som ska skickas: till exempel
     "set\_speed\_error:1.5" -> komm
         komm sätter speed\_error till 1.5
 
-% TODO lägg till diagram som visar buss utan detaljer
 \subsection{Mellan taxins moduler}
 Mellan sensormodulen, kommunikationsmodulen och styrmodulen används
 gränssnittet {\iic}, även känt som TWI. Varje modul är kopplad till en
-SDA-signal för data och en SCL-signal för synkronisering. Kommunikationsmodulen
-agerar som \emph{master} medan sensormodulen och styrmodulen agerar som
-\emph{slaves}. Sensormodulen skickar sensorvärden till kommunikationsmodulen
-och kommunikationsmodulen skickar styrkommandon till styrmodulen. Eventuellt
-kan data överföras till sensormodulen eller från styrmodulen vid felsökning.
-
-Ett alternativ till {\iic} är UART. Då ersätts SDA-signalen med två Tx till Rx
-signaler till och från kommunikationsmodulen. Om data behöver skickas i motsatt
-riktning vid felsökning behöver fler signaler läggas till och då behövs
-eventuellt en extra nivåskiftare. Ett annat alternativ är SPI; detta kräver
-dock fler signaler vilket inte är nödvändigt då det inte finns ett behov av
-full duplex.
-
-\subsubsection{Kommunikationsmodul till styrmodul}
-Kommunikationsmodulen ska skicka ett felvärde $e_v$ för hastigheten och ett
-felvärde $e_r$ för styrradien till styrmodulen med jämna mellanrum. Styrenheten
-ska försöka justera hastigheten och radien som specificerat av det senaste
-mottagna värdet. Figur \ref{bf:comm-ctrl} visar bitsekvensen för datan som
-sänds.
-
+SDA-signal för data och en SCL-signal för synkronisering som visat i figur
+\ref{fig:bus_i2c}. Kommunikationsmodulen agerar som \emph{master} medan
+sensormodulen och styrmodulen agerar som \emph{slaves}. Sensormodulen skickar
+sensorvärden till kommunikationsmodulen och kommunikationsmodulen skickar
+styrkommandon till styrmodulen. Eventuellt kan data överföras till
+sensormodulen eller från styrmodulen vid felsökning.
 \begin{figure}[H]
     \centering
-    \begin{bytefield}[endianness=big]{16}
-        \bitheader{0,7,8,15} \\
-        \bitbox{8}{$e_v$}
-        \bitbox{8}{$e_r$}
-    \end{bytefield}
-    \caption{Bitsekvensen för datan som skickas fortlöpande från
-    kommunikationsmodulen till styrmodulen.}
-    \label{bf:comm-ctrl}
+    \subfile{\figures/bus_i2c}
+    \caption{Den gemensamma databussen mellan modulerna.}
+    \label{fig:bus_i2c}
 \end{figure}
+Ett alternativ till {\iic} vore att använda UART. Då ersätts SDA-signalen med
+två Tx till Rx signaler till och från kommunikationsmodulen. Om data behöver
+skickas i motsatt riktning vid felsökning behöver fler signaler läggas till och
+då behövs eventuellt en extra nivåskiftare. Ett annat alternativ är SPI; detta
+kräver dock fler signaler vilket inte är nödvändigt då det inte finns ett behov
+av full duplex.
 
-\paragraph{Hastighetsfelet $e_v$} består av ett signerat 8-bitars heltal i
-tvåkomplementsform. Värdet är ett felvärde för hastigheten som beräknas
-$e_v=v_\textit{önskad}-v_\textit{nuvarande}$. Negativa värden betyder att bilen
-kör för snabbt och positiva värden betyder att farten ska öka.
-
-\paragraph{Styrfelet $e_r$} består av ett signerat 8-bitars heltal i
-tvåkomplementsform. Värdet är ett felvärde för styrradien som beräknas av
-kommunikationsmodulen utifrån bilens förhållande till väglinjerna. Ett
-nollvärde betyder att hjulen står rätt, negativt att hjulen bör svänga mer åt
-vänster och positivt att hjulen bör svänga mer åt höger.
-
-\subsubsection{Sensormodul till kommunikationsmodul}
+\subsubsection{Från sensormodul till kommunikationsmodul}
 Sensormodulen ska fortlöpande skicka värden för varje sensor till
 kommunikationsmodulen. Figur \ref{bf:sens-comm} visar bitsekvensen som
 sensormodulen skickar.
@@ -112,5 +87,35 @@ ljusstyrkan från sensorn på taxins undersida. TODO min max?
 
 \paragraph{Varvtalet $n$} är ett 8-bitars osignerat heltal som specificerar
 antalet varv som taxins hjul har rullat sen förra sändelsen.
+
+\subsubsection{Från kommunikationsmodul till styrmodul}
+Kommunikationsmodulen ska skicka ett felvärde $e_v$ för hastigheten och ett
+felvärde $e_r$ för styrradien till styrmodulen med jämna mellanrum. Styrenheten
+ska försöka justera hastigheten och radien som specificerat av det senaste
+mottagna värdet. Figur \ref{bf:comm-ctrl} visar bitsekvensen för datan som
+sänds.
+
+\begin{figure}[H]
+    \centering
+    \begin{bytefield}[endianness=big]{16}
+        \bitheader{0,7,8,15} \\
+        \bitbox{8}{$e_v$}
+        \bitbox{8}{$e_r$}
+    \end{bytefield}
+    \caption{Bitsekvensen för datan som skickas fortlöpande från
+    kommunikationsmodulen till styrmodulen.}
+    \label{bf:comm-ctrl}
+\end{figure}
+
+\paragraph{Hastighetsfelet $e_v$} består av ett signerat 8-bitars heltal i
+tvåkomplementsform. Värdet är ett felvärde för hastigheten som beräknas
+$e_v=v_\textit{önskad}-v_\textit{nuvarande}$. Negativa värden betyder att bilen
+kör för snabbt och positiva värden betyder att farten ska öka.
+
+\paragraph{Styrfelet $e_r$} består av ett signerat 8-bitars heltal i
+tvåkomplementsform. Värdet är ett felvärde för styrradien som beräknas av
+kommunikationsmodulen utifrån bilens förhållande till väglinjerna. Ett
+nollvärde betyder att hjulen står rätt, negativt att hjulen bör svänga mer åt
+vänster och positivt att hjulen bör svänga mer åt höger.
 
 \end{document}

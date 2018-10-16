@@ -1,0 +1,25 @@
+\documentclass[designspec/spec.tex]{subfiles}
+
+\begin{document}
+
+\begin{tikzpicture}
+    % moduler
+    \node[module] at (0,0) (sens) {Sensormodul};
+    \node[module] at (5,0) (comm) {Kommunikations- modul};
+    \node[module] at (10,0) (ctrl) {Styrmodul};
+
+    % bussar
+    \node (sda) at (-1,3.5) {SDA};
+    \node (scl) at (-1,3) {SCL};
+
+    % signaler till bussar
+    \def\spacing{2mm}
+    \draw (sda)  -| node[branch]{} ([xshift=-\spacing]sens.north);
+    \draw (scl)  -| node[branch]{} ([xshift= \spacing]sens.north);
+    \draw (sda)  -| node[branch]{} ([xshift=-\spacing]comm.north);
+    \draw (scl)  -| node[branch]{} ([xshift= \spacing]comm.north);
+    \draw (sda)  -| node[branch]{} ([xshift=-\spacing]ctrl.north);
+    \draw (scl)  -| node[branch]{} ([xshift= \spacing]ctrl.north);
+\end{tikzpicture}
+
+\end{document}
