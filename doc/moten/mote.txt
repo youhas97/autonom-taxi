@@ -1,0 +1,103 @@
+-----Möte med Peter 17-10-18-----
+
+Hur ska vi koppla in motorn?
+-Motorn har samma signal som en servo.
+
+Går det att dela på kristalloscillator?
+-Ja, om det är på samma kort. Annars ta flera. Kanske inte behövs om vi inte
+använder inbyggda klockan (rekomenderas ej).
+-Många väljer 16Mhz
+-Kopplas in till F på oscillatorn.
+
+Är det bara att koppla in analoga sensorer till AVR:n?
+-Ja, det muxas internt mellan de 8 pinnarna.
+
+Reflexsensor eller RGB för linjer?
+-Reflexsensor är svårt att använda eftersom bilen har fjädring. Vi kan testa
+men det kna bli svårt att implementera. Bildbehandling borde hålla koll på
+linjer.
+
+-Pi:en är en B.
+
+Optiska för avstånd?
+-Ska ni inte använda ultraljud?
+-Testa att använda de ni har bestämt. Tror det kan fungera. De ser ganska
+brett.
+
+Hur koppla ultraljud?
+-Via int ingången.
+-Ultraljud mäter bara kortaste ekot.
+
+Flasha AVR med laptop?
+-Ja det går men man behöver göra lite mer på PI:en. Man behöver veta vad man
+gör, folk har gjort det tidigare. JTAG är bra för man kan läsa av AVR:en vid
+valfri tidpunkt. 
+
+Behövs atmelsudio?
+-Ja, eller något liknande.
+
+Flasha AVR med PI?
+-Det är möjligt men inget jag rekommenderar. Det går om man vet vad man gör.
+
+Avstudsad knapp?
+-Behövs inte. Kapacitansen löser det.
+
+I2C?
+-SPI är lättare att implementera. PI:en spelar ingen roll, men på AVR:n behöver
+man göra lite mer.
+-I2C är långsammare.
+-Om det blir för långa fördröjningar så kör man på "gamla" sensorvärden.
+-SPI är jätte enkelt. Bara skiftregister.
+-"Rekommenderar SPI?!?", men ni väljer ju själva.
+-Ingen har behövt byta men det kan ta mer tid att implementera.
+-Det kommer ändå gå att köra "smooth", det är inte bussen som begränsar
+hastigheten utan hur vi buffrar saker och hur väl resen av systemet fungerar.
+-Slaven svarar genom att  den drar ner till jord. Det är det som mastern ser
+som ACK.
+-För att skicka ACK så sätter man flaggor i mjukvara, Resten sköts av hårdvaran
+i AVR:en.
+
+Halleffektsensor?
+-Det är en digital signal.
+-Den bör kopplas till interrupt ingången (INT0, INT1).
+-Jobbet är att skapa en timer som räknar ut hastighet med tid och avlagd
+sträcka.
+-Det är möjligt att mäta vinkeln på bilen eftersom de två olika sensorerna
+mäter två olika hjul.
+
+Eduroam?
+-Inte bra, bättre med mobil eller egen accesspunkt. Visionen-nätet kan också
+fungera(oklart). Hotspot på mobilen fungerar ofta bra.
+
+BT eller WIFI?
+-Det fungerar jättebra via wifi. (Så länge man inte streamar bilden).
+
+
+------Övrigt------
+
+PD reglering. När man ser att bilen börjar svänga så går man tillbaka för att
+bestämma P konstanten. Samma sak med D. 
+
+-LCD kan bli överflödigt snabbt. Bättre att lagra historik av värdena och kolla
+varför det gick fel. Använd gränssnittet för att se parametrar.
+
+-OpenCV och python ger dålig FPS. C++ fungerar mycket bättre. C++ kompilerar
+mer optimalt. Misstänker att python segar ner allt men vill ni testa så...
+-Skala bilden!
+-Beroende på hur kameran sitter så kan man "cropa" bilden olika beroende på vad
+den ser.
+-Kan vara jobbigt att kompilera upp den. Den kan gå varm.
+-Kan va svårt att komma upp i 20 FPS. Sikta på det så ligger ni bra till!
+
+-Ni borde bestämma egna protokoll för o veta vad det är för sensorvärde som
+skickas och för säkerhet ifall man skulla missa någon byte. Lättare att hålla
+reda på allt.
+
+-AVR:en har inget problem att köra regleringsloopen om ni skulle vilja det.
+-Tidsmässigt är det enklare att göra det i AVR:en, mer axakta tider. I PI:en,
+som har OS, så kan det bli fördröjningar som kan påverka timeingen.
+
+-Bildbehandlingen är det som kommer begränsa er.
+
+-Aha, va det ni som gjorde z80? :O
+
