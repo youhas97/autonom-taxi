@@ -9,7 +9,28 @@
 \begin{document}
 
 \section{Implementationsstrategi}
+% TODO intro
 
-hej hej
+\subsection{Tillvägagång}
+Varje modul kommer att utvecklas parallellt för att sedan integreras
+tillsammans. Eftersom varje modul kopplas till kommunikationsmodulen kan en
+modul delvis integreras så fort den är klar om kommunikationsmodulen är redo.
+% TODO utveckla
+
+\subsection{Återkoppling}
+För att kunna felsöka problem under implementationen kommer olika sätt att få
+återkoppling att användas. Sensor- och styrmodulen ska kopplas till en
+LCD-display för att kunna visa värden. Värden kan också skickas via bussen till
+kommunikationsmodulen när den är implementerad. Kommunikationsmodulen kommer
+köra en SSH-server så att det går att komma åt värden på modulen. Värden kommer
+kunna skrivas till \mono{stdout} eller filer. Programmet kommer också kunna
+köras via GDB så att minnet direkt kan läsas. På liknande sätt kan
+fjärrklienten på datorn felsökas.
+
+\subsection{Timings}
+Det som begränsar frekvensen av beslut från kommunikationsmodulen är
+bildbehandlingen. Det vore önskvärt att nå åtminstone 20 bilder sekund. Utifrån
+vilken bildbehandlingsfrekvens som uppnås kommer frekvensen av sampling från
+sensorerna och styrkommandon till styrmodulen att anpassas. 
 
 \end{document}
