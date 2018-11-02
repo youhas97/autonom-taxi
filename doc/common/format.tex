@@ -1,6 +1,26 @@
+\input{common/format_tikz.tex}
+\input{common/format_command.tex}
+
 % svensk encoding, svenska titlar
 \usepackage[utf8]{inputenc}
 \usepackage[swedish]{babel}
+
+% separera filer, subfile kommando
+\usepackage{subfiles}
+
+% sidomargins
+\usepackage[total={16cm, 21cm}]{geometry}
+
+% page header and foot
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.2pt}
+\renewcommand{\footrulewidth}{0.2pt}
+\rhead{\sc \LIPSdatum}
+\chead{\textsl{\VARprojekttitel}}
+\lhead{\textbf{\sc\footnotesize \leftmark}}
+\lfoot{\textbf{\sc \VARkurskod}\\ \LIPSdokumenttyp}
+\rfoot{\textbf{\sc \VARgruppnummer}\\ \textsl{\VARprojekttitel}}
 
 % referenser
 \newcommand{\bibfile}{common/ref}
@@ -10,12 +30,6 @@
 \usepackage{graphicx} % pdf-import
 \usepackage{float} % Figure H option
 \usepackage{longtable} % splitta tabeller vid sidbrytning
-
-% separera filer, subfile kommando
-\usepackage{subfiles}
-
-% sidomargins
-\usepackage[total={16cm, 21cm}]{geometry}
 
 % labeling env för definitioner
 \usepackage{scrextend}
@@ -31,43 +45,8 @@
 \hypersetup{breaklinks=true}
 \urlstyle{same}
 
-% page header and foot
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-\renewcommand{\headrulewidth}{0.2pt}
-\renewcommand{\footrulewidth}{0.2pt}
-\rhead{\sc \LIPSdatum}
-%\chead{\textsl{\VARprojekttitel}}
-\lhead{\textbf{\sc\footnotesize \leftmark}}
-\lfoot{\textbf{\sc \VARkurskod}\\ \LIPSdokumenttyp}
-\rfoot{\textbf{\sc \VARgruppnummer}\\ \textsl{\VARprojekttitel}}
-
-%tabell för dokumenthistorik
-\newenvironment{dokumenthistorik}{%
-\begin{center}
-  \large Dokumenthistorik\\[2ex]
-  \thispagestyle{empty}
-  \renewcommand{\arraystretch}{2}
-  \begin{small}
-      \begin{tabular}{|p{15mm}|p{18mm}|p{57mm}|p{22mm}|p{25mm}|}
-      \hline
-      \textbf{Version} &
-      \textbf{Datum} &
-      \textbf{Utförda förändringar} &
-      \textbf{Utförda av} &
-      \textbf{Granskad} \\
-      }%
-      {%
-      \hline
-    \end{tabular}
-  \end{small}
-\end{center}
-}
-
-%argument version, datum, utförda förändringar, utförda av, granskad
-\newcommand{\versioninfo}[5]{\hline {#1} & {#2} & {#3} & {#4} & {#5} \\}
-
 % kommandon med godtyckliga antal parametrar
 \usepackage{xparse}
 
+% diagram för data bitstreams
 \usepackage{bytefield}

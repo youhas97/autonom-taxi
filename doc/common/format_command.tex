@@ -1,0 +1,28 @@
+% tabell för dokumenthistorik
+\newenvironment{dokumenthistorik}{%
+\begin{center}
+  \large Dokumenthistorik\\[2ex]
+  \thispagestyle{empty}
+  \renewcommand{\arraystretch}{2}
+  \begin{small}
+      \begin{tabular}{|p{15mm}|p{18mm}|p{57mm}|p{22mm}|p{25mm}|}
+      \hline
+      \textbf{Version} &
+      \textbf{Datum} &
+      \textbf{Utförda förändringar} &
+      \textbf{Utförda av} &
+      \textbf{Granskad} \\
+      }%
+      {%
+      \hline
+    \end{tabular}
+  \end{small}
+\end{center}
+}
+
+% argument version, datum, utförda förändringar, utförda av, granskad
+\newcommand{\versioninfo}[5]{\hline {#1} & {#2} & {#3} & {#4} & {#5} \\}
+
+% alias
+\newcommand{\mono}[1]{\texttt{#1}}
+\newcommand{\iic}{I$^2$C}
