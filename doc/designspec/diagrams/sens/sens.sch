@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:sens-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -14,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L taxi:ACS715xLCTR-30A HALLEFFEKTSENSOR
+L sens-rescue:ACS715xLCTR-30A-taxi HALLEFFEKTSENSOR
 U 1 1 5BC4BC08
 P 9250 4500
 F 0 "HALLEFFEKTSENSOR" H 9250 5000 50  0000 C CNN
@@ -73,7 +74,7 @@ F 3 "http://www.onsemi.com/pub/Collateral/QSE159-D.pdf" H 9550 2650 50  0001 C C
 	-1   0    0    -1  
 $EndComp
 $Comp
-L taxi:ACS715xLCTR-30A REFLEXSENSOR
+L sens-rescue:ACS715xLCTR-30A-taxi REFLEXSENSOR
 U 1 1 5BC4DCED
 P 8950 3450
 F 0 "REFLEXSENSOR" H 8950 3950 50  0000 C CNN
@@ -187,18 +188,34 @@ Connection ~ 7100 5850
 Wire Wire Line
 	7100 5850 8200 5850
 $Comp
-L atmega16:ATmega16-16PU U?
-U 1 1 5BC75C71
+L MCU_Microchip_ATmega:ATmega1284-PU U?
+U 1 1 5BDC69D9
 P 5600 3150
 F 0 "U?" H 5600 1064 50  0000 C CNN
-F 1 "ATmega16-16PU" H 5600 973 50  0000 C CNN
+F 1 "ATmega1284-PU" H 5600 973 50  0000 C CNN
 F 2 "Package_DIP:DIP-40_W15.24mm" H 5600 3150 50  0001 C CIN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/doc2466.pdf" H 5600 3150 50  0001 C CNN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8272-8-bit-AVR-microcontroller-ATmega164A_PA-324A_PA-644A_PA-1284_P_datasheet.pdf" H 5600 3150 50  0001 C CNN
 	1    5600 3150
 	1    0    0    -1  
 $EndComp
-Text Label 3900 2200 0    50   ~ 0
-MASTER
+$Comp
+L exo3:IQEXO-3 U?
+U 1 1 5BDCCBF2
+P 3150 2400
+F 0 "U?" V 3196 2070 50  0000 R CNN
+F 1 "IQEXO-3" V 3105 2070 50  0000 R CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 3200 1650 50  0001 C CNN
+F 3 "http://www.onsemi.com/pub/Collateral/NB3N511-D.PDF" H 3200 1550 50  0001 C CNN
+	1    3150 2400
+	0    -1   -1   0   
+$EndComp
 Wire Wire Line
-	5000 2200 3900 2200
+	5600 5850 3350 5850
+Wire Wire Line
+	3350 5850 3350 2800
+Wire Wire Line
+	2850 2000 2850 1050
+Wire Wire Line
+	2850 1050 5600 1050
+Connection ~ 5600 1050
 $EndSCHEMATC
