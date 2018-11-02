@@ -15,77 +15,20 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L sens-rescue:ACS715xLCTR-30A-taxi HALLEFFEKTSENSOR
+L sens-rescue:ACS715xLCTR-30A-taxi-sens-rescue AVSTÅNDSMÄTARE(FRAM)
 U 1 1 5BC4BC08
-P 9250 4500
-F 0 "HALLEFFEKTSENSOR" H 9250 5000 50  0000 C CNN
-F 1 "A112X/A3240" H 9250 4900 50  0000 C CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 9350 4150 50  0001 L CIN
-F 3 "http://www.allegromicro.com/~/media/Files/Datasheets/ACS715-Datasheet.ashx?la=en" H 9250 4500 50  0001 C CNN
-	1    9250 4500
-	-1   0    0    -1  
-$EndComp
-$Comp
-L power:+5V #PWR?
-U 1 1 5BC4BEF7
-P 7000 800
-F 0 "#PWR?" H 7000 650 50  0001 C CNN
-F 1 "+5V" V 7000 1000 50  0000 C CNN
-F 2 "" H 7000 800 50  0001 C CNN
-F 3 "" H 7000 800 50  0001 C CNN
-	1    7000 800 
-	1    0    0    -1  
-$EndComp
-$Comp
-L power:Earth #PWR?
-U 1 1 5BC4BFE6
-P 5600 5850
-F 0 "#PWR?" H 5600 5600 50  0001 C CNN
-F 1 "Earth" H 5600 5700 50  0001 C CNN
-F 2 "" H 5600 5850 50  0001 C CNN
-F 3 "~" H 5600 5850 50  0001 C CNN
-	1    5600 5850
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6200 4350 8850 4350
-$Comp
-L Interface_Optical:QSE159 AVSTÅNDSMÄTARE(SIDA)
-U 1 1 5BC4D282
-P 8900 1450
-F 0 "AVSTÅNDSMÄTARE(SIDA)" H 8638 1496 50  0000 R CNN
-F 1 "GP2D120" H 8638 1405 50  0000 R CNN
-F 2 "OptoDevice:ONSemi_QSE15x" H 8900 1050 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub/Collateral/QSE159-D.pdf" H 9550 1750 50  0001 C CNN
-	1    8900 1450
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	8600 1450 6200 1450
-$Comp
-L Interface_Optical:QSE159 AVSTÅNDSMÄTARE(FRAM)
-U 1 1 5BC4D9A0
 P 8900 2350
-F 0 "AVSTÅNDSMÄTARE(FRAM)" H 8638 2396 50  0000 R CNN
-F 1 "GP2Y0A02YK" H 8638 2305 50  0000 R CNN
-F 2 "OptoDevice:ONSemi_QSE15x" H 8900 1950 50  0001 C CNN
-F 3 "http://www.onsemi.com/pub/Collateral/QSE159-D.pdf" H 9550 2650 50  0001 C CNN
+F 0 "AVSTÅNDSMÄTARE(FRAM)" H 8200 2450 50  0000 C CNN
+F 1 "GP2Y0A02YK" H 8250 2350 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 9000 2000 50  0001 L CIN
+F 3 "http://www.allegromicro.com/~/media/Files/Datasheets/ACS715-Datasheet.ashx?la=en" H 8900 2350 50  0001 C CNN
 	1    8900 2350
 	-1   0    0    -1  
 $EndComp
-$Comp
-L sens-rescue:ACS715xLCTR-30A-taxi REFLEXSENSOR
-U 1 1 5BC4DCED
-P 8950 3450
-F 0 "REFLEXSENSOR" H 8950 3950 50  0000 C CNN
-F 1 "?" H 8950 3850 50  0000 C CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 9050 3100 50  0001 L CIN
-F 3 "http://www.allegromicro.com/~/media/Files/Datasheets/ACS715-Datasheet.ashx?la=en" H 8950 3450 50  0001 C CNN
-	1    8950 3450
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
-	8550 3300 7800 3300
+	6200 4350 8850 4350
+Wire Wire Line
+	8600 1450 6200 1450
 Wire Wire Line
 	8600 2350 8250 2350
 Wire Wire Line
@@ -93,34 +36,12 @@ Wire Wire Line
 Wire Wire Line
 	8250 1650 6200 1650
 Wire Wire Line
-	7800 1950 6200 1950
-Wire Wire Line
-	7800 1950 7800 3300
-$Comp
-L Connector:AVR-JTAG-10 JTAG
-U 1 1 5BC4E425
-P 7100 3550
-F 0 "JTAG" H 6721 3596 50  0000 R CNN
-F 1 "AVR-JTAG-10" H 6721 3505 50  0000 R CNN
-F 2 "" V 6950 3700 50  0001 C CNN
-F 3 " ~" H 5825 3000 50  0001 C CNN
-	1    7100 3550
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
 	8200 5850 8200 4500
 Wire Wire Line
 	8200 4500 8850 4500
-Wire Wire Line
-	8200 4500 8200 3450
-Wire Wire Line
-	8200 3450 8550 3450
 Connection ~ 8200 4500
 Wire Wire Line
-	8200 3450 8200 2650
-Wire Wire Line
 	8200 2650 8800 2650
-Connection ~ 8200 3450
 Wire Wire Line
 	8200 2650 8200 1750
 Wire Wire Line
@@ -137,16 +58,9 @@ Wire Wire Line
 Connection ~ 8450 1050
 Wire Wire Line
 	8450 1050 8800 1050
-Wire Wire Line
-	8450 2050 8450 3600
-Wire Wire Line
-	8450 3600 8550 3600
 Connection ~ 8450 2050
 Wire Wire Line
-	8450 3600 8450 4650
-Wire Wire Line
 	8450 4650 8850 4650
-Connection ~ 8450 3600
 Wire Wire Line
 	5700 1050 5700 1150
 Wire Wire Line
@@ -188,21 +102,21 @@ Connection ~ 7100 5850
 Wire Wire Line
 	7100 5850 8200 5850
 $Comp
-L MCU_Microchip_ATmega:ATmega1284-PU U?
-U 1 1 5BDC69D9
-P 5600 3150
+L _NONAME_ U?
+U 1 1 5BC75C71
+P 0 0
 F 0 "U?" H 5600 1064 50  0000 C CNN
 F 1 "ATmega1284-PU" H 5600 973 50  0000 C CNN
 F 2 "Package_DIP:DIP-40_W15.24mm" H 5600 3150 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8272-8-bit-AVR-microcontroller-ATmega164A_PA-324A_PA-644A_PA-1284_P_datasheet.pdf" H 5600 3150 50  0001 C CNN
-	1    5600 3150
+	1    0    0   
 	1    0    0    -1  
 $EndComp
 $Comp
-L exo3:IQEXO-3 U?
+L exo3:IQEXO-3 KRISTALLOSCILLATOR
 U 1 1 5BDCCBF2
 P 3150 2400
-F 0 "U?" V 3196 2070 50  0000 R CNN
+F 0 "KRISTALLOSCILLATOR" V 3196 2070 50  0000 R CNN
 F 1 "IQEXO-3" V 3105 2070 50  0000 R CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 3200 1650 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/NB3N511-D.PDF" H 3200 1550 50  0001 C CNN
@@ -218,4 +132,74 @@ Wire Wire Line
 Wire Wire Line
 	2850 1050 5600 1050
 Connection ~ 5600 1050
+$Comp
+L MCU_Microchip_ATmega:ATmega1284-PU U?
+U 1 1 5BDC5F4E
+P 5600 3150
+F 0 "U?" H 5600 1064 50  0000 C CNN
+F 1 "ATmega1284-PU" H 5600 973 50  0000 C CNN
+F 2 "Package_DIP:DIP-40_W15.24mm" H 5600 3150 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8272-8-bit-AVR-microcontroller-ATmega164A_PA-324A_PA-644A_PA-1284_P_datasheet.pdf" H 5600 3150 50  0001 C CNN
+	1    5600 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:AVR-JTAG-10 J?
+U 1 1 5BDC62E7
+P 7100 3550
+F 0 "J?" H 6721 3596 50  0000 R CNN
+F 1 "AVR-JTAG-10" H 6721 3505 50  0000 R CNN
+F 2 "" V 6950 3700 50  0001 C CNN
+F 3 " ~" H 5825 3000 50  0001 C CNN
+	1    7100 3550
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	8450 2050 8450 4650
+Wire Wire Line
+	8200 2650 8200 4500
+$Comp
+L sens-rescue:ACS715xLCTR-30A-taxi-sens-rescue AVSTÅNDSMÄTARE(SIDA)
+U 1 1 5BDC9DEC
+P 8900 1450
+F 0 "AVSTÅNDSMÄTARE(SIDA)" H 8250 1550 50  0000 C CNN
+F 1 "GP2D120" H 8300 1450 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 9000 1100 50  0001 L CIN
+F 3 "http://www.allegromicro.com/~/media/Files/Datasheets/ACS715-Datasheet.ashx?la=en" H 8900 1450 50  0001 C CNN
+	1    8900 1450
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BDC9F18
+P 7000 800
+F 0 "#PWR?" H 7000 650 50  0001 C CNN
+F 1 "+5V" H 7015 973 50  0000 C CNN
+F 2 "" H 7000 800 50  0001 C CNN
+F 3 "" H 7000 800 50  0001 C CNN
+	1    7000 800 
+	1    0    0    -1  
+$EndComp
+$Comp
+L hall-effect:A112X HALLEFFECTSENSOR
+U 1 1 5BDCB7F9
+P 9150 4500
+F 0 "HALLEFFECTSENSOR" H 9379 4546 50  0000 L CNN
+F 1 "A112X" H 9379 4455 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 9150 4150 50  0001 L CIN
+F 3 "http://www.allegromicro.com/en/Products/Part_Numbers/1101/1101.pdf" H 9150 5150 50  0001 C CNN
+	1    9150 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BDCBACA
+P 5600 5850
+F 0 "#PWR?" H 5600 5600 50  0001 C CNN
+F 1 "GNDREF" H 5605 5677 50  0000 C CNN
+F 2 "" H 5600 5850 50  0001 C CNN
+F 3 "" H 5600 5850 50  0001 C CNN
+	1    5600 5850
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

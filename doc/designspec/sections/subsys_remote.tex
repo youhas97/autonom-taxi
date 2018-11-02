@@ -14,6 +14,10 @@ TODO räkna karta
 TODO skapa kommandolista utifrån uppdrag
 
 \subsection{Mjukvaruimplementation}
+För att hitta kortaste vägen ska kartan matas in i fjärrklienten för att med
+hjälp av Dijkstras algoritm räkna ut kortaste vägen. Kartan
+representeras med ett nätverk där varje nod motsvarar en tejpbit. Programmet
+skrivs i Python.
 
 \subsubsection{Algoritmer}
 För att hitta kortaste vägen ska Dijkstras algoritm användas. Denna kommer
@@ -24,7 +28,10 @@ implementeras i Python.
 % datastrukturer
 \begin{labeling}{wwww}
     \item[Nod] En nod är en klass som består av nodtyp och utgående bågar. Det
-    finns tre olika nodtyper; stopplinje, parkeringsficka och rondell.
+    finns tre olika nodtyper; stopplinje, parkeringsficka och rondell. Dessa
+    representeras av siffrorna 1, 2 och 3, respektive.
+    Grannar är alla de noder som objektet har en anslutande båge till. Avstånd
+    anges för alla grannar.
 
     \item[Båge] En båge består av ett avstånd och en destination. Den
     representeras av en tuple där första värdet är ett avstånd och det andra

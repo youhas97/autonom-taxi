@@ -31,14 +31,11 @@ därefter att översättas till felvärden som skickas till styrmodulen.
 Kommunikationsmodulen kommer att implementeras med hjälp av en Raspberry Pi 3,
 där en bluetooth och wifikomponent redan finns integrerat. Kameran kommer att
 kopplas direkt till kameraporten som finns på Raspberry Pi-kortet.
-GPIO-pinnarna  kommer att användas för att ansluta till övriga moduler.
-Eftersom {\iic}-protokollet kommer att användas, kommer endast GPIO2 och
-GPIO3-pinnarna att användas eftersom de är data respektive klockan för de
-pinnarna som stödjer {\iic}. Det kommer att finnas en nivåskiftare som klockan
-och datan från GPIO pinnarna skiftar spänning i. Nivåskiftaren kommer att
-försörjas med en spänning från en 3.3V pin, samt en 5V pin för att kunna skifta
-spänningen från 3.3V som är den spänningen Raspberry Pi 3 stödjer, till 5V som
-är den spänningen sensormodulen och styrmodulen använder.
+GPIO-pinnarna kommer att användas för att ansluta till övriga moduler.
+Eftersom SPI-protokollet ska användas, kommer GPIO-portar för de
+signalerna som protokollet kräver användas. Det kommer att finnas
+nivåskiftare som skiftar spänningen på signalerna som går mellan
+kommunikationsmodulen och mikrokontrollerna.
 % TODO hänvisa till kretsschema i bilaga
 
 Kommunikationen med fjärrklienten kommer att ske med en inbyggd Wi-Fi eller
@@ -46,18 +43,30 @@ Bluetooth-modul på Raspberry Pi-enheten. Anslutningen kommer att ske via wifi
 och skapas med en dator med operativsystemet Raspbian och program som
 exempelvis wpa\_supplicant kan användas för att sätta upp anslutningen.
 
-\subsubsection{Komponenter}
-\paragraph{Raspberry Pi 3} bla bla TODO
-\paragraph{Raspberry Pi Camera V2 Video Module} TODO
-\paragraph{Raspberry Pi GPIO} TODO
-\paragraph{TXB0104 Level Shifter} TODO
+\subsubsection{Budget}
+\begin{itemize}
+    \item \textbf{Raspberry Pi 3} Modulens dator med inbyggt trådlöst
+    nätverkskort.
+    \item \textbf{Raspberry Pi Camera V2 Video Module} Kamera till Raspberry
+    Pi.
+    \item \textbf{2 $\times$ TXB0104 Level Shifter} Nivåskiftare för 4
+    signaler.
+\end{itemize}
+
+\subsubsection{Kontroll och bedömning}
+% TODO kontrollera pins samt gör bedömning av kommunikationsmodul
 
 \subsection{Mjukvaruimplementation}
+Kommunikationsmodulen ska bestå av flera trådar TODO
+
+\subsubsection{Avbrott}
+% TODO avbrott för SPI
+
 TODO komm mjukvara
 %- skrivs i c eller möjligtvis c++
 %- eventuell trådsuppdelning
 %    - server för länk och uppdragshantering
-%    - hämta från sensor och skicka till styr
+%    - hämta från sensor och skicka till styr (avbrott?)
 %    - bildhantering för att generera felvärde
 
 \end{document}

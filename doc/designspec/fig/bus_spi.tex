@@ -1,0 +1,35 @@
+\documentclass[designspec/spec.tex]{subfiles}
+
+\begin{document}
+
+\begin{tikzpicture}
+    % moduler
+    \def\distanceapart{50mm}
+    \node[module] at (0,0) (sens) {Sensormodul};
+    \node[module] at (\distanceapart,0) (comm) {Kommunikations- modul};
+    \node[module] at (2*\distanceapart,0) (ctrl) {Styrmodul};
+
+    % bussar
+    \def\spacing{5mm}
+    \def\leftward{15mm}
+    \node (sclk) at (-\leftward,3cm+2*\spacing) {SCLK};
+    \node (mosi) at (-\leftward,3cm+\spacing) {MOSI};
+    \node (miso) at (-\leftward,3cm) {MISO};
+
+    % signaler till bussar
+    \draw (sclk)  -| node[branch]{} ([xshift=-\spacing]sens.north);
+    \draw (mosi)  -| node[branch]{} (sens.north);
+    \draw (miso)  -| node[branch]{} ([xshift= \spacing]sens.north);
+
+    \draw (comm.west) -> node[above]{SS1} (sens.east);
+    \draw (sclk)  -| node[branch]{} ([xshift=-\spacing]comm.north);
+    \draw (mosi)  -| node[branch]{} (comm.north);
+    \draw (miso)  -| node[branch]{} ([xshift= \spacing]comm.north);
+    \draw (comm.east) -> node[above]{SS2} (ctrl.west);
+
+    \draw (sclk)  -| node[branch]{} ([xshift=-\spacing]ctrl.north);
+    \draw (mosi)  -| node[branch]{} (ctrl.north);
+    \draw (miso)  -| node[branch]{} ([xshift= \spacing]ctrl.north);
+\end{tikzpicture}
+
+\end{document}

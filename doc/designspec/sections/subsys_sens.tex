@@ -12,25 +12,33 @@ Sensormodulen ska mäta värden från sensorerna, omvandla till läsbar data och
 skicka vidare informationen till kommunikationsmodulen.
 
 \paragraph{Filtrering}
-Eftersom sensorerna kan bli påverkade av eventuella störningar kommer det att
-finnas brusfilter som filtrerar bort dessa störningar för att skapa så
-noggranna sensorvärden som möjligt.
+Eftersom sensorerna kan bli påverkade av eventuella störningar kommer det
+eventuellt att finnas brusfilter som filtrerar bort dessa störningar för att
+skapa så noggranna sensorvärden som möjligt.
 
 \paragraph{Sensorer}
-De sensorerna som kommer att finnas på taxin är en ultraljudssensor som pekar
-rakt fram, en optisk avståndsmätare för att detektera , samt en analog RBG-sensor.
-Ultraljudssensorn mäter avstånd.
+Taxin kommer att ha en optisk avståndsmätare som pekar rakt fram för att
+upptäcka hinder framför bilen samt en optisk avståndsmätare på sidan för att
+detektera hinder höger om bilen vid omkörning.
 
 \subsection{Hårdvaruimplementation} 
 TODO intro
 
-\subsubsection{Komponenter}
-\paragraph{ATMega16} bla bla TODO
-\paragraph{GP2D120} bla bla TODO
-\paragraph{GP2Y0A02YK} bla bla TODO
-\paragraph{Halleffektsensor} bla bla TODO
-\paragraph{LCD JM162A} bla bla TODO
+\subsubsection{Budget}
+
+\begin{itemize}
+	\item \textbf{ATMega16} Modulens microprocessor. 
+    \item \textbf{GP2D120} Avståndsmätare för hinder framför bilen.
+    \item \textbf{GP2Y0A02YK} Avståndsmätare för hinder höger om bilen.
+\end{itemize}
+
+\subsubsection{Kontroll och bedömning}
+% TODO gör kontroll av pins samt bedömning för sensormodul
 
 \subsection{Mjukvaruimplementation} 
+Sensormodulen ska bestå av en tom while loop och ett avbrott som aktiveras när
+kommunikationsmodulen efterfrågar värden. Sensormodulen skickar då de senaste
+sensorvärdena och samplar därefter nästa grupp av värden.
+% TODO gå in i detalj med avbrottet
 
 \end{document}
