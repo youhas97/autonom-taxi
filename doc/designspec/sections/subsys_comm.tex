@@ -31,14 +31,11 @@ därefter att översättas till felvärden som skickas till styrmodulen.
 Kommunikationsmodulen kommer att implementeras med hjälp av en Raspberry Pi 3,
 där en bluetooth och wifikomponent redan finns integrerat. Kameran kommer att
 kopplas direkt till kameraporten som finns på Raspberry Pi-kortet.
-GPIO-pinnarna  kommer att användas för att ansluta till övriga moduler.
-Eftersom SPI-protokollet kommer att användas, kommer fem GPIO-portar att
-användas för de fem signalerna som protokollet kräver.Det kommer att finnas två
-nivåskiftare som skiftar spänningen på de fem signalerna som kommer från
-Raspberryn. Nivåskiftaren kommer att försörjas med en spänning från en 3.3V
-pin, samt en 5V pin för att kunna skifta
-spänningen från 3.3V som är den spänningen Raspberry Pi 3 stödjer, till 5V som
-är den spänningen sensormodulen och styrmodulen använder.
+GPIO-pinnarna kommer att användas för att ansluta till övriga moduler.
+Eftersom SPI-protokollet ska användas, kommer GPIO-portar för de
+signalerna som protokollet kräver användas. Det kommer att finnas
+nivåskiftare som skiftar spänningen på signalerna som går mellan
+kommunikationsmodulen och mikrokontrollerna.
 % TODO hänvisa till kretsschema i bilaga
 
 Kommunikationen med fjärrklienten kommer att ske med en inbyggd Wi-Fi eller
