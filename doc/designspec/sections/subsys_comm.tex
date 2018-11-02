@@ -67,6 +67,11 @@ behövas. De signaler som kommer att behövas är:
         slav(Styrmodulen)
 \end{itemize}
 
+Raspberry Pi:n har stöd för 2 bussar med SPI-protokollet varav 10 pinnar
+totalt. Eftersom vi bara kommer att använda 5 pinnar räcker antalet pinnar.
+Upp till två nivåskiftare som konverterar mellan 5V och 3V3 kan användas då det
+finns två 5V-pinnar samt två 3V3-pinnar.
+
 \subsection{Mjukvaruimplementation}
 Kommunikationsmodulen ska bestå av flera trådar TODO
 
