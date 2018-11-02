@@ -1,4 +1,5 @@
 EESchema Schematic File Version 4
+LIBS:sens-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
@@ -14,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L taxi:ACS715xLCTR-30A HALLEFFEKTSENSOR
+L sens-rescue:ACS715xLCTR-30A-taxi HALLEFFEKTSENSOR
 U 1 1 5BC4BC08
 P 9250 4500
 F 0 "HALLEFFEKTSENSOR" H 9250 5000 50  0000 C CNN
@@ -25,7 +26,7 @@ F 3 "http://www.allegromicro.com/~/media/Files/Datasheets/ACS715-Datasheet.ashx?
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
+L sens-rescue:+5V-power #PWR?
 U 1 1 5BC4BEF7
 P 7000 800
 F 0 "#PWR?" H 7000 650 50  0001 C CNN
@@ -36,7 +37,7 @@ F 3 "" H 7000 800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L power:Earth #PWR?
+L sens-rescue:Earth-power #PWR?
 U 1 1 5BC4BFE6
 P 5600 5850
 F 0 "#PWR?" H 5600 5600 50  0001 C CNN
@@ -49,7 +50,7 @@ $EndComp
 Wire Wire Line
 	6200 4350 8850 4350
 $Comp
-L Interface_Optical:QSE159 AVSTÅNDSMÄTARE(SIDA)
+L sens-rescue:QSE159-Interface_Optical AVSTÅNDSMÄTARE(SIDA)
 U 1 1 5BC4D282
 P 8900 1450
 F 0 "AVSTÅNDSMÄTARE(SIDA)" H 8638 1496 50  0000 R CNN
@@ -62,7 +63,7 @@ $EndComp
 Wire Wire Line
 	8600 1450 6200 1450
 $Comp
-L Interface_Optical:QSE159 AVSTÅNDSMÄTARE(FRAM)
+L sens-rescue:QSE159-Interface_Optical AVSTÅNDSMÄTARE(FRAM)
 U 1 1 5BC4D9A0
 P 8900 2350
 F 0 "AVSTÅNDSMÄTARE(FRAM)" H 8638 2396 50  0000 R CNN
@@ -73,7 +74,7 @@ F 3 "http://www.onsemi.com/pub/Collateral/QSE159-D.pdf" H 9550 2650 50  0001 C C
 	-1   0    0    -1  
 $EndComp
 $Comp
-L taxi:ACS715xLCTR-30A REFLEXSENSOR
+L sens-rescue:ACS715xLCTR-30A-taxi REFLEXSENSOR
 U 1 1 5BC4DCED
 P 8950 3450
 F 0 "REFLEXSENSOR" H 8950 3950 50  0000 C CNN
@@ -96,7 +97,7 @@ Wire Wire Line
 Wire Wire Line
 	7800 1950 7800 3300
 $Comp
-L Connector:AVR-JTAG-10 JTAG
+L sens-rescue:AVR-JTAG-10-Connector JTAG
 U 1 1 5BC4E425
 P 7100 3550
 F 0 "JTAG" H 6721 3596 50  0000 R CNN
@@ -187,7 +188,7 @@ Connection ~ 7100 5850
 Wire Wire Line
 	7100 5850 8200 5850
 $Comp
-L atmega16:ATmega16-16PU U?
+L sens-rescue:ATmega16-16PU-atmega16 U?
 U 1 1 5BC75C71
 P 5600 3150
 F 0 "U?" H 5600 1064 50  0000 C CNN
@@ -197,8 +198,4 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/doc2466.pdf" H 5600 3150 50
 	1    5600 3150
 	1    0    0    -1  
 $EndComp
-Text Label 3900 2200 0    50   ~ 0
-MASTER
-Wire Wire Line
-	5000 2200 3900 2200
 $EndSCHEMATC
