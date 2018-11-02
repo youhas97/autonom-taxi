@@ -49,18 +49,24 @@ exempelvis wpa\_supplicant kan användas för att sätta upp anslutningen.
     nätverkskort.
     \item \textbf{Raspberry Pi Camera V2 Video Module} Kamera till Raspberry
     Pi.
-    \item \textbf{TXB0104 Level Shifter} Nivåskiftare för att kunna kommunicera
-    med mikrokontrollerna.
+    \item \textbf{2 $\times$ TXB0104 Level Shifter} Nivåskiftare för 4
+    signaler.
 \end{itemize}
+
+\subsubsection{Kontroll och bedömning}
+% TODO kontrollera pins samt gör bedömning av kommunikationsmodul
 
 \subsection{Mjukvaruimplementation}
 Kommunikationsmodulen ska bestå av flera trådar TODO
+
+\subsubsection{Avbrott}
+% TODO avbrott för SPI
 
 TODO komm mjukvara
 %- skrivs i c eller möjligtvis c++
 %- eventuell trådsuppdelning
 %    - server för länk och uppdragshantering
-%    - hämta från sensor och skicka till styr
+%    - hämta från sensor och skicka till styr (avbrott?)
 %    - bildhantering för att generera felvärde
 
 \end{document}
