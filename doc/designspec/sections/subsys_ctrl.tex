@@ -3,18 +3,17 @@
 \begin{document}
 
 \section{Styrmodul}
-Styrmodulen är en modul som har i uppgift att ta emot styrsignaler ifrån
+Styrmodulen är en modul som har i uppgift att ta emot styrsignaler från
 kommunikationsmodulen och skicka dessa till bilens drivmotor och svängmotor.
 
 \subsection{Funktion}
 Styrmodulens syfte är att hantera den direkta kontrollen av styrreglagen för
-taxins motorer. Styrmodulen ska kontrollera både drivmotorn och svängmotorn
-utifrån kommandon som ges av kommunikationsmodulen.
+taxins motorer. Styrmodulen ska reglera drivmotorn och svängmotorn utifrån
+felvärden som ges av kommunikationsmodulen.
 
 \subsection{Hårdvaruimplementation}
-
-\subsubsection{Kopplingsschema}
-TODO
+Ett detaljerat kretsschema finns i bilaga TODO.
+% TODO blockschema över komm?
 
 \subsubsection{Budget}
 Utöver motorn och servon som redan sitter monterade på chassit behöver
@@ -28,23 +27,25 @@ styrmodulen följande komponenter:
     i felsökningssyfte.
 \end{itemize}
 
-\subsubsection{Kontroll}
+\subsubsection{Kontroll och bedömning}
 Av portarna på microprocessorn används 7/8 av portA, 1/8 av portB, 6/8 av portC
-och 5/8 av portD. D.v.s. portarna räcker till.
-Se kopplingsschemat för att mer detaljerat se använda portar.
+och 5/8 av portD. D.v.s. portarna räcker till. % TODO uppdatera med SPI
 
-\subsubsection{Bedömning}
+% TODO bedömning om styrmoduls prestanda räcker till
 
 \subsection{Mjukvaruimplementation}
 Styrmodulens program kommer bestå av en main loop som reglerar bilens hastighet
 efter ett felvärde. Ett avbrott som aktiveras när kommunikationsmodulen vill
 kommunicera kommer att ta emot nya felvärden med jämna mellanrum.
 
-\subsubsection{Flödesschema}
+\subsubsection{Huvud-loop}
+I huvudloopen kommer värdena från kommunikationsmodulen göras om till
+motsvarande tidsintervall i PWM. Beroende på hur snabbt det går så kommer
+huvudloopen vänta på avbrott.
 
 \subsubsection{Avbrott}
-
 \begin{itemize}
+    % TODO ändra till SPI-avbrott
 	\item \textbf{TWI\_Interrupt} Avbrottet sker när TWI-bussen adresserar
 	styrmodulen. I avbrottet måste statusregistret TWSR maskas för att kunna
 	avgöra vilken funktion som ska utföras. T.ex. skicka/ta emot data e.t.c. 
@@ -53,16 +54,5 @@ kommunicera kommer att ta emot nya felvärden med jämna mellanrum.
 	ska skickas ut till servon eller motorn. Avbrottet sker varje gång
 	motsvarande timer-register har nått sitt maximum och startar om från noll.
 \end{itemize}
-
-\subsubsection{Huvud-loop}
-I huvudloopen kommer värdena från kommunikationsmodulen göras om till
-motsvarande tidsintervall i PWM. Beroende på hur snabbt det går så kommer
-huvudloopen vänta på avbrott.
-
-\subsection{Komponenter}
-\paragraph{ATMega16} bla bla TODO
-\paragraph{Drivmotor} bla bla TODO
-\paragraph{Servo} bla bla TODO
-\paragraph{LCD JM162A} bla bla TODO
 
 \end{document}
