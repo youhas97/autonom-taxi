@@ -18,19 +18,23 @@ noggranna sensorvärden som möjligt.
 
 \paragraph{Sensorer}
 De sensorerna som kommer att finnas på taxin är en ultraljudssensor som pekar
-rakt fram, en optisk avståndsmätare för att detektera , samt en analog RBG-sensor.
+rakt fram, en optisk avståndsmätare för att detektera hinder.
 Ultraljudssensorn mäter avstånd.
 
 \subsection{Hårdvaruimplementation} 
 TODO intro
 
-\subsubsection{Komponenter}
-\paragraph{ATMega16} bla bla TODO
-\paragraph{GP2D120} bla bla TODO
-\paragraph{GP2Y0A02YK} bla bla TODO
-\paragraph{Halleffektsensor} bla bla TODO
-\paragraph{LCD JM162A} bla bla TODO
+\subsubsection{Budget}
+
+\begin{itemize}
+	\item \textbf{ATMega16} Modulens microprocessor. 
+    \item \textbf{GP2D120} Avståndsmätare för hinder framför bilen.
+    \item \textbf{GP2Y0A02YK} Avståndsmätare för hinder höger om bilen.
+\end{itemize}
 
 \subsection{Mjukvaruimplementation} 
+Sensormodulen kommer bestå av en tom while loop och ett avbrott som aktiveras
+när kommunikationsmodulen efterfrågar värden. Sensormodulen skickar då de
+senaste sensorvärdena och samplar därefter nästa grupp av värden.
 
 \end{document}
