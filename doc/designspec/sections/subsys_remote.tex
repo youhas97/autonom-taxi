@@ -14,16 +14,19 @@ TODO räkna karta
 TODO skapa kommandolista utifrån uppdrag
 
 \subsection{Mjukvaruimplementation}
-För att hitta kortaste vägen ska kartan matas in i fjärrklienten för att med
-hjälp av Dijkstras algoritm räkna ut kortaste vägen. Kartan
-representeras med ett nätverk där varje nod motsvarar en tejpbit. Programmet
-skrivs i Python.
+% TODO övergripande intro
+    -skriven i python
+    -en tråd för gui
+    -en tråd för kommunikation
+Ett övergripande flödesdiagram över fjärrklienten kan ses i bilaga
+\ref{flow:remote}.
 
-\subsubsection{Algoritmer}
-För att hitta kortaste vägen ska Dijkstras algoritm användas. Denna kommer
-implementeras i Python.
+För att hitta kortaste vägen ska kartan matas in i fjärrklienten för att med
+hjälp av Dijkstras algoritm räkna ut kortaste vägen. 
 
 \subsubsection{Representation av karta}
+Kartan representeras med ett nätverk där varje nod motsvarar en stopplinje av
+tejp i vägfältet.
 
 % datastrukturer
 \begin{labeling}{wwww}
