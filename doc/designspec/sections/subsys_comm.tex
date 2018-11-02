@@ -55,6 +55,22 @@ exempelvis wpa\_supplicant kan användas för att sätta upp anslutningen.
 
 \subsubsection{Kontroll och bedömning}
 % TODO kontrollera pins samt gör bedömning av kommunikationsmodul
+För att kunna köra systemet med SPI-protokollet kommer ett antal signaler att
+behövas. De signaler som kommer att behövas är:
+\begin{itemize}
+    \item \textbf{MOSI} Data in till slav, data ut från master.
+    \item \textbf{MISO} Data från slav, data in till master.
+    \item \textbf{SCLK} En seriell klocka som är går ut från mastern.
+    \item \textbf{SS1}  Skickas en aktivt låg signal vid selektion av
+        slav.(Sensormodulen)
+    \item \textbf{SS2}  Skickas en aktivt låg signal vid selektion av
+        slav(Styrmodulen)
+\end{itemize}
+
+Raspberry Pi:n har stöd för 2 bussar med SPI-protokollet varav 10 pinnar
+totalt. Eftersom vi bara kommer att använda 5 pinnar räcker antalet pinnar.
+Upp till två nivåskiftare som konverterar mellan 5V och 3V3 kan användas då det
+finns två 5V-pinnar samt två 3V3-pinnar.
 
 \subsection{Mjukvaruimplementation}
 Kommunikationsmodulen ska bestå av flera trådar TODO
