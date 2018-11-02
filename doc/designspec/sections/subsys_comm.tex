@@ -29,19 +29,18 @@ därefter att översättas till felvärden som skickas till styrmodulen.
 
 \subsection{Hårdvaruimplementation} 
 Kommunikationsmodulen kommer att implementeras med hjälp av en Raspberry Pi 3,
-där en bluetooth och wifikomponent redan finns integrerat. Kameran kommer att
+där en Bluetooth och WLAN-komponent redan finns integrerat. Kameran kommer att
 kopplas direkt till kameraporten som finns på Raspberry Pi-kortet.
 GPIO-pinnarna kommer att användas för att ansluta till övriga moduler.
-Eftersom SPI-protokollet ska användas, kommer GPIO-portar för de
-signalerna som protokollet kräver användas. Det kommer att finnas
-nivåskiftare som skiftar spänningen på signalerna som går mellan
-kommunikationsmodulen och mikrokontrollerna.
+Eftersom SPI-protokollet ska användas, kommer GPIO-portar för de signalerna som
+protokollet kräver användas. Det kommer att finnas nivåskiftare som skiftar
+spänningen på signalerna som går mellan kommunikationsmodulen och
+mikrokontrollerna.
 % TODO hänvisa till kretsschema i bilaga
 
-Kommunikationen med fjärrklienten kommer att ske med en inbyggd Wi-Fi eller
-Bluetooth-modul på Raspberry Pi-enheten. Anslutningen kommer att ske via wifi
-och skapas med en dator med operativsystemet Raspbian och program som
-exempelvis wpa\_supplicant kan användas för att sätta upp anslutningen.
+Kommunikationen med fjärrklienten kommer att ske via Bluetooth eller WLAN.
+Raspberry:n kommer köra operativsystemet Raspbian och program som exempelvis
+wpa\_supplicant för att sätta upp anslutningen.
 
 \subsubsection{Budget}
 \begin{itemize}
@@ -54,17 +53,15 @@ exempelvis wpa\_supplicant kan användas för att sätta upp anslutningen.
 \end{itemize}
 
 \subsubsection{Kontroll och bedömning}
-% TODO kontrollera pins samt gör bedömning av kommunikationsmodul
 För att kunna köra systemet med SPI-protokollet kommer ett antal signaler att
 behövas. De signaler som kommer att behövas är:
 \begin{itemize}
-    \item \textbf{MOSI} Data in till slav, data ut från master.
-    \item \textbf{MISO} Data från slav, data in till master.
-    \item \textbf{SCLK} En seriell klocka som är går ut från mastern.
-    \item \textbf{SS1}  Skickas en aktivt låg signal vid selektion av
-        slav.(Sensormodulen)
-    \item \textbf{SS2}  Skickas en aktivt låg signal vid selektion av
-        slav(Styrmodulen)
+    \item \textbf{MOSI} Datasignal från master till slav.
+    \item \textbf{MISO} Datasignal från slav till master.
+    \item \textbf{SCLK} Synkron klocka som från mastern till mikrokontrollerna.
+    \item \textbf{SS1} Slave select för sensormodulen.
+    \item \textbf{SS2} Slave select för styrmodulen.
+    slav.
 \end{itemize}
 
 Raspberry Pi:n har stöd för 2 bussar med SPI-protokollet varav 10 pinnar
@@ -72,17 +69,25 @@ totalt. Eftersom vi bara kommer att använda 5 pinnar räcker antalet pinnar.
 Upp till två nivåskiftare som konverterar mellan 5V och 3V3 kan användas då det
 finns två 5V-pinnar samt två 3V3-pinnar.
 
+% TODO bedömning pi bör klara med c/c++ bla bla bla
+
 \subsection{Mjukvaruimplementation}
-Kommunikationsmodulen ska bestå av flera trådar TODO
+Kommunikationsmodulen kommer skrivas i C eller eventuellt C++ och ska bestå av
+två trådar; en huvudtråd som hanterar uppdrag, bildbehandlar och svarar på
+kommandon från fjärrklienten samt en tråd som sköter kommunikation med andra
+moduler.
 
-\subsubsection{Avbrott}
-% TODO avbrott för SPI
+\paragraph{Huvudtråden} kommer att starta en TCP/IP-server för att lyssna på
+kommandon från fjärrklienten. Tråden kommer köra en while loop där den först
+accepterar inkommande anslutningar och agerar utefter protokollet som är
+specificerat i sektion \ref{sec:wlproto}. Därefter kommer den hantera uppdraget
+och eventuellt bildbehandla. Därefter uppdatera felvärde som ska skickas till
+styrmodulen.
 
-TODO komm mjukvara
-%- skrivs i c eller möjligtvis c++
-%- eventuell trådsuppdelning
-%    - server för länk och uppdragshantering
-%    - hämta från sensor och skicka till styr (avbrott?)
-%    - bildhantering för att generera felvärde
+\paragraph{SPI-bussen} kommer hanteras av en dedikerad tråd. Den skall
+kontinuerligt hämta värden från sensormodulen oberoende av andra trådar. När
+bildbehandlingen är färdig med nästa bild skall felvärdet skickas till
+styrmodulen. Detta sker i en separat tråd för att inte fördröja
+bildbehandlingen i väntan på bussen.
 
 \end{document}

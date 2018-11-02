@@ -2,7 +2,7 @@
 
 \begin{document}
 
-\begin{tikzpicture}
+\begin{tikzpicture}[thick]
     % moduler
     \def\distanceapart{50mm}
     \node[module] at (0,0) (sens) {Sensormodul};
@@ -17,18 +17,18 @@
     \node (miso) at (-\leftward,3cm) {MISO};
 
     % signaler till bussar
-    \draw (sclk)  -| node[branch]{} ([xshift=-\spacing]sens.north);
-    \draw (mosi)  -| node[branch]{} (sens.north);
+    \draw[->] (sclk)  -| node[branch]{} ([xshift=-\spacing]sens.north);
+    \draw[->] (mosi)  -| node[branch]{} (sens.north);
     \draw (miso)  -| node[branch]{} ([xshift= \spacing]sens.north);
 
-    \draw (comm.west) -> node[above]{SS1} (sens.east);
-    \draw (sclk)  -| node[branch]{} ([xshift=-\spacing]comm.north);
-    \draw (mosi)  -| node[branch]{} (comm.north);
-    \draw (miso)  -| node[branch]{} ([xshift= \spacing]comm.north);
-    \draw (comm.east) -> node[above]{SS2} (ctrl.west);
+    \draw[->] (comm.west) -- node[above]{SS1} (sens.east);
+    \draw (sclk) -| node[branch]{} ([xshift=-\spacing]comm.north);
+    \draw (mosi) -| node[branch]{} (comm.north);
+    \draw[->] (miso) -| node[branch]{} ([xshift= \spacing]comm.north);
+    \draw[->] (comm.east) -- node[above]{SS2} (ctrl.west);
 
-    \draw (sclk)  -| node[branch]{} ([xshift=-\spacing]ctrl.north);
-    \draw (mosi)  -| node[branch]{} (ctrl.north);
+    \draw[->] (sclk)  -| node[branch]{} ([xshift=-\spacing]ctrl.north);
+    \draw[->] (mosi)  -| node[branch]{} (ctrl.north);
     \draw (miso)  -| node[branch]{} ([xshift= \spacing]ctrl.north);
 \end{tikzpicture}
 
