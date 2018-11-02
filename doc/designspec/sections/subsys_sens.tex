@@ -12,14 +12,14 @@ Sensormodulen ska mäta värden från sensorerna, omvandla till läsbar data och
 skicka vidare informationen till kommunikationsmodulen.
 
 \paragraph{Filtrering}
-Eftersom sensorerna kan bli påverkade av eventuella störningar kommer det att
-finnas brusfilter som filtrerar bort dessa störningar för att skapa så
-noggranna sensorvärden som möjligt.
+Eftersom sensorerna kan bli påverkade av eventuella störningar kommer det
+eventuellt att finnas brusfilter som filtrerar bort dessa störningar för att
+skapa så noggranna sensorvärden som möjligt.
 
 \paragraph{Sensorer}
-De sensorerna som kommer att finnas på taxin är en ultraljudssensor som pekar
-rakt fram, en optisk avståndsmätare för att detektera hinder.
-Ultraljudssensorn mäter avstånd.
+Taxin kommer att ha en optisk avståndsmätare som pekar rakt fram för att
+upptäcka hinder framför bilen samt en optisk avståndsmätare på sidan för att
+detektera hinder höger om bilen vid omkörning.
 
 \subsection{Hårdvaruimplementation} 
 TODO intro
@@ -36,9 +36,9 @@ TODO intro
 % TODO gör kontroll av pins samt bedömning för sensormodul
 
 \subsection{Mjukvaruimplementation} 
-Sensormodulen kommer bestå av en tom while loop och ett avbrott som aktiveras
-när kommunikationsmodulen efterfrågar värden. Sensormodulen skickar då de
-senaste sensorvärdena och samplar därefter nästa grupp av värden.
-% TODO gå in i detalj med avbrott
+Sensormodulen ska bestå av en tom while loop och ett avbrott som aktiveras när
+kommunikationsmodulen efterfrågar värden. Sensormodulen skickar då de senaste
+sensorvärdena och samplar därefter nästa grupp av värden.
+% TODO gå in i detalj med avbrottet
 
 \end{document}
