@@ -22,19 +22,16 @@ Produkten består av tre moduler: Kommunikation-, sensor- och styrmodul.
 Sensormodulen kommer implenteras på ett virkort varav de andra modulerna ska
 vara på ett separat virkort. Produkten har två avståndsmätare och en kamera
 till hjälp när produkten ska samla in information om sin omgivning. Vardera
-mikrokontroller klockas med en kristalloscillator.
-
-\subsubsection{Fjärrstyrning}
-Produkten kopplas till en mobils eller laptops hotspot och fjärrstyrningen sker
-via WLAN.
+mikrokontroller klockas med en kristalloscillator. Produkten är ansluten till en
+fjärrklient via WLAN.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.6\linewidth]{designspec/fig/blockskiss.pdf}
+    \includegraphics[width=0.65\linewidth]{designspec/fig/blockskiss.pdf}
     \caption{Övergripande bild över systemet och dess moduler. SPI-buss används}
     \label{fig:overview}
 \end{figure}
-
+\noindent
 Kommunikationsmodulen består av en Raspberry Pi och kommer vara en central
 kommunikation- och beslutsenhet som ansvarar för att ta beslut om reglering
 samt så sköter den kommunikationen mellan modulerna. Styrmodulen består av
