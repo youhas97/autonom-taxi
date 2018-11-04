@@ -7,40 +7,76 @@ Fjärrklienten fungerar som ett gränssnitt till användaren.
 
 \subsection{Funktion}
 Fjärrklientens uppgift är att bidra med ett gränssnitt till användaren för att
-kontrollera och övervaka taxin.
-TODO inmatning
-TODO övervakning
-TODO räkna karta
-TODO skapa kommandolista utifrån uppdrag
+kontrollera och övervaka taxin, samt skapa och skicka instruktioner till bilen
+utefter användarens uppdrag.
+
+\paragraph{Gränssnitt}
+Gränssnittet ska tillåta användaren att välja antingen autonom eller manuell
+körning. Vid manuell körning skickas styrkommandon till taxin när användaren
+trycker på piltangenterna. Vid autonom körning ska gränssnittet tillåta
+användaren att mata in en karta samt ange destination.
+
+Gränssnittet ska visa nuvarande och historiska mätvärden från taxin med hjälp
+av diagram. Gränssnittet skall även visa taxins position under aktiva uppdrag.
+
+\paragraph{Skapa kommandon för uppdrag}
+Fjärrklienten ska utifrån den inmatade kartan och destination; räkna ut den
+kortaste vägen dit och utifrån vägen skapa en kö av kommandon som taxin kan
+följa för att nå destinationen.
 
 \subsection{Mjukvaruimplementation}
-% TODO övergripande intro
-    -skriven i python
-    -en tråd för gui
-    -en tråd för kommunikation
-Ett övergripande flödesdiagram över fjärrklienten kan ses i bilaga
-\ref{flow:remote}.
+Fjärrklienten kommer implementeras i Python och bestå av två olika trådar; en
+tråd för det grafiska gränssnittet och en huvudtråd för allt annat. Ett
+flödesdiagram för fjärrklienten kan ses i bilaga \ref{flow:remote}.
 
-För att hitta kortaste vägen ska kartan matas in i fjärrklienten för att med
-hjälp av Dijkstras algoritm räkna ut kortaste vägen. 
+\subsubsection{Trådar}
+Programmet skall köras parallellt med två trådar för att förhindra att
+gränssnittet fryser för användaren. Programmet kommer behöva vänta på svar från
+taxin samt utföra längre beräkningar vilket innebär att programmet kanske inte
+hinner uppdatera gränssnittet tillräckligt ofta om det endast använder en tråd.
 
-\subsubsection{Representation av karta}
-Kartan representeras med ett nätverk där varje nod motsvarar en stopplinje av
-tejp i vägfältet.
+\subsubsection{Karta och uppdrag}
+Kartan representeras med en riktad graf där varje nod motsvarar en stopplinje
+av tejp i vägfältet. Rondeller representeras av endast en nod istället för en
+nod per stopplinje. En båge representerar en enkelriktad körfil från en
+stopplinje eller rondell till en stopplinje eller rondell. Den här grafen
+representeras i sin tur av nedan datastrukturer.
 
 % datastrukturer
 \begin{labeling}{wwww}
-    \item[Nod] En nod är en klass som består av nodtyp och utgående bågar. Det
-    finns tre olika nodtyper; stopplinje, parkeringsficka och rondell. Dessa
-    representeras av siffrorna 1, 2 och 3, respektive.
-    Grannar är alla de noder som objektet har en anslutande båge till. Avstånd
-    anges för alla grannar.
+    \item[Karta] Kartan utgörs av en lista med noder.
+
+    \item[Nod] En nod är en klass som består av en nodtyp och en sorterad lista
+        av utgående bågar. Det finns tre olika nodtyper; stopplinje,
+        parkeringsficka och rondell. 
 
     \item[Båge] En båge består av ett avstånd och en destination. Den
-    representeras av en tuple där första värdet är ett avstånd och det andra
-    värdet är en pekare till en nod.
-
-    \item[Karta] Kartan utgörs av en lista med noder.
+        representeras av en tuple där första värdet är ett avstånd och det
+        andra värdet är en pekare till en nod.
 \end{labeling}
+
+Ovan datastrukur är vald för att göra det smidigt att räkna ut den närmaste
+vägen med Dijkstras alogritm. Med algoritmen utgår man från en nod och jämför
+alla dess grannar. Med ovan struktur kan man utgå från startnoden och därefter
+rekursivt gå igenom nodens alla grannar och grannar av grannar. Alternativt,
+med en \textit{adjacency list} kräver detta en sökning efter alla bågar som
+noden utgår ifrån. Med en \textit{adjacency matrix} måste man kolla igenom
+varje element i nodens rad i matrisen och eftersom graferna inte alls är
+särskilt täta är det inte särskilt effektiv användning av cykler eller utrymme. 
+
+När en närmaste väg har bestämts ska en kö av kommandon skapas. Detta kan göras
+genom att iterera varje nod i vägen och lägga till följande kommandon för varje
+nodtyp.
+\begin{labeling}{wwwwwwwwwwwwwwww}
+\item[stopplinje] \mono{stop} om markerad som destination, annars
+    \mono{ignore}.
+\item[parkeringsficka (ej dest.)] \mono{park} om markerad som destination,
+    annars \mono{ignore}.
+\item[rondell] En \mono{enter/exit}, därefter en \mono{ignore} för varje avfart
+    den ska passera och slutligen en \mono{enter/exit}.
+\end{labeling}
+För att kunna avgöra vilken avfart taxin ska ta i en rondell är det viktigt att
+de utgående bågarna i rondellens nod är sorterade i samma ordning som
+avfarterna är placerade i den riktiga banan.
 
 \end{document}
