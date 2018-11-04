@@ -197,9 +197,6 @@ F 3 "" H 8800 5450 50  0001 C CNN
 	1    8800 5450
 	0    -1   -1   0   
 $EndComp
-Connection ~ 3850 1050
-Wire Wire Line
-	3850 1050 2050 1050
 Text Label 6200 2750 0    50   ~ 0
 SS_Slave_Select
 Text Label 6200 2850 0    50   ~ 0
