@@ -61,13 +61,12 @@ behövas. De signaler som kräver pinnar är:
     \item \textbf{SS2} Slave select för styrmodulen.
     slav.
 \end{itemize}
-
 Raspberry Pi:n har stöd för 2 bussar med SPI-protokollet varav 10 pinnar
-totalt. Eftersom vi bara kommer att använda 5 pinnar räcker antalet pinnar.
-Två nivåskiftare som konverterar mellan 5V och 3V3 kan användas då det finns
-två 5V-pinnar samt två 3V3-pinnar.
+totalt. Eftersom endast 5 pinnar kommer användas räcker antalet pinnar.  Två
+nivåskiftare som konverterar mellan 5V och 3V3 kan användas då det finns två
+5V-pinnar samt två 3V3-pinnar.
 
-Det mest krävande för kommunikationsmodulen är att bildbehandla.  Raspberry Pi
+Det mest krävande för kommunikationsmodulen är bildbehandlingen. Raspberry Pi
 3 model B har en fyrakärnig BCM2837 klockad på 1.2GHz och 1GB internt minne.
 Detta bör vara tillräckligt för att uppnå 20 bilder per sekund med en effektiv
 implementation i C eller C++.
