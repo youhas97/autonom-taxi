@@ -3,7 +3,8 @@
 \begin{document}
 
 \section{Fjärrklient}
-Fjärrklienten fungerar som ett gränssnitt till användaren.
+Fjärrklienten fungerar som ett gränssnitt till användaren och har även en
+viktig roll i utförandet av uppdrag.
 
 \subsection{Funktion}
 Fjärrklientens uppgift är att bidra med ett gränssnitt till användaren för att
@@ -26,7 +27,7 @@ följa för att nå destinationen.
 
 \subsection{Mjukvaruimplementation}
 Fjärrklienten kommer implementeras i Python och bestå av två olika trådar; en
-tråd för det grafiska gränssnittet och en huvudtråd för allt annat. Ett
+för det grafiska gränssnittet samt en huvudtråd för allt annat. Ett
 flödesdiagram för fjärrklienten kan ses i bilaga \ref{flow:remote}.
 
 \subsubsection{Trådar}
@@ -54,8 +55,7 @@ representeras i sin tur av nedan datastrukturer.
         representeras av en tuple där första värdet är ett avstånd och det
         andra värdet är en pekare till en nod.
 \end{labeling}
-
-Ovan datastrukur är vald för att göra det smidigt att räkna ut den närmaste
+Ovan datastrukurer är valda för att göra det smidigt att räkna ut den närmaste
 vägen med Dijkstras alogritm. Med algoritmen utgår man från en nod och jämför
 alla dess grannar. Med ovan struktur kan man utgå från startnoden och därefter
 rekursivt gå igenom nodens alla grannar och grannar av grannar. Alternativt,
