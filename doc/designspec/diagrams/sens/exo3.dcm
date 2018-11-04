@@ -12,6 +12,12 @@ K Crystal Clock Oscillator
 F http://www.conwin.com/datasheets/cx/cx030.pdf
 $ENDCMP
 #
+$CMP AD-121F2
+D Single Digit 7-segment RGB LED Display, 1-inch digit height, common anode
+K display RGB LED digit 7-segment
+F http://usasyck.com/products/AD-121F2_cat_e.pdf
+$ENDCMP
+#
 $CMP ASE-xxxMHz
 D 3.3V CMOS SMD Crystal Clock Oscillator, Abracon
 K 3.3V CMOS SMD Crystal Clock Oscillator
