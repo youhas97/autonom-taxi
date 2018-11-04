@@ -34,11 +34,8 @@ till kameraporten som finns på Raspberry Pi-kortet. GPIO-pinnarna kommer att
 användas för att ansluta till övriga moduler.  Eftersom SPI-protokollet ska
 användas, kommer GPIO-portar för de signalerna som protokollet kräver användas.
 Det kommer att finnas nivåskiftare som skiftar spänningen på signalerna som går
-mellan kommunikationsmodulen och mikrokontrollerna.
-% TODO hänvisa till kretsschema i bilaga
-
-Raspberry:n kommer köra operativsystemet Raspbian och program som exempelvis
-wpa\_supplicant för att sätta upp anslutningen för WLAN.
+mellan kommunikationsmodulen och mikrokontrollerna. Ett kretsschema för modulen
+finns i bilaga \ref{cdiag.comm}.
 
 \subsubsection{Budget}
     Nedan komponenter i kommunikationsmodulen ingår inte i baschassit och
@@ -46,7 +43,7 @@ wpa\_supplicant för att sätta upp anslutningen för WLAN.
 \begin{itemize}
     \item \textbf{Raspberry Pi Camera V2 Video Module} Kamera till Raspberry
     Pi.
-    \item \textbf{2 $\times$ TXB0104 Level Shifter} Nivåskiftare för 4 signaler
+    \item \textbf{2 $\times$ \modShifter} Nivåskiftare för 4 signaler
     vardera.
 \end{itemize}
 
@@ -61,19 +58,21 @@ behövas. De signaler som kräver pinnar är:
     \item \textbf{SS2} Slave select för styrmodulen.
     slav.
 \end{itemize}
-
 Raspberry Pi:n har stöd för 2 bussar med SPI-protokollet varav 10 pinnar
-totalt. Eftersom vi bara kommer att använda 5 pinnar räcker antalet pinnar.
-Två nivåskiftare som konverterar mellan 5V och 3V3 kan användas då det finns
-två 5V-pinnar samt två 3V3-pinnar.
+totalt. Eftersom endast 5 pinnar kommer användas räcker antalet pinnar.  Två
+nivåskiftare som konverterar mellan 5V och 3V3 kan användas då det finns två
+5V-pinnar samt två 3V3-pinnar.
+% TODO/XXX lägga till dessa i listan? mer än 5 används väl då
 
-Det mest krävande för kommunikationsmodulen är att bildbehandla.  Raspberry Pi
+Det mest krävande för kommunikationsmodulen är bildbehandlingen. Raspberry Pi
 3 model B har en fyrakärnig BCM2837 klockad på 1.2GHz och 1GB internt minne.
 Detta bör vara tillräckligt för att uppnå 20 bilder per sekund med en effektiv
 implementation i C eller C++.
 
 \subsection{Mjukvaruimplementation}
-Kommunikationsmodulen kommer skrivas i C eller eventuellt C++ och ska bestå av
+Raspberry:n kommer köra operativsystemet Raspbian och program som exempelvis
+wpa\_supplicant för att sätta upp anslutningen för WLAN. Ett program för
+kommunikationsmodulen kommer skrivas i C eller eventuellt C++ och ska bestå av
 två trådar; en huvudtråd som hanterar uppdrag, bildbehandlar och svarar på
 kommandon från fjärrklienten samt en tråd som sköter kommunikation med andra
 moduler.
@@ -91,20 +90,22 @@ bildbehandlingen är färdig med nästa bild skall felvärdet skickas till
 styrmodulen. Detta sker i en separat tråd för att inte fördröja
 bildbehandlingen i väntan på bussen.
 
-\subsubsection{Uppdrag}
+\subsubsection{Uppdrag} \label{sec:comm-mission}
 För att utföra uppdraget kommer en kö av kommandon tas emot från fjärrklienten.
 När uppdraget börjar kör taxin framåt och följer filen med hjälp av
-bildbehandling. Inför varje stopplinje tas ett kommando från kön och utförs. Om
-ett hinder upptäcks enligt sensorvärdena kommer bilen att stanna tills hindret
-har försvunnit. När ett visst antal stopplinjer har passerats och kön är tom är
-uppdraget avklarat. Nedan är en lista av alla kommandon som kan utföras.
-\begin{labeling}{wwwwwwww}
-    \item[ignore] Kör förbi stopplinjen utan att stanna.
-    \item[enter/exit] Om inte i en rondell; sväng höger in i rondellen och
-    hitta rondellens körfil. Om redan i en rondell; sväng höger ut ur rondellen
-    och hitta körfilen.
-    \item[stop] Stanna framför stopplinjen.
-    \item[park] Parkera i fickan till höger efter stopplinjen.
+bildbehandling och reglering. Inför varje stopplinje tas ett kommando från kön
+och utförs. Om ett hinder upptäcks under uppdraget kommer bilen att stanna
+tills hindret har försvunnit eller eventuellt passera hindret. När ett visst
+antal stopplinjer har passerats och kön är tom är uppdraget avklarat. Nedan är
+en lista av alla möjliga kommandon hur de utförs.
+\begin{labeling}{wwww}
+    \item[\commIgnore] Kör förbi stopplinjen utan att stanna.
+    \item[\commEnter] Sväng höger in i rondellen och hitta rondellens körfil.
+    \item[\commExit] Sväng höger ut ur rondellen och hitta körfilen.
+    \item[\commStop] Stanna framför stopplinjen, fortsätt efter några sekunder
+    om kön inte är tom.
+    \item[\commPark] Parkera i fickan till höger efter stopplinjen, lämna
+    parkeringen och fortsätt efter några sekunder om kön inte är tom.
 \end{labeling}
 
 \end{document}

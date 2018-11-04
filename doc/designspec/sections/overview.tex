@@ -27,25 +27,26 @@ fjärrklient via WLAN.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.65\linewidth]{designspec/fig/blockskiss.pdf}
+    \includegraphics[width=0.6\linewidth]{designspec/fig/blockskiss.pdf}
     \caption{Övergripande bild över systemet och dess moduler. SPI-buss används}
     \label{fig:overview}
 \end{figure}
 \noindent
 Kommunikationsmodulen består av en Raspberry Pi och kommer vara en central
-kommunikation- och beslutsenhet som ansvarar för att ta beslut om reglering
-samt så sköter den kommunikationen mellan modulerna. Styrmodulen består av
-motor och mikrokontroller och står för drift samt regleringen. Sensormodulen
-består av mikrokontroller samt avståndsmätare och halleffektsensorn.
+kommun\-ikations- och beslutsenhet som ansvarar för att ta beslut om taxins
+beteende samt hantera kommunikationen mellan modulerna. Styrmodulen består av
+motorer och en mikrokontroller och står för drift samt reglering av taxins
+hastighet och svängradie. Sensormodulen består av en mikrokontroller samt
+avståndsmätare och halleffektsensorer monterade på bilens hjul.
 
 \subsection{Sensorer}
 Kameran ska fästas en bit ovan alla korten och titta framåt med en vinkel
 nedåt. Avståndsmätaren som ska mäta avstånd till hinder ska fästas på framsidan
 av bilens chassi. Om det behövs så ska lämpliga fotfästen skrivas ut med en
-3D-skrivare. Den andra avståndsmätaren som används för att mäta ifall vi har
-åkt förbi hindret vid omkörning kommer placeras på bakre höger sida av bilens
-chassi. Odometern som används till att mäta kördistans är redan färdigmonterad
-på chassit.
+3D-skrivare. Den andra avståndsmätaren ska användas för att avgöra när ett
+hinder har passerats vid omkörning och kommer att placeras på bakre höger sida
+av bilens chassi. Odometern som används till att mäta kördistans är redan
+färdigmonterad på chassit.
 
 \subsection{Ställdon}
 Hjulen, motorerna och ställdonen är redan färdigmonterade. Motorerna används

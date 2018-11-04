@@ -65,15 +65,15 @@ varje element i nodens rad i matrisen och eftersom graferna inte alls är
 särskilt täta är det inte särskilt effektiv användning av cykler eller utrymme. 
 
 När en närmaste väg har bestämts ska en kö av kommandon skapas. Detta kan göras
-genom att iterera varje nod i vägen och lägga till följande kommandon för varje
-nodtyp.
-\begin{labeling}{wwwwwwwwwwwwwwww}
-\item[stopplinje] \mono{stop} om markerad som destination, annars
-    \mono{ignore}.
-\item[parkeringsficka (ej dest.)] \mono{park} om markerad som destination,
-    annars \mono{ignore}.
-\item[rondell] En \mono{enter/exit}, därefter en \mono{ignore} för varje avfart
-    den ska passera och slutligen en \mono{enter/exit}.
+genom att iterera varje nod i vägen och lägga till nedan kommandon för varje
+nodtyp. Hur taxin agerar vid varje kommando är specificerat i sektion
+\ref{sec:comm-mission}.
+\begin{labeling}{wwwwwwwwww}
+\item[stopplinje] {\commStop} om markerad som destination, annars \commIgnore.
+\item[parkeringsficka] {\commPark} om markerad som destination, annars
+    \commIgnore
+\item[rondell] En \commEnter, därefter en {\commIgnore} för varje avfart den ska
+    passera och slutligen en \commExit.
 \end{labeling}
 För att kunna avgöra vilken avfart taxin ska ta i en rondell är det viktigt att
 de utgående bågarna i rondellens nod är sorterade i samma ordning som

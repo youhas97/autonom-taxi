@@ -24,32 +24,31 @@ störningar för att skapa så noggranna sensorvärden som möjligt.
 mikrokontroller, JTAG, Kristalloscillator, strömbrytare och fyra sensorer; en
 avståndsmätare på framsidan, en avståndsmätare på höger sida samt två
 halleffektsensorer placerade på två av hjulen. Kontrollern är även kopplad till
-en LCD-display för att kunna visa värden för felsökning.\\
+en LCD-display för att kunna visa värden för felsökning.
 
 På LCD-DISPLAY har följande två pinnar valts till att ha ett konstant värde:
 R/W och E. Eftersom inget krav finns på att kunna släcka LCD alternativt läsa
-från displayen så är enable och write-signalen alltid igång.\\
+från displayen så är enable och write-signalen alltid igång.
 
 Halleffektsensorerna kommer skicka en avbrottssignal varje gång hjulet har
-snurrat ett varv. Avbrottsrutinen ser till att räkna upp distans körd.\\
+snurrat ett varv. Avbrottsrutinen ser till att räkna upp distans körd.
 
 Avståndsmätarna skickar en spänning direkt till mikrokontrollens AD-omvandlare.
 Spänningens värde motsvarar ett avstånd. Utspänningen kan eventuellt behöva
-filtreras från brus. \\
+filtreras från brus.
 
 Önskad klockfrekvens från oscillatorn är 24Mhz, någon division av den
 fundamentala klockan är inte planerat.
 
-
-
+Ett kretsschema över modulen finns i bilaga \ref{cdiag:sens}.
 
 \subsubsection{Budget}
 Nedan är produkter som ej medföljer baschassit och behöver beställas.
 \begin{itemize}
-	\item \textbf{ATMega1284} Modulens microprocessor. 
-    \item \textbf{GP2D120} Avståndsmätare för hinder framför bilen.
-    \item \textbf{GP2Y0A02YK} Avståndsmätare för hinder höger om bilen.
-    \item \textbf{LCD JM162A} LCD-display för att visa parametrar under körning
+	\item \textbf{\modMicrocontroller} Modulens microprocessor. 
+    \item \textbf{\modDistf} Avståndsmätare för hinder framför bilen.
+    \item \textbf{\modDists} Avståndsmätare för hinder höger om bilen.
+    \item \textbf{\modLcd} LCD-display för att visa parametrar under körning
     i felsökningssyfte.
     \item \textbf{IQEXO3} Kristalloscillator på 20Mhz, skall använda som systemklocka till AVR.
     \item \textbf{Tryckknapp} Knapp används till RESET.
@@ -76,5 +75,6 @@ Mikrokontrollen bör inte ha något problem att utföra dessa uppgifter.
 Sensormodulen ska bestå av en tom while loop och ett avbrott som aktiveras när
 kommunikationsmodulen efterfrågar värden. Sensormodulen skickar då de senaste
 sensorvärdena och samplar därefter nästa grupp av värden.
+% TODO utveckla impl, lär vara liknande som i ctrl så kanske kan referera sen
 
 \end{document}
