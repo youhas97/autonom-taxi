@@ -8,28 +8,33 @@ värden från de olika sensorerna som finns för att sedan skicka mätdata till
 kommunikationsmodulen.
 
 \subsection{Funktion}
-Sensormodulen ska mäta värden från sensorerna, omvandla till läsbar data och
-skicka vidare informationen till kommunikationsmodulen.
-
-\paragraph{Filtrering}
-Eftersom sensorerna kan bli påverkade av eventuella störningar kommer det
-eventuellt att finnas brusfilter som filtrerar bort dessa störningar för att
-skapa så noggranna sensorvärden som möjligt.
+Sensormodulen ska hämta eventuellt filtrerade värden från sensorerna, omvandla
+till linjära enheter och skicka vidare de till kommunikationsmodulen.
 
 \paragraph{Sensorer}
 Taxin kommer att ha en optisk avståndsmätare som pekar rakt fram för att
 upptäcka hinder framför bilen samt en optisk avståndsmätare på sidan för att
 detektera hinder höger om bilen vid omkörning.
 
+\paragraph{Filtrering}
+Eftersom sensorerna kan bli påverkade av eventuella störningar kommer det
+eventuellt att finnas brusfilter som filtrerar bort dessa störningar för att
+skapa så noggranna sensorvärden som möjligt.
+
 \subsection{Hårdvaruimplementation} 
-TODO intro
+Sensormodulen består av en ATMega1284 mikrokontroller och fyra sensorer; en
+avståndsmätare på framsidan, en avståndsmätare på höger sida samt två
+halleffektsensorer placerade på två av hjulen. Kontrollern är även kopplad till
+en LCD-display för att kunna visa värden för felsökning.
 
 \subsubsection{Budget}
-
+Nedan är produkter som ej medföljer baschassit och behöver beställas.
 \begin{itemize}
 	\item \textbf{ATMega1284} Modulens microprocessor. 
     \item \textbf{GP2D120} Avståndsmätare för hinder framför bilen.
     \item \textbf{GP2Y0A02YK} Avståndsmätare för hinder höger om bilen.
+    \item \textbf{LCD JM162A} LCD-display för att visa parametrar under körning
+    i felsökningssyfte.
 \end{itemize}
 
 \subsubsection{Kontroll och bedömning}
@@ -39,6 +44,5 @@ TODO intro
 Sensormodulen ska bestå av en tom while loop och ett avbrott som aktiveras när
 kommunikationsmodulen efterfrågar värden. Sensormodulen skickar då de senaste
 sensorvärdena och samplar därefter nästa grupp av värden.
-% TODO gå in i detalj med avbrottet
 
 \end{document}
