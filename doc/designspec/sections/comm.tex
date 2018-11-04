@@ -36,7 +36,7 @@ kan inkludera argument. För instruktioner utan argument skickas endast en
 sträng med instruktionens namn; till exempel \mono{get\_sensor\_data}. För
 instruktioner med argument består strängen av instruktionens namn följt av ett
 kolon och ett eller flera argument. Flera argument separeras med kommatecken;
-till exempel \mono{set\_mission:ign,ign,park}.
+till exempel \mono{set\_mission:ignr,ignr,park}.
 
 {\setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1.6}
@@ -47,7 +47,8 @@ till exempel \mono{set\_mission:ign,ign,park}.
     \wlcomm{get\_mission\_status}{inga}{En sträng med information om uppdraget
     skickas tillbaka, till exempel nuvarande position.}
     \wlcomm{set\_mission}{variabelt antal, kommandon}{Sätt en kö av kommandon
-    som ska utföras vid stopplinjer.}
+    som ska utföras vid stopplinjer. Kommandona är specificerade i sektion
+    \ref{sec:comm-mission}.}
     \wlcomm{execute\_mission}{inga}{Utför uppdraget enligt kommandona i det
     nuvarande satta uppdraget.}
     \wlcomm{cancel\_mission}{inga}{Avbryt utförandet av uppdrag. Uppdraget kan
