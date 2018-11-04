@@ -93,4 +93,20 @@ bildbehandlingen är färdig med nästa bild skall felvärdet skickas till
 styrmodulen. Detta sker i en separat tråd för att inte fördröja
 bildbehandlingen i väntan på bussen.
 
+\subsubsection{Uppdrag}
+För att utföra uppdraget kommer en kö av kommandon tas emot från fjärrklienten.
+När uppdraget börjar kör taxin framåt och följer filen med hjälp av
+bildbehandling. Inför varje stopplinje tas ett kommando från kön och utförs. Om
+ett hinder upptäcks enligt sensorvärdena kommer bilen att stanna tills hindret
+har försvunnit. När ett visst antal stopplinjer har passerats och kön är tom är
+uppdraget avklarat. Nedan är en lista av alla kommandon som kan utföras.
+\begin{labeling}{wwwwwwww}
+    \item[ignore] Kör förbi stopplinjen utan att stanna.
+    \item[enter/exit] Om inte i en rondell; sväng höger in i rondellen och
+    hitta rondellens körfil. Om redan i en rondell; sväng höger ut ur rondellen
+    och hitta körfilen.
+    \item[stop] Stanna framför stopplinjen.
+    \item[park] Parkera i fickan till höger efter stopplinjen.
+\end{labeling}
+
 \end{document}

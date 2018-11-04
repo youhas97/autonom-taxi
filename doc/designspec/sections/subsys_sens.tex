@@ -38,7 +38,11 @@ Nedan är produkter som ej medföljer baschassit och behöver beställas.
 \end{itemize}
 
 \subsubsection{Kontroll och bedömning}
-% TODO gör kontroll av pins samt bedömning för sensormodul
+% TODO gör kontroll av pins
+
+Mikrokontrollen behöver endast kommunicera med kommunikationsmodulen via SPI
+samt ta emot värden från sensorerna och göra enkla beräkningar vid omvandling.
+Mikrokontrollen bör inte ha något problem att utföra dessa uppgifter.
 
 \subsection{Mjukvaruimplementation} 
 Sensormodulen ska bestå av en tom while loop och ett avbrott som aktiveras när
