@@ -29,18 +29,16 @@ därefter att översättas till felvärden som skickas till styrmodulen.
 
 \subsection{Hårdvaruimplementation} 
 Kommunikationsmodulen kommer att implementeras med hjälp av en Raspberry Pi 3,
-där en Bluetooth och WLAN-komponent redan finns integrerat. Kameran kommer att
-kopplas direkt till kameraporten som finns på Raspberry Pi-kortet.
-GPIO-pinnarna kommer att användas för att ansluta till övriga moduler.
-Eftersom SPI-protokollet ska användas, kommer GPIO-portar för de signalerna som
-protokollet kräver användas. Det kommer att finnas nivåskiftare som skiftar
-spänningen på signalerna som går mellan kommunikationsmodulen och
-mikrokontrollerna.
+där en WLAN-komponent redan finns integrerat. Kameran kommer att kopplas direkt
+till kameraporten som finns på Raspberry Pi-kortet. GPIO-pinnarna kommer att
+användas för att ansluta till övriga moduler.  Eftersom SPI-protokollet ska
+användas, kommer GPIO-portar för de signalerna som protokollet kräver användas.
+Det kommer att finnas nivåskiftare som skiftar spänningen på signalerna som går
+mellan kommunikationsmodulen och mikrokontrollerna.
 % TODO hänvisa till kretsschema i bilaga
 
-Kommunikationen med fjärrklienten kommer att ske via Bluetooth eller WLAN.
 Raspberry:n kommer köra operativsystemet Raspbian och program som exempelvis
-wpa\_supplicant för att sätta upp anslutningen.
+wpa\_supplicant för att sätta upp anslutningen för WLAN.
 
 \subsubsection{Budget}
     Nedan komponenter i kommunikationsmodulen ingår inte i baschassit och
