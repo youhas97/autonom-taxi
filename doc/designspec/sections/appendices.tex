@@ -1,0 +1,23 @@
+\documentclass[main.tex]{subfiles}
+
+\begin{document}
+\appendix
+
+% set landscape
+\pagestyle{empty}
+\KOMAoptions{paper={landscape},pagesize}
+\recalctypearea
+
+\vspace*{-10mm}
+\section{Bilaga. Flödesdiagram}
+\subsection{Fjärrklient}
+\label{flow:remote}
+\begin{minipage}{\textwidth}
+    \includegraphics[scale=0.91]{designspec/diagrams/flowcharts/remote.pdf}
+\end{minipage}
+
+% set portrait
+\KOMAoptions{paper={landscape},pagesize}
+\recalctypearea
+
+\end{document}
