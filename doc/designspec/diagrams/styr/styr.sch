@@ -41,21 +41,10 @@ L exo3:IQEXO-3 U?
 U 1 1 5BEB103D
 P 1350 2150
 F 0 "U?" H 1350 2717 50  0000 C CNN
-F 1 "IQEXO-3" H 1350 2626 50  0000 C CNN
+F 1 "OSCILLATOR-QEXO3" H 1350 2626 50  0000 C CNN
 F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 1400 1400 50  0001 C CNN
 F 3 "http://www.onsemi.com/pub/Collateral/NB3N511-D.PDF" H 1400 1300 50  0001 C CNN
 	1    1350 2150
-	0    1    -1   0   
-$EndComp
-$Comp
-L jma162a:JMA162A _?
-U 1 1 5BEB1179
-P 4800 6000
-F 0 "_?" V 4600 5650 50  0001 C CNN
-F 1 "JMA162A" H 4800 5425 50  0000 C CNN
-F 2 "Display_7Segment:DA04-11SYKWA" V 5975 5975 50  0001 C CNN
-F 3 "http://www.kingbright.com/attachments/file/psearch/000/00/00/DA04-11SYKWA(Ver.6A).pdf" V 4600 6420 50  0001 C CNN
-	1    4800 6000
 	0    1    -1   0   
 $EndComp
 $Comp
@@ -90,53 +79,7 @@ Wire Wire Line
 	5050 900  7600 900 
 Connection ~ 5050 900 
 Wire Wire Line
-	4450 5300 4100 5300
-Wire Wire Line
-	4100 5300 4100 3950
-Wire Wire Line
-	4100 3950 3450 3950
-Wire Wire Line
-	4550 5300 4550 4850
-Wire Wire Line
-	4550 4850 3450 4850
-Wire Wire Line
-	4650 5300 4650 4750
-Wire Wire Line
-	4650 4750 3450 4750
-Wire Wire Line
-	4750 5300 4750 4650
-Wire Wire Line
-	4750 4650 3450 4650
-Wire Wire Line
-	3450 4550 4850 4550
-Wire Wire Line
-	4850 4550 4850 5300
-Wire Wire Line
-	3450 4450 4950 4450
-Wire Wire Line
-	4950 4450 4950 5300
-Wire Wire Line
-	5050 5300 5050 4350
-Wire Wire Line
-	5050 4350 3450 4350
-Wire Wire Line
-	3450 4250 5150 4250
-Wire Wire Line
-	5150 4250 5150 5300
-Wire Wire Line
-	5250 5300 5250 4200
-Wire Wire Line
-	5400 6250 7600 6250
-Wire Wire Line
-	7600 900  7600 6250
-Wire Wire Line
-	4450 6700 5850 6700
-Wire Wire Line
-	2850 5150 2850 6700
-Wire Wire Line
-	2850 6700 4450 6700
-Connection ~ 2850 5150
-Connection ~ 4450 6700
+	7600 900  7600 3500
 Wire Wire Line
 	4550 3750 3450 3750
 Wire Wire Line
@@ -149,16 +92,6 @@ Wire Wire Line
 	3450 3550 4550 3550
 Wire Wire Line
 	3450 3450 4550 3450
-Wire Wire Line
-	4950 4150 4950 4200
-Wire Wire Line
-	4950 4200 5250 4200
-Wire Wire Line
-	3450 4150 4950 4150
-Wire Wire Line
-	5850 4150 5850 6700
-Wire Wire Line
-	5050 4150 5850 4150
 Wire Wire Line
 	5050 900  5050 2950
 Wire Wire Line
@@ -181,10 +114,84 @@ Text Label 4150 2750 0    50   ~ 0
 CHIP_SELECT
 Wire Wire Line
 	3450 2650 4150 2650
-Wire Wire Line
-	3450 2550 4150 2550
 Text Label 4150 2650 0    50   ~ 0
 PWM_MOTOR
-Text Label 4150 2550 0    50   ~ 0
+$Comp
+L jma162a:JMA162A _?
+U 1 1 5BEDF369
+P 6650 3250
+F 0 "_?" V 6450 2900 50  0001 C CNN
+F 1 "JMA162A" H 6650 2675 50  0000 C CNN
+F 2 "Display_7Segment:DA04-11SYKWA" V 7825 3225 50  0001 C CNN
+F 3 "http://www.kingbright.com/attachments/file/psearch/000/00/00/DA04-11SYKWA(Ver.6A).pdf" V 6450 3670 50  0001 C CNN
+	1    6650 3250
+	0    1    -1   0   
+$EndComp
+Wire Wire Line
+	6400 2550 6400 2150
+Wire Wire Line
+	6400 2150 3450 2150
+Wire Wire Line
+	6500 2550 6500 2050
+Wire Wire Line
+	6500 2050 3450 2050
+Wire Wire Line
+	6600 2550 6600 1950
+Wire Wire Line
+	6600 1950 3450 1950
+Wire Wire Line
+	6700 2550 6700 1850
+Wire Wire Line
+	6700 1850 3450 1850
+Wire Wire Line
+	6800 2550 6800 1750
+Wire Wire Line
+	6800 1750 3450 1750
+Wire Wire Line
+	6900 2550 6900 1650
+Wire Wire Line
+	6900 1650 3450 1650
+Wire Wire Line
+	3450 1550 7000 1550
+Wire Wire Line
+	7000 1550 7000 2550
+Wire Wire Line
+	7100 2550 7100 1450
+Wire Wire Line
+	7100 1450 3450 1450
+Wire Wire Line
+	3450 2350 6300 2350
+Wire Wire Line
+	6300 2350 6300 2550
+Wire Wire Line
+	3450 4650 4150 4650
+Text Label 4150 4650 0    50   ~ 0
 PWM_SVÄNG
+Wire Wire Line
+	7250 3500 7600 3500
+Connection ~ 7600 3500
+Wire Wire Line
+	7600 3500 7600 6250
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BEEFE97
+P 6300 3950
+F 0 "#PWR?" H 6300 3700 50  0001 C CNN
+F 1 "GNDREF" H 6305 3777 50  0000 C CNN
+F 2 "" H 6300 3950 50  0001 C CNN
+F 3 "" H 6300 3950 50  0001 C CNN
+	1    6300 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BEEFEC1
+P 5050 4150
+F 0 "#PWR?" H 5050 3900 50  0001 C CNN
+F 1 "GNDREF" H 5055 3977 50  0000 C CNN
+F 2 "" H 5050 4150 50  0001 C CNN
+F 3 "" H 5050 4150 50  0001 C CNN
+	1    5050 4150
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
