@@ -91,20 +91,22 @@ bildbehandlingen är färdig med nästa bild skall felvärdet skickas till
 styrmodulen. Detta sker i en separat tråd för att inte fördröja
 bildbehandlingen i väntan på bussen.
 
-\subsubsection{Uppdrag}
+\subsubsection{Uppdrag} \label{sec:comm-mission}
 För att utföra uppdraget kommer en kö av kommandon tas emot från fjärrklienten.
 När uppdraget börjar kör taxin framåt och följer filen med hjälp av
-bildbehandling. Inför varje stopplinje tas ett kommando från kön och utförs. Om
-ett hinder upptäcks enligt sensorvärdena kommer bilen att stanna tills hindret
-har försvunnit. När ett visst antal stopplinjer har passerats och kön är tom är
-uppdraget avklarat. Nedan är en lista av alla kommandon som kan utföras.
-\begin{labeling}{wwwwwwww}
-    \item[ignore] Kör förbi stopplinjen utan att stanna.
-    \item[enter/exit] Om inte i en rondell; sväng höger in i rondellen och
-    hitta rondellens körfil. Om redan i en rondell; sväng höger ut ur rondellen
-    och hitta körfilen.
-    \item[stop] Stanna framför stopplinjen.
-    \item[park] Parkera i fickan till höger efter stopplinjen.
+bildbehandling och reglering. Inför varje stopplinje tas ett kommando från kön
+och utförs. Om ett hinder upptäcks under uppdraget kommer bilen att stanna
+tills hindret har försvunnit eller eventuellt passera hindret. När ett visst
+antal stopplinjer har passerats och kön är tom är uppdraget avklarat. Nedan är
+en lista av alla möjliga kommandon hur de utförs.
+\begin{labeling}{wwww}
+    \item[\mono{ign}] Kör förbi stopplinjen utan att stanna.
+    \item[\mono{ent}] Sväng höger in i rondellen och hitta rondellens körfil.
+    \item[\mono{ext}] Sväng höger ut ur rondellen och hitta körfilen.
+    \item[\mono{stp}] Stanna framför stopplinjen, fortsätt efter några
+    sekunder om kön inte är tom.
+    \item[\mono{prk}] Parkera i fickan till höger efter stopplinjen, lämna
+    parkeringen och fortsätt efter några sekunder om kön inte är tom.
 \end{labeling}
 
 \end{document}
