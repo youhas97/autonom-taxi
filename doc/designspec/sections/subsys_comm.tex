@@ -34,11 +34,8 @@ till kameraporten som finns på Raspberry Pi-kortet. GPIO-pinnarna kommer att
 användas för att ansluta till övriga moduler.  Eftersom SPI-protokollet ska
 användas, kommer GPIO-portar för de signalerna som protokollet kräver användas.
 Det kommer att finnas nivåskiftare som skiftar spänningen på signalerna som går
-mellan kommunikationsmodulen och mikrokontrollerna.
-% TODO hänvisa till kretsschema i bilaga
-
-Raspberry:n kommer köra operativsystemet Raspbian och program som exempelvis
-wpa\_supplicant för att sätta upp anslutningen för WLAN.
+mellan kommunikationsmodulen och mikrokontrollerna. Ett kretsschema för modulen
+finns i bilaga \ref{cdiag.comm}.
 
 \subsubsection{Budget}
     Nedan komponenter i kommunikationsmodulen ingår inte i baschassit och
@@ -46,7 +43,7 @@ wpa\_supplicant för att sätta upp anslutningen för WLAN.
 \begin{itemize}
     \item \textbf{Raspberry Pi Camera V2 Video Module} Kamera till Raspberry
     Pi.
-    \item \textbf{2 $\times$ TXB0104 Level Shifter} Nivåskiftare för 4 signaler
+    \item \textbf{2 $\times$ \modShifter} Nivåskiftare för 4 signaler
     vardera.
 \end{itemize}
 
@@ -65,6 +62,7 @@ Raspberry Pi:n har stöd för 2 bussar med SPI-protokollet varav 10 pinnar
 totalt. Eftersom endast 5 pinnar kommer användas räcker antalet pinnar.  Två
 nivåskiftare som konverterar mellan 5V och 3V3 kan användas då det finns två
 5V-pinnar samt två 3V3-pinnar.
+% TODO/XXX lägga till dessa i listan? mer än 5 används väl då
 
 Det mest krävande för kommunikationsmodulen är bildbehandlingen. Raspberry Pi
 3 model B har en fyrakärnig BCM2837 klockad på 1.2GHz och 1GB internt minne.
@@ -72,7 +70,9 @@ Detta bör vara tillräckligt för att uppnå 20 bilder per sekund med en effekt
 implementation i C eller C++.
 
 \subsection{Mjukvaruimplementation}
-Kommunikationsmodulen kommer skrivas i C eller eventuellt C++ och ska bestå av
+Raspberry:n kommer köra operativsystemet Raspbian och program som exempelvis
+wpa\_supplicant för att sätta upp anslutningen för WLAN. Ett program för
+kommunikationsmodulen kommer skrivas i C eller eventuellt C++ och ska bestå av
 två trådar; en huvudtråd som hanterar uppdrag, bildbehandlar och svarar på
 kommandon från fjärrklienten samt en tråd som sköter kommunikation med andra
 moduler.
@@ -99,12 +99,12 @@ tills hindret har försvunnit eller eventuellt passera hindret. När ett visst
 antal stopplinjer har passerats och kön är tom är uppdraget avklarat. Nedan är
 en lista av alla möjliga kommandon hur de utförs.
 \begin{labeling}{wwww}
-    \item[\mono{ignr}] Kör förbi stopplinjen utan att stanna.
-    \item[\mono{entr}] Sväng höger in i rondellen och hitta rondellens körfil.
-    \item[\mono{exit}] Sväng höger ut ur rondellen och hitta körfilen.
-    \item[\mono{stop}] Stanna framför stopplinjen, fortsätt efter några
-    sekunder om kön inte är tom.
-    \item[\mono{park}] Parkera i fickan till höger efter stopplinjen, lämna
+    \item[\commIgnore] Kör förbi stopplinjen utan att stanna.
+    \item[\commEnter] Sväng höger in i rondellen och hitta rondellens körfil.
+    \item[\commExit] Sväng höger ut ur rondellen och hitta körfilen.
+    \item[\commStop] Stanna framför stopplinjen, fortsätt efter några sekunder
+    om kön inte är tom.
+    \item[\commPark] Parkera i fickan till höger efter stopplinjen, lämna
     parkeringen och fortsätt efter några sekunder om kön inte är tom.
 \end{labeling}
 

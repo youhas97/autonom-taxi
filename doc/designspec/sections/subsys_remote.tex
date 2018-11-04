@@ -69,11 +69,11 @@ genom att iterera varje nod i vägen och lägga till nedan kommandon för varje
 nodtyp. Hur taxin agerar vid varje kommando är specificerat i sektion
 \ref{sec:comm-mission}.
 \begin{labeling}{wwwwwwwwww}
-\item[stopplinje] \mono{stop} om markerad som destination, annars \mono{ignr}.
-\item[parkeringsficka] \mono{park} om markerad som destination, annars
-    \mono{ignr}.
-\item[rondell] En \mono{entr}, därefter en \mono{ignr} för varje avfart den ska
-    passera och slutligen en \mono{exit}.
+\item[stopplinje] {\commStop} om markerad som destination, annars \commIgnore.
+\item[parkeringsficka] {\commPark} om markerad som destination, annars
+    \commIgnore
+\item[rondell] En \commEnter, därefter en {\commIgnore} för varje avfart den ska
+    passera och slutligen en \commExit.
 \end{labeling}
 För att kunna avgöra vilken avfart taxin ska ta i en rondell är det viktigt att
 de utgående bågarna i rondellens nod är sorterade i samma ordning som
