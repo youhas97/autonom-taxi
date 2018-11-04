@@ -1,0 +1,9 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP DG419LDY
+D Single SPDT 3V Logic Compatible CMOS Analog Switch, 35Ohm Ron, with Vlogic, SOIC-8
+K CMOS Analog Switch
+F https://datasheets.maximintegrated.com/en/ds/DG417-DG419.pdf
+$ENDCMP
+#
+#End Doc Library
