@@ -31,6 +31,19 @@ styrmodulen följande komponenter.
 Av portarna på microprocessorn används 8/8 av portA, 6/8 av portB, 4/8 av portC
 och 1/8 av portD. D.v.s. portarna räcker till.
 
+Nedan är följande pinnar som används på mikrokontrollern.
+\begin{itemize}
+   \item \textbf{PA0-PA7} Datasignaler till LCD.
+   \item \textbf{PB0} RS-signal till LCD.
+   \item \textbf{PB3} PWM-signal till drivmotor.
+   \item \textbf{PB4-PB7} SS, MOSI, MISO och SCLK för SPI-bussen.
+   \item \textbf{PC2-PC5} TCK, TMS, TDO, TDI för JTAG.
+   \item \textbf{PD5} PWM-signal till svängmotor.
+   \item \textbf{RESET} Resetsignal.
+   \item \textbf{XTAL1} Klocka från kristalloscillatorn.
+\end{itemize}
+Inga fler signaler behövs så pinnarna på mikrokontrollen är tillräckliga.
+
 Mikrokontrollerna behöver endast utföra enkel reglering och därefter skapa en
 PWM-signal för motorerna. Kommunikationen bestäms av kommunikationsmodulen
 genom en "slave select", en signal som sätts till låg när kommunikationsmodulen
@@ -65,5 +78,4 @@ Om SPIE (SPI Interrupt Enable) i SPCR är satt, begärs ett nytt avbrott. Slaven
 kan fortsätta placera ny data som ska skickas till SPDR innan avläsningen av
 den inkommande datan sker. Den sista inkommande byten sparas i Buffer Register
 för senare användning
-
 \end{document}
