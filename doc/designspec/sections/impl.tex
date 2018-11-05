@@ -9,12 +9,24 @@
 \begin{document}
 
 \section{Implementationsstrategi}
-% TODO intro
+
+För att implementationen ska ske smidigt så ska en implementationsstrategi
+bestämmas. Det inkluderar tillvägagångssätt, återkoppling och timing.
+Tillvägagångssättet beskriver strategin för det praktiska, exempelvis i vilken
+ordning modulerna ska implementeras. Återkoppling avser hur implementationen
+kontinuerligt under arbetets ska testas, t.ex. genom att koppla en display till
+en modul för att verifiera indata samt utdata.
+Slutligen anger timing hur snabbt utdata respektive indatan ska
+uppdateras i varje modul. Detta kan avse hur många bilder i sekunden
+sensormodulen ska skicka till kommunikationsmodulen. 
 
 \subsection{Tillvägagång}
 Varje modul kommer att utvecklas parallellt för att sedan integreras
 tillsammans. Eftersom varje modul kopplas till kommunikationsmodulen kan en
-modul delvis integreras så fort den är klar om kommunikationsmodulen är redo.
+modul delvis integreras så fort den är klar om kommunikationsmodulen är
+redo. För att i så hög grad som möjligt undvika stora problem i slutet ska
+funktioner som beror av varandra och som finns i olika moduler implementeras
+samtidigt för att sedan testas. Ett exempel är 
 % TODO utveckla
 
 \subsection{Återkoppling}
