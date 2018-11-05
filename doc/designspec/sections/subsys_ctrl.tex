@@ -28,16 +28,21 @@ styrmodulen följande komponenter.
 \end{itemize}
 
 \subsubsection{Kontroll och bedömning}
-% TODO vad används portarna till?
-% TODO uppdatera för SPI
-Av portarna på microprocessorn används 7/8 av portA, 1/8 av portB, 6/8 av portC
-och 5/8 av portD. D.v.s. portarna räcker till.
+Av portarna på microprocessorn används 8/8 av portA, 6/8 av portB, 4/8 av portC
+och 1/8 av portD. D.v.s. portarna räcker till.
 
-Mikrokontrollern behöver endast kommunicera via bussen, utföra enkel reglering
-och därefter skapa en PWM-signal för motorerna. Inget av detta är särskilt
-krävande och bör klaras utan problem av ATMega1284. Kontrollern har ett
-flash-minne på 128kB vilket bör vara mer än tillräckligt för att lagra
-programmet.
+Mikrokontrollerna behöver endast utföra enkel reglering och därefter skapa en
+PWM-signal för motorerna. Kommunikationen bestäms av kommunikationsmodulen
+genom en "slave select", en signal som sätts till låg när kommunikationsmodulen
+vill kommunicera med slaven.  Inget av detta är särskilt krävande och bör
+klaras utan problem av ATMega1284.  Kontrollern har en flash-minne på 128kB,
+vilket blr vara mer än tillräckligt för att lagra programmet.
+
+PB5, även kallad MOSI, används för att ta emot data från kommunikationsmodulen
+, gentemot PB6,även kallad MISO, som används för att skicka data till mastern.
+PB4, även kallad CS (Chip Select) eller SS (Slave Select), sätts till låg av
+kommunikationsmodulen för att indikera att kommunikation mellan styrmodulen och
+kommunikationsmodulen.
 
 \subsection{Mjukvaruimplementation}
 Styrmodulens program kommer bestå av en main loop som reglerar bilens hastighet
@@ -49,16 +54,16 @@ I huvudloopen kommer värdena från kommunikationsmodulen göras om till
 motsvarande tidsintervall i PWM. Beroende på hur snabbt det går så kommer
 huvudloopen vänta på avbrott.
 
-% TODO ändra till SPI:s motsvarande avbrott
 \subsubsection{Avbrott}
-\begin{itemize}
-	\item \textbf{TWI\_Interrupt} Avbrottet sker när TWI-bussen adresserar
-	styrmodulen. I avbrottet måste statusregistret TWSR maskas för att kunna
-	avgöra vilken funktion som ska utföras. T.ex. skicka/ta emot data e.t.c. 
+Så länge SS matas med en hög signal så kommer MISO att vara högohmig. Avbrottet
+sker när SS matas med en låg signal. Mjukvaran kan uppdatera innehållet i SPDR
+(SPI Data Register) i det här tillståndet, men data kommer inte att förskjutas
+ut genom inkommande klockpulser innan SS matas med en hög signal. När en byte
+har skickats så är överföringen slut och SPIF sätts. 
 
-	\item \textbf{Output\_Compare\_Interrupt} Avbrottet sker när en PWM puls
-	ska skickas ut till servon eller motorn. Avbrottet sker varje gång
-	motsvarande timer-register har nått sitt maximum och startar om från noll.
-\end{itemize}
+Om SPIE (SPI Interrupt Enable) i SPCR är satt, begärs ett nytt avbrott. Slaven
+kan fortsätta placera ny data som ska skickas till SPDR innan avläsningen av
+den inkommande datan sker. Den sista inkommande byten sparas i Buffer Register
+för senare användning
 
 \end{document}
