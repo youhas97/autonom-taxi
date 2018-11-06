@@ -9,12 +9,12 @@ kommunikationsmodulen.
 
 \subsection{Funktion}
 Sensormodulen ska hämta eventuellt filtrerade värden från sensorerna, omvandla
-till linjära enheter och skicka vidare de till kommunikationsmodulen.
+till linjära enheter och skicka vidare till kommunikationsmodulen.
 
 \paragraph{Sensorer}
-Taxin kommer att ha en optisk avståndsmätare som pekar rakt fram för att
+Taxin kommer att ha en optisk avståndsmätare som är riktad framåt för att
 upptäcka hinder framför bilen samt en optisk avståndsmätare på sidan för att
-detektera hinder höger om bilen vid omkörning.
+detektera hinder höger om bilen, t.ex. vid omkörning.
 
 \paragraph{Filtrering} Eftersom sensorerna kan bli påverkade av eventuella
 störningar kommer det eventuellt att finnas brusfilter som filtrerar bort dessa
@@ -23,20 +23,19 @@ störningar för att skapa så noggranna sensorvärden som möjligt.
 \subsection{Hårdvaruimplementation}
 Sensormodulen består huvudsakligen av en mikrokontroller, och fyra sensorer; en
 avståndsmätare på framsidan, en avståndsmätare på höger sida samt två
-halleffektsensorer placerade på två av hjulen. Mikrokontrollern är klockad av
-en separata kristalloscillator. Kontrollern är även kopplad till en LCD-display
-för att kunna visa värden för felsökning.
+halleffektsensorer placerade på två av hjulen. Mikrokontrollern är klockad av 
+en kristalloscillator. Kontrollern är även kopplad till en LCD-display
+för att kunna visa värden vid felsökning.
 
 På LCD:n har följande två pinnar valts till att ha ett konstant värde: R/W och
-E. Eftersom inget krav finns på att kunna släcka LCD alternativt läsa från
-displayen så är enable och write-signalen alltid igång.
+E. Eftersom inget krav finns på att kunna släcka LCD-panelen alternativt läsa från
+displayen så är enable och write-signalen jordas.
 
 Avståndsmätarna skickar en spänning direkt till mikrokontrollens AD-omvandlare.
 Spänningens värde motsvarar ett avstånd. Utspänningen kan eventuellt behöva
 filtreras från brus.
 
-Önskad klockfrekvens från oscillatorn är 24Mhz, någon division av den
-fundamentala klockan är inte planerat.
+Önskad klockfrekvens från oscillatorn är 24Mhz.
 
 Ett kretsschema över modulen finns i bilaga \ref{cdiag:sens}.
 
@@ -76,7 +75,7 @@ sensorvärdena och samplar därefter nästa grupp av värden. Avbrottet aktivera
 som beskrivet i sektion \ref{sec:ctrl-int}
 
 Halleffektsensorerna kommer skicka en avbrottssignal varje gång en magnet på
-hjulet passera en sensor. Avbrottsrutinen ser då till att öka den körda
+hjulet passerar en sensor. Avbrottsrutinen ser då till att öka den körda
 distansen.
 
 \end{document}
