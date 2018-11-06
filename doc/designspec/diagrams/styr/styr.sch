@@ -47,17 +47,6 @@ F 3 "http://www.onsemi.com/pub/Collateral/NB3N511-D.PDF" H 1400 1300 50  0001 C 
 	1    1350 2150
 	0    1    -1   0   
 $EndComp
-$Comp
-L Analog_Switch:ADG419BN U?
-U 1 1 5BEB1382
-P 1950 1250
-F 0 "U?" H 1950 1492 50  0000 C CNN
-F 1 "ADG419BN" H 1950 1401 50  0000 C CNN
-F 2 "Package_DIP:DIP-8_W7.62mm" H 1950 950 50  0001 C CNN
-F 3 "http://www.analog.com/media/en/technical-documentation/data-sheets/ADG419.pdf" H 1950 1050 50  0001 C CNN
-	1    1950 1250
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1650 2550 2100 2550
 Wire Wire Line
@@ -253,4 +242,81 @@ $EndComp
 Connection ~ 2900 1000
 Wire Wire Line
 	2900 1000 2950 1000
+$Comp
+L Analog_Switch:ADG417BN U?
+U 1 1 5BE2F395
+P 950 1150
+F 0 "U?" H 950 1417 50  0000 C CNN
+F 1 "Tryckknapp" H 950 1326 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 950 1050 50  0001 C CNN
+F 3 "http://www.analog.com/media/en/technical-documentation/data-sheets/ADG417.pdf" H 950 1150 50  0001 C CNN
+	1    950  1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L pspice:CAP C?
+U 1 1 5BE2FC49
+P 950 1600
+F 0 "C?" V 1231 1600 8   0000 C CNN
+F 1 "_" V 1174 1600 50  0000 C CNN
+F 2 "" H 950 1600 50  0001 C CNN
+F 3 "" H 950 1600 50  0001 C CNN
+	1    950  1600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L pspice:R R?
+U 1 1 5BE3264E
+P 1000 750
+F 0 "R?" V 795 750 50  0000 C CNN
+F 1 "R" V 886 750 50  0000 C CNN
+F 2 "" H 1000 750 50  0001 C CNN
+F 3 "" H 1000 750 50  0001 C CNN
+	1    1000 750 
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	1250 750  1250 1150
+Connection ~ 1250 1150
+Wire Wire Line
+	1250 1150 2250 1150
+Wire Wire Line
+	2250 1150 2250 1450
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE34C2C
+P 650 1150
+F 0 "#PWR?" H 650 900 50  0001 C CNN
+F 1 "GNDREF" H 655 977 50  0000 C CNN
+F 2 "" H 650 1150 50  0001 C CNN
+F 3 "" H 650 1150 50  0001 C CNN
+	1    650  1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE34C68
+P 700 1600
+F 0 "#PWR?" H 700 1350 50  0001 C CNN
+F 1 "GNDREF" H 705 1427 50  0000 C CNN
+F 2 "" H 700 1600 50  0001 C CNN
+F 3 "" H 700 1600 50  0001 C CNN
+	1    700  1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE34CC7
+P 750 750
+F 0 "#PWR?" H 750 600 50  0001 C CNN
+F 1 "+5V" V 765 878 50  0000 L CNN
+F 2 "" H 750 750 50  0001 C CNN
+F 3 "" H 750 750 50  0001 C CNN
+	1    750  750 
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	1200 1600 1250 1600
+Wire Wire Line
+	1250 1150 1250 1600
 $EndSCHEMATC

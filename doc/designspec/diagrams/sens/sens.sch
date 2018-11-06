@@ -182,19 +182,6 @@ Wire Wire Line
 	6500 5450 6500 3950
 Wire Wire Line
 	6500 3950 6200 3950
-$Comp
-L Analog_Switch:ADG419BN U?
-U 1 1 5BE987B7
-P 2650 1450
-F 0 "U?" H 2650 1692 50  0000 C CNN
-F 1 "ADG419BN" H 2650 1601 50  0000 C CNN
-F 2 "Package_DIP:DIP-8_W7.62mm" H 2650 1150 50  0001 C CNN
-F 3 "http://www.analog.com/media/en/technical-documentation/data-sheets/ADG419.pdf" H 2650 1250 50  0001 C CNN
-	1    2650 1450
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2950 1450 5000 1450
 Wire Wire Line
 	8250 1650 6200 1650
 Wire Wire Line
@@ -435,6 +422,87 @@ F 1 "GNDREF" V 6855 822 50  0000 R CNN
 F 2 "" H 6850 950 50  0001 C CNN
 F 3 "" H 6850 950 50  0001 C CNN
 	1    6850 950 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Analog_Switch:ADG417BN U?
+U 1 1 5BE1E411
+P 3550 1200
+F 0 "U?" H 3550 1467 50  0000 C CNN
+F 1 "Tryckkknapp" H 3550 1376 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 3550 1100 50  0001 C CNN
+F 3 "http://www.analog.com/media/en/technical-documentation/data-sheets/ADG417.pdf" H 3550 1200 50  0001 C CNN
+	1    3550 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L pspice:R R?
+U 1 1 5BE20DAD
+P 3550 800
+F 0 "R?" V 3345 800 50  0000 C CNN
+F 1 "R" V 3436 800 50  0000 C CNN
+F 2 "" H 3550 800 50  0001 C CNN
+F 3 "" H 3550 800 50  0001 C CNN
+	1    3550 800 
+	0    1    1    0   
+$EndComp
+$Comp
+L pspice:CAP C?
+U 1 1 5BE20E58
+P 3550 1750
+F 0 "C?" V 3235 1750 50  0000 C CNN
+F 1 "100nF" V 3326 1750 50  0000 C CNN
+F 2 "" H 3550 1750 50  0001 C CNN
+F 3 "" H 3550 1750 50  0001 C CNN
+	1    3550 1750
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE27324
+P 3300 1750
+F 0 "#PWR?" H 3300 1500 50  0001 C CNN
+F 1 "GNDREF" H 3305 1577 50  0000 C CNN
+F 2 "" H 3300 1750 50  0001 C CNN
+F 3 "" H 3300 1750 50  0001 C CNN
+	1    3300 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE29C00
+P 3250 1200
+F 0 "#PWR?" H 3250 950 50  0001 C CNN
+F 1 "GNDREF" H 3255 1027 50  0000 C CNN
+F 2 "" H 3250 1200 50  0001 C CNN
+F 3 "" H 3250 1200 50  0001 C CNN
+	1    3250 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 800  3850 800 
+Wire Wire Line
+	3850 800  3850 1200
+Wire Wire Line
+	3800 1750 3850 1750
+Wire Wire Line
+	3850 1750 3850 1200
+Connection ~ 3850 1200
+Wire Wire Line
+	5000 1450 4200 1450
+Wire Wire Line
+	4200 1450 4200 1200
+Wire Wire Line
+	4200 1200 3850 1200
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE2E277
+P 3300 800
+F 0 "#PWR?" H 3300 650 50  0001 C CNN
+F 1 "+5V" V 3315 928 50  0000 L CNN
+F 2 "" H 3300 800 50  0001 C CNN
+F 3 "" H 3300 800 50  0001 C CNN
+	1    3300 800 
 	0    -1   -1   0   
 $EndComp
 $EndSCHEMATC
