@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Sensormodul"
-Date "2018-10-15"
+Date "2018-11-06"
 Rev ""
 Comp ""
 Comment1 ""
@@ -14,79 +14,14 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L sens-rescue:ACS715xLCTR-30A-taxi-sens-rescue AVSTÅNDSMÄTARE(FRAM)
-U 1 1 5BC4BC08
-P 8900 2350
-F 0 "AVSTÅNDSMÄTARE(FRAM)" H 8200 2450 50  0000 C CNN
-F 1 "GP2Y0A02YK" H 8250 2350 50  0000 C CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 9000 2000 50  0001 L CIN
-F 3 "http://www.allegromicro.com/~/media/Files/Datasheets/ACS715-Datasheet.ashx?la=en" H 8900 2350 50  0001 C CNN
-	1    8900 2350
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	8600 1450 6200 1450
 Wire Wire Line
 	8600 2350 8250 2350
 Wire Wire Line
 	8250 2350 8250 1650
 Wire Wire Line
-	8250 1650 6200 1650
-Wire Wire Line
-	8200 2650 8800 2650
-Wire Wire Line
-	8200 2650 8200 1750
-Wire Wire Line
-	8200 1750 8800 1750
-Connection ~ 8200 2650
-Wire Wire Line
 	5600 5150 5600 5850
 Wire Wire Line
 	8800 1050 8800 1150
-Wire Wire Line
-	8450 1050 8450 2050
-Wire Wire Line
-	8450 2050 8800 2050
-Connection ~ 8450 1050
-Wire Wire Line
-	8450 1050 8800 1050
-Connection ~ 8450 2050
-Wire Wire Line
-	5700 1050 5700 1150
-Wire Wire Line
-	5700 1050 7000 1050
-Wire Wire Line
-	5700 1050 5600 1050
-Wire Wire Line
-	5600 1050 5600 1150
-Connection ~ 5700 1050
-Wire Wire Line
-	5600 5850 7100 5850
-Connection ~ 5600 5850
-Wire Wire Line
-	7000 800  7000 1050
-Connection ~ 7000 1050
-Wire Wire Line
-	7000 1050 7100 1050
-Wire Wire Line
-	6200 3650 6600 3650
-Wire Wire Line
-	6200 3550 6600 3550
-Wire Wire Line
-	6200 3450 6600 3450
-Wire Wire Line
-	6600 3750 6200 3750
-Connection ~ 7200 1050
-Wire Wire Line
-	7200 1050 8450 1050
-Wire Wire Line
-	7100 2950 7100 1050
-Connection ~ 7100 1050
-Wire Wire Line
-	7100 1050 7200 1050
-Wire Wire Line
-	7100 4150 7100 5850
 $Comp
 L sens-rescue:IQEXO-3-exo3 KRISTALLOSCILLATOR
 U 1 1 5BDCCBF2
@@ -98,9 +33,6 @@ F 3 "http://www.onsemi.com/pub/Collateral/NB3N511-D.PDF" H 3600 1550 50  0001 C 
 	1    3550 2400
 	0    1    -1   0   
 $EndComp
-Wire Wire Line
-	3850 2000 3850 1050
-Connection ~ 5600 1050
 $Comp
 L sens-rescue:ATmega1284-PU-MCU_Microchip_ATmega U?
 U 1 1 5BDC5F4E
@@ -124,28 +56,6 @@ F 3 "http://www.allegromicro.com/~/media/Files/Datasheets/ACS715-Datasheet.ashx?
 	-1   0    0    -1  
 $EndComp
 $Comp
-L power:+5V #PWR?
-U 1 1 5BDC9F18
-P 7000 800
-F 0 "#PWR?" H 7000 650 50  0001 C CNN
-F 1 "+5V" H 7015 973 50  0000 C CNN
-F 2 "" H 7000 800 50  0001 C CNN
-F 3 "" H 7000 800 50  0001 C CNN
-	1    7000 800 
-	1    0    0    -1  
-$EndComp
-$Comp
-L sens-rescue:A112X-hall-effect HALLEFFECTSENSOR
-U 1 1 5BDCB7F9
-P 8900 3650
-F 0 "HALLEFFECTSENSOR" H 9129 3696 50  0000 L CNN
-F 1 "A112X" H 9129 3605 50  0000 L CNN
-F 2 "Package_TO_SOT_SMD:SOT-23" H 8900 3300 50  0001 L CIN
-F 3 "http://www.allegromicro.com/en/Products/Part_Numbers/1101/1101.pdf" H 8900 4300 50  0001 C CNN
-	1    8900 3650
-	1    0    0    -1  
-$EndComp
-$Comp
 L power:GNDREF #PWR?
 U 1 1 5BDCBACA
 P 5600 5850
@@ -156,8 +66,6 @@ F 3 "" H 5600 5850 50  0001 C CNN
 	1    5600 5850
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	3850 1050 5600 1050
 Wire Wire Line
 	3850 2800 4200 2800
 Wire Wire Line
@@ -208,16 +116,14 @@ SPI_SCK
 $Comp
 L Connector:AVR-JTAG-10 J?
 U 1 1 5BDC62E7
-P 7100 3550
-F 0 "J?" H 6721 3596 50  0000 R CNN
-F 1 "AVR-JTAG-10" H 6721 3505 50  0000 R CNN
-F 2 "" V 6950 3700 50  0001 C CNN
-F 3 " ~" H 5825 3000 50  0001 C CNN
-	1    7100 3550
+P 7650 3550
+F 0 "J?" H 7271 3596 50  0000 R CNN
+F 1 "AVR-JTAG-10" H 7271 3505 50  0000 R CNN
+F 2 "" V 7500 3700 50  0001 C CNN
+F 3 " ~" H 6375 3000 50  0001 C CNN
+	1    7650 3550
 	-1   0    0    -1  
 $EndComp
-Wire Wire Line
-	7200 2950 7200 1050
 Wire Wire Line
 	6200 2750 6850 2750
 Wire Wire Line
@@ -227,35 +133,7 @@ Wire Wire Line
 Wire Wire Line
 	6200 3050 6850 3050
 Wire Wire Line
-	8200 2650 8200 3650
-Wire Wire Line
-	8450 2050 8450 3800
-Wire Wire Line
-	8600 3800 8450 3800
-Wire Wire Line
-	8600 3650 8200 3650
-Wire Wire Line
-	7100 5850 9100 5850
-Wire Wire Line
-	9100 5850 9100 4000
-Wire Wire Line
-	9100 4000 8200 4000
-Wire Wire Line
-	8200 4000 8200 3650
-Connection ~ 7100 5850
-Connection ~ 8200 3650
-Wire Wire Line
 	8350 4550 8350 4500
-Wire Wire Line
-	8350 3800 8450 3800
-Connection ~ 8350 4500
-Wire Wire Line
-	8350 4500 8350 3800
-Connection ~ 8450 3800
-Wire Wire Line
-	7400 4650 7400 4150
-Wire Wire Line
-	6200 4150 7400 4150
 Wire Wire Line
 	7400 4750 7250 4750
 Wire Wire Line
@@ -317,4 +195,246 @@ F 3 "http://www.analog.com/media/en/technical-documentation/data-sheets/ADG419.p
 $EndComp
 Wire Wire Line
 	2950 1450 5000 1450
+Wire Wire Line
+	8250 1650 6200 1650
+Wire Wire Line
+	8600 1450 6200 1450
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE2917C
+P 3850 2000
+F 0 "#PWR?" H 3850 1850 50  0001 C CNN
+F 1 "+5V" H 3865 2173 50  0000 C CNN
+F 2 "" H 3850 2000 50  0001 C CNN
+F 3 "" H 3850 2000 50  0001 C CNN
+	1    3850 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE291AC
+P 7650 2950
+F 0 "#PWR?" H 7650 2800 50  0001 C CNN
+F 1 "+5V" H 7665 3123 50  0000 C CNN
+F 2 "" H 7650 2950 50  0001 C CNN
+F 3 "" H 7650 2950 50  0001 C CNN
+	1    7650 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE291DC
+P 7750 2950
+F 0 "#PWR?" H 7750 2800 50  0001 C CNN
+F 1 "+5V" H 7765 3123 50  0000 C CNN
+F 2 "" H 7750 2950 50  0001 C CNN
+F 3 "" H 7750 2950 50  0001 C CNN
+	1    7750 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE2920C
+P 8800 1050
+F 0 "#PWR?" H 8800 900 50  0001 C CNN
+F 1 "+5V" H 8815 1223 50  0000 C CNN
+F 2 "" H 8800 1050 50  0001 C CNN
+F 3 "" H 8800 1050 50  0001 C CNN
+	1    8800 1050
+	1    0    0    -1  
+$EndComp
+$Comp
+L sens-rescue:ACS715xLCTR-30A-taxi-sens-rescue AVSTÅNDSMÄTARE(FRAM)
+U 1 1 5BC4BC08
+P 8900 2350
+F 0 "AVSTÅNDSMÄTARE(FRAM)" H 8200 2450 50  0000 C CNN
+F 1 "GP2Y0A02YK" H 8250 2350 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 9000 2000 50  0001 L CIN
+F 3 "http://www.allegromicro.com/~/media/Files/Datasheets/ACS715-Datasheet.ashx?la=en" H 8900 2350 50  0001 C CNN
+	1    8900 2350
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE2925C
+P 8800 2050
+F 0 "#PWR?" H 8800 1900 50  0001 C CNN
+F 1 "+5V" H 8815 2223 50  0000 C CNN
+F 2 "" H 8800 2050 50  0001 C CNN
+F 3 "" H 8800 2050 50  0001 C CNN
+	1    8800 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE2B243
+P 9100 2700
+F 0 "#PWR?" H 9100 2450 50  0001 C CNN
+F 1 "GNDREF" H 9105 2527 50  0000 C CNN
+F 2 "" H 9100 2700 50  0001 C CNN
+F 3 "" H 9100 2700 50  0001 C CNN
+	1    9100 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE2B273
+P 9100 1800
+F 0 "#PWR?" H 9100 1550 50  0001 C CNN
+F 1 "GNDREF" H 9105 1627 50  0000 C CNN
+F 2 "" H 9100 1800 50  0001 C CNN
+F 3 "" H 9100 1800 50  0001 C CNN
+	1    9100 1800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8800 1750 9100 1750
+Wire Wire Line
+	9100 1750 9100 1800
+Wire Wire Line
+	8800 2650 9100 2650
+Wire Wire Line
+	9100 2650 9100 2700
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE33B69
+P 8650 3400
+F 0 "#PWR?" H 8650 3250 50  0001 C CNN
+F 1 "+5V" V 8665 3528 50  0000 L CNN
+F 2 "" H 8650 3400 50  0001 C CNN
+F 3 "" H 8650 3400 50  0001 C CNN
+	1    8650 3400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE33B6F
+P 8650 3250
+F 0 "#PWR?" H 8650 3000 50  0001 C CNN
+F 1 "GNDREF" V 8655 3122 50  0000 R CNN
+F 2 "" H 8650 3250 50  0001 C CNN
+F 3 "" H 8650 3250 50  0001 C CNN
+	1    8650 3250
+	0    1    1    0   
+$EndComp
+$Comp
+L sens-rescue:A112X-hall-effect HALLEFFECTSENSOR?
+U 1 1 5BE33B75
+P 8950 3250
+F 0 "HALLEFFECTSENSOR?" H 9179 3296 50  0000 L CNN
+F 1 "A112X" H 9179 3205 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 8950 2900 50  0001 L CIN
+F 3 "http://www.allegromicro.com/en/Products/Part_Numbers/1101/1101.pdf" H 8950 3900 50  0001 C CNN
+	1    8950 3250
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7400 4650 7300 4650
+Wire Wire Line
+	7300 4650 7300 4150
+Wire Wire Line
+	7300 4150 6200 4150
+Wire Wire Line
+	6200 3750 7150 3750
+Wire Wire Line
+	6200 3650 7150 3650
+Wire Wire Line
+	6200 3550 7150 3550
+Wire Wire Line
+	6200 3450 7150 3450
+Wire Wire Line
+	8200 2650 6200 2650
+Wire Wire Line
+	8650 3100 8400 3100
+Wire Wire Line
+	8400 3100 8400 2550
+Wire Wire Line
+	8400 2550 6200 2550
+Wire Wire Line
+	8650 3900 8650 3450
+Wire Wire Line
+	8650 3450 8200 3450
+Wire Wire Line
+	8200 3450 8200 2650
+$Comp
+L sens-rescue:A112X-hall-effect HALLEFFECTSENSOR?
+U 1 1 5BE35260
+P 8950 4050
+F 0 "HALLEFFECTSENSOR?" H 9179 4096 50  0000 L CNN
+F 1 "A112X" H 9179 4005 50  0000 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 8950 3700 50  0001 L CIN
+F 3 "http://www.allegromicro.com/en/Products/Part_Numbers/1101/1101.pdf" H 8950 4700 50  0001 C CNN
+	1    8950 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE46953
+P 8650 4050
+F 0 "#PWR?" H 8650 3800 50  0001 C CNN
+F 1 "GNDREF" V 8655 3922 50  0000 R CNN
+F 2 "" H 8650 4050 50  0001 C CNN
+F 3 "" H 8650 4050 50  0001 C CNN
+	1    8650 4050
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE47996
+P 8650 4200
+F 0 "#PWR?" H 8650 4050 50  0001 C CNN
+F 1 "+5V" V 8665 4328 50  0000 L CNN
+F 2 "" H 8650 4200 50  0001 C CNN
+F 3 "" H 8650 4200 50  0001 C CNN
+	1    8650 4200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L pspice:CAP C?
+U 1 1 5BE52B56
+P 6600 950
+F 0 "C?" V 6285 950 50  0000 C CNN
+F 1 "100nF" V 6376 950 50  0000 C CNN
+F 2 "" H 6600 950 50  0001 C CNN
+F 3 "" H 6600 950 50  0001 C CNN
+	1    6600 950 
+	0    1    1    0   
+$EndComp
+$Comp
+L pspice:INDUCTOR L?
+U 1 1 5BE52C21
+P 5750 950
+F 0 "L?" H 5750 1165 50  0000 C CNN
+F 1 "10uH" H 5750 1074 50  0000 C CNN
+F 2 "" H 5750 950 50  0001 C CNN
+F 3 "" H 5750 950 50  0001 C CNN
+	1    5750 950 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6000 950  6200 950 
+Wire Wire Line
+	5700 1150 6200 1150
+Wire Wire Line
+	6200 1150 6200 950 
+Connection ~ 6200 950 
+Wire Wire Line
+	6200 950  6350 950 
+Wire Wire Line
+	5500 950  5500 1050
+Wire Wire Line
+	5500 1050 5600 1050
+Wire Wire Line
+	5600 1050 5600 1150
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE56585
+P 6850 950
+F 0 "#PWR?" H 6850 700 50  0001 C CNN
+F 1 "GNDREF" V 6855 822 50  0000 R CNN
+F 2 "" H 6850 950 50  0001 C CNN
+F 3 "" H 6850 950 50  0001 C CNN
+	1    6850 950 
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC

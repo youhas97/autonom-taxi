@@ -25,19 +25,28 @@ styrmodulen följande komponenter.
         microprocessorn. 
     \item \textbf{\modLcd} LCD-display för att visa parametrar under körning i
         felsökningssyfte.
+    \item \textbf{IQEXO3} Kristalloscillator på 20Mhz, skall använda som systemklocka till AVR.
+    \item \textbf{Tryckknapp} Knapp används till RESET.
 \end{itemize}
 
 \subsubsection{Kontroll och bedömning}
-% TODO vad används portarna till?
-% TODO uppdatera för SPI
-Av portarna på microprocessorn används 7/8 av portA, 1/8 av portB, 6/8 av portC
-och 5/8 av portD. D.v.s. portarna räcker till.
+Nedan är följande pinnar som används på mikrokontrollern.
+\begin{itemize}
+   \item \textbf{PA0-PA7} Datasignaler till LCD.
+   \item \textbf{PB0} RS-signal till LCD.
+   \item \textbf{PB3} PWM-signal till drivmotor.
+   \item \textbf{PB4-PB7} SS, MOSI, MISO och SCLK för SPI-bussen.
+   \item \textbf{PC2-PC5} TCK, TMS, TDO, TDI för JTAG.
+   \item \textbf{PD5} PWM-signal till svängmotor.
+   \item \textbf{RESET} Resetsignal.
+   \item \textbf{XTAL1} Klocka från kristalloscillatorn.
+\end{itemize}
+Inga fler signaler behövs så pinnarna på mikrokontrollen är tillräckliga.
 
-Mikrokontrollern behöver endast kommunicera via bussen, utföra enkel reglering
-och därefter skapa en PWM-signal för motorerna. Inget av detta är särskilt
-krävande och bör klaras utan problem av ATMega1284. Kontrollern har ett
-flash-minne på 128kB vilket bör vara mer än tillräckligt för att lagra
-programmet.
+Mikrokontrollen behöver endast kommunicera via SPI, utföra enkel reglering och
+därefter skapa en PWM-signal för motorerna. Inget av detta är särskilt krävande
+och bör klaras utan problem av ATMega1284. Kontrollern har ett flash-minne på
+128kB, vilket bör vara mer än tillräckligt för att lagra programmet.
 
 \subsection{Mjukvaruimplementation}
 Styrmodulens program kommer bestå av en main loop som reglerar bilens hastighet
@@ -49,16 +58,10 @@ I huvudloopen kommer värdena från kommunikationsmodulen göras om till
 motsvarande tidsintervall i PWM. Beroende på hur snabbt det går så kommer
 huvudloopen vänta på avbrott.
 
-% TODO ändra till SPI:s motsvarande avbrott
-\subsubsection{Avbrott}
-\begin{itemize}
-	\item \textbf{TWI\_Interrupt} Avbrottet sker när TWI-bussen adresserar
-	styrmodulen. I avbrottet måste statusregistret TWSR maskas för att kunna
-	avgöra vilken funktion som ska utföras. T.ex. skicka/ta emot data e.t.c. 
-
-	\item \textbf{Output\_Compare\_Interrupt} Avbrottet sker när en PWM puls
-	ska skickas ut till servon eller motorn. Avbrottet sker varje gång
-	motsvarande timer-register har nått sitt maximum och startar om från noll.
-\end{itemize}
+\subsubsection{Avbrott} \label{sec:ctrl-int}
+När SPI-kontrollern har tagit emot en byte av data sätter den SPIF i SPSR (SPI
+Status Register) och aktiverar ett avbrott. Avbrottsrutinen kan flaggan
+kontrollera för att avgöra att kommunikationsmodulen vill skicka felvärden och
+börja ta emot värden.
 
 \end{document}

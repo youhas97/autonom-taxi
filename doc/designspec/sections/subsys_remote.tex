@@ -40,7 +40,7 @@ hinner uppdatera gränssnittet tillräckligt ofta om det endast använder en tr�
 Kartan representeras med en riktad graf där varje nod motsvarar en stopplinje
 av tejp i vägfältet. Rondeller representeras av endast en nod istället för en
 nod per stopplinje. En båge representerar en enkelriktad körfil från en
-stopplinje eller rondell till en stopplinje eller rondell. Den här grafen
+stopplinje eller rondell till en annan stopplinje eller rondell. Den här grafen
 representeras i sin tur av nedan datastrukturer.
 
 % datastrukturer
@@ -55,9 +55,9 @@ representeras i sin tur av nedan datastrukturer.
         representeras av en tuple där första värdet är ett avstånd och det
         andra värdet är en pekare till en nod.
 \end{labeling}
-Ovan datastrukurer är valda för att göra det smidigt att räkna ut den närmaste
+Ovanstående datastrukurer är valda för att göra det smidigt att räkna ut den närmaste
 vägen med Dijkstras alogritm. Med algoritmen utgår man från en nod och jämför
-alla dess grannar. Med ovan struktur kan man utgå från startnoden och därefter
+alla dess grannar. Med ovanstående struktur kan man utgå från startnoden och därefter
 rekursivt gå igenom nodens alla grannar och grannar av grannar. Alternativt,
 med en \textit{adjacency list} kräver detta en sökning efter alla bågar som
 noden utgår ifrån. Med en \textit{adjacency matrix} måste man kolla igenom

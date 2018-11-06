@@ -20,18 +20,16 @@ detektera hinder höger om bilen vid omkörning.
 störningar kommer det eventuellt att finnas brusfilter som filtrerar bort dessa
 störningar för att skapa så noggranna sensorvärden som möjligt.
 
-\subsection{Hårdvaruimplementation} Sensormodulen består av en ATMega1284
-mikrokontroller, JTAG, Kristalloscillator, strömbrytare och fyra sensorer; en
+\subsection{Hårdvaruimplementation}
+Sensormodulen består huvudsakligen av en mikrokontroller, och fyra sensorer; en
 avståndsmätare på framsidan, en avståndsmätare på höger sida samt två
-halleffektsensorer placerade på två av hjulen. Kontrollern är även kopplad till
-en LCD-display för att kunna visa värden för felsökning.
+halleffektsensorer placerade på två av hjulen. Mikrokontrollern är klockad av
+en separata kristalloscillator. Kontrollern är även kopplad till en LCD-display
+för att kunna visa värden för felsökning.
 
-På LCD-DISPLAY har följande två pinnar valts till att ha ett konstant värde:
-R/W och E. Eftersom inget krav finns på att kunna släcka LCD alternativt läsa
-från displayen så är enable och write-signalen alltid igång.
-
-Halleffektsensorerna kommer skicka en avbrottssignal varje gång hjulet har
-snurrat ett varv. Avbrottsrutinen ser till att räkna upp distans körd.
+På LCD:n har följande två pinnar valts till att ha ett konstant värde: R/W och
+E. Eftersom inget krav finns på att kunna släcka LCD alternativt läsa från
+displayen så är enable och write-signalen alltid igång.
 
 Avståndsmätarna skickar en spänning direkt till mikrokontrollens AD-omvandlare.
 Spänningens värde motsvarar ett avstånd. Utspänningen kan eventuellt behöva
@@ -51,21 +49,20 @@ Nedan är produkter som ej medföljer baschassit och behöver beställas.
     \item \textbf{\modLcd} LCD-display för att visa parametrar under körning
     i felsökningssyfte.
     \item \textbf{IQEXO3} Kristalloscillator på 20Mhz, skall använda som systemklocka till AVR.
-    \item \textbf{Tryckknapp} Knapp används till RESET.
-    \item \textbf{AVR-JTAG} JTAG för flashning av program till mikrokontrollern.
 \end{itemize}
+Modulen använder även en {\modJtag} och tryckknapp som delas med styrmodulen.
 
 \subsubsection{Kontroll och bedömning}
 Nedan är följande pinnar som används på mikrokontrollern.
 \begin{itemize}
    \item \textbf{PA0 \& PA2} Vardera port får insignal från en avståndsmätare.
    \item \textbf{PB2-PB3} Vardera port får en avbrottsignal från en odometer.
-   \item \textbf{PB4-PB7} SPI-buss
-   \item \textbf{PC2-PC5} AVR-JTAG
-   \item \textbf{PC7} Reset signal till LCD-Display
-   \item \textbf{PD0-PD7} Databuss till LCD-display
-   \item \textbf{RESET(9)} Knapp till reset för MCU
-   \item \textbf{XTAL1} Input från Kristalloscillatorn
+   \item \textbf{PB4-PB7} SS, MOSI, MISO och SCLK för SPI-bussen.
+   \item \textbf{PC2-PC5} TCK, TMS, TDO, TDI för JTAG.
+   \item \textbf{PC7} Reset signal till LCD-display.
+   \item \textbf{PD0-PD7} Databuss till LCD-display.
+   \item \textbf{RESET(9)} Knapp till reset för MCU.
+   \item \textbf{XTAL1} Klocka från Kristalloscillatorn.
 \end{itemize}
 Mikrokontrollen behöver endast kommunicera med kommunikationsmodulen via SPI
 samt ta emot värden från sensorerna och göra enkla beräkningar vid omvandling.
@@ -74,7 +71,11 @@ Mikrokontrollen bör inte ha något problem att utföra dessa uppgifter.
 \subsection{Mjukvaruimplementation} 
 Sensormodulen ska bestå av en tom while loop och ett avbrott som aktiveras när
 kommunikationsmodulen efterfrågar värden. Sensormodulen skickar då de senaste
-sensorvärdena och samplar därefter nästa grupp av värden.
-% TODO utveckla impl, lär vara liknande som i ctrl så kanske kan referera sen
+sensorvärdena och samplar därefter nästa grupp av värden. Avbrottet aktiveras
+som beskrivet i sektion \ref{sec:ctrl-int}
+
+Halleffektsensorerna kommer skicka en avbrottssignal varje gång en magnet på
+hjulet passerar en sensor. Avbrottsrutinen ser då till att öka den körda
+distansen.
 
 \end{document}

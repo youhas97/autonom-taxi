@@ -1,0 +1,21 @@
+EESchema-LIBRARY Version 2.4
+#encoding utf-8
+#
+# lowpassfilter
+#
+DEF lowpassfilter _ 0 40 Y Y 1 F N
+F0 "_" 1150 50 50 H V C CNN
+F1 "lowpassfilter" 1150 150 50 H V C CNN
+F2 "" 1150 50 50 H I C CNN
+F3 "" 1150 50 50 H I C CNN
+DRAW
+T 0 1100 450 50 0 0 0 Lågpassfilter Normal 0 C C
+S 350 0 350 0 0 1 0 N
+S 1500 250 750 850 0 1 0 f
+X input 1 650 750 100 R 50 50 1 1 I
+X output 2 650 650 100 R 50 50 1 1 I
+X GND 3 650 550 100 R 50 50 1 1 I
+ENDDRAW
+ENDDEF
+#
+#End Library

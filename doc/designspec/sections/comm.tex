@@ -75,11 +75,6 @@ data överföras till sensormodulen eller från styrmodulen vid felsökning.
     \caption{Den gemensamma databussen mellan modulerna.}
     \label{fig:bus_inter}
 \end{figure}
-Ett alternativ till {SPI} vore att använda UART. Då ersätts SDA-signalen med
-två Tx till Rx signaler till och från kommunikationsmodulen. Om data behöver
-skickas i motsatt riktning vid felsökning behöver fler signaler läggas till och
-då behövs eventuellt en extra nivåskiftare. Ett annat alternativ är {\iic};
-detta är dock långsammare vilket skulle kunna vara problematiskt.
 
 \subsubsection{Från sensormodul till kommunikationsmodul}
 Sensormodulen ska fortlöpande skicka värden för varje sensor till
