@@ -2,4 +2,6 @@
   (lib (name sens-rescue)(type Legacy)(uri ${KIPRJMOD}/sens-rescue.lib)(options "")(descr ""))
   (lib (name jma162a)(type Legacy)(uri C:/Users/lil_b/Documents/tsea29-taxi/doc/designspec/diagrams/sens/jma162a.lib)(options "")(descr ""))
   (lib (name dg419ldy)(type Legacy)(uri C:/Users/lil_b/Documents/tsea29-taxi/doc/designspec/diagrams/sens/dg419ldy.lib)(options "")(descr ""))
+  (lib (name filter)(type Legacy)(uri C:/Users/lil_b/Documents/tsea29-taxi/doc/designspec/diagrams/sens/filter.lib)(options "")(descr ""))
+  (lib (name filter2)(type Legacy)(uri C:/Users/lil_b/Documents/tsea29-taxi/doc/designspec/diagrams/sens/filter2.lib)(options "")(descr ""))
 )

@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Kommunikationsmodul"
-Date "2018-10-16"
+Date "2018-11-06"
 Rev "v0.1"
 Comp ""
 Comment1 "Raspberry pi connected to SPI bus via two level shifter"
@@ -147,6 +147,4 @@ Wire Wire Line
 	5650 4500 5650 4400
 Text Label 5650 4400 0    50   ~ 0
 SPI_CLOCK
-Connection ~ 5500 4350
-Connection ~ 3950 4350
 $EndSCHEMATC

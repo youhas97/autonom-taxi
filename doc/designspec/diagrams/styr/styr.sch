@@ -6,7 +6,7 @@ $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
 Title "Styrmodul"
-Date "2018-10-09"
+Date "2018-11-06"
 Rev ""
 Comp ""
 Comment1 ""
@@ -59,43 +59,19 @@ F 3 "http://www.analog.com/media/en/technical-documentation/data-sheets/ADG419.p
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1150 1750 1150 900 
-Wire Wire Line
-	1150 900  2850 900 
-Wire Wire Line
-	2850 900  2850 1150
-Wire Wire Line
 	1650 2550 2100 2550
 Wire Wire Line
 	2100 2550 2100 1650
 Wire Wire Line
 	2100 1650 2250 1650
 Wire Wire Line
-	1150 5150 2850 5150
-Connection ~ 2850 900 
-Wire Wire Line
-	2850 900  5050 900 
-Wire Wire Line
-	5050 900  7600 900 
-Connection ~ 5050 900 
-Wire Wire Line
-	7600 900  7600 3500
-Wire Wire Line
 	4550 3750 3450 3750
-Wire Wire Line
-	2950 1150 5150 1150
-Wire Wire Line
-	1150 2500 1150 5150
 Wire Wire Line
 	3450 3650 4550 3650
 Wire Wire Line
 	3450 3550 4550 3550
 Wire Wire Line
 	3450 3450 4550 3450
-Wire Wire Line
-	5050 900  5050 2950
-Wire Wire Line
-	5150 1150 5150 2950
 Wire Wire Line
 	3450 3050 4150 3050
 Wire Wire Line
@@ -167,11 +143,6 @@ Wire Wire Line
 	3450 4650 4150 4650
 Text Label 4150 4650 0    50   ~ 0
 PWM_SVÄNG
-Wire Wire Line
-	7250 3500 7600 3500
-Connection ~ 7600 3500
-Wire Wire Line
-	7600 3500 7600 6250
 $Comp
 L power:GNDREF #PWR?
 U 1 1 5BEEFE97
@@ -194,4 +165,92 @@ F 3 "" H 5050 4150 50  0001 C CNN
 	1    5050 4150
 	1    0    0    -1  
 $EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE0FDF7
+P 1150 2550
+F 0 "#PWR?" H 1150 2300 50  0001 C CNN
+F 1 "GNDREF" H 1155 2377 50  0000 C CNN
+F 2 "" H 1150 2550 50  0001 C CNN
+F 3 "" H 1150 2550 50  0001 C CNN
+	1    1150 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE10664
+P 1650 1750
+F 0 "#PWR?" H 1650 1600 50  0001 C CNN
+F 1 "+5V" H 1665 1923 50  0000 C CNN
+F 2 "" H 1650 1750 50  0001 C CNN
+F 3 "" H 1650 1750 50  0001 C CNN
+	1    1650 1750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE1138F
+P 7250 3500
+F 0 "#PWR?" H 7250 3350 50  0001 C CNN
+F 1 "+5V" H 7265 3673 50  0000 C CNN
+F 2 "" H 7250 3500 50  0001 C CNN
+F 3 "" H 7250 3500 50  0001 C CNN
+	1    7250 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE1401A
+P 5050 2950
+F 0 "#PWR?" H 5050 2800 50  0001 C CNN
+F 1 "+5V" H 5065 3123 50  0000 C CNN
+F 2 "" H 5050 2950 50  0001 C CNN
+F 3 "" H 5050 2950 50  0001 C CNN
+	1    5050 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE1406E
+P 5150 2950
+F 0 "#PWR?" H 5150 2800 50  0001 C CNN
+F 1 "+5V" H 5165 3123 50  0000 C CNN
+F 2 "" H 5150 2950 50  0001 C CNN
+F 3 "" H 5150 2950 50  0001 C CNN
+	1    5150 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE14189
+P 3350 5150
+F 0 "#PWR?" H 3350 4900 50  0001 C CNN
+F 1 "GNDREF" H 3355 4977 50  0000 C CNN
+F 2 "" H 3350 5150 50  0001 C CNN
+F 3 "" H 3350 5150 50  0001 C CNN
+	1    3350 5150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2850 5150 3350 5150
+Wire Wire Line
+	2850 1150 2850 1000
+Wire Wire Line
+	2850 1000 2900 1000
+Wire Wire Line
+	2950 1000 2950 1150
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE15085
+P 2900 1000
+F 0 "#PWR?" H 2900 850 50  0001 C CNN
+F 1 "+5V" H 2915 1173 50  0000 C CNN
+F 2 "" H 2900 1000 50  0001 C CNN
+F 3 "" H 2900 1000 50  0001 C CNN
+	1    2900 1000
+	1    0    0    -1  
+$EndComp
+Connection ~ 2900 1000
+Wire Wire Line
+	2900 1000 2950 1000
 $EndSCHEMATC
