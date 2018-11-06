@@ -20,18 +20,16 @@ detektera hinder höger om bilen vid omkörning.
 störningar kommer det eventuellt att finnas brusfilter som filtrerar bort dessa
 störningar för att skapa så noggranna sensorvärden som möjligt.
 
-\subsection{Hårdvaruimplementation} Sensormodulen består av en ATMega1284
-mikrokontroller, JTAG, Kristalloscillator, strömbrytare och fyra sensorer; en
+\subsection{Hårdvaruimplementation}
+Sensormodulen består huvudsakligen av en mikrokontroller, och fyra sensorer; en
 avståndsmätare på framsidan, en avståndsmätare på höger sida samt två
-halleffektsensorer placerade på två av hjulen. Kontrollern är även kopplad till
-en LCD-display för att kunna visa värden för felsökning.
+halleffektsensorer placerade på två av hjulen. Mikrokontrollern är klockad av
+en separata kristalloscillator. Kontrollern är även kopplad till en LCD-display
+för att kunna visa värden för felsökning.
 
-På LCD-DISPLAY har följande två pinnar valts till att ha ett konstant värde:
-R/W och E. Eftersom inget krav finns på att kunna släcka LCD alternativt läsa
-från displayen så är enable och write-signalen alltid igång.
-
-Halleffektsensorerna kommer skicka en avbrottssignal varje gång hjulet har
-snurrat ett varv. Avbrottsrutinen ser till att räkna upp distans körd.
+På LCD:n har följande två pinnar valts till att ha ett konstant värde: R/W och
+E. Eftersom inget krav finns på att kunna släcka LCD alternativt läsa från
+displayen så är enable och write-signalen alltid igång.
 
 Avståndsmätarna skickar en spänning direkt till mikrokontrollens AD-omvandlare.
 Spänningens värde motsvarar ett avstånd. Utspänningen kan eventuellt behöva
@@ -76,5 +74,9 @@ Sensormodulen ska bestå av en tom while loop och ett avbrott som aktiveras när
 kommunikationsmodulen efterfrågar värden. Sensormodulen skickar då de senaste
 sensorvärdena och samplar därefter nästa grupp av värden. Avbrottet aktiveras
 som beskrivet i sektion \ref{sec:ctrl-int}
+
+Halleffektsensorerna kommer skicka en avbrottssignal varje gång en magnet på
+hjulet passera en sensor. Avbrottsrutinen ser då till att öka den körda
+distansen.
 
 \end{document}
