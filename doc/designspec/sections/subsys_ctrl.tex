@@ -28,9 +28,6 @@ styrmodulen följande komponenter.
 \end{itemize}
 
 \subsubsection{Kontroll och bedömning}
-Av portarna på microprocessorn används 8/8 av portA, 6/8 av portB, 4/8 av portC
-och 1/8 av portD. D.v.s. portarna räcker till.
-
 Nedan är följande pinnar som används på mikrokontrollern.
 \begin{itemize}
    \item \textbf{PA0-PA7} Datasignaler till LCD.
@@ -44,18 +41,10 @@ Nedan är följande pinnar som används på mikrokontrollern.
 \end{itemize}
 Inga fler signaler behövs så pinnarna på mikrokontrollen är tillräckliga.
 
-Mikrokontrollerna behöver endast utföra enkel reglering och därefter skapa en
-PWM-signal för motorerna. Kommunikationen bestäms av kommunikationsmodulen
-genom en "slave select", en signal som sätts till låg när kommunikationsmodulen
-vill kommunicera med slaven.  Inget av detta är särskilt krävande och bör
-klaras utan problem av ATMega1284.  Kontrollern har en flash-minne på 128kB,
-vilket blr vara mer än tillräckligt för att lagra programmet.
-
-PB5, även kallad MOSI, används för att ta emot data från kommunikationsmodulen
-, gentemot PB6,även kallad MISO, som används för att skicka data till mastern.
-PB4, även kallad CS (Chip Select) eller SS (Slave Select), sätts till låg av
-kommunikationsmodulen för att indikera att kommunikation mellan styrmodulen och
-kommunikationsmodulen.
+Mikrokontrollen behöver endast kommunicera via SPI, utföra enkel reglering och
+därefter skapa en PWM-signal för motorerna. Inget av detta är särskilt krävande
+och bör klaras utan problem av ATMega1284. Kontrollern har en flash-minne på
+128kB, vilket blr vara mer än tillräckligt för att lagra programmet.
 
 \subsection{Mjukvaruimplementation}
 Styrmodulens program kommer bestå av en main loop som reglerar bilens hastighet
@@ -67,15 +56,10 @@ I huvudloopen kommer värdena från kommunikationsmodulen göras om till
 motsvarande tidsintervall i PWM. Beroende på hur snabbt det går så kommer
 huvudloopen vänta på avbrott.
 
-\subsubsection{Avbrott}
-Så länge SS matas med en hög signal så kommer MISO att vara högohmig. Avbrottet
-sker när SS matas med en låg signal. Mjukvaran kan uppdatera innehållet i SPDR
-(SPI Data Register) i det här tillståndet, men data kommer inte att förskjutas
-ut genom inkommande klockpulser innan SS matas med en hög signal. När en byte
-har skickats så är överföringen slut och SPIF sätts. 
+\subsubsection{Avbrott} \label{sec:ctrl-int}
+När SPI-kontrollern har tagit emot en byte av data sätter den SPIF i SPSR (SPI
+Status Register) och aktiverar ett avbrott. Avbrottsrutinen kan flaggan
+kontrollera för att avgöra att kommunikationsmodulen vill skicka felvärden och
+börja ta emot värden.
 
-Om SPIE (SPI Interrupt Enable) i SPCR är satt, begärs ett nytt avbrott. Slaven
-kan fortsätta placera ny data som ska skickas till SPDR innan avläsningen av
-den inkommande datan sker. Den sista inkommande byten sparas i Buffer Register
-för senare användning
 \end{document}
