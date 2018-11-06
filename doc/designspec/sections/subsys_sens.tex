@@ -49,9 +49,8 @@ Nedan är produkter som ej medföljer baschassit och behöver beställas.
     \item \textbf{\modLcd} LCD-display för att visa parametrar under körning
     i felsökningssyfte.
     \item \textbf{IQEXO3} Kristalloscillator på 20Mhz, skall använda som systemklocka till AVR.
-    \item \textbf{Tryckknapp} Knapp används till RESET.
-    \item \textbf{AVR-JTAG} JTAG för flashning av program till mikrokontrollern.
 \end{itemize}
+Modulen använder även en {\modJtag} och tryckknapp som delas med styrmodulen.
 
 \subsubsection{Kontroll och bedömning}
 Nedan är följande pinnar som används på mikrokontrollern.
@@ -76,7 +75,7 @@ sensorvärdena och samplar därefter nästa grupp av värden. Avbrottet aktivera
 som beskrivet i sektion \ref{sec:ctrl-int}
 
 Halleffektsensorerna kommer skicka en avbrottssignal varje gång en magnet på
-hjulet passera en sensor. Avbrottsrutinen ser då till att öka den körda
+hjulet passerar en sensor. Avbrottsrutinen ser då till att öka den körda
 distansen.
 
 \end{document}
