@@ -76,11 +76,7 @@ MISO
 Text Label 4150 2850 0    50   ~ 0
 MOSI
 Text Label 4150 2750 0    50   ~ 0
-CHIP_SELECT
-Wire Wire Line
-	3450 2650 4150 2650
-Text Label 4150 2650 0    50   ~ 0
-PWM_MOTOR
+SS
 $Comp
 L jma162a:JMA162A _?
 U 1 1 5BEDF369
@@ -319,4 +315,8 @@ Wire Wire Line
 	1200 1600 1250 1600
 Wire Wire Line
 	1250 1150 1250 1600
+Wire Wire Line
+	3450 4550 4150 4550
+Text Label 4150 4550 0    50   ~ 0
+PWM_MOTOR
 $EndSCHEMATC
