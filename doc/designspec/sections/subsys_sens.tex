@@ -23,21 +23,18 @@ störningar för att skapa så noggranna sensorvärden som möjligt.
 \subsection{Hårdvaruimplementation}
 Sensormodulen består huvudsakligen av en mikrokontroller, och fyra sensorer; en
 avståndsmätare på framsidan, en avståndsmätare på höger sida samt två
-halleffektsensorer placerade på två av hjulen. Mikrokontrollern är klockad av 
-en kristalloscillator. Kontrollern är även kopplad till en LCD-display
-för att kunna visa värden vid felsökning.
+halleffektsensorer placerade på två av hjulen. Mikrokontrollern är klockad av
+en kristalloscillator på 16 MHz. Kontrollern är även kopplad till en
+LCD-display för att kunna visa värden vid felsökning. Ett detaljerat
+kretsschema över modulen finns i bilaga \ref{cdiag:sens}.
 
-På LCD:n har följande två pinnar valts till att ha ett konstant värde: R/W och
-E. Eftersom inget krav finns på att kunna släcka LCD-panelen alternativt läsa från
-displayen så är enable och write-signalen jordas.
+På LCD-panelen kommer R/W-pinnen att vara konstant jordad då ingenting behöver
+läsas från panelen samt för att skrivning ska kunna ske när som helst i samband
+med en signal till Enable-pinnen.
 
 Avståndsmätarna skickar en spänning direkt till mikrokontrollens AD-omvandlare.
 Spänningens värde motsvarar ett avstånd. Utspänningen kan eventuellt behöva
 filtreras från brus.
-
-Önskad klockfrekvens från oscillatorn är 24Mhz.
-
-Ett kretsschema över modulen finns i bilaga \ref{cdiag:sens}.
 
 \subsubsection{Budget}
 Nedan är produkter som ej medföljer baschassit och behöver beställas.
@@ -47,7 +44,7 @@ Nedan är produkter som ej medföljer baschassit och behöver beställas.
     \item \textbf{\modDists} Avståndsmätare för hinder höger om bilen.
     \item \textbf{\modLcd} LCD-display för att visa parametrar under körning
     i felsökningssyfte.
-    \item \textbf{IQEXO3} Kristalloscillator på 20Mhz, skall använda som systemklocka till AVR.
+    \item \textbf{IQEXO3} Kristalloscillator som systemklocka till AVR.
 \end{itemize}
 Modulen använder även en {\modJtag} och tryckknapp som delas med styrmodulen.
 
@@ -58,7 +55,7 @@ Nedan är följande pinnar som används på mikrokontrollern.
    \item \textbf{PB2-PB3} Vardera port får en avbrottsignal från en odometer.
    \item \textbf{PB4-PB7} SS, MOSI, MISO och SCLK för SPI-bussen.
    \item \textbf{PC2-PC5} TCK, TMS, TDO, TDI för JTAG.
-   \item \textbf{PC7} Reset signal till LCD-display.
+   \item \textbf{PC7} Register-select signal till LCD-display.
    \item \textbf{PD0-PD7} Databuss till LCD-display.
    \item \textbf{RESET(9)} Knapp till reset för MCU.
    \item \textbf{XTAL1} Klocka från Kristalloscillatorn.

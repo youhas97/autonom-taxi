@@ -4,17 +4,18 @@
 
 \section{Styrmodul}
 Styrmodulen är en modul som har i uppgift att ta emot felvärden från
-kommunikationsmodulen och reglera bilens drivmotor och svängmotor utifrån
+kommunikationsmodulen och reglera bilens drivmotor och svängservo utifrån
 dessa.
 
 \subsection{Funktion}
 Styrmodulens syfte är att hantera den direkta kontrollen av styrreglagen för
-taxins motorer. Styrmodulen ska reglera drivmotorn och svängmotorn utifrån
+taxins motor. Styrmodulen ska reglera drivmotorn och svängservo utifrån
 felvärden som ges av kommunikationsmodulen.
 
 \subsection{Hårdvaruimplementation}
-Styrmodulen består av en mikrokontroller, taxins motorer samt en LCD för
-felsökning. Ett detaljerat kretsschema finns i bilaga \ref{cdiag:ctrl}.
+Styrmodulen består av en mikrokontroller, taxins motor samt en LCD för
+felsökning. Mikrokontrollern är klockad av en kristalloscillator på 16 MHz. Ett
+detaljerat kretsschema finns i bilaga \ref{cdiag:ctrl}.
 
 \subsubsection{Budget}
 Utöver motorn och servon som redan sitter monterade på chassit behöver
@@ -25,7 +26,7 @@ styrmodulen följande komponenter.
         microprocessorn. 
     \item \textbf{\modLcd} LCD-display för att visa parametrar under körning i
         felsökningssyfte.
-    \item \textbf{IQEXO3} Kristalloscillator på 20Mhz, skall använda som systemklocka till AVR.
+    \item \textbf{IQEXO3} Kristalloscillator som systemklocka till AVR.
     \item \textbf{Tryckknapp} Knapp används till RESET.
 \end{itemize}
 
@@ -34,17 +35,17 @@ Nedan är följande pinnar som används på mikrokontrollern.
 \begin{itemize}
    \item \textbf{PA0-PA7} Datasignaler till LCD.
    \item \textbf{PB0} RS-signal till LCD.
-   \item \textbf{PB3} PWM-signal till drivmotor.
    \item \textbf{PB4-PB7} SS, MOSI, MISO och SCLK för SPI-bussen.
    \item \textbf{PC2-PC5} TCK, TMS, TDO, TDI för JTAG.
-   \item \textbf{PD5} PWM-signal till svängmotor.
+   \item \textbf{PD4} PWM-signal till drivmotor.
+   \item \textbf{PD5} PWM-signal till svängservo.
    \item \textbf{RESET} Resetsignal.
    \item \textbf{XTAL1} Klocka från kristalloscillatorn.
 \end{itemize}
 Inga fler signaler behövs så pinnarna på mikrokontrollen är tillräckliga.
 
 Mikrokontrollen behöver endast kommunicera via SPI, utföra enkel reglering och
-därefter skapa en PWM-signal för motorerna. Inget av detta är särskilt krävande
+därefter skapa en PWM-signal för motorn. Inget av detta är särskilt krävande
 och bör klaras utan problem av ATMega1284. Kontrollern har ett flash-minne på
 128kB, vilket bör vara mer än tillräckligt för att lagra programmet.
 
@@ -53,10 +54,17 @@ Styrmodulens program kommer bestå av en main loop som reglerar bilens hastighet
 efter ett felvärde. Ett avbrott som aktiveras när kommunikationsmodulen vill
 kommunicera kommer att ta emot nya felvärden med jämna mellanrum.
 
-\subsubsection{Huvud-loop}
-I huvudloopen kommer värdena från kommunikationsmodulen göras om till
-motsvarande tidsintervall i PWM. Beroende på hur snabbt det går så kommer
-huvudloopen vänta på avbrott.
+\subsubsection{Huvud-loop och reglering}
+I huvudloopen kommer felvärdena från kommunikationsmodulen användas för att
+reglera bilens hastighet och därefter skicka motsvarande PWM-signaler till
+motorn och servon. Regleringen fungerar genom att räkna ut hastigheten eller
+radien $v[n]$ med hjälp av ett felvärde $e[t]$ så att
+\begin{equation*}
+    v[n] = k_p \cdot e[n] + k_d \cdot (e[n]-e[n-1])
+\end{equation*}
+där $k_p$ och $k_d$ är konstanter som kan justeras experimentiellt. Den första
+termen står för att justera utefter det nuvarande felet. Den andra termen står
+för att justera utefter den nuvarande förändringen av felet.
 
 \subsubsection{Avbrott} \label{sec:ctrl-int}
 När SPI-kontrollern har tagit emot en byte av data sätter den SPIF i SPSR (SPI
