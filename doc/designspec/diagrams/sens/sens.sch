@@ -30,17 +30,6 @@ F 3 "http://www.onsemi.com/pub/Collateral/NB3N511-D.PDF" H 3600 1550 50  0001 C 
 	0    1    -1   0   
 $EndComp
 $Comp
-L sens-rescue:ATmega1284-PU-MCU_Microchip_ATmega U?
-U 1 1 5BDC5F4E
-P 5600 3150
-F 0 "U?" H 5600 1064 50  0000 C CNN
-F 1 "ATmega1284-PU" H 5600 973 50  0000 C CNN
-F 2 "Package_DIP:DIP-40_W15.24mm" H 5600 3150 50  0001 C CIN
-F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8272-8-bit-AVR-microcontroller-ATmega164A_PA-324A_PA-644A_PA-1284_P_datasheet.pdf" H 5600 3150 50  0001 C CNN
-	1    5600 3150
-	1    0    0    -1  
-$EndComp
-$Comp
 L sens-rescue:ACS715xLCTR-30A-taxi-sens-rescue AVSTÅNDSMÄTARE(SIDA)
 U 1 1 5BDC9DEC
 P 8900 1450
@@ -128,30 +117,6 @@ Wire Wire Line
 	6200 2950 6850 2950
 Wire Wire Line
 	6200 3050 6850 3050
-Wire Wire Line
-	7400 4750 7250 4750
-Wire Wire Line
-	7250 4750 7250 4250
-Wire Wire Line
-	7250 4250 6200 4250
-Wire Wire Line
-	7400 4850 7150 4850
-Wire Wire Line
-	7150 4850 7150 4350
-Wire Wire Line
-	6200 4350 7150 4350
-Wire Wire Line
-	7400 4950 7050 4950
-Wire Wire Line
-	7050 4950 7050 4450
-Wire Wire Line
-	7050 4450 6200 4450
-Wire Wire Line
-	7400 5450 6500 5450
-Wire Wire Line
-	6500 5450 6500 3950
-Wire Wire Line
-	6500 3950 6200 3950
 $Comp
 L power:+5V #PWR?
 U 1 1 5BE2917C
@@ -282,12 +247,6 @@ F 3 "http://www.allegromicro.com/en/Products/Part_Numbers/1101/1101.pdf" H 8950 
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7400 4650 7300 4650
-Wire Wire Line
-	7300 4650 7300 4150
-Wire Wire Line
-	7300 4150 6200 4150
-Wire Wire Line
 	6200 3750 7150 3750
 Wire Wire Line
 	6200 3650 7150 3650
@@ -296,19 +255,11 @@ Wire Wire Line
 Wire Wire Line
 	6200 3450 7150 3450
 Wire Wire Line
-	8200 2650 6200 2650
-Wire Wire Line
 	8650 3100 8400 3100
 Wire Wire Line
 	8400 3100 8400 2550
 Wire Wire Line
 	8400 2550 6200 2550
-Wire Wire Line
-	8650 3900 8650 3450
-Wire Wire Line
-	8650 3450 8200 3450
-Wire Wire Line
-	8200 3450 8200 2650
 $Comp
 L sens-rescue:A112X-hall-effect HALLEFFECTSENSOR?
 U 1 1 5BE35260
@@ -525,34 +476,119 @@ Wire Wire Line
 $Comp
 L pspice:CAP C?
 U 1 1 5BEA46CC
-P 5650 800
-F 0 "C?" V 5335 800 50  0000 C CNN
-F 1 "CAP" V 5426 800 50  0000 C CNN
-F 2 "" H 5650 800 50  0001 C CNN
-F 3 "" H 5650 800 50  0001 C CNN
-	1    5650 800 
+P 5350 800
+F 0 "C?" V 5035 800 50  0000 C CNN
+F 1 "CAP" V 5126 800 50  0000 C CNN
+F 2 "" H 5350 800 50  0001 C CNN
+F 3 "" H 5350 800 50  0001 C CNN
+	1    5350 800 
 	0    1    1    0   
 $EndComp
 $Comp
 L power:GNDREF #PWR?
 U 1 1 5BEA491F
-P 5400 800
-F 0 "#PWR?" H 5400 550 50  0001 C CNN
-F 1 "GNDREF" V 5405 672 50  0000 R CNN
-F 2 "" H 5400 800 50  0001 C CNN
-F 3 "" H 5400 800 50  0001 C CNN
-	1    5400 800 
+P 5100 800
+F 0 "#PWR?" H 5100 550 50  0001 C CNN
+F 1 "GNDREF" V 5105 672 50  0000 R CNN
+F 2 "" H 5100 800 50  0001 C CNN
+F 3 "" H 5100 800 50  0001 C CNN
+	1    5100 800 
+	0    1    1    0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5BEA6E18
+P 5600 800
+F 0 "#PWR?" H 5600 650 50  0001 C CNN
+F 1 "+5V" V 5615 928 50  0000 L CNN
+F 2 "" H 5600 800 50  0001 C CNN
+F 3 "" H 5600 800 50  0001 C CNN
+	1    5600 800 
 	0    1    1    0   
 $EndComp
 Wire Wire Line
-	5700 1150 5900 1150
+	8250 4500 8250 4250
 Wire Wire Line
-	5900 1150 5900 1050
+	8250 4250 6200 4250
 Wire Wire Line
-	5600 1150 5600 1050
+	8650 3900 8050 3900
 Wire Wire Line
-	5600 1050 5900 1050
-Connection ~ 5900 1050
+	8050 3900 8050 4350
 Wire Wire Line
-	5900 1050 5900 800 
+	8050 4350 6200 4350
+Wire Wire Line
+	5600 800  5600 950 
+Connection ~ 5600 800 
+$Comp
+L sens-rescue:ATmega1284-PU-MCU_Microchip_ATmega U?
+U 1 1 5BDC5F4E
+P 5600 3150
+F 0 "U?" H 5600 1064 50  0000 C CNN
+F 1 "ATmega1284-PU" H 5600 973 50  0000 C CNN
+F 2 "Package_DIP:DIP-40_W15.24mm" H 5600 3150 50  0001 C CIN
+F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8272-8-bit-AVR-microcontroller-ATmega164A_PA-324A_PA-644A_PA-1284_P_datasheet.pdf" H 5600 3150 50  0001 C CNN
+	1    5600 3150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5700 1150 5700 950 
+Wire Wire Line
+	5700 950  5600 950 
+Connection ~ 5600 950 
+Wire Wire Line
+	5600 950  5600 1150
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BEC8E66
+P 8150 4450
+F 0 "#PWR?" H 8150 4200 50  0001 C CNN
+F 1 "GNDREF" V 8155 4322 50  0000 R CNN
+F 2 "" H 8150 4450 50  0001 C CNN
+F 3 "" H 8150 4450 50  0001 C CNN
+	1    8150 4450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	8150 4500 8150 4450
+Wire Wire Line
+	7400 5050 7250 5050
+Wire Wire Line
+	7250 5050 7250 4450
+Wire Wire Line
+	7250 4450 6200 4450
+Wire Wire Line
+	7400 5150 7150 5150
+Wire Wire Line
+	7150 5150 7150 4550
+Wire Wire Line
+	7150 4550 6200 4550
+Wire Wire Line
+	7400 5250 7050 5250
+Wire Wire Line
+	7050 5250 7050 4650
+Wire Wire Line
+	7050 4650 6200 4650
+Wire Wire Line
+	7400 5350 6950 5350
+Wire Wire Line
+	6950 5350 6950 4750
+Wire Wire Line
+	6950 4750 6200 4750
+Wire Wire Line
+	6800 5450 6800 4850
+Wire Wire Line
+	6800 4850 6200 4850
+Wire Wire Line
+	6800 5450 7400 5450
+$Comp
+L power:+5V #PWR?
+U 1 1 5BED369E
+P 5000 2050
+F 0 "#PWR?" H 5000 1900 50  0001 C CNN
+F 1 "+5V" V 5015 2178 50  0000 L CNN
+F 2 "" H 5000 2050 50  0001 C CNN
+F 3 "" H 5000 2050 50  0001 C CNN
+	1    5000 2050
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC
