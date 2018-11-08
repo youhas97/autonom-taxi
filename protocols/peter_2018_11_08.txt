@@ -1,0 +1,43 @@
+---Diskutera desigspec---
+
+Sida 5: Bara 1 motor.
+
+20 MHtz Oscillator, 16 MHtz istället
+
+Enable till LCD:n saknas. Används för att skriva. Write kan däremot sättas.
+
+Kolla upp rätt pinnar till pwm, försök använda inbyggda timers. 8-bitar kan
+vara för lite.
+
+LCD kan köras på 4-bitars mode. Spara pinnar.
+
+PD regaltor. Behöver inte ha något ID, kan fungera bara med P. Lägg till ett
+kapitel om det i dokumentet. 
+
+Sensor modul 24MHhz ner till 16 MHz (Sida 11).
+
+Fundera på hur LCD ska sitta, kanske bara en högst upp om det ska vara flera
+kort.
+
+RS till LCD:n är register select, inte reset.
+
+Lägg pwm signalerna på register som delar timer. 
+
+A/K är om vi ska ha bakgrundsbelysning på LCD:n. Om vi ska ha det, glöm inte
+ett motstånd på ca 300 Ohm.
+
+Koppla aldrig in 5v in till rasberryn.
+
+Om vi ska ha analoga signaler måste vi koppla in aRef. 
+
+Måste också koppla in filter i mellan sensorerna.
+
+AVCC behöver ingen spole.
+
+Halleffektsesnsorer: rekomenderar använda en Int pinne. Ni kanske inte behöver
+använda båda, men tänk på att använda någon interrupt. 
+
+Skicka in sdl-fil om vi vill ha något 3d-utskrivet. (Kamerafäste, sensorfästen).
+
+
+
