@@ -54,10 +54,17 @@ Styrmodulens program kommer bestå av en main loop som reglerar bilens hastighet
 efter ett felvärde. Ett avbrott som aktiveras när kommunikationsmodulen vill
 kommunicera kommer att ta emot nya felvärden med jämna mellanrum.
 
-\subsubsection{Huvud-loop}
-I huvudloopen kommer värdena från kommunikationsmodulen göras om till
-motsvarande tidsintervall i PWM. Beroende på hur snabbt det går så kommer
-huvudloopen vänta på avbrott.
+\subsubsection{Huvud-loop och reglering}
+I huvudloopen kommer felvärdena från kommunikationsmodulen användas för att
+reglera bilens hastighet och därefter skicka motsvarande PWM-signaler till
+motorn och servon. Regleringen fungerar genom att räkna ut hastigheten eller
+radien $v[n]$ med hjälp av ett felvärde $e[t]$ så att
+\begin{equation*}
+    v[n] = k_p \cdot e[n] + k_d \cdot (e[n]-e[n-1])
+\end{equation*}
+där $k_p$ och $k_d$ är konstanter som kan justeras experimentiellt. Den första
+termen står för att justera utefter det nuvarande felet. Den andra termen står
+för att justera utefter den nuvarande förändringen av felet.
 
 \subsubsection{Avbrott} \label{sec:ctrl-int}
 När SPI-kontrollern har tagit emot en byte av data sätter den SPIF i SPSR (SPI
