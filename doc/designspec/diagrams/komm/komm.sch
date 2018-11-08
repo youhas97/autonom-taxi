@@ -2,7 +2,7 @@ EESchema Schematic File Version 4
 LIBS:komm-cache
 EELAYER 26 0
 EELAYER END
-$Descr A4 11693 8268
+$Descr User 6694 5118
 encoding utf-8
 Sheet 1 1
 Title "Kommunikationsmodul"
@@ -15,136 +15,136 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L Connector:Raspberry_Pi_2_3 J?
+L komm-rescue:Raspberry_Pi_2_3-Connector J?
 U 1 1 5BC49E7D
-P 2000 3450
-F 0 "J?" H 2000 5100 50  0000 C CNN
-F 1 "Raspberry_Pi_2_3" H 2000 5000 50  0000 C CNN
-F 2 "" H 2000 3450 50  0001 C CNN
-F 3 "https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf" H 2000 3450 50  0001 C CNN
-	1    2000 3450
+P 1550 2200
+F 0 "J?" H 1550 3850 50  0000 C CNN
+F 1 "Raspberry_Pi_2_3" H 1550 3750 50  0000 C CNN
+F 2 "" H 1550 2200 50  0001 C CNN
+F 3 "https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/rpi_SCH_3bplus_1p0_reduced.pdf" H 1550 2200 50  0001 C CNN
+	1    1550 2200
 	1    0    0    -1  
 $EndComp
 $Comp
-L Logic_LevelTranslator:BSS138_bidirectional_level_shifter levelshifter?
+L komm-rescue:BSS138_bidirectional_level_shifter-Logic_LevelTranslator levelshifter?
 U 1 1 5BC4E4B2
-P 4650 3400
-F 0 "levelshifter?" H 4650 4300 50  0001 C CIN
-F 1 "BSS138_bidirectional_level_shifter" H 4596 4076 50  0000 C CNN
-F 2 "adafruit_i2c_level_shifter" H 4800 2350 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/txb0104.pdf" H 4760 3495 50  0001 C CNN
-	1    4650 3400
+P 4200 2150
+F 0 "levelshifter?" H 4200 3050 50  0001 C CIN
+F 1 "BSS138_bidirectional_level_shifter" H 4146 2826 50  0000 C CNN
+F 2 "adafruit_i2c_level_shifter" H 4350 1100 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/txb0104.pdf" H 4310 2245 50  0001 C CNN
+	1    4200 2150
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1800 2150 1550 2150
+	1350 900  1100 900 
 Wire Wire Line
-	1550 2150 1550 2000
+	1100 900  1100 750 
 Wire Wire Line
-	1550 2000 5500 2000
+	1100 750  5050 750 
 Wire Wire Line
-	5500 2000 5500 2950
+	5050 750  5050 1700
 Wire Wire Line
-	5500 2950 5050 2950
-Text Notes 1950 4150 1    50   ~ 0
+	5050 1700 4600 1700
+Text Notes 1500 2900 1    50   ~ 0
 CAMERA \nPORT\n
 $Comp
-L Logic_LevelTranslator:BSS138_bidirectional_level_shifter levelshifter?
+L komm-rescue:BSS138_bidirectional_level_shifter-Logic_LevelTranslator levelshifter?
 U 1 1 5BE9F7E8
-P 4650 4800
-F 0 "levelshifter?" H 4650 5700 50  0001 C CIN
-F 1 "BSS138_bidirectional_level_shifter" H 4596 5476 50  0000 C CNN
-F 2 "adafruit_i2c_level_shifter" H 4800 3750 50  0001 C CNN
-F 3 "http://www.ti.com/lit/ds/symlink/txb0104.pdf" H 4760 4895 50  0001 C CNN
-	1    4650 4800
+P 4200 3550
+F 0 "levelshifter?" H 4200 4450 50  0001 C CIN
+F 1 "BSS138_bidirectional_level_shifter" H 4146 4226 50  0000 C CNN
+F 2 "adafruit_i2c_level_shifter" H 4350 2500 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/txb0104.pdf" H 4310 3645 50  0001 C CNN
+	1    4200 3550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	2200 4750 2200 5500
+	1750 3500 1750 4250
 Wire Wire Line
-	2200 5500 4650 5500
+	1750 4250 4200 4250
 Wire Wire Line
-	2300 5350 4150 5350
+	1850 4100 3700 4100
 Wire Wire Line
-	4150 5350 4150 4100
+	3700 4100 3700 2850
 Wire Wire Line
-	4150 4100 4650 4100
+	3700 2850 4200 2850
 Wire Wire Line
-	2300 4750 2300 5350
+	1850 3500 1850 4100
 Wire Wire Line
-	2800 3550 2950 3550
+	2350 2300 2500 2300
 Wire Wire Line
-	2950 3550 2950 3100
+	2500 2300 2500 1850
 Wire Wire Line
-	2950 3100 4250 3100
+	2500 1850 3800 1850
 Wire Wire Line
-	2800 3650 3100 3650
+	2350 2400 2650 2400
 Wire Wire Line
-	3100 3650 3100 3300
+	2650 2400 2650 2050
 Wire Wire Line
-	3100 3300 4250 3300
+	2650 2050 3800 2050
 Wire Wire Line
-	2800 3750 3250 3750
+	2350 2500 2800 2500
 Wire Wire Line
-	3250 3750 3250 3500
+	2800 2500 2800 2250
 Wire Wire Line
-	3250 3500 4250 3500
+	2800 2250 3800 2250
 Wire Wire Line
-	2800 3850 3350 3850
+	2350 2600 2900 2600
 Wire Wire Line
-	3350 3850 3350 3700
+	2900 2600 2900 2450
 Wire Wire Line
-	3350 3700 4250 3700
+	2900 2450 3800 2450
 Wire Wire Line
-	2800 3950 3600 3950
+	2350 2700 3150 2700
 Wire Wire Line
-	3600 3950 3600 4500
+	3150 2700 3150 3250
 Wire Wire Line
-	3600 4500 4250 4500
-Connection ~ 5500 2950
+	3150 3250 3800 3250
+Connection ~ 5050 1700
 Wire Wire Line
-	5500 2950 5500 4350
+	5050 1700 5050 3100
 Wire Wire Line
-	5500 4350 5050 4350
+	5050 3100 4600 3100
 Wire Wire Line
-	3950 2150 3950 2950
+	3500 900  3500 1700
 Wire Wire Line
-	3950 4350 4250 4350
+	3500 3100 3800 3100
 Wire Wire Line
-	2200 2150 3950 2150
+	1750 900  3500 900 
 Wire Wire Line
-	3950 2950 4250 2950
-Connection ~ 3950 2950
+	3500 1700 3800 1700
+Connection ~ 3500 1700
 Wire Wire Line
-	3950 2950 3950 4350
-Text Label 5650 3050 0    50   ~ 0
+	3500 1700 3500 3100
+Text Label 5200 1800 0    50   ~ 0
 CHIPSELECT_SENSOR
 Wire Wire Line
-	5050 3100 5650 3100
+	4600 1850 5200 1850
 Wire Wire Line
-	5650 3100 5650 3050
-Text Label 5650 3250 0    50   ~ 0
+	5200 1850 5200 1800
+Text Label 5200 2000 0    50   ~ 0
 CHIPSELECT_STYR
 Wire Wire Line
-	5050 3300 5650 3300
+	4600 2050 5200 2050
 Wire Wire Line
-	5650 3300 5650 3250
-Text Label 5650 3400 0    50   ~ 0
+	5200 2050 5200 2000
+Text Label 5200 2150 0    50   ~ 0
 MISO
-Text Label 5650 3600 0    50   ~ 0
+Text Label 5200 2350 0    50   ~ 0
 MOSI
 Wire Wire Line
-	5050 3500 5650 3500
+	4600 2250 5200 2250
 Wire Wire Line
-	5650 3500 5650 3400
+	5200 2250 5200 2150
 Wire Wire Line
-	5050 3700 5650 3700
+	4600 2450 5200 2450
 Wire Wire Line
-	5650 3700 5650 3600
+	5200 2450 5200 2350
 Wire Wire Line
-	5050 4500 5650 4500
+	4600 3250 5200 3250
 Wire Wire Line
-	5650 4500 5650 4400
-Text Label 5650 4400 0    50   ~ 0
+	5200 3250 5200 3150
+Text Label 5200 3150 0    50   ~ 0
 SPI_CLOCK
 $EndSCHEMATC

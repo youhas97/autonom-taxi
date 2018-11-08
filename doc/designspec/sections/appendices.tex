@@ -1,40 +1,34 @@
 \documentclass[main.tex]{subfiles}
+\renewcommand\appendixtocname{Bilagor}
 
 \begin{document}
-\appendix
 
-% set landscape
 \pagestyle{empty}
-\KOMAoptions{paper={landscape},pagesize}
-\recalctypearea
 
-\section{Bilaga. Kretsscheman}
-\subsection{Kommunikationsmodul}
-\label{cdiag:comm}
-\begin{minipage}{\textwidth}
-    \includegraphics[scale=0.69]{designspec/diagrams/pdfs/komm.pdf}
-\end{minipage}
+\begin{appendices}
+    \begin{landscape}
 
-\subsection{Styrmodul}
-\label{cdiag:ctrl}
-\begin{minipage}{\textwidth}
-    \includegraphics[scale=1.03]{designspec/diagrams/pdfs/styr.pdf}
-\end{minipage}
+    \section{Bilaga. Kretsscheman}
 
-\subsection{Sensormodul}
-\label{cdiag:sens}
-\begin{minipage}{\textwidth}
-    \includegraphics[scale=0.69]{designspec/diagrams/pdfs/sens.pdf}
-\end{minipage}
+    \subsection{Kommunikationsmodul}
+    \label{cdiag:comm}
+    \includegraphics[scale=1.06]{designspec/diagrams/pdfs/komm.pdf}
 
-\section{Bilaga. Flödesdiagram}
-\subsection{Fjärrklient}
-\label{flow:remote}
-\begin{minipage}{\textwidth}
-    \includegraphics[scale=0.91]{designspec/diagrams/flowcharts/remote.pdf}
-\end{minipage}
+    \subsection{Styrmodul}
+    \label{cdiag:ctrl}
+    \includegraphics[scale=0.99]{designspec/diagrams/pdfs/styr.pdf}
 
-\KOMAoptions{paper={landscape},pagesize}
-\recalctypearea
+    \subsection{Sensormodul}
+    \label{cdiag:sens}
+    \includegraphics[scale=0.7]{designspec/diagrams/pdfs/sens.pdf}
+
+    \section{Bilaga. Flödesdiagram}
+
+    \subsection{Fjärrklient}
+    \label{flow:remote}
+    \includegraphics[scale=0.89]{designspec/diagrams/flowcharts/remote.pdf}
+
+    \end{landscape}
+\end{appendices}
 
 \end{document}
