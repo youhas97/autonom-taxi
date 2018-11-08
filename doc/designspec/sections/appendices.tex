@@ -1,40 +1,31 @@
 \documentclass[main.tex]{subfiles}
+\renewcommand\appendixtocname{Bilagor}
 
 \begin{document}
-\appendix
+\begin{appendices}
+\begin{landscape}
 
-% set landscape
 \pagestyle{empty}
-\KOMAoptions{paper={landscape},pagesize}
-\recalctypearea
 
 \section{Bilaga. Kretsscheman}
 \subsection{Kommunikationsmodul}
 \label{cdiag:comm}
-\begin{minipage}{\textwidth}
-    \includegraphics[scale=0.69]{designspec/diagrams/pdfs/komm.pdf}
-\end{minipage}
+\includegraphics[scale=0.66]{designspec/diagrams/pdfs/komm.pdf}
 
 \subsection{Styrmodul}
 \label{cdiag:ctrl}
-\begin{minipage}{\textwidth}
-    \includegraphics[scale=1.03]{designspec/diagrams/pdfs/styr.pdf}
-\end{minipage}
+\includegraphics[scale=0.99]{designspec/diagrams/pdfs/styr.pdf}
 
 \subsection{Sensormodul}
 \label{cdiag:sens}
-\begin{minipage}{\textwidth}
-    \includegraphics[scale=0.69]{designspec/diagrams/pdfs/sens.pdf}
-\end{minipage}
+\includegraphics[scale=0.67]{designspec/diagrams/pdfs/sens.pdf}
 
 \section{Bilaga. Flödesdiagram}
 \subsection{Fjärrklient}
 \label{flow:remote}
-\begin{minipage}{\textwidth}
-    \includegraphics[scale=0.91]{designspec/diagrams/flowcharts/remote.pdf}
-\end{minipage}
+\includegraphics[scale=0.89]{designspec/diagrams/flowcharts/remote.pdf}
 
-\KOMAoptions{paper={landscape},pagesize}
-\recalctypearea
 
+\end{landscape}
+\end{appendices}
 \end{document}
