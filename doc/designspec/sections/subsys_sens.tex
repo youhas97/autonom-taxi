@@ -27,9 +27,9 @@ halleffektsensorer placerade på två av hjulen. Mikrokontrollern är klockad av
 en kristalloscillator. Kontrollern är även kopplad till en LCD-display
 för att kunna visa värden vid felsökning.
 
-På LCD:n har följande två pinnar valts till att ha ett konstant värde: R/W och
-E. Eftersom inget krav finns på att kunna släcka LCD-panelen alternativt läsa från
-displayen så är enable och write-signalen jordas.
+På LCD-panelen kommer R/W-pinnen att vara konstant jordad då ingenting behöver
+läsas från panelen samt för att skrivning ska kunna ske när som helst i samband
+med en signal till Enable-pinnen.
 
 Avståndsmätarna skickar en spänning direkt till mikrokontrollens AD-omvandlare.
 Spänningens värde motsvarar ett avstånd. Utspänningen kan eventuellt behöva
