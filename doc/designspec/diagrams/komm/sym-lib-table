@@ -187,4 +187,5 @@
   (lib (name microchip)(type Legacy)(uri /home/blast/kicad-symbols-5.0.1/legacy/microchip.lib)(options "")(descr ""))
   (lib (name MCU_Infineon)(type Legacy)(uri /home/blast/kicad-symbols-5.0.1/obsolete/MCU_Infineon.lib)(options "")(descr ""))
   (lib (name MCU_ST_STM32)(type Legacy)(uri /home/blast/kicad-symbols-5.0.1/obsolete/MCU_ST_STM32.lib)(options "")(descr ""))
+  (lib (name komm-rescue)(type Legacy)(uri ${KIPRJMOD}/komm-rescue.lib)(options "")(descr ""))
 )

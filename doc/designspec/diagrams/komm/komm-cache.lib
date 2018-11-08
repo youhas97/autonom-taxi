@@ -1,11 +1,62 @@
 EESchema-LIBRARY Version 2.4
 #encoding utf-8
 #
-# Connector:Raspberry_Pi_2_3
+# komm-rescue_BSS138_bidirectional_level_shifter-Logic_LevelTranslator
 #
-DEF Connector:Raspberry_Pi_2_3 J 0 40 Y Y 1 F N
+DEF komm-rescue_BSS138_bidirectional_level_shifter-Logic_LevelTranslator levelshifter 0 20 Y Y 1 F N
+F0 "levelshifter" 0 900 50 H I C CIN
+F1 "komm-rescue_BSS138_bidirectional_level_shifter-Logic_LevelTranslator" -650 650 50 H V L CNN
+F2 "adafruit_i2c_level_shifter" 150 -1050 50 H I C CNN
+F3 "" 110 95 50 H I C CNN
+$FPLIST
+ Texas*DSBGA*1.36x1.86mm*Layout3x4*P0.5mm*
+$ENDFPLIST
+DRAW
+S -300 -600 -300 -500 0 1 10 N
+S -300 600 300 -600 0 1 10 f
+P 3 0 1 0 -90 -305 -90 -265 -20 -265 N
+P 3 0 1 0 -90 -105 -90 -65 -20 -65 N
+P 3 0 1 0 -90 95 -90 135 -20 135 N
+P 3 0 1 0 -90 295 -90 335 -20 335 N
+P 3 0 1 0 120 -305 120 -345 50 -345 N
+P 3 0 1 0 120 -105 120 -145 50 -145 N
+P 3 0 1 0 120 95 120 55 50 55 N
+P 3 0 1 0 120 295 120 255 50 255 N
+P 4 0 1 0 -20 -345 -90 -345 -90 -305 -160 -305 N
+P 4 0 1 0 -20 -345 50 -305 50 -385 -20 -345 N
+P 4 0 1 0 -20 -145 -90 -145 -90 -105 -160 -105 N
+P 4 0 1 0 -20 -145 50 -105 50 -185 -20 -145 N
+P 4 0 1 0 -20 55 -90 55 -90 95 -160 95 N
+P 4 0 1 0 -20 55 50 95 50 15 -20 55 N
+P 4 0 1 0 -20 255 -90 255 -90 295 -170 295 N
+P 4 0 1 0 -20 255 50 295 50 215 -20 255 N
+P 4 0 1 0 50 -265 -20 -305 -20 -225 50 -265 N
+P 4 0 1 0 50 -265 120 -265 120 -305 170 -305 N
+P 4 0 1 0 50 -65 -20 -105 -20 -25 50 -65 N
+P 4 0 1 0 50 -65 120 -65 120 -105 170 -105 N
+P 4 0 1 0 50 135 -20 95 -20 175 50 135 N
+P 4 0 1 0 50 135 120 135 120 95 170 95 N
+P 4 0 1 0 50 335 -20 295 -20 375 50 335 N
+P 4 0 1 0 50 335 120 335 120 295 170 295 N
+X A1 ~ -400 300 100 R 50 50 1 1 B
+X A2 ~ -400 100 100 R 50 50 1 1 B
+X A3 ~ -400 -100 100 R 50 50 1 1 B
+X A4 ~ -400 -300 100 R 50 50 1 1 B
+X B1 ~ 400 300 100 L 50 50 1 1 B
+X B2 ~ 400 100 100 L 50 50 1 1 B
+X B3 ~ 400 -100 100 L 50 50 1 1 B
+X B4 ~ 400 -300 100 L 50 50 1 1 B
+X GND ~ 0 -700 100 U 50 50 1 1 W
+X HV ~ 400 450 100 L 50 50 1 1 W
+X LV ~ -400 450 100 R 50 50 1 1 W
+ENDDRAW
+ENDDEF
+#
+# komm-rescue_Raspberry_Pi_2_3-Connector
+#
+DEF komm-rescue_Raspberry_Pi_2_3-Connector J 0 40 Y Y 1 F N
 F0 "J" -700 1250 50 H V L BNN
-F1 "Connector:Raspberry_Pi_2_3" 400 -1250 50 H V L TNN
+F1 "komm-rescue_Raspberry_Pi_2_3-Connector" 400 -1250 50 H V L TNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 $FPLIST
@@ -94,57 +145,6 @@ X GND 6 -400 -1300 100 U 50 50 1 1 W
 X GCLK0/GPIO4 7 800 300 100 L 50 50 1 1 B
 X GPIO14/TXD 8 -800 900 100 R 50 50 1 1 B
 X GND 9 -300 -1300 100 U 50 50 1 1 W
-ENDDRAW
-ENDDEF
-#
-# Logic_LevelTranslator:BSS138_bidirectional_level_shifter
-#
-DEF Logic_LevelTranslator:BSS138_bidirectional_level_shifter levelshifter 0 20 Y Y 1 F N
-F0 "levelshifter" 0 900 50 H I C CIN
-F1 "Logic_LevelTranslator:BSS138_bidirectional_level_shifter" -650 650 50 H V L CNN
-F2 "adafruit_i2c_level_shifter" 150 -1050 50 H I C CNN
-F3 "" 110 95 50 H I C CNN
-$FPLIST
- Texas*DSBGA*1.36x1.86mm*Layout3x4*P0.5mm*
-$ENDFPLIST
-DRAW
-S -300 -600 -300 -500 0 1 10 N
-S -300 600 300 -600 0 1 10 f
-P 3 0 1 0 -90 -305 -90 -265 -20 -265 N
-P 3 0 1 0 -90 -105 -90 -65 -20 -65 N
-P 3 0 1 0 -90 95 -90 135 -20 135 N
-P 3 0 1 0 -90 295 -90 335 -20 335 N
-P 3 0 1 0 120 -305 120 -345 50 -345 N
-P 3 0 1 0 120 -105 120 -145 50 -145 N
-P 3 0 1 0 120 95 120 55 50 55 N
-P 3 0 1 0 120 295 120 255 50 255 N
-P 4 0 1 0 -20 -345 -90 -345 -90 -305 -160 -305 N
-P 4 0 1 0 -20 -345 50 -305 50 -385 -20 -345 N
-P 4 0 1 0 -20 -145 -90 -145 -90 -105 -160 -105 N
-P 4 0 1 0 -20 -145 50 -105 50 -185 -20 -145 N
-P 4 0 1 0 -20 55 -90 55 -90 95 -160 95 N
-P 4 0 1 0 -20 55 50 95 50 15 -20 55 N
-P 4 0 1 0 -20 255 -90 255 -90 295 -170 295 N
-P 4 0 1 0 -20 255 50 295 50 215 -20 255 N
-P 4 0 1 0 50 -265 -20 -305 -20 -225 50 -265 N
-P 4 0 1 0 50 -265 120 -265 120 -305 170 -305 N
-P 4 0 1 0 50 -65 -20 -105 -20 -25 50 -65 N
-P 4 0 1 0 50 -65 120 -65 120 -105 170 -105 N
-P 4 0 1 0 50 135 -20 95 -20 175 50 135 N
-P 4 0 1 0 50 135 120 135 120 95 170 95 N
-P 4 0 1 0 50 335 -20 295 -20 375 50 335 N
-P 4 0 1 0 50 335 120 335 120 295 170 295 N
-X A1 ~ -400 300 100 R 50 50 1 1 B
-X A2 ~ -400 100 100 R 50 50 1 1 B
-X A3 ~ -400 -100 100 R 50 50 1 1 B
-X A4 ~ -400 -300 100 R 50 50 1 1 B
-X B1 ~ 400 300 100 L 50 50 1 1 B
-X B2 ~ 400 100 100 L 50 50 1 1 B
-X B3 ~ 400 -100 100 L 50 50 1 1 B
-X B4 ~ 400 -300 100 L 50 50 1 1 B
-X GND ~ 0 -700 100 U 50 50 1 1 W
-X HV ~ 400 450 100 L 50 50 1 1 W
-X LV ~ -400 450 100 R 50 50 1 1 W
 ENDDRAW
 ENDDEF
 #
