@@ -42,18 +42,22 @@ Nedan är följande pinnar som används på mikrokontrollern.
    \item \textbf{PD5} PWM-signal till svängservo.
    \item \textbf{RESET} Resetsignal.
    \item \textbf{XTAL1} Klocka från kristalloscillatorn.
+   \item \textbf{AREF} A/D omvandlare används ej, men referensspänning till A/D omvandlare.
 \end{itemize}
-Inga fler signaler behövs så pinnarna på mikrokontrollen är tillräckliga.
+R/W signalen till LCD kommer vara jordad då vi ej behöver läsa från LCD. Anod
+och katod används ej eftersom vi ej behöver någon bakgrundsbelysning.  Inga
+fler signaler behövs så pinnarna på mikrokontrollen är tillräckliga.
 
 Mikrokontrollen behöver endast kommunicera via SPI, utföra enkel reglering och
-därefter skapa en PWM-signal för motorn. Inget av detta är särskilt krävande
-och bör klaras utan problem av ATMega1284. Kontrollern har ett flash-minne på
-128kB, vilket bör vara mer än tillräckligt för att lagra programmet.
+därefter skapa en PWM-signal för motorn och svängservo. Inget av detta är
+särskilt krävande och bör klaras utan problem av ATMega1284. Kontrollern har
+ett flash-minne på 128kB, vilket bör vara mer än tillräckligt för att lagra
+programmet.
 
-\subsection{Mjukvaruimplementation}
-Styrmodulens program kommer bestå av en main loop som reglerar bilens hastighet
-efter ett felvärde. Ett avbrott som aktiveras när kommunikationsmodulen vill
-kommunicera kommer att ta emot nya felvärden med jämna mellanrum.
+\subsection{Mjukvaruimplementation} Styrmodulens program kommer bestå av en
+main loop som reglerar bilens hastighet efter ett felvärde. Ett avbrott som
+aktiveras när kommunikationsmodulen vill kommunicera kommer att ta emot nya
+felvärden med jämna mellanrum.
 
 \subsubsection{Huvud-loop och reglering}
 I huvudloopen kommer felvärdena från kommunikationsmodulen användas för att
