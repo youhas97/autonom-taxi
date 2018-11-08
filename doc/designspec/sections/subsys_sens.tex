@@ -51,14 +51,18 @@ Modulen använder även en {\modJtag} och tryckknapp som delas med styrmodulen.
 \subsubsection{Kontroll och bedömning}
 Nedan är följande pinnar som används på mikrokontrollern.
 \begin{itemize}
-   \item \textbf{PA0 \& PA2} Vardera port får insignal från en avståndsmätare.
-   \item \textbf{PB2-PB3} Vardera port får en avbrottsignal från en odometer.
+   \item \textbf{PA0 \& PA1} Vardera port får insignal från en avståndsmätare.
+   \item \textbf{PB2} Avbrottsignal från en odometer.
    \item \textbf{PB4-PB7} SS, MOSI, MISO och SCLK för SPI-bussen.
    \item \textbf{PC2-PC5} TCK, TMS, TDO, TDI för JTAG.
-   \item \textbf{PC7} Register-select signal till LCD-display.
-   \item \textbf{PD0-PD7} Databuss till LCD-display.
+   \item \textbf{PD1} LCD-enable.
+   \item \textbf{PD2} Avbrottssignal från andra odometern.
+   \item \textbf{PD7} Register-select signal till LCD-display.
+   \item \textbf{PD3-PD6} Databuss till LCD-display.
    \item \textbf{RESET(9)} Knapp till reset för MCU.
-   \item \textbf{XTAL1} Klocka från Kristalloscillatorn.
+   \item \textbf{XTAL1} Klocka från Kristalloscillatorn. 
+   \item \textbf{AREF} Referensspänning för AD-omvandlare på 3.3V.
+
 \end{itemize}
 Mikrokontrollen behöver endast kommunicera med kommunikationsmodulen via SPI
 samt ta emot värden från sensorerna och göra enkla beräkningar vid omvandling.
