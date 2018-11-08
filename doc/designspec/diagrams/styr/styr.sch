@@ -26,7 +26,7 @@ F 3 " ~" H 3775 3000 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L MCU_Microchip_ATmega:ATmega1284P-PU U?
+L styr-rescue:ATmega1284P-PU-MCU_Microchip_ATmega U?
 U 1 1 5BEA84E2
 P 2850 3150
 F 0 "U?" H 2850 1064 50  0000 C CNN
@@ -37,7 +37,7 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8272-8-bit-AVR-microc
 	1    0    0    -1  
 $EndComp
 $Comp
-L exo3:IQEXO-3 U?
+L styr-rescue:IQEXO-3-exo3 U?
 U 1 1 5BEB103D
 P 1350 2150
 F 0 "U?" H 1350 2717 50  0000 C CNN
@@ -78,52 +78,16 @@ MOSI
 Text Label 4150 2750 0    50   ~ 0
 SS
 $Comp
-L jma162a:JMA162A _?
+L styr-rescue:JMA162A-jma162a _?
 U 1 1 5BEDF369
-P 6650 3250
-F 0 "_?" V 6450 2900 50  0001 C CNN
-F 1 "JMA162A" H 6650 2675 50  0000 C CNN
-F 2 "Display_7Segment:DA04-11SYKWA" V 7825 3225 50  0001 C CNN
-F 3 "http://www.kingbright.com/attachments/file/psearch/000/00/00/DA04-11SYKWA(Ver.6A).pdf" V 6450 3670 50  0001 C CNN
-	1    6650 3250
-	0    1    -1   0   
+P 6800 2300
+F 0 "_?" V 6600 1950 50  0001 C CNN
+F 1 "JMA162A" H 6800 1725 50  0000 C CNN
+F 2 "Display_7Segment:DA04-11SYKWA" V 7975 2275 50  0001 C CNN
+F 3 "http://www.kingbright.com/attachments/file/psearch/000/00/00/DA04-11SYKWA(Ver.6A).pdf" V 6600 2720 50  0001 C CNN
+	1    6800 2300
+	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	6400 2550 6400 2150
-Wire Wire Line
-	6400 2150 3450 2150
-Wire Wire Line
-	6500 2550 6500 2050
-Wire Wire Line
-	6500 2050 3450 2050
-Wire Wire Line
-	6600 2550 6600 1950
-Wire Wire Line
-	6600 1950 3450 1950
-Wire Wire Line
-	6700 2550 6700 1850
-Wire Wire Line
-	6700 1850 3450 1850
-Wire Wire Line
-	6800 2550 6800 1750
-Wire Wire Line
-	6800 1750 3450 1750
-Wire Wire Line
-	6900 2550 6900 1650
-Wire Wire Line
-	6900 1650 3450 1650
-Wire Wire Line
-	3450 1550 7000 1550
-Wire Wire Line
-	7000 1550 7000 2550
-Wire Wire Line
-	7100 2550 7100 1450
-Wire Wire Line
-	7100 1450 3450 1450
-Wire Wire Line
-	3450 2350 6300 2350
-Wire Wire Line
-	6300 2350 6300 2550
 Wire Wire Line
 	3450 4650 4150 4650
 Text Label 4150 4650 0    50   ~ 0
@@ -131,12 +95,12 @@ PWM_SVÄNG
 $Comp
 L power:GNDREF #PWR?
 U 1 1 5BEEFE97
-P 6300 3950
-F 0 "#PWR?" H 6300 3700 50  0001 C CNN
-F 1 "GNDREF" H 6305 3777 50  0000 C CNN
-F 2 "" H 6300 3950 50  0001 C CNN
-F 3 "" H 6300 3950 50  0001 C CNN
-	1    6300 3950
+P 7150 3000
+F 0 "#PWR?" H 7150 2750 50  0001 C CNN
+F 1 "GNDREF" H 7155 2827 50  0000 C CNN
+F 2 "" H 7150 3000 50  0001 C CNN
+F 3 "" H 7150 3000 50  0001 C CNN
+	1    7150 3000
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -175,13 +139,13 @@ $EndComp
 $Comp
 L power:+5V #PWR?
 U 1 1 5BE1138F
-P 7250 3500
-F 0 "#PWR?" H 7250 3350 50  0001 C CNN
-F 1 "+5V" H 7265 3673 50  0000 C CNN
-F 2 "" H 7250 3500 50  0001 C CNN
-F 3 "" H 7250 3500 50  0001 C CNN
-	1    7250 3500
-	0    1    1    0   
+P 6200 2650
+F 0 "#PWR?" H 6200 2500 50  0001 C CNN
+F 1 "+5V" H 6215 2823 50  0000 C CNN
+F 2 "" H 6200 2650 50  0001 C CNN
+F 3 "" H 6200 2650 50  0001 C CNN
+	1    6200 2650
+	0    -1   -1   0   
 $EndComp
 $Comp
 L power:+5V #PWR?
@@ -220,24 +184,17 @@ Wire Wire Line
 	2850 5150 3350 5150
 Wire Wire Line
 	2850 1150 2850 1000
-Wire Wire Line
-	2850 1000 2900 1000
-Wire Wire Line
-	2950 1000 2950 1150
 $Comp
 L power:+5V #PWR?
 U 1 1 5BE15085
-P 2900 1000
-F 0 "#PWR?" H 2900 850 50  0001 C CNN
-F 1 "+5V" H 2915 1173 50  0000 C CNN
-F 2 "" H 2900 1000 50  0001 C CNN
-F 3 "" H 2900 1000 50  0001 C CNN
-	1    2900 1000
-	1    0    0    -1  
+P 2950 800
+F 0 "#PWR?" H 2950 650 50  0001 C CNN
+F 1 "+5V" H 2965 973 50  0000 C CNN
+F 2 "" H 2950 800 50  0001 C CNN
+F 3 "" H 2950 800 50  0001 C CNN
+	1    2950 800 
+	0    1    1    0   
 $EndComp
-Connection ~ 2900 1000
-Wire Wire Line
-	2900 1000 2950 1000
 $Comp
 L Analog_Switch:ADG417BN U?
 U 1 1 5BE2F395
@@ -319,4 +276,125 @@ Wire Wire Line
 	3450 4550 4150 4550
 Text Label 4150 4550 0    50   ~ 0
 PWM_MOTOR
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE49225
+P 7050 1450
+F 0 "#PWR?" H 7050 1200 50  0001 C CNN
+F 1 "GNDREF" H 7055 1277 50  0000 C CNN
+F 2 "" H 7050 1450 50  0001 C CNN
+F 3 "" H 7050 1450 50  0001 C CNN
+	1    7050 1450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3550 1450 3550 1550
+Wire Wire Line
+	3550 1550 3450 1550
+Connection ~ 3550 1450
+Wire Wire Line
+	3550 1450 3450 1450
+Wire Wire Line
+	3550 1550 3550 1650
+Wire Wire Line
+	3550 1650 3450 1650
+Connection ~ 3550 1550
+Wire Wire Line
+	3550 1650 3550 1750
+Wire Wire Line
+	3550 1750 3450 1750
+Connection ~ 3550 1650
+Wire Wire Line
+	3550 1750 3550 1850
+Wire Wire Line
+	3550 1850 3450 1850
+Connection ~ 3550 1750
+Wire Wire Line
+	3550 1850 3550 1950
+Wire Wire Line
+	3550 1950 3450 1950
+Connection ~ 3550 1850
+Wire Wire Line
+	3550 1950 3550 2050
+Wire Wire Line
+	3550 2050 3450 2050
+Connection ~ 3550 1950
+Text Notes 4150 1450 0    50   ~ 0
+0->0, 1->1, 2->2, 3->3, 4->4, 5->5, 6->6
+Wire Wire Line
+	7050 1450 7050 1600
+Wire Wire Line
+	6950 1450 6950 1600
+Wire Wire Line
+	6850 1450 6850 1600
+Wire Wire Line
+	6750 1450 6750 1600
+Wire Wire Line
+	6650 1450 6650 1600
+Wire Wire Line
+	6550 1450 6550 1600
+Wire Wire Line
+	6450 1450 6450 1600
+Wire Wire Line
+	6350 1450 6350 1600
+Connection ~ 6350 1450
+Wire Wire Line
+	6450 1450 6550 1450
+Connection ~ 6450 1450
+Connection ~ 6550 1450
+Wire Wire Line
+	6550 1450 6650 1450
+Wire Wire Line
+	6650 1450 6750 1450
+Connection ~ 6650 1450
+Connection ~ 6750 1450
+Wire Wire Line
+	6750 1450 6850 1450
+Wire Wire Line
+	6850 1450 6950 1450
+Connection ~ 6850 1450
+Wire Wire Line
+	6350 1450 6450 1450
+Wire Wire Line
+	3550 1450 6350 1450
+Wire Wire Line
+	6200 2450 3450 2450
+Wire Wire Line
+	7150 1600 7150 1550
+Wire Wire Line
+	7150 1550 4950 1550
+Wire Wire Line
+	4950 1550 4950 2350
+Wire Wire Line
+	4950 2350 3450 2350
+$Comp
+L Device:C_Small CAP
+U 1 1 5BE63E89
+P 2850 800
+F 0 "CAP" V 2621 800 50  0000 C CNN
+F 1 "100nF" V 2712 800 50  0000 C CNN
+F 2 "" H 2850 800 50  0001 C CNN
+F 3 "~" H 2850 800 50  0001 C CNN
+	1    2850 800 
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2950 800  2950 1000
+Connection ~ 2950 800 
+Wire Wire Line
+	2950 1000 2850 1000
+Connection ~ 2950 1000
+Wire Wire Line
+	2950 1000 2950 1150
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BE6A65E
+P 2750 800
+F 0 "#PWR?" H 2750 550 50  0001 C CNN
+F 1 "GNDREF" H 2755 627 50  0000 C CNN
+F 2 "" H 2750 800 50  0001 C CNN
+F 3 "" H 2750 800 50  0001 C CNN
+	1    2750 800 
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC

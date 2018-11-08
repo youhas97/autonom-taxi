@@ -1,4 +1,5 @@
 (sym_lib_table
   (lib (name exo3)(type Legacy)(uri C:/Users/lil_b/Documents/tsea29-taxi/doc/designspec/diagrams/sens/exo3.lib)(options "")(descr ""))
   (lib (name jma162a)(type Legacy)(uri C:/Users/lil_b/Documents/tsea29-taxi/doc/designspec/diagrams/styr/jma162a.lib)(options "")(descr ""))
+  (lib (name styr-rescue)(type Legacy)(uri ${KIPRJMOD}/styr-rescue.lib)(options "")(descr ""))
 )
