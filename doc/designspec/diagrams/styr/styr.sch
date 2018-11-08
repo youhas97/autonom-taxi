@@ -2,7 +2,7 @@ EESchema Schematic File Version 4
 LIBS:styr-cache
 EELAYER 26 0
 EELAYER END
-$Descr A4 11693 8268
+$Descr User 7953 5906
 encoding utf-8
 Sheet 1 1
 Title "Styrmodul"
@@ -410,4 +410,15 @@ F 3 "" H 5950 2350 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5950 2350 6200 2350
+$Comp
+L power:+5V #PWR?
+U 1 1 5BE4A1DC
+P 2250 2050
+F 0 "#PWR?" H 2250 1900 50  0001 C CNN
+F 1 "+5V" H 2265 2223 50  0000 C CNN
+F 2 "" H 2250 2050 50  0001 C CNN
+F 3 "" H 2250 2050 50  0001 C CNN
+	1    2250 2050
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
