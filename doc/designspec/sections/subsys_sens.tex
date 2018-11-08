@@ -23,9 +23,10 @@ störningar för att skapa så noggranna sensorvärden som möjligt.
 \subsection{Hårdvaruimplementation}
 Sensormodulen består huvudsakligen av en mikrokontroller, och fyra sensorer; en
 avståndsmätare på framsidan, en avståndsmätare på höger sida samt två
-halleffektsensorer placerade på två av hjulen. Mikrokontrollern är klockad av 
-en kristalloscillator. Kontrollern är även kopplad till en LCD-display
-för att kunna visa värden vid felsökning.
+halleffektsensorer placerade på två av hjulen. Mikrokontrollern är klockad av
+en kristalloscillator på 16 MHz. Kontrollern är även kopplad till en
+LCD-display för att kunna visa värden vid felsökning. Ett detaljerat
+kretsschema över modulen finns i bilaga \ref{cdiag:sens}.
 
 På LCD-panelen kommer R/W-pinnen att vara konstant jordad då ingenting behöver
 läsas från panelen samt för att skrivning ska kunna ske när som helst i samband
@@ -35,10 +36,6 @@ Avståndsmätarna skickar en spänning direkt till mikrokontrollens AD-omvandlar
 Spänningens värde motsvarar ett avstånd. Utspänningen kan eventuellt behöva
 filtreras från brus.
 
-Önskad klockfrekvens från oscillatorn är 16Mhz.
-
-Ett kretsschema över modulen finns i bilaga \ref{cdiag:sens}.
-
 \subsubsection{Budget}
 Nedan är produkter som ej medföljer baschassit och behöver beställas.
 \begin{itemize}
@@ -47,7 +44,7 @@ Nedan är produkter som ej medföljer baschassit och behöver beställas.
     \item \textbf{\modDists} Avståndsmätare för hinder höger om bilen.
     \item \textbf{\modLcd} LCD-display för att visa parametrar under körning
     i felsökningssyfte.
-    \item \textbf{IQEXO3} Kristalloscillator på 16Mhz, skall använda som systemklocka till AVR.
+    \item \textbf{IQEXO3} Kristalloscillator som systemklocka till AVR.
 \end{itemize}
 Modulen använder även en {\modJtag} och tryckknapp som delas med styrmodulen.
 

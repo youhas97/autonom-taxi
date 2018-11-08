@@ -14,7 +14,8 @@ felvärden som ges av kommunikationsmodulen.
 
 \subsection{Hårdvaruimplementation}
 Styrmodulen består av en mikrokontroller, taxins motor samt en LCD för
-felsökning. Ett detaljerat kretsschema finns i bilaga \ref{cdiag:ctrl}.
+felsökning. Mikrokontrollern är klockad av en kristalloscillator på 16 MHz. Ett
+detaljerat kretsschema finns i bilaga \ref{cdiag:ctrl}.
 
 \subsubsection{Budget}
 Utöver motorn och servon som redan sitter monterade på chassit behöver
@@ -25,7 +26,7 @@ styrmodulen följande komponenter.
         microprocessorn. 
     \item \textbf{\modLcd} LCD-display för att visa parametrar under körning i
         felsökningssyfte.
-    \item \textbf{IQEXO3} Kristalloscillator på 16Mhz, skall använda som systemklocka till AVR.
+    \item \textbf{IQEXO3} Kristalloscillator som systemklocka till AVR.
     \item \textbf{Tryckknapp} Knapp används till RESET.
 \end{itemize}
 
