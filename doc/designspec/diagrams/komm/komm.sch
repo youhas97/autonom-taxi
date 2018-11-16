@@ -84,18 +84,6 @@ Wire Wire Line
 Wire Wire Line
 	2650 2050 3800 2050
 Wire Wire Line
-	2350 2500 2800 2500
-Wire Wire Line
-	2800 2500 2800 2250
-Wire Wire Line
-	2800 2250 3800 2250
-Wire Wire Line
-	2350 2600 2900 2600
-Wire Wire Line
-	2900 2600 2900 2450
-Wire Wire Line
-	2900 2450 3800 2450
-Wire Wire Line
 	2350 2700 3150 2700
 Wire Wire Line
 	3150 2700 3150 3250
@@ -129,9 +117,9 @@ Wire Wire Line
 	4600 2050 5200 2050
 Wire Wire Line
 	5200 2050 5200 2000
-Text Label 5200 2150 0    50   ~ 0
-MISO
 Text Label 5200 2350 0    50   ~ 0
+MISO
+Text Label 5200 2150 0    50   ~ 0
 MOSI
 Wire Wire Line
 	4600 2250 5200 2250
@@ -147,4 +135,14 @@ Wire Wire Line
 	5200 3250 5200 3150
 Text Label 5200 3150 0    50   ~ 0
 SPI_CLOCK
+Wire Wire Line
+	3800 2250 3150 2250
+Wire Wire Line
+	3150 2250 3150 2600
+Wire Wire Line
+	3150 2600 2350 2600
+Wire Wire Line
+	3800 2500 3800 2450
+Wire Wire Line
+	2350 2500 3800 2500
 $EndSCHEMATC

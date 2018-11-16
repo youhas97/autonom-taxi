@@ -21,35 +21,36 @@ Mötet godkänner dagordningen.
 	Hela designspecifikationen.
 
 3. Aktuella aktiviteter
-	Granska och lämna in designspec och påbörja implementation av mjukvarubaser.
-	Yousef tar upp hur vi ska dela upp arbetet. Alla ska granska uppgiften.
-	Mjukvarubaser kan fixas på egen dator t.ex atmel studio. Emir ska fixa switchen
-	på kicad kretsschema.
+    Granska och lämna in designspec och påbörja implementation av
+    mjukvarubaser.  Yousef tar upp hur vi ska dela upp arbetet. Alla ska
+    granska uppgiften.  Mjukvarubaser kan fixas på egen dator t.ex atmel
+    studio. Emir ska fixa switchen på kicad kretsschema.
 
 4. Kommande arbetsuppgifter.
 	Se tidsplan, allt står där.
 	Implementera mjukvarubaser.
 
 5. Status
-	Yousef och Jakob meddelar att vi ligger på 220 timmar inklusive buffer och att
-	det ska vara så, om vi ligger i underskott så distribuerar vi extra timmarna
-	till resterande aktiviteter Designspecen är klar men ingen har granskat ännu,
-	den skulle vara inne 16:00. Vi ligger lika bra till som andra grupperna, vi är
-	bara sena med att granska specen och skicka in. Annars är vi nöjda med vår spec
-	för att vara första version. YOUSEF noterar att rapporten skulle vara inne för
-	29 minuter sedan.
+    Yousef och Jakob meddelar att vi ligger på 220 timmar inklusive buffer och
+    att det ska vara så, om vi ligger i underskott så distribuerar vi extra
+    timmarna till resterande aktiviteter Designspecen är klar men ingen har
+    granskat ännu, den skulle vara inne 16:00. Vi ligger lika bra till som
+    andra grupperna, vi är bara sena med att granska specen och skicka in.
+    Annars är vi nöjda med vår spec för att vara första version. YOUSEF noterar
+    att rapporten skulle vara inne för 29 minuter sedan.
 
 	Juan meddelar att han inte känner sig delaktig i gruppen.  Gruppen skrattar
 	och säger att det är ett skämt.
 
 6. Problem 
-	Emir osäker om filter och switch är rätt.  Rapport är inte inlämnad
-	i tid.  Kicad är ett skitprogram, vi borde byta men det verkar inte finns några
-	bra alternativ för våra ändamål.
+    Emir osäker om filter och switch är rätt.  Rapport är inte inlämnad i tid.
+    Kicad är ett skitprogram, vi borde byta men det verkar inte finns några bra
+    alternativ för våra ändamål.
 
-	Yousef känner att det är ett stort problem  att  vi har missat deadline. Andra
-	håller med eftersom det hade kunnat undvikas, man skyller på missförstånd och
-	att man underskattade hur mycket som behövde korrigeras i designspecen.
+    Yousef känner att det är ett stort problem  att  vi har missat deadline.
+    Andra håller med eftersom det hade kunnat undvikas, man skyller på
+    missförstånd och att man underskattade hur mycket som behövde korrigeras i
+    designspecen.
 
 7. Nästa möte
  	-2018-11-12 15:00 har vi nästa möte
