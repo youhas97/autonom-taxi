@@ -1,0 +1,81 @@
+Mötet öppnas 2018-11-06 15:22
+
+§2 närvarande vid mötet: alla
+
+§3. Dagordningen
+   	val av justerare
+	Genomfört arbete
+	aktuella aktiviteter
+	Gå igenom kommande arbetsuppgifter
+	Status Hur det ligger till
+	Problem
+	Justering av tidsplan
+	när vi ska ha nästa möte
+	övrigt
+
+Mötet godkänner dagordningen.
+
+1. Val av justerare
+	Johan Can
+
+2. Genomfört arbete 
+	Fått tillgång till muxen, Emir vill att vi skickar mejl och kollar om
+	vi är faktiskt godkända i designspec.
+
+3. Aktuella aktiviteter
+	Virning, alla ska vira.  
+	
+	Mjukvarubaser Noah och dennis har flashat PI:en och installerat
+	mjukvarubaser på den.  
+	
+	Yousef satt med mjukvaruimplementation av SPI.
+	
+	Protokollet är fixat men inte implementationen.
+	
+	Johan har skapat skal för grännssnittet.
+	
+	Juan och Emir ska koppla och installera samt bearbeta sensorvärden den
+	här veckan.
+   	
+	Vi ska även få motorn att rulla, dvs få billen att rulla. 
+
+4. Kommande arbetsuppgifter.
+
+	Vi ska spendera 167 timmar den här veckan, det motsvarar 5 timmar per
+	dag för vardera person.  Vi konstaterar att detta inte är den mest
+	intensiva vecka heller.  Yousef konstaterar vi har ungefär 1 timmar
+	buffer varje dag.  upptäcka kanter och linjer i bilder + alla nuvarande
+	aktiviterer.
+
+5. Status
+  
+   Virning är inte påbörjat ännu.  Virning och installation ska vara klar nästa
+   vecka, dvs allt ska vara kopplat den här veckan.  Vi ska även få motorn att
+   rulla, dvs få billen att rulla.  Vissa pinnar är lite böjda, handledaren var
+   lite grov, vi ska vara lite försiktigare.
+
+6. Problem 	
+   Inga större problem så som det ser ut just nu.
+
+7. Justering av tidsplan
+   
+   Jakob justerade igår kväll, skickade in till kryssander, han tänker göra det
+   i framtiden på söndagar också.  Noah undrar hur timmarna har distribuerats.
+   Fråga ställs ifall timmarna distribueras likgiltigt över alla aktiviter:
+   svar ja.  Emir frågar hur många timmmar blev över från förra veckan: jakob
+   svarar att ingenting blev över utan att vi fick för mycket tid så jakob tog
+   bort lite timmar från kommande aktiviteter.
+
+8. Nästa möte
+   2018-11-19 klockan 16
+   Kolla discord för sal
+
+9. Övrigt
+   Emir påpekar att han inte har arbetat medm mjukvarubaser och att han
+   troligtvis kommer lägga all tid på koppling och bearbetning av sensorvärden.
+   Yousef säger att han håller på med mjukvarubaser trots att det inte är
+   planerat för honom, han föreslår att man kan byta ut aktiviteter.
+
+
+10. Ordförande förklarar mötet avslutat klockan 15:54
+
