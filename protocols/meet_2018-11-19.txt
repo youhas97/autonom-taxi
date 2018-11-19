@@ -1,0 +1,63 @@
+
+Mötet öppnas 2018-11-19 16:13
+
+§2 närvarande vid mötet: alla
+
+§3. Dagordningen
+   	val av justerare
+	Genomfört arbete
+	aktuella aktiviteter
+	Gå igenom kommande arbetsuppgifter
+	Status Hur det ligger till
+	Problem
+	när vi ska ha nästa möte
+	övrigt
+
+Mötet godkänner dagordningen.
+
+1. Val av justerare
+	Johan Can
+
+2. Genomfört arbete 
+	Vi kan köra bilen och skicka parametrar fortlöpande,
+	lcd snart igång förmodligen färdigt imorgon.
+	Allt är kopplat och färdigt, mjukvarubaser färdigt.
+	Mjukvara för kommunkationsmodul är på gång.
+	Upptäcka kanter i bilder är typ färdigt. Juan har suttit med opencv.
+	Upptäcka linjer, påbörjat.
+	Påbörjat bearbetning av sensorvärden.
+	Kommunikation till styrmodul kan skicka värden, så det är påbörjat.
+	Kommunkation via trådlös länk är avklarat.
+	
+3. Aktuella aktiviteter
+	Bearbeta sensorvärden och få igång lcd-display
+	Gränssnitt
+	Fjärrstyrning av bilen
+	Mjukvara för kommunkationsmodul
+	Små grejer kvar att koppla och integrering.
+	Milstolpe denn vecka är seriell kommunkiation mellan moduler.
+
+4. Kommande arbetsuppgifter.
+	Bildbehandling
+	Kod för att ta emot sensorvärden.
+	Reglering av styr
+	Integrationstester.
+	
+
+5. Status
+	Vi ligger i fas, förra veckan jobbade vi 3 timmar mindre än planerat.
+	LCD snart igång, tydligen så behövdes det kontrastspänning för att få igång den.
+	3 timmar buffer från förra veckan.  
+
+6. Problem 	
+	Vi har upptäckt störningar i SPI-bussen.
+	Någon slags störning är det iaf och vi behöver undersöka det.
+
+8. Nästa möte
+	Klockan 16:00 27 november
+9. Övrigt
+	23 november lördag emir är borta
+	Yousef borta 23-26 november.
+
+10. Ordförande förklarar mötet avslutat klockan 16:33
+
