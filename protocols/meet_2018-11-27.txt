@@ -1,0 +1,59 @@
+Mötet öppnas 2018-11-27 16.19
+
+§2. Närvarande vid mötet: Alla.
+
+§3. Dagordning:
+    -Samma som alltid.
+    -Gå igenom kravspecen.
+
+Dagordning godkänd.
+
+1. Val av justerare:
+    Yousef Hashem
+
+2. Genomfört arbete:
+    LCD fungerar
+    SPI fungerar felfritt
+    Vi kan hitta stopplinjer
+    Updatera GUI
+    Börjat integrera
+    Virat om till enbart ett virkort (mer eller mindre klart)
+    Djigstra
+    Checksummor av överföring
+
+3. Aktuella aktiviteter:
+    Integrera bildbehandling in i kommunikation.
+    Börjat reglera.
+    Bearbeta sensorvärden (Försenat eftersom LCD inte fungerade).
+    Integration av moduler.
+    Justera kamerabilden utefter banan som ska användas i tävlingen.
+    Vira klart och testa integrationen till ett kort.
+    Göra GUI jättefin.
+
+4. Kommande arbetsuppgifter:
+    Fortsätta reglera.
+    Position i karta.
+    Navigera till bestämda stopplinjer.
+    Visa info på gränssnitt.
+    Integrationstester.
+
+5. Status
+    Vi ligger i fas, däremot är sensormodulen lite efter eftersom det har gått
+    lite långsamt på den fronten. Vi har bara bra hästar.
+
+6. Problem
+    Vi har haft störningar med SPI och vi har haft problem med att få LCD att
+    fungera. Båda dessa fungerar dock nu. 
+    Vi har inte testat våra sensorer.
+    (Ålderdom)
+
+7. Kravspec, gå igenom kraven
+    Gått igenom alla krav och noterat alla funderingar.
+
+8. Nästa möte
+    2018-12-03 13.20-14.00 (Johan kommer lite sent)
+
+9. Övrigt
+    Vi ska snacka med banspecgruppen för att fixa banan.
+
+10. Mötet avslutat klockan 17.04
