@@ -23,6 +23,19 @@ skiss: systemskiss/skiss.tex systemskiss/sections/*.tex
 	pdflatex ${TEXARGS} systemskiss/skiss.tex
 	pdflatex ${TEXARGS} systemskiss/skiss.tex
 	make clean
+
+studie: efterstudie/studie.tex efterstudie/sections/*.tex
+	pdflatex ${TEXARGS} efterstudie/studie.tex
+	pdflatex ${TEXARGS} efterstudie/studie.tex
+	pdflatex ${TEXARGS} efterstudie/studie.tex
+	make clean
+
+tech:	tekniskrapport/tech.tex tekniskrapport/sections/*.tex
+	pdflatex ${TEXARGS} tekniskrapport/tech.tex
+	pdflatex ${TEXARGS} tekniskrapport/tech.tex
+	pdflatex ${TEXARGS} tekniskrapport/tech.tex
+	make clean
+
 clean:
 	rm -f **.blg *.dvi *.xml *.log *.aux *.out *.toc *.bbl
 	rm -f common/img/*converted*
