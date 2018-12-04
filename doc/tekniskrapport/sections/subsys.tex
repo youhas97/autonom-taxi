@@ -1,0 +1,29 @@
+\documentclass[tekniskrapport/tech.tex]{subfiles}
+
+% Beskrivningen av delsystemen bör innehålla:
+%
+%   -En detaljerad beskrivning av delsystemets funktion.
+%
+%   -Ett kopplingsschema eller väl detaljerat blockschema med namn på signaler
+%   och bussar.
+%
+%   -En komponentbudget. Hur mycket hårdvara behövs?
+%
+%   -En kontroll av att portarna på mikroprocessorn räcker till.
+%
+%   -Någon slags bedömning av om prestanda/minne/IO räcker till i de
+%   processorer man har valt att använda.
+%
+%   -Någon slags tanke om hur programkoden för delsystemet ska fungera. Detta
+%   kan illustreras med flödesschema eller pseudokod.  Behövs det några
+%   speciella algoritmer för att lösa uppgiften?  Behövs det några större
+%   datastrukturer som kräver mycket minne?  Vilka avbrott ska användas och vad
+%   ska avbrottsrutinerna utföra?  Vilka funktioner ska utföras i en
+%   ”huvud-loop”?  Hur samverkar avbrottsrutinerna med huvudloopen?
+
+\begin{document}
+    \subfile{\sections/subsys_comm.tex}\clearpage
+    \subfile{\sections/subsys_ctrl.tex}\clearpage
+    \subfile{\sections/subsys_sens.tex}\clearpage
+    \subfile{\sections/subsys_remote.tex}\clearpage
+\end{document}
