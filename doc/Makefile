@@ -36,10 +36,11 @@ tech:	tekniskrapport/tech.tex tekniskrapport/sections/*.tex
 	pdflatex ${TEXARGS} tekniskrapport/tech.tex
 	pdflatex ${TEXARGS} tekniskrapport/tech.tex
 	make clean
-manual: manual/manual.tex manual/sections/*.tex
-	pdflatex ${TEXARGS} manual/manual.tex
-	pdflatex ${TEXARGS} manual/manual.tex
-	pdflatex ${TEXARGS} manual/manual.tex
+
+man: manual/man.tex manual/sections/*.tex
+	pdflatex ${TEXARGS} manual/man.tex
+	pdflatex ${TEXARGS} manual/man.tex
+	pdflatex ${TEXARGS} manual/man.tex
 	make clean
 clean:
 	rm -f **.blg *.dvi *.xml *.log *.aux *.out *.toc *.bbl
