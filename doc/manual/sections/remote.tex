@@ -13,7 +13,7 @@ upp sig till bilen. För att starta gränssnittet kör man filen main.py.
 För att ansluta till den startade servern navigerar man till
 System-Server-Connect. 
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{manual/figures/system_menu.png}
     \caption{Hur man navigerar för att ansluta till servern.}
@@ -24,7 +24,7 @@ System-Server-Connect.
 Efter att man tryckt på Connect kommer en ruta upp där
 man kan skriva in en IP-adress.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{manual/figures/enter_ip.png}
     \caption{Rutan som kommer upp när man trycker på \textit{Connect}.}
@@ -42,7 +42,7 @@ Efter att ha anslutit till bilen kan man välja ifall man vill styra bilen
 manuellt eller ifall man vill att bilen skall köra autonomn. För att välja
 detta navigerar man till Driving-Manual respektive Driving-Auto.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{manual/figures/driving_menu.png}
     \caption{Hur man navigerar för att byta körläge.}
@@ -60,9 +60,8 @@ Banan representeras av noder och enkelriktade kanter, där varje nod
 representerar en stopp-, rondell- eller parkeringslinje på banan. Varje kant
 representerar en vägfil på banan. För att skapa noder högerklickar man i den
 stora rutan på gränssnittet och navigerar till Create. Där finns flera olika
-valalternativ. Man kan välja antingen Stopline, Parking eller Roundabout, där
-Stopline är representerade av röda cirklar, Parking av gula cirklar och
-Roundabout av blå cirklar på användarsnittet. Se Figur \ref{fig:create_node}.
+valalternativ. Man kan välja antingen Stopline, Parking, Inner, Outer eller
+Empty. Se Figur \ref{fig:create_node}.
 
 \begin{figure}[H]
     \centering
@@ -70,23 +69,45 @@ Roundabout av blå cirklar på användarsnittet. Se Figur \ref{fig:create_node}.
     \caption{Hur man navigerar för att skapa olika noder.}
     \label{fig:create_node}
 \end{figure}
+ 
+\noindent
+Stopline-noder är representerade av röda cirklar, Parking av gula
+cirklar, Inner av mörkblå cirklar, Outer av ljusblå cirklar och Empty av vita
+cirklar. Se Figur \ref{fig:node_colors}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{manual/figures/node_colors.png}
+    \caption{Noder med olika färger.}
+    \label{fig:node_colors}
+\end{figure}
 
+\noindent
 För att skapa kanter måste man först ha skapat 2 noder. Om man vänsterklickar
 på en nod blir den grön, detta betyder att noden är markerad. Om man
 vänsterklickar på en annan nod medan en nod är markerad kommer en ny ruta upp
 där man kan mata in kostnaden på kanten. Kostnaden representerar längden på
-vägfilen i banan. 
+vägfilen i banan. Alla kanter är riktande åt endast ett håll.
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{manual/figures/enter_cost.png}
     \caption{Rutan som kommer fram när man ska skapa en kant.}
     \label{fig:create_edge}
 \end{figure}
 
-Rondeller på banan representeras en nod för varje infart och en nod för varje
-utfart. En rondell med 3 infarter/utfarter representeras med 6 noder, en
-rondell med 4 infarter/utfarter representeras med 8 noder, och så vidare. Alla
-kanter inom rondellen är endast riktade åt ett håll. en rondell kan se ut som
-visat i Figur \ref{fig:create_edge}.
+\noindent
+Rondeller på banan representeras en nod för varje infart till rondellen (Outer)
+och en nod för varje utfart från rondellen (Inner). för att skapa en giltig
+varje utfart (Inner). En rondell med 3 infarter/utfarter representeras med 6
+noder, en rondell med 4 infarter/utfarter representeras med 8 noder, och så
+vidare. En rondell med 4 utfarter kan se ut som visat i Figur
+\ref{fig:roundabout}, där även kanterna är dragna.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{manual/figures/roundabout.png}
+    \caption{Exempel på en rondell.}
+    \label{fig:roundabout}
+\end{figure}
+
