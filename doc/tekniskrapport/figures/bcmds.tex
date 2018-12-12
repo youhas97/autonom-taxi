@@ -1,0 +1,112 @@
+\documentclass{tekniskrapport/tech.tex}
+
+\newenvironment{cmdlist}
+{
+    \renewcommand{\arraystretch}{1.5}
+    \begin{table}[H]
+        \centering
+        \setlength{\tabcolsep}{8pt}
+        \begin{tabular}{@{}m{1cm}m{1cm}m{1cm}m{6cm}m{8cm}}
+            \bfseries Kod &
+            \bfseries Namn &
+            \bfseries Typ &
+            \bfseries Beskrivning &
+            \bfseries Datainnehåll \\
+}{
+        \end{tabular}
+    \end{table}
+}
+
+\newcommand{\cmd}[5]{
+    \mono{0x#1} & \mono{#2} & #3 & #4 &
+    {\begin{bytefield}[bitwidth=0.4mm]{128}
+    #5
+    \end{bytefield}}\\
+}
+
+\begin{document}
+
+\subsection{Styrmodul}
+
+\begin{cmdlist}
+\cmd{01}{RST}{läs}{Återställ modul, sätt motorerna på neutral och återställ
+    regleringskonstanter.}{
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+}
+\cmd{08}{RKD}{skriv}{Sätt $k_d$ för reglering av svängning. Värdet är ett
+    32-bitars flyttal.}{
+    \bitbox{32}{$k_d$}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+}
+\cmd{09}{RKP}{skriv}{Sätt $k_p$ för svängreglering.}{
+    \bitbox{32}{$k_d$}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+}
+\cmd{0a}{RER}{skriv}{Sätt nuvarande felvärde för svängning och reglera
+    svängningen utefter värdet.}{
+    \bitbox{32}{$k_d$}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+}
+\cmd{0b}{RVL}{skriv}{Justera svängningen, -1 motsvarar max svängning till
+    vänster och 1 max svängning till höger.}{
+    \bitbox{32}{$k_d$}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+}
+\cmd{0c}{VKD}{skriv}{Sätt $k_d$ för hastighetsreglering.}{
+    \bitbox{32}{$k_d$}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+}
+\cmd{0d}{VKP}{skriv}{Sätt $k_p$ för hastighetsreglering.}{
+    \bitbox{32}{$k_d$}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+}
+\cmd{0e}{VER}{skriv}{Sätt felvärde för hastighet och justera motorn utefter
+    värdet.}{
+    \bitbox{32}{$k_d$}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+}
+    \cmd{0f}{VVL}{skriv}{Sätt motorns hastighet i m/s}{
+    \bitbox{32}{$k_d$}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+}
+\end{cmdlist}
+
+\subsection{Sensormodul}
+
+\begin{cmdlist}
+\cmd{01}{RST}{läs}{Återställ modul, nollställ alla sensorvärden.}{
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+}
+\cmd{03}{GET}{läs}{Hämta lagrade sensorvärden; avstånd för frontsensor, avstånd
+    för högersensor, avlagd distans och hastighet. Värdena är flyttal på 32
+    bitar vardera som motsvarar SI-enheter.}{
+    \bitbox{32}{$d_f$}
+    \bitbox{32}{$d_r$}
+    \bitbox{32}{$d$}
+    \bitbox{32}{$v$}
+}
+\end{cmdlist}
+
+\end{document}
