@@ -1,6 +1,10 @@
 \documentclass[tekniskrapport/tech.tex]{subfiles}
 
 \newcommand{\wlcomm}[3]{\mono{#1} & #2 & #3 \\}
+\newcommand{\bfopts}{endianess=little,bitwidth=1mm}
+\newcommand{\emptybox}[1]{\bitbox{#1}{\color{lightgray}\rule{\width}{\height}}}
+\newcommand*{\vcenteredhbox}[1]{\begingroup
+\setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
 
 \begin{document}
 
@@ -75,8 +79,7 @@ sensormodulen och styrmodulen agerar som \emph{slaves}. Varje modul är kopplad
 till en gemensam SCLK-signal för synkronisering, en MISO-signal för data till
 master:n och MOSI för data från master:n som visat i figur \ref{fig:bus_inter}.
 Sensormodulen skickar sensorvärden till kommunikationsmodulen och
-kommunikationsmodulen skickar styrkommandon till styrmodulen. Eventuellt kan
-data överföras till sensormodulen eller från styrmodulen vid felsökning.
+kommunikationsmodulen skickar styrkommandon till styrmodulen.
 \begin{figure}[H]
     \centering
     \subfile{\figures/bus_spi}
@@ -84,11 +87,67 @@ data överföras till sensormodulen eller från styrmodulen vid felsökning.
     \label{fig:bus_inter}
 \end{figure}
 
+\subsubsection{Busskommandon}
+Kommunikationsmodulen agerar som \emph{master} och har därmed full kontroll
+över bussen. Kommunikationsmodulen skickar därför kommandon till slavarna som
+antingen är läs eller skrivkommandon.
+\begin{figure}[H]
+    MOSI
+    \begin{bytefield}[]{24}
+        \vcenteredhbox{
+            \bitbox{4}{CMD}
+            \bitbox{4}{SUM}
+            \bitbox{8}{DATA 0}
+            $\cdots$
+            \bitbox{8}{DATA $n$}
+            \emptybox{8}
+        }
+    \end{bytefield}\\[1mm]
+    MISO
+    \begin{bytefield}[endianness=little]{24}
+        \vcenteredhbox{
+            \emptybox{8}
+            \emptybox{8}
+            $\cdots$
+            \emptybox{8}
+            \bitbox{8}{ACK}
+        }
+    \end{bytefield}
+    \caption{Bitsekvensen för ett skrivkommando.}
+    \label{bf:sens-comm}
+\end{figure}
+
+\begin{figure}[H]
+    MOSI
+    \begin{bytefield}[]{24}
+        \vcenteredhbox{
+            \bitbox{4}{CMD}\emptybox{4}
+            \emptybox{8}
+            \emptybox{8}
+            \emptybox{8}
+            $\cdots$
+            \emptybox{8}
+        }
+    \end{bytefield}\\[1mm]
+    MISO
+    \begin{bytefield}[endianness=little]{24}
+        \vcenteredhbox{
+            \emptybox{8}
+            \emptybox{4}\bitbox{4}{SUM}
+            \bitbox{8}{ACK}
+            \bitbox{8}{DATA 0}
+            $\cdots$
+            \bitbox{8}{DATA $n$}
+        }
+    \end{bytefield}
+    \caption{Bitsekvensen för ett läskommando.}
+    \label{bf:sens-comm}
+\end{figure}
+
 \subsubsection{Från sensormodul till kommunikationsmodul}
 Sensormodulen ska fortlöpande skicka värden för varje sensor till
 kommunikationsmodulen. Figur \ref{bf:sens-comm} visar bitsekvensen som
-sensormodulen skickar.
-
+sensormodulen skickar. Ett skrivkommando ser ut som följande
 \begin{figure}[H]
     \centering
     \begin{bytefield}[endianness=big]{24}
