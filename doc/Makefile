@@ -34,6 +34,7 @@ tech:	tekniskrapport/tech.tex tekniskrapport/sections/*.tex
 	pdflatex ${TEXARGS} tekniskrapport/tech.tex
 	bibtex tech
 	pdflatex ${TEXARGS} tekniskrapport/tech.tex
+	bibtex tech
 	pdflatex ${TEXARGS} tekniskrapport/tech.tex
 	make clean
 
