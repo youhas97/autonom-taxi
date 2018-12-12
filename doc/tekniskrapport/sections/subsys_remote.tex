@@ -8,22 +8,63 @@ viktig roll i utförandet av uppdrag.
 
 \subsection{Funktion}
 Fjärrklientens uppgift är att bidra med ett gränssnitt till användaren för att
-kontrollera och övervaka taxin, samt skapa och skicka instruktioner till bilen
-utefter användarens uppdrag.
+kontrollera och se bilens position, samt skapa och skicka instruktioner till bilen
+utifrån användarens uppdrag.
 
-\paragraph{Gränssnitt}
+\subsection{Gränssnitt}
 Gränssnittet ska tillåta användaren att välja antingen autonom eller manuell
 körning. Vid manuell körning skickas styrkommandon till taxin när användaren
 trycker på piltangenterna. Vid autonom körning ska gränssnittet tillåta
-användaren att mata in en karta samt ange destination.
+användaren att mata in en karta samt ange startnod och destinationsnod.
+ränssnittet skall även visa taxins position under aktiva uppdrag. Det uppnås genom att TODO
 
-Gränssnittet ska visa nuvarande och historiska mätvärden från taxin med hjälp
-av diagram. Gränssnittet skall även visa taxins position under aktiva uppdrag.
+\subsubsection{Kartpanel}
+I kartaområdet i gränssnittet kan användaren skapa noder och båger som ska
+representera kartan som bilen ska köra. Det sker genom att flytter musen dit
+man vill sätta en nod och sedan väljer nodtyp. Gränssnittet räknar
+ut musens position på kartan och sedatt skapar ett nodobjekt på den postitionen.
+Ett bågobjekt skapas genom att klicka startnoderna och slutnod för bågen.
+Bågen får då dessa start- och slutnoder associerat till sig.
 
-\paragraph{Skapa kommandon för uppdrag}
-Fjärrklienten ska utifrån den inmatade kartan och destination; räkna ut den
-kortaste vägen dit och utifrån vägen skapa en kö av kommandon som taxin kan
-följa för att nå destinationen.
+\subsubsection{Kommandorad}
+Längst ned i gränssnittet finns en kommandorad där det går skicka kommandon
+direkt till kommunikationsmodulen utan att använda någon grafisk funktion.
+Kommandot är formaterat precis som det skrivs in i fältet.
+
+\subsubsection{Sensorpanel}
+Här hämtas och presenteras alla sensorvärden som grännsittet får genom att be
+kommunikationsmodulen om dessa värden. Svaret formateras därefter för att vara
+lättläsligt och lämpliga etiktetter läggs till.  Gränssnittet visar nuvarande
+mätvärden från bilen genom att fråga kommunikationsmodulen efter värdena FRONT,
+RIGHT, SPEED, DISTANCE, ERROR. Där det motsvarar avstånd till närmaste objekt
+framåt avstånd till objekt åt höger, hastighet angivet i m/s och felvärde
+respektive. 
+
+\subsubsection{Manuell styrning}
+När manuellt körläge väljs kopplas piltangenterna till kommandon för att köra
+fram, bak, höger och vänster. När en knapp sedan trycks ned skickas motsvarande
+kommandot till kommunikationsmodulen som sedan får bilen att röra på sig.
+
+\subsubsection{Autonom styrning}
+Vid autonom körning följer bilen den listan av kommandon som fjärrklienten
+skickar.
+
+\subsubsection{Ansluta till kommunikationsmodulen}
+Genom att mata in ip-adressen till kommunikationsmodulen i gränssnittet erhålls
+en anslutning utifrån protokollet TCP. När en anslutning är upprättad går det
+att använda alla funktioner som beror på en konstant anslutning till
+kommunikationsmodulen.
+
+\subsubsection{Spara och öppna kartor}
+Genom gränssnittet går det att både spara och öppna kartor som skapats. Det
+sker genom att gränssnittet sparar en kodrepresentation av alla objekt i
+kartan. Filen kan sedan läsas in och återskapas i gränssnittet.
+
+\subsubsection{Skapa kommandon för uppdrag}
+Fjärrklienten ska utifrån den inmatade kartan och destinationen; räkna ut den
+kortaste vägen med hjälp av Djiktras algoritmen och utifrån vägen skapa en
+lista av kommandon som sedan skicas till bilen. Bilen kan då genom att utifrån
+kommandona nå destinationen.
 
 \subsection{Mjukvaruimplementation}
 Fjärrklienten kommer implementeras i Python och bestå av två olika trådar; en

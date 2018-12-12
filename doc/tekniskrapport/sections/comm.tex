@@ -1,8 +1,11 @@
 \documentclass[tekniskrapport/tech.tex]{subfiles}
 
 \newcommand{\wlcomm}[3]{\mono{#1} & #2 & #3 \\}
-\newcommand{\bfopts}{endianess=little,bitwidth=1mm}
-\newcommand{\emptybox}[1]{\bitbox{#1}{\color{lightgray}\rule{\width}{\height}}}
+
+\makeatletter
+\define@key{bytefield}{bfopts}[]{\setkeys{bytefield}{bitwidth=2.8mm}}
+\makeatother
+
 \newcommand*{\vcenteredhbox}[1]{\begingroup
 \setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
 
@@ -80,126 +83,95 @@ till en gemensam SCLK-signal för synkronisering, en MISO-signal för data till
 master:n och MOSI för data från master:n som visat i figur \ref{fig:bus_inter}.
 Sensormodulen skickar sensorvärden till kommunikationsmodulen och
 kommunikationsmodulen skickar styrkommandon till styrmodulen.
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \subfile{\figures/bus_spi}
     \caption{Den gemensamma databussen mellan modulerna.}
     \label{fig:bus_inter}
 \end{figure}
 
-\subsubsection{Busskommandon}
+\subsubsection{Kommandostruktur}
 Kommunikationsmodulen agerar som \emph{master} och har därmed full kontroll
 över bussen. Kommunikationsmodulen skickar därför kommandon till slavarna som
-antingen är läs eller skrivkommandon.
-\begin{figure}[H]
+antingen är läs eller skrivkommandon. 
+
+Ett skrivkommando från kommunikationsmodulen är strukturerad som i figur
+\ref{bf:spi-write}. Under skrivkommandon skickar kommunikationsmodulen data
+till en slav. De fyra första högre bitarna av det första ordet från
+kommunikationsmodulen berättar vilket kommando som skickas. Då vet slaven om
+det är ett läs- eller skrivkommando och hur mycket data som ska skickas eller
+ta emot. I fallet för skrivkommando består de fyra lägre bitarna av det första
+ordet av en kontrollsumma för data som följer. Därefter följer $n$ antal
+dataord som slaven tar emot. Om kontrollsumman matchar den mottagna datan
+kommer slaven svara med en ACK förspecificerad för slaven.
+\begin{figure}[h]
     MOSI
-    \begin{bytefield}[]{24}
+    \begin{bytefield}[bfopts]{40}
         \vcenteredhbox{
-            \bitbox{4}{CMD}
-            \bitbox{4}{SUM}
+            \bitbox{4}{CMD}\bitbox{4}{SUM}
             \bitbox{8}{DATA 0}
-            $\cdots$
+            \bitbox[lr]{8}{$\cdots$}
             \bitbox{8}{DATA $n$}
             \emptybox{8}
         }
     \end{bytefield}\\[1mm]
     MISO
-    \begin{bytefield}[endianness=little]{24}
+    \begin{bytefield}[bfopts]{40}
         \vcenteredhbox{
             \emptybox{8}
             \emptybox{8}
-            $\cdots$
+            \bitbox[lr]{8}{$\cdots$}
             \emptybox{8}
             \bitbox{8}{ACK}
         }
     \end{bytefield}
     \caption{Bitsekvensen för ett skrivkommando.}
-    \label{bf:sens-comm}
+    \label{bf:spi-write}
 \end{figure}
 
-\begin{figure}[H]
+Ett läskommando är strukturerat som i figur \ref{bf:spi-read}.
+Kommunikationsmodulen specificerar först kommandot, därefter svarar slaven med
+en ACK samt en kontrollsumma för datan som följer.
+\begin{figure}[h]
     MOSI
-    \begin{bytefield}[]{24}
+    \begin{bytefield}[bfopts]{24}
         \vcenteredhbox{
             \bitbox{4}{CMD}\emptybox{4}
             \emptybox{8}
             \emptybox{8}
             \emptybox{8}
-            $\cdots$
+            \bitbox[lr]{8}{$\cdots$}
             \emptybox{8}
         }
     \end{bytefield}\\[1mm]
     MISO
-    \begin{bytefield}[endianness=little]{24}
+    \begin{bytefield}[bfopts]{24}
         \vcenteredhbox{
             \emptybox{8}
-            \emptybox{4}\bitbox{4}{SUM}
             \bitbox{8}{ACK}
+            \emptybox{4}\bitbox{4}{SUM}
             \bitbox{8}{DATA 0}
-            $\cdots$
+            \bitbox[lr]{8}{$\cdots$}
             \bitbox{8}{DATA $n$}
         }
     \end{bytefield}
     \caption{Bitsekvensen för ett läskommando.}
-    \label{bf:sens-comm}
+    \label{bf:spi-read}
 \end{figure}
 
-\subsubsection{Från sensormodul till kommunikationsmodul}
-Sensormodulen ska fortlöpande skicka värden för varje sensor till
-kommunikationsmodulen. Figur \ref{bf:sens-comm} visar bitsekvensen som
-sensormodulen skickar. Ett skrivkommando ser ut som följande
-\begin{figure}[H]
-    \centering
-    \begin{bytefield}[endianness=big]{24}
-        \bitheader{0,7,8,15,16,23} \\
-        \bitbox{8}{$d_f$}
-        \bitbox{8}{$d_r$}
-        \bitbox{8}{$n$}
-    \end{bytefield}
-    \caption{Bitsekvensen för datan som skickas fortlöpande till
-    kommunikationsmodulen till sensormodulen.}
-    \label{bf:sens-comm}
-\end{figure}
+\subsubsection{Kontrollsumma och ACK}
+Kontrollsumman är implementerad för att undvika att felaktig data skickas eller
+tas emot. Kontrollsumman beräknas genom att utföra XOR för de fyra högre och
+lägre bitarna för varje ord i datan samt de fyra bitarna för kommandot.
 
-\paragraph{Frontavståndet $d_f$} är ett 8-bitars osignerat heltal som
-representerar avståndet från sensorn på taxins framsida. Heltalet representerar
-avståndet som frontsensorn läser i centimeter.
+ACK:en är implementerad för att låta kommunikationsmodulen veta att slaven
+lyssnar och att datan har kommit fram intakt. Sensormodulens ACK är
+$\mono{0x53}$ och styrmodulens är $\mono{0xc7}$.
 
-\paragraph{Sidoavståndet $d_r$} är ett 8-bitars osignerat heltal som
-representerar avståndet från sensorn på taxins högersida. Heltalet
-representerar avståndet som sidosensorn läser i centimeter.
-
-\paragraph{Varvtalet $n$} är ett 8-bitars osignerat heltal som specificerar
-antalet varv som taxins hjul har rullat sen förra sändelsen.
-
-\subsubsection{Från kommunikationsmodul till styrmodul}
-Kommunikationsmodulen ska skicka ett felvärde $e_v$ för hastigheten och ett
-felvärde $e_r$ för styrradien till styrmodulen med jämna mellanrum. Styrenheten
-ska försöka justera hastigheten och radien som specificerat av det senaste
-mottagna värdet. Figur \ref{bf:comm-ctrl} visar bitsekvensen för datan som
-sänds.
-
-\begin{figure}[H]
-    \centering
-    \begin{bytefield}[endianness=big]{16}
-        \bitheader{0,7,8,15} \\
-        \bitbox{8}{$e_v$}
-        \bitbox{8}{$e_r$}
-    \end{bytefield}
-    \caption{Bitsekvensen för datan som skickas fortlöpande från
-    kommunikationsmodulen till styrmodulen.}
-    \label{bf:comm-ctrl}
-\end{figure}
-
-\paragraph{Hastighetsfelet $e_v$} består av ett signerat 8-bitars heltal i
-tvåkomplementsform. Värdet är ett felvärde för hastigheten som beräknas
-$e_v=v_\textit{önskad}-v_\textit{nuvarande}$. Negativa värden betyder att bilen
-kör för snabbt och positiva värden betyder att farten ska öka.
-
-\paragraph{Styrfelet $e_r$} består av ett signerat 8-bitars heltal i
-tvåkomplementsform. Värdet är ett felvärde för styrradien som beräknas av
-kommunikationsmodulen utifrån bilens förhållande till väglinjerna. Ett
-nollvärde betyder att hjulen står rätt, negativt att hjulen bör svänga mer åt
-vänster och positivt att hjulen bör svänga mer åt höger.
+\subsubsection{Kommandon}
+En lista av alla implementerade kommandon finns i bilaga \ref{bcmds}.
+Sensormodulens kommando \mono{GET} används för att hämta sensordata från
+sensormodulen. Under autonom körning används därefter \mono{VVL} för att sätta
+bilens hastighet och \mono{RER} för att reglera styrningen.
 
 \end{document}
