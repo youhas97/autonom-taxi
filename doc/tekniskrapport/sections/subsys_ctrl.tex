@@ -3,17 +3,17 @@
 \begin{document}
 
 \section{Styrmodul}
-Styrmodulen är en modul som har i uppgift att ta emot felvärden från
+Styrmodulen är en modul som har i uppgift att ta emot kommandon och data ifrån
 kommunikationsmodulen och reglera bilens drivmotor och svängservo utifrån
 dessa.
 
 \subsection{Funktion}
 Styrmodulens syfte är att hantera den direkta kontrollen av styrreglagen för
-taxins motor. Styrmodulen ska reglera drivmotorn och svängservo utifrån
-felvärden som ges av kommunikationsmodulen.
+taxins motor. Styrmodulen reglerar drivmotorn och svängservo utifrån
+felvärden som tas emot från kommunikationsmodulen.
 
 \subsection{Hårdvaruimplementation}
-Styrmodulen består av en mikrokontroller, taxins motor samt en LCD för
+Styrmodulen består av en mikrokontroller, taxins motor, en servo samt en LCD för
 felsökning. Mikrokontrollern är klockad av en kristalloscillator på 16 MHz. Ett
 detaljerat kretsschema finns i bilaga \ref{cdiag:ctrl}.
 
@@ -23,15 +23,16 @@ styrmodulen följande komponenter.
 \begin{itemize}
 	\item \textbf{\modMicrocontroller} Modulens microprocessor. 
     \item \textbf{\modJtag} Debugger för programmering och felsökning med
-        microprocessorn. 
+        microprocessorn. Även till för att flasha programmet som
+        microprocessorn ska köra.
     \item \textbf{\modLcd} LCD-display för att visa parametrar under körning i
         felsökningssyfte.
     \item \textbf{IQEXO3} Kristalloscillator som systemklocka till AVR.
-    \item \textbf{Tryckknapp} Knapp används till RESET.
+    \item \textbf{Tryckknapp} Knapp som används till RESET.
 \end{itemize}
 
 \subsubsection{Kontroll och bedömning}
-Nedan är följande pinnar som används på mikrokontrollern.
+Nedan finns de pinnar som används på mikrokontrollern.
 \begin{itemize}
    \item \textbf{PA4-PA7} Datasignaler till LCD (DB4-DB7).
    \item \textbf{PB0} RS-signal till LCD.
@@ -44,32 +45,50 @@ Nedan är följande pinnar som används på mikrokontrollern.
    \item \textbf{XTAL1} Klocka från kristalloscillatorn.
    \item \textbf{AREF} A/D omvandlare används ej, men referensspänning till A/D omvandlare.
 \end{itemize}
-R/W signalen till LCD kommer vara jordad då vi ej behöver läsa från LCD. Anod
-och katod används ej eftersom vi ej behöver någon bakgrundsbelysning.  Inga
+R/W signalen till LCD är jordad då vi ej behöver läsa från LCD. Anod
+och katod används ej eftersom vi ej behöver någon bakgrundsbelysning. Inga
 fler signaler behövs så pinnarna på mikrokontrollen är tillräckliga.
 
 Mikrokontrollen behöver endast kommunicera via SPI, utföra enkel reglering och
 därefter skapa en PWM-signal för motorn och svängservo. Inget av detta är
-särskilt krävande och bör klaras utan problem av ATMega1284. Kontrollern har
-ett flash-minne på 128kB, vilket bör vara mer än tillräckligt för att lagra
+särskilt krävande och klaras utan problem av ATMega1284. Kontrollern har
+ett flash-minne på 128kB, vilket är mer än tillräckligt för att lagra
 programmet.
 
-\subsection{Mjukvaruimplementation} Styrmodulens program kommer bestå av en
-main loop som reglerar bilens hastighet efter ett felvärde. Ett avbrott som
-aktiveras när kommunikationsmodulen vill kommunicera kommer att ta emot nya
-felvärden med jämna mellanrum.
+\subsection{Mjukvaruimplementation} Styrmodulens program består av ett 
+avbrott som tar emot ett kommando och eventuell data från
+kommunikationsmodulen. Kommandona bestämmer i programmets main-loop vad som
+ska hända med den mottagna datan. Det kan vara att t.ex. sätta hastigheten
+eller att uppdatera regleringskonstanter. 
 
-\subsubsection{Huvud-loop och reglering}
-I huvudloopen kommer felvärdena från kommunikationsmodulen användas för att
-reglera bilens hastighet och därefter skicka motsvarande PWM-signaler till
-motorn och servon. Regleringen fungerar genom att räkna ut hastigheten eller
-radien $v[n]$ med hjälp av ett felvärde $e[t]$ så att
-\begin{equation*}
-    v[n] = k_p \cdot e[n] + k_d \cdot (e[n]-e[n-1])
-\end{equation*}
-där $k_p$ och $k_d$ är konstanter som kan justeras experimentiellt. Den första
-termen står för att justera utefter det nuvarande felet. Den andra termen står
-för att justera utefter den nuvarande förändringen av felet.
+\subsubsection{Huvud-loop och reglering} I huvudloopen initialiseras först både
+SPI och PWM. Sedan används det mottagna kommandot för att bestämma vad den
+mottagna datan ska användas till. Om kommandot säger att datan innehåller
+direkta hastighets- eller rotatationsvärden och dessa värden är giltiga så
+sätts dessa direkt till det nuvarande PWM-värdet. Den typen av kommando används
+när bilen opererar i manuellt läge. Om det är felvärden som tas emot används
+dessa för att reglera bilens hastighet och styrning och därefter skicka
+motsvarande PWM-signaler till motorn och servon.  Regleringen fungerar genom
+att räkna ut hastigheten eller radien $v[n]$ med hjälp av ett felvärde $e[t]$
+så att \begin{equation*} v[n] = k_p \cdot e[n] + k_d \cdot (e[n]-e[n-1])
+\end{equation*} där $k_p$ och $k_d$ är konstanter som kan tas emot från
+kommunikationsmodulen via andra kommandon som är specifika för att skicka
+nya K-värden. Den första termen står för att justera utefter det nuvarande
+felet. Den andra termen står för att justera utefter den nuvarande
+förändringen av felet. I sektion \ref{sec:wlproto} finns en detaljerad
+lista på alla de kommandon som kan förekomma och hur de används.
+
+\subsubsection{Initialisering} Det första som sker i main programmet är att
+portar och register på microkontollen initialiseras till rätt användningsläge.
+
+PWM-signalerna använder sig utav den inbyggda timern TIMER1 och den
+initialeseras till att arbeta i fas- och frekvenskorrekt PWM vilket fungerar
+bra för servomotorer. Timern ger sedan ut PWM-pulser på portarna PD4 och PD5
+och därför sätts också dessa portar som utsignaler i datariktningsregistret
+DDRD. 
+
+SPI för styrmodulen initialiseras och aktiveras genom att sätta
+SPI-interrupt-enable och SPI-enable i SPCR registeret på microcontrollen.
 
 \subsubsection{Avbrott} \label{sec:ctrl-int}
 När SPI-kontrollern har tagit emot en byte av data sätter den SPIF i SPSR (SPI
