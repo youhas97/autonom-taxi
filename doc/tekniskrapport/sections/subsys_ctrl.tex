@@ -61,25 +61,21 @@ kommunikationsmodulen. Kommandona bestämmer i programmets main-loop vad som ska
 hända med den mottagna datan. Det kan vara att t.ex. sätta hastigheten eller
 att uppdatera regleringskonstanter. 
 
-\subsubsection{Huvud-loop och reglering} I huvudloopen initialiseras först både
+\subsubsection{Huvud-loop} I huvudloopen initialiseras först både
 SPI och PWM. Sedan används det mottagna kommandot för att bestämma vad den
 mottagna datan ska användas till. Om kommandot säger att datan innehåller
 direkta hastighets- eller rotatationsvärden och dessa värden är giltiga så
 sätts dessa direkt till det nuvarande PWM-värdet. Den typen av kommando används
-när bilen opererar i manuellt läge. Om det är felvärden som tas emot används
-dessa för att reglera bilens hastighet och styrning och därefter skicka
-motsvarande PWM-signaler till motorn och servon.  Regleringen fungerar genom
-att räkna ut hastigheten eller radien $v[n]$ med hjälp av ett felvärde $e[t]$
-så att \begin{equation*} v[n] = k_p \cdot e[n] + k_d \cdot (e[n]-e[n-1])
-\end{equation*} där $k_p$ och $k_d$ är konstanter som kan tas emot från
-kommunikationsmodulen via andra kommandon som är specifika för att skicka
-nya K-värden. Den första termen står för att justera utefter det nuvarande
-felet. Den andra termen står för att justera utefter den nuvarande
-förändringen av felet. I sektion \ref{sec:wlproto} finns en detaljerad
-lista på alla de kommandon som kan förekomma och hur de används.
+när bilen opererar i manuellt läge. Om det istället är felvärden som tas emot
+används dessa för att reglera bilens hastighet och styrning och därefter skicka
+motsvarande PWM-signaler till motorn och servon. Regleringen använder olika
+konstanter som också kan tas emot från kommunikationsmodulen via andra
+kommandon som är specifika för att skicka nya K-värden. I sektion
+\ref{sec:wlproto} finns en detaljerad lista på alla de kommandon som kan
+förekomma och hur de används.
 
-\subsubsection{Initialisering} Det första som sker i main programmet är att
-portar och register på microkontollen initialiseras till rätt användningsläge.
+\subsubsection{Initialisering} Det första som sker i huvudprogrammet är att
+portar och register på microkontollern initialiseras till rätt användningsläge.
 
 PWM-signalerna använder sig utav den inbyggda timern TIMER1 och den
 initialeseras till att arbeta i fas- och frekvenskorrekt PWM vilket fungerar
