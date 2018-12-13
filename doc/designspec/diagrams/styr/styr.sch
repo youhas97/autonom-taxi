@@ -26,7 +26,7 @@ F 3 " ~" H 3775 3000 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L styr-rescue:ATmega1284P-PU-MCU_Microchip_ATmega-styr-rescue U?
+L styr-rescue:ATmega1284P-PU-MCU_Microchip_ATmega-styr-rescue-styr-rescue U?
 U 1 1 5BEA84E2
 P 2850 3150
 F 0 "U?" H 2850 1064 50  0000 C CNN
@@ -37,7 +37,7 @@ F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8272-8-bit-AVR-microc
 	1    0    0    -1  
 $EndComp
 $Comp
-L styr-rescue:IQEXO-3-exo3-styr-rescue U?
+L styr-rescue:IQEXO-3-exo3-styr-rescue-styr-rescue U?
 U 1 1 5BEB103D
 P 1350 2150
 F 0 "U?" H 1350 2717 50  0000 C CNN
@@ -78,7 +78,7 @@ MOSI
 Text Label 4150 2750 0    50   ~ 0
 SS
 $Comp
-L styr-rescue:JMA162A-jma162a-styr-rescue _?
+L styr-rescue:JMA162A-jma162a-styr-rescue-styr-rescue _?
 U 1 1 5BEDF369
 P 6800 2300
 F 0 "_?" V 6600 1950 50  0001 C CNN
@@ -290,15 +290,9 @@ Wire Wire Line
 	6850 1450 6950 1450
 Connection ~ 6850 1450
 Wire Wire Line
-	6200 2450 3450 2450
-Wire Wire Line
 	7150 1600 7150 1550
 Wire Wire Line
 	7150 1550 4950 1550
-Wire Wire Line
-	4950 1550 4950 2350
-Wire Wire Line
-	4950 2350 3450 2350
 $Comp
 L Device:C_Small CAP
 U 1 1 5BE63E89
@@ -380,6 +374,14 @@ Wire Wire Line
 Connection ~ 3600 2050
 Wire Wire Line
 	3600 2050 3600 2150
-Connection ~ 7050 1450
-Connection ~ 3600 2150
+Wire Wire Line
+	6200 2450 5700 2450
+Wire Wire Line
+	5700 2450 5700 1650
+Wire Wire Line
+	5700 1650 3450 1650
+Wire Wire Line
+	4950 1550 4950 1750
+Wire Wire Line
+	4950 1750 3450 1750
 $EndSCHEMATC
