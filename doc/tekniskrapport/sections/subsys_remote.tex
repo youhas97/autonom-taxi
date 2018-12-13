@@ -36,18 +36,18 @@ Här hämtas och presenteras alla sensorvärden som grännsittet får genom att 
 kommunikationsmodulen om dessa värden. Svaret formateras därefter för att vara
 lättläsligt och lämpliga etiktetter läggs till. Gränssnittet visar nuvarande
 mätvärden från bilen genom att fråga kommunikationsmodulen efter värdena FRONT,
-RIGHT, SPEED, DISTANCE, ERROR. Vilket motsvarar avstånd till närmaste objekt
+RIGHT, SPEED, DISTANCE och ERROR. Dessa motsvarar avstånd till närmaste objekt
 framåt avstånd till objekt åt höger, hastighet angivet i m/s och felvärde
 respektive. 
 
 \subsubsection{Manuell styrning}
-När manuellt körläge väljs kopplas piltangenterna till kommandon för att köra
+När manuellt körläge är aktiverat kopplas piltangenterna till kommandon för att köra
 fram, bak, höger och vänster. När en knapp sedan trycks ned skickas motsvarande
 kommandot till kommunikationsmodulen som sedan får bilen att röra på sig.
 
 \subsubsection{Autonom styrning}
 Vid autonom körning följer bilen den listan av kommandon som fjärrklienten
-skickar.
+skickar i form av uppdraget.
 
 \subsubsection{Ansluta till kommunikationsmodulen}
 Genom att mata in ip-adressen till kommunikationsmodulen i gränssnittet erhålls
@@ -106,7 +106,7 @@ gränssnittet fryser för användaren. Programmet kommer behöva vänta på svar
 taxin samt utföra längre beräkningar vilket innebär att programmet kanske inte
 hinner uppdatera gränssnittet tillräckligt ofta om det endast använder en tråd.
 Synkroniseringen av dessa två trådar sköts av en worker som består av
-en stack av tasks och en kö av färdiga 
+en stack av tasks och en kö av färdiga... TODO
 
 \subsubsection{Karta och uppdrag}
 Kartan representeras med en riktad graf där varje nod motsvarar en stopplinje
