@@ -94,15 +94,31 @@ kommandot sist i kön om ett nyare förfrågan av samma typ inte redan finns i
 kön. Annars kastas den äldre förfrågan bort.
 
 \subsection{Bildbehandling}
+Bildbehandlings processen sker genom ett program skrivet i C++.
+
+\subsubsection{Upptäckt av linjer}
+Upptäckandet av linjer/kanter på banan sker genom hanteringen av varje bild/frame som programmet tar emot från kameran. Varje bild går igenom en process som börjar med att förberedda bilden genom att filtrera den för att först underlätta kanters upptäckande och sedan linjerna inom ett bestämt område av intresse (Region of Interest ROI).
+
+Processen börjar med att filtrera bilden med den så kallade Gauss filter där bilden faltas med en Gauss kernel med tanke på att filtrera bort brus. Den filtrerade bilden omvandlas sedan till en monokromatisk bild vilket underlättar bildbehandlingen och som är möjligt tack vare att bildbehandlingsprogrammet inte använder sig utav specifika färger för att upptäcka linjer på vägen utan det arbetar med de linjerna inom ROI och klassar dem enligt deras lutning och position. Det här innebär att upptäckandet av linjer ska vara möjligt utfört oberoende på vilka färger vägen kunde ha. 
+
+Det sista steget innan kanterna upptäcks är att segmentera bilden genom att från openCV använda threshold funktionen som erbjuder olika typer av threshold operationer vilka möjliggör att skilja mellan olika region/objekt som önskas analysera baserad på hur intensiteten hos varje pixel varierar mellan objektet och bakgrunden. Programmet använder sig av Otsu threshold metod vilken själv räknar ut en threshold värdet som bäst passar bilden. Den använda threshold funktionen returnera den nya bilden vilken visas på bilden...
+
+Nu när bilden är förbered för kanters upptäckande används funktionen Canny (från openCv), som applicerar Canny algoritmen vilken identifierar alla kanter som finns i bilden. Resultatet visas på bilden ... 
+
+Som tidigare nämnts, upptäcks linjerna inom ROI. ROI bestäms baserad på hur mycket av bilden vill användas för att hitta linjer; hur mycket som är tillräckligt för tolkningen och senare hanteringen av alla linjer som hittas på vägen. ROI är en polygon av 6 punkter som enkelt kan anpassas vid behov och som visas på bilden ...   
+
+Efter att bilden är hel filtrerad och ROI bestämd, används Hough transformen för att hitta linjer enligt bestämda parametrar som varje linje ska uppfylla i transformen för att bli klassa som linje. OpenCV erbjuder två typer av funktioner som applicerar transformen och programmet använder sig av den probabilistiska metoden vilken ökar beräknings hastighet utan att minska precisionen. Efter användningen av Hough transformen kan programmet tolka de upptäckade linjerna.
+  
+\paragraph{Tolkning av linjer}
+
+\subsection{Uppdrag}
+
 \begin{wrapfigure}{r}{0.3\linewidth}
     \begin{center}
         \includegraphics[width=\linewidth]{tekniskrapport/figures/opencv.jpg}
     \end{center}
     \caption{Klassificering och tolkning av linjer från kamera.}
 \end{wrapfigure}
-% TODO
-
-\subsubsection{Upptäckt av linjer}
 
 \subsubsection{Tolkning av linjer}
 Det första som görs med alla linjer som hittas på bilden är att klassificera de
