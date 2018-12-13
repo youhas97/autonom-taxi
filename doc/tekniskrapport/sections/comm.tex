@@ -1,7 +1,5 @@
 \documentclass[tekniskrapport/tech.tex]{subfiles}
 
-\newcommand{\wlcomm}[3]{\mono{#1} & #2 & #3 \\}
-
 \makeatletter
 \define@key{bytefield}{bfopts}[]{\setkeys{bytefield}{bitwidth=2.8mm}}
 \makeatother
@@ -32,48 +30,18 @@ inkludera argument. För instruktioner utan argument skickas endast en sträng
 med instruktionens namn; till exempel \mono{get\_sensor}. För instruktioner med
 argument består strängen av instruktionens namn följt av ett kolon och ett
 eller flera argument. Flera argument separeras med kommatecken; till exempel
-\mono{set\_miss:\commIgnore,\commIgnore,\commPark}.
+\mono{set\_miss:\commIgnore,\commIgnore,\commPark}. Bilaga \ref{scmds} visar
+alla tillgängliga kommandon på servern.
 
-{\setlength{\tabcolsep}{12pt}
-\renewcommand{\arraystretch}{1.6}
-\begin{longtable}{p{3.5cm}p{2.8cm}p{7cm}}
-    \bfseries Instruktion & \bfseries Argument & \bfseries Handling \\\hline
-    \wlcomm{help}{inga}{Returnerar alla tillgängliga serverkommandon,
-    separarerade med mellanslag.}
-    \wlcomm{get\_sensor}{inga}{Returnerar mätvärden från sensorer samt
-    felvärden och motorstyrvärden, separerade med mellanslag. Värdenas
-    betydelse och ordning är följande: distans på frontsensor, distans på
-    sidosensor, hastighet, total körd distans, felvärde i körfil,
-    motorhastighet, motorrotation. Alla värden är i SI-enheter förutom
-    felvärdet och motorrotationen. De är istället tal mellan -1 och 1, där -1
-    motsvarar längst till vänster och 1 motsvarar längst till höger.}
-    \wlcomm{set\_miss}{kommandonamn}{Sätt en kö av kommandon som ska utföras
-    vid stopplinjer. Kommandona är specificerade i sektion
-    \ref{sec:comm-mission}. Om ett tidigare uppdrag finns i kön skrivs det
-    över.}
-    \wlcomm{app\_miss}{kommandonamn}{Samma funktion som \mono{set\_miss} men
-    istället för att avbryta och skriva över det nuvarande uppdraget, läggs
-    listan av uppdraget till efter det nuvarande uppdraget.}
-    \wlcomm{get\_miss}{inga}{Returnerar alla kommandon i det nuvarande
-    uppdraget. KommandoN är separarade med mellanslag. Om den nuvarande kön av
-    kommandon är tom, kommer strängen som returneras att vara tom.}
-    \wlcomm{set\_auto}{bool}{Välj mellan autonom eller manuell körning.
-    \mono{T} sätter autonom körning och ett \mono{F} sätter manuell körning.}
-    \wlcomm{set\_vel}{flyttal}{Sätt motorstyrvärde för hastigheten, ignoreras
-    om uppdrag är aktivt.}
-    \wlcomm{set\_rot}{flyttal}{Sätt motorstyrvärde för svängradien, ignoreras
-    om uppdrag är aktivt.}
-    \wlcomm{set\_vel\_kp}{flyttal}{Sätt proportionerlig konstant för
-    regleringen av hastigheten}
-    \wlcomm{set\_vel\_kd}{flyttal}{Sätt derivatakonstant för regleringen av
-    hastigheten}
-    \wlcomm{set\_rot\_kp}{flyttal}{Sätt proportionerlig konstant för
-    regleringen av svängradien}
-    \wlcomm{set\_rot\_kd}{flyttal}{Sätt derivatakonstant för regleringen av
-    svängradien}
-    \wlcomm{shutdown}{inga}{Stanna taxin och stäng av kommunikationsmodulen.}
-\end{longtable}
-}
+Svaret från servern innehåller antingen \mono{success} följt av ett kolon och
+ett svarsmeddelande för kommandot eller \mono{invalid\_cmd} om det mottagna
+kommandot inte existerar. Om kommandot finns men inte tillräckligt många
+argument togs emot kommer svaret vara \mono{invalid\_arg}. Om kommandot fanns
+och exekverades men misslyckades på grund av felaktiga argument kommer
+meddelandet att vara \mono{failure} följt av ett kolon och ett svarsmeddelande
+från kommandot. Exempelvis kan \mono{set\_miss} svara med \mono{success:mission
+set} eller \mono{failure:invalid mission} beroende på om argumenten innehåller
+korrekta kommandon eller inte.
 
 \subsection{Mellan taxins moduler}
 Mellan sensormodulen, kommunikationsmodulen och styrmodulen används
