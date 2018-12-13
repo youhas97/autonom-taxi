@@ -25,20 +25,20 @@ för att mäta bilens hastighet samt avståndet från startpunkten.
 \subsection{Hårdvaruimplementation} Sensormodulen består av en mikrokontroller,
 och fyra sensorer; en avståndsmätare på framsidan, en avståndsmätare på bakre
 högersida samt två halleffektsensorer placerade på båda bakhjulen.
-Mikrokontrollern är klockad av en kristalloscillator på 16 MHz och även kopplad
-till en LCD-display på vilken de olika värden från sensorerna visas; avstånd
-till hinder från både fram och höger sensor samt avståndet som bilen har från
-startpunkten. Ett detaljerat kretsschema över modulen finns i bilaga
-\ref{cdiag:sens}.
+Mikrokontrollern är en ATmega1284 som är klockad av en kristalloscillator på 16
+MHz. Mikrokontrollern är kopplad till en LCD-display på vilken de olika värden
+från sensorerna visas; avstånd till hinder från både fram och höger sensor samt
+avståndet som bilen har från startpunkten. Ett detaljerat kretsschema över
+modulen finns i bilaga \ref{cdiag:sens}.
 
 Avståndsmätarna skickar kontinuerligt en spänning (den analoga signalen) till
 mikrokontrollens AD-omvandlare. Den digitala signalen hanteras hos
-sensormodulen så att den onvandlas till meter för att bli skickad vidare till
+sensormodulen så att den omvandlas till meter för att bli skickad vidare till
 kommunikationsmodulen som ett avstånd till hinder. Avständmätaren placerad på
-bilens framsida är av typen GP2Y0A02YK vars analog utsignal är mellan 0V och
+bilens framsida är av typen GP2Y0A02YK vars analoga utsignal är mellan 0V och
 3V, medan sensorn placerad på bilens bakre högersida är av typen GP2Y0A41SK
-vars utsinal är en analog spänning mellan 0V and 3.2V. Hos båda typer av sensor
-gäller att ju närmare hindret befinner sig desto högre spänningen går. 
+vars utsignal är en analog spänning mellan 0V and 3.2V. Hos båda typer av
+sensor gäller att ju närmare hindret befinner sig desto högre blir spänningen. 
 
 Som tidigare nämnts, används det ett brusfilter vid varje
 sensor-mikrokontroller koppling. Varje filter består av en 18K resistans och en
@@ -72,31 +72,31 @@ Nedan är följande pinnar som används på mikrokontrollern.
    \item \textbf{AREF} Referensspänning för AD-omvandlare på 3.3V.
 
 \end{itemize}
-Mikrokontrollen kommunicerar med kommunikationsmodulen via SPI och hanterar de
+Mikrokontrollen kommunicerar med kommunikationsmodulen via SPI och hanterar
 värdena från alla sensorer. Från avståndsmätarna beräknar kontrollen avståndet
 till hinder genom att omvandla den digitala signalen till meter som hämtas från
-AD/omvandlare. Från halleffektsensorerna beräknar kontrollen bilens hastighet
-samt bilens avstånd från startpunkten genom att använda sig av antalet avbrott
-som sensorn orsakar samt hjulens omkrets.
+en AD/omvandlare. Från halleffektsensorerna beräknar kontrollen bilens
+hastighet samt bilens avstånd från startpunkten genom att använda sig av
+antalet avbrott som sensorn orsakar samt hjulens omkrets.
 
 \subsection{Mjukvaruimplementation} 
-Mjukvaran på sensormodulen är skriven i programmeringspråk C, en fil där alla
-sensormodulens uppgifter hanteras. I filen implementeras en oändlig while loop
-där värdena från alla sensorer uppdateras kontinuerligt medan modulen väntar på
-avbrottet som orsakas via SPI när kommunikationsmodulen efterfrågar värden. Vid
-SPI avbrott, hämtas de senaste sensorvärdena och skickas vidare till
-kommunikationmodulen. Avbrottet aktiveras som beskrivet i sektion
-\ref{sec:ctrl-int}
+Mjukvaran på sensormodulen är skriven i programmeringspråket C i en fil där
+alla sensormodulens uppgifter hanteras. I filen implementeras en oändlig
+while-loop där värdena från alla sensorer uppdateras kontinuerligt medan
+modulen väntar på avbrottet som orsakas via SPI när kommunikationsmodulen
+efterfrågar värden. Vid SPI avbrott, hämtas de senaste sensorvärdena och
+skickas vidare till kommunikationsmodulen. Avbrottet aktiveras som beskrivet i
+sektion \ref{sec:ctrl-int}.
 
 Processen för att få avståndet till hinder (i meter) från varje avståndmätare
 sker genom att hämta den digitala signalen (hos AD-omvandlaren) och omvandla
-värdet till meter. Den formlen som används vid omvandligen från adc värdet till
-meter beror på sensors typ och är resultatet av den linjära regressionen
+värdet till meter. Formlen som används vid omvandligen från ADC-värdet till
+meter beror på sensorns typ och är resultatet av den linjära regressionen
 applicerade med olika mätningar.
 
 Varje bakhjul innehåller tio magneter vilka vardera orsakar ett avbrott. I
-programmet hanteras dessa avbrott, som orsakas från båda hjul, så att de tillsammans
-med bakhjulets omkrets används för att räkna ut bilens hastighet samt avståndet
-bilen har åkt sedan startpunkten.
+programmet hanteras dessa avbrott, som orsakas från båda hjul, så att de
+tillsammans med bakhjulets omkrets används för att räkna ut bilens hastighet
+samt avståndet bilen har åkt sedan startpunkten.
 
 \end{document}
