@@ -32,7 +32,16 @@ inkludera argument. För instruktioner utan argument skickas endast en sträng
 med instruktionens namn; till exempel \mono{get\_sensor}. För instruktioner med
 argument består strängen av instruktionens namn följt av ett kolon och ett
 eller flera argument. Flera argument separeras med kommatecken; till exempel
-\mono{set\_miss:\commIgnore,\commIgnore,\commPark}.
+\mono{set\_miss:\commIgnore,\commIgnore,\commPark}. Nedan tabell visar alla
+tillgängliga kommandon.
+
+Svaret från servern innehåller antingen \mono{success} följt av ett kolon och
+ett svarsmeddelande för kommandot eller \mono{invalid\_cmd} om det mottagna
+kommandot inte existerar. Om kommandot finns men inte tillräckligt många
+argument togs emot kommer svaret vara \mono{invalid\_arg}. Om kommandot fanns
+och exekverades men misslyckades på grund av felaktiga argument kommer
+meddelandet att vara \mono{failure} följt av ett kolon och ett svarsmeddelande
+från kommandot.
 
 {\setlength{\tabcolsep}{12pt}
 \renewcommand{\arraystretch}{1.6}
