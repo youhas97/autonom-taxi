@@ -16,6 +16,8 @@ Comment4 ""
 $EndDescr
 Wire Wire Line
 	3700 5150 3700 5850
+Wire Wire Line
+	6900 1050 6900 1150
 $Comp
 L sens-rescue:IQEXO-3-exo3 KRISTALLOSCILLATOR
 U 1 1 5BDCCBF2
@@ -76,6 +78,17 @@ F 2 "" H 1450 2800 50  0001 C CNN
 F 3 "" H 1450 2800 50  0001 C CNN
 	1    1450 2800
 	1    0    0    -1  
+$EndComp
+$Comp
+L power:GNDREF #PWR?
+U 1 1 5BDF1A61
+P 6900 5450
+F 0 "#PWR?" H 6900 5200 50  0001 C CNN
+F 1 "GNDREF" H 6905 5277 50  0000 C CNN
+F 2 "" H 6900 5450 50  0001 C CNN
+F 3 "" H 6900 5450 50  0001 C CNN
+	1    6900 5450
+	0    -1   -1   0   
 $EndComp
 Text Label 4300 2750 0    50   ~ 0
 SS_Slave_Select
@@ -149,6 +162,17 @@ F 3 "" H 6900 1050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
+L sens-rescue:ACS715xLCTR-30A-taxi-sens-rescue AVSTÅNDSMÄTARE(FRAM)
+U 1 1 5BC4BC08
+P 7000 2350
+F 0 "AVSTÅNDSMÄTARE(FRAM)" H 6300 2450 50  0000 C CNN
+F 1 "GP2Y0A02YK" H 6350 2350 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 7100 2000 50  0001 L CIN
+F 3 "http://www.allegromicro.com/~/media/Files/Datasheets/ACS715-Datasheet.ashx?la=en" H 7000 2350 50  0001 C CNN
+	1    7000 2350
+	-1   0    0    -1  
+$EndComp
+$Comp
 L power:+5V #PWR?
 U 1 1 5BE2925C
 P 6900 2050
@@ -181,6 +205,10 @@ F 3 "" H 7200 1800 50  0001 C CNN
 	1    7200 1800
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	6900 1750 7200 1750
+Wire Wire Line
+	7200 1750 7200 1800
 Wire Wire Line
 	6900 2650 7200 2650
 Wire Wire Line
@@ -394,9 +422,16 @@ F 3 "" H 5950 1850 50  0001 C CNN
 	0    1    -1   0   
 $EndComp
 Wire Wire Line
+	6700 1450 6450 1450
+Wire Wire Line
+	6450 1450 6450 1050
+Wire Wire Line
 	6700 2350 6700 1850
 Wire Wire Line
 	6700 1850 6200 1850
+Wire Wire Line
+	5700 1850 4950 1850
+Connection ~ 5700 1850
 $Comp
 L power:GNDREF #PWR?
 U 1 1 5BE81361
@@ -419,6 +454,17 @@ F 3 "" H 5950 1550 50  0001 C CNN
 	1    5950 1550
 	0    -1   -1   0   
 $EndComp
+Wire Wire Line
+	5950 1050 5500 1050
+Wire Wire Line
+	5500 1050 5500 1450
+Wire Wire Line
+	4300 1450 5500 1450
+Connection ~ 5950 1050
+Wire Wire Line
+	4300 1550 4950 1550
+Wire Wire Line
+	4950 1550 4950 1850
 $Comp
 L pspice:CAP C?
 U 1 1 5BEA46CC
@@ -474,6 +520,19 @@ Connection ~ 3700 950
 Wire Wire Line
 	3700 950  3700 1150
 $Comp
+L power:GNDREF #PWR?
+U 1 1 5BEC8E66
+P 6250 4450
+F 0 "#PWR?" H 6250 4200 50  0001 C CNN
+F 1 "GNDREF" V 6255 4322 50  0000 R CNN
+F 2 "" H 6250 4450 50  0001 C CNN
+F 3 "" H 6250 4450 50  0001 C CNN
+	1    6250 4450
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6250 4500 6250 4450
+$Comp
 L power:+5V #PWR?
 U 1 1 5BED369E
 P 3100 2050
@@ -488,6 +547,12 @@ Wire Wire Line
 	6200 3100 6750 3100
 Wire Wire Line
 	6750 3900 6250 3900
+Wire Wire Line
+	5500 5050 5300 5050
+Wire Wire Line
+	5300 5050 5300 4550
+Wire Wire Line
+	5300 4550 4300 4550
 Wire Wire Line
 	4300 3450 4500 3450
 Wire Wire Line
@@ -507,6 +572,24 @@ Wire Wire Line
 Wire Wire Line
 	5000 3450 5250 3450
 Wire Wire Line
+	5500 5150 5150 5150
+Wire Wire Line
+	5150 5150 5150 4650
+Wire Wire Line
+	5150 4650 4300 4650
+Wire Wire Line
+	5500 5250 5050 5250
+Wire Wire Line
+	5050 5250 5050 4750
+Wire Wire Line
+	5050 4750 4300 4750
+Wire Wire Line
+	5500 5350 4950 5350
+Wire Wire Line
+	4950 5350 4950 4850
+Wire Wire Line
+	4950 4850 4300 4850
+Wire Wire Line
 	6250 3900 6250 4350
 Wire Wire Line
 	6250 4350 5250 4350
@@ -516,6 +599,22 @@ Wire Wire Line
 	5250 4450 4300 4450
 Wire Wire Line
 	6200 3100 6200 4300
+Wire Wire Line
+	6200 4300 5150 4300
+Wire Wire Line
+	5150 4300 5150 4350
+Wire Wire Line
+	5150 4350 4300 4350
+Wire Wire Line
+	5500 5450 4450 5450
+Wire Wire Line
+	4450 5450 4450 4250
+Wire Wire Line
+	4450 4250 4300 4250
+Wire Wire Line
+	6350 4150 4300 4150
+Wire Wire Line
+	6350 4150 6350 4500
 $Comp
 L power:GNDREF #PWR?
 U 1 1 5BE5E3AA
@@ -527,119 +626,4 @@ F 3 "" H 5750 3850 50  0001 C CNN
 	1    5750 3850
 	1    0    0    -1  
 $EndComp
-$Comp
-L sens-rescue:ACS715xLCTR-30A-taxi-sens-rescue AVSTÅNDSMÄTARE(FRAM)
-U 1 1 5BC4BC08
-P 7000 2350
-F 0 "AVSTÅNDSMÄTARE(FRAM)" H 6300 2450 50  0000 C CNN
-F 1 "GP2Y0A02YK" H 6350 2350 50  0000 C CNN
-F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 7100 2000 50  0001 L CIN
-F 3 "http://www.allegromicro.com/~/media/Files/Datasheets/ACS715-Datasheet.ashx?la=en" H 7000 2350 50  0001 C CNN
-	1    7000 2350
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	5950 1050 5500 1050
-Wire Wire Line
-	4300 1450 5500 1450
-Wire Wire Line
-	5500 1050 5500 1450
-Connection ~ 5950 1050
-Wire Wire Line
-	6450 1450 6450 1050
-Wire Wire Line
-	6700 1450 6450 1450
-Wire Wire Line
-	6900 1050 6900 1150
-Wire Wire Line
-	7200 1750 7200 1800
-Wire Wire Line
-	6900 1750 7200 1750
-Wire Wire Line
-	6250 4500 6250 4450
-$Comp
-L power:GNDREF #PWR?
-U 1 1 5BEC8E66
-P 6250 4450
-F 0 "#PWR?" H 6250 4200 50  0001 C CNN
-F 1 "GNDREF" V 6255 4322 50  0000 R CNN
-F 2 "" H 6250 4450 50  0001 C CNN
-F 3 "" H 6250 4450 50  0001 C CNN
-	1    6250 4450
-	0    1    1    0   
-$EndComp
-$Comp
-L power:GNDREF #PWR?
-U 1 1 5BDF1A61
-P 6900 5450
-F 0 "#PWR?" H 6900 5200 50  0001 C CNN
-F 1 "GNDREF" H 6905 5277 50  0000 C CNN
-F 2 "" H 6900 5450 50  0001 C CNN
-F 3 "" H 6900 5450 50  0001 C CNN
-	1    6900 5450
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	4450 4250 4300 4250
-Wire Wire Line
-	6350 4500 6350 4200
-Wire Wire Line
-	6350 4200 5200 4200
-Wire Wire Line
-	5200 4200 5200 1650
-Wire Wire Line
-	5200 1650 4300 1650
-Wire Wire Line
-	5500 5350 5100 5350
-Connection ~ 5700 1850
-Wire Wire Line
-	5700 1850 5700 1550
-Wire Wire Line
-	4300 1550 5700 1550
-Wire Wire Line
-	5100 1850 4300 1850
-Wire Wire Line
-	5100 1850 5100 1950
-Wire Wire Line
-	5100 1950 4300 1950
-Connection ~ 5100 1950
-Wire Wire Line
-	5100 1950 5100 2050
-Wire Wire Line
-	5100 2050 4300 2050
-Connection ~ 5100 2050
-Wire Wire Line
-	5100 2050 5100 2150
-Wire Wire Line
-	5100 2150 4300 2150
-Connection ~ 5100 2150
-Wire Wire Line
-	5100 2150 5100 5050
-Wire Wire Line
-	5500 5250 5100 5250
-Connection ~ 5100 5250
-Wire Wire Line
-	5100 5250 5100 5350
-Wire Wire Line
-	5500 5150 5100 5150
-Connection ~ 5100 5150
-Wire Wire Line
-	5100 5150 5100 5250
-Wire Wire Line
-	5500 5050 5100 5050
-Connection ~ 5100 5050
-Wire Wire Line
-	5100 5050 5100 5150
-Wire Wire Line
-	5500 5450 5150 5450
-Wire Wire Line
-	5150 1750 4300 1750
-Wire Wire Line
-	6200 4300 4950 4300
-Wire Wire Line
-	4950 4300 4950 4350
-Wire Wire Line
-	4950 4350 4300 4350
-Wire Wire Line
-	5150 1750 5150 5450
 $EndSCHEMATC
