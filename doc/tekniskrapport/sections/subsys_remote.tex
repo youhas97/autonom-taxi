@@ -108,10 +108,10 @@ en stack av tasks och en kö av färdiga
 
 \subsubsection{Karta och uppdrag}
 Kartan representeras med en riktad graf där varje nod motsvarar en stopplinje
-av tejp i vägfältet. Rondeller representeras av endast en nod istället för en
-nod per stopplinje. En båge representerar en enkelriktad körfil från en
-stopplinje eller rondell till en annan stopplinje eller rondell. Den här grafen
-representeras i sin tur av nedan datastrukturer.
+av tejp i vägfältet. Rondeller representeras av infart- och utfartsnoder som
+med bågarna bildar en cykel. En båge representerar en enkelriktad körfil från
+en stopplinje eller rondell till en annan stopplinje eller rondell. Den här
+grafen representeras i sin tur av nedanstående datastrukturer.
 
 % datastrukturer
 \begin{labeling}{wwww}
@@ -138,12 +138,13 @@ När en närmaste väg har bestämts ska en kö av kommandon skapas. Detta kan g
 genom att iterera varje nod i vägen och lägga till nedan kommandon för varje
 nodtyp. Hur taxin agerar vid varje kommando är specificerat i sektion
 \ref{sec:comm-mission}.
+
 \begin{labeling}{wwwwwwwwww}
 \item[stopplinje] {\commStop} om markerad som destination, annars \commIgnore.
 \item[parkeringsficka] {\commPark} om markerad som destination, annars
-    \commIgnore
-\item[rondell] En \commEnter, därefter en {\commIgnore} för varje avfart den ska
-    passera och slutligen en \commExit.
+\commIgnore 
+\item[rondell] En \commEnter, därefter en {\commIgnore} för varje
+avfart den ska passera och slutligen en \commExit.
 \end{labeling}
 För att kunna avgöra vilken avfart taxin ska ta i en rondell är det viktigt att
 de utgående bågarna i rondellens nod är sorterade i samma ordning som
