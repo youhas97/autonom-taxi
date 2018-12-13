@@ -78,7 +78,7 @@ MOSI
 Text Label 4150 2750 0    50   ~ 0
 SS
 $Comp
-L styr-rescue:JMA162A-jma162a-styr-rescue-styr-rescue _?
+L styr-rescue:JMA162A-jma162a-styr-rescue-styr-rescue-styr-rescue _?
 U 1 1 5BEDF369
 P 6800 2300
 F 0 "_?" V 6600 1950 50  0001 C CNN
