@@ -8,15 +8,16 @@ viktig roll i utförandet av uppdrag.
 
 \subsection{Funktion}
 Fjärrklientens uppgift är att bidra med ett gränssnitt till användaren för att
-kontrollera och se bilens position, samt skapa och skicka instruktioner till bilen
-utifrån användarens uppdrag.
+kontrollera och se bilens position, samt skapa och skicka instruktioner till
+bilen utifrån användarens uppdrag.
 
 \subsection{Gränssnitt}
 Gränssnittet ska tillåta användaren att välja antingen autonom eller manuell
 körning. Vid manuell körning skickas styrkommandon till taxin när användaren
 trycker på piltangenterna. Vid autonom körning ska gränssnittet tillåta
 användaren att mata in en karta samt ange startnod och destinationsnod.
-ränssnittet skall även visa taxins position under aktiva uppdrag. Det uppnås genom att TODO
+ränssnittet skall även visa taxins position under aktiva uppdrag. Det uppnås
+genom att TODO
 
 \subsubsection{Kartpanel}
 I kartaområdet i gränssnittet kan användaren skapa noder och båger som ska
@@ -75,18 +76,23 @@ flödesdiagram för fjärrklienten kan ses i bilaga \ref{flow:remote}.
 Fjärrklienten byggs upp av följande filer
 
 \begin{labeling}{wwww}
-	\item[gui.py] 	Motsvarar det grafiska gränssnittet
+	\item[gui.py] - Motsvarar det grafiska gränssnittet
 	
-	\item[remote.py] Beskriver hur klienten kommunicerar med
+	\item[remote.py] - Beskriver hur klienten kommunicerar med
 		kommunkationsmodul via en socket.
-	
-	\item[worker.py] En arbetare som sköter synkronisering av
+
+	\item[worker.py] - En arbetare som sköter synkronisering av
 		fjärrklientens två trådar
 	
-	\item[tasks.py]	Här definieras kommandon som fjärrklienten kan skicka
-		till servern.  Den definerar en stack av köer och en kö av
+	\item[tasks.py] - Här definieras kommandon som fjärrklienten kan skicka
+		till servern. Den definerar en stack av köer och en kö av
 		färdigställda kommandon.  Detta används främst av workern och
 		det grafiska gränssnittet.
+    
+    \item[course.py] Hanterar översättningen av noder till uppdrag. Utifrån en
+    lista av noder skapas en lista av strängar som beskrivet i sektion
+    \ref{mission}
+
 \end{labeling}
 Relationen mellan dessa mjukvarumoduler beskrivs i figur \ref{boxclient}
 
@@ -106,9 +112,8 @@ hinner uppdatera gränssnittet tillräckligt ofta om det endast använder en tr�
 Synkroniseringen av dessa två trådar sköts av en worker som består av
 en stack av tasks och en kö av färdiga 
 
-
-
 \subsubsection{Karta och uppdrag}
+\label{mission}
 Kartan representeras med en riktad graf där varje nod motsvarar en stopplinje
 av tejp i vägfältet. Rondeller representeras av endast en nod istället för en
 nod per stopplinje. En båge representerar en enkelriktad körfil från en
@@ -127,9 +132,10 @@ representeras i sin tur av nedan datastrukturer.
         representeras av en tuple där första värdet är ett avstånd och det
         andra värdet är en pekare till en nod.
 \end{labeling}
-Ovanstående datastrukurer är valda för att göra det smidigt att räkna ut den närmaste
-vägen med Dijkstras alogritm. Med algoritmen utgår man från en nod och jämför
-alla dess grannar. Med ovanstående struktur kan man utgå från startnoden och därefter
+Ovanstående datastrukurer är valda för att göra det smidigt att räkna ut den
+närmaste vägen med Dijkstras alogritm. Med algoritmen utgår man från en nod och
+jämför alla dess grannar. Med ovanstående struktur kan man utgå från startnoden
+och därefter
 rekursivt gå igenom nodens alla grannar och grannar av grannar. Alternativt,
 med en \textit{adjacency list} kräver detta en sökning efter alla bågar som
 noden utgår ifrån. Med en \textit{adjacency matrix} måste man kolla igenom
