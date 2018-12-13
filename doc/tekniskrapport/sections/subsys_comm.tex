@@ -63,9 +63,10 @@ Programmet på kommandomodulen består av följande filer
 
 \paragraph{Huvudtråden} startar servern och busshanteraren. Därefter startar
 den huvudloopen som antingen tar styrvärden utifrån användarens kommandon via
-servern eller från uppdragshanteraren med hjälp av bildbehandling. Därefter schemaläggs
-skrivning av de nya styrvärdena till styrmodulen. Dessutom schemaläggs hämtning
-av sensorvärden från sensorerna.
+servern eller från uppdragshanteraren med hjälp av bildbehandling av den
+senaste bilden från kameran. Därefter schemaläggs skrivning av de nya
+styrvärdena till styrmodulen. Dessutom schemaläggs hämtning av sensorvärden
+från sensorerna.
 
 \paragraph{Servern} erhåller en sockel för nya anslutningar och en för att
 skicka och ta emot meddelanden för en aktiv anslutning. Servern kan därmed
@@ -93,30 +94,49 @@ kommandot sist i kön om ett nyare förfrågan av samma typ inte redan finns i
 kön. Annars kastas den äldre förfrågan bort.
 
 \subsection{Bildbehandling}
-% TODO
-
-\paragraph{Upptäkt av linjer}
-
-\paragraph{Tolkning av linjer}
-
-\subsection{Uppdrag}
-
 \begin{wrapfigure}{r}{0.3\linewidth}
     \begin{center}
         \includegraphics[width=\linewidth]{tekniskrapport/figures/opencv.jpg}
     \end{center}
     \caption{Klassificering och tolkning av linjer från kamera.}
 \end{wrapfigure}
-
-\subsubsection{Uppdrag} \label{sec:comm-mission}
 % TODO
-För att utföra uppdraget kommer en kö av kommandon tas emot från fjärrklienten.
+
+\paragraph{Upptäkt av linjer}
+
+\paragraph{Tolkning av linjer}
+Det första som görs med alla linjer som hittas på bilden är att klassificera de
+som vänsterlinje, högerlinje, stopplinje eller annan linje. Dessa färgas gröna,
+blå, röda och gråa respektive. Därefter beräknas x-positionen av filens
+högerkant vid ett $y=l_y$ genom att räkna ut medianvärdet av x-positionerna där
+alla högerlinjer korsar $y=l_y$. På samma sätt räknas vänsterkantens position i
+x-led ut. Därifrån kan filens bredd $w$ och mittpunkten $l_x$ räknas ut vid
+$y=l_y$. Felvärdet beräknas därefter genom att jämföra $l_x$ med bildens
+mittpunkten.
+
+Vänster och högerlinjerna används dessutom för att uppskatta filens riktning.
+Detta görs genom att addera alla sidolinjer som vektorer och därmed få en
+vinkelsumma $\vec{v}$ (gul färg) som har en genomsnittlig riktning. En linje
+$D$ som korsar $\vec{l}=(l_x, l_y)$ och har riktningsvektorn $\vec{v}$ används
+för att klassificera nästa bilds linjer. Linjer som korsar $D$ och har en stor
+vinkel till $D$ klassificeras som stopplinjer. Linjer vars båda punkter
+befinner sig till höger om $D$ och inte har en särskilt stor vinkel till $D$
+klassificeras som en högerlinje. På samma sätt klassificeras vänsterlinjer.
+
+Om antingen vänster eller höger kant inte skulle upptäckas används den
+uppskattade bredden för att räkna ut var mittpunkten av filen är.
+
+%TODO stopplinjer
+
+\subsection{Uppdrag} \label{sec:comm-mission}
+
+För att utföra uppdraget tas en kö av kommandon emot från fjärrklienten.
 När uppdraget börjar kör taxin framåt och följer filen med hjälp av
 bildbehandling och reglering. Inför varje stopplinje tas ett kommando från kön
 och utförs. Om ett hinder upptäcks under uppdraget kommer bilen att stanna
 tills hindret har försvunnit eller eventuellt passera hindret. När ett visst
 antal stopplinjer har passerats och kön är tom är uppdraget avklarat. Nedan är
-en lista av alla möjliga kommandon hur de utförs.
+en lista av alla möjliga kommandon och hur de utförs.
 \begin{labeling}{wwww}
     \item[\commIgnore] Kör förbi stopplinjen utan att stanna.
     \item[\commStop] Stanna framför stopplinjen, fortsätt efter några sekunder
