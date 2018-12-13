@@ -2,15 +2,14 @@
 \section{Fjärrstyrning}
 För att styra bilen måste man först initiera en trådlös länk mellan bilens
 kommunikationsmodul och datorn man använder. Detta görs genom att starta en
-server via kommandot \mono{make comm.remote}. När servern är på kan man ansluta till
-bilen via det grafiska användargränssnittet.
+server via kommandot \mono{make comm.remote}. När servern är på kan man ansluta
+till bilen via det grafiska användargränssnittet.
     
-\subsection{Grafiskt Användargränssnitt}
 Det finns ett grafiskt användargränssnitt som man kan använda för att koppla
 upp sig till bilen. För att starta gränssnittet kör man filen main.py genom att
 skriva \mono{python main.py}.
 
-\subsubsection{Anslutning}
+\subsection{Anslutning}
 För att ansluta till den startade servern navigerar man till
 System-Server-Connect. 
 
@@ -38,7 +37,7 @@ att bekräfta sitt val av IP måste enter-knappen på tangentbordet tryckas ner.
 Ett meddelande skrivs ut i terminalen efter att man trycker på enter, med ett
 felmeddelande ifall klienten inte lyckas anslutas till bilen
 
-\subsubsection{Körning}
+\subsection{Körning}
 Efter att ha anslutit till bilen kan man välja ifall man vill styra bilen
 manuellt eller ifall man vill att bilen skall köra autonomn. För att välja
 detta navigerar man till Driving-Manual respektive Driving-Auto.
@@ -56,7 +55,7 @@ ruta kommer upp där man kan ange värden för parametrarna man vill ändra. Fö
 att bekräfta sitt val av KP/KD måste man, precis som tidigare, trycka ner
 enter-knappen på tangentbordet.
 
-\subsubsection{Banan}
+\subsection{Banan}
 Banan representeras av noder och enkelriktade kanter, där varje nod
 representerar en stopp-, rondell- eller parkeringslinje på banan. Varje kant
 representerar en vägfil på banan. För att skapa noder högerklickar man i den
@@ -112,3 +111,47 @@ vidare. En rondell med 4 utfarter kan se ut som visat i Figur
     \label{fig:roundabout}
 \end{figure}
 
+\noindent
+De vita noderna används för att fylla ut kartan så att den ger en närmare
+representation av verkligheten.  Ett exempel på hur en bana ser ut visas i
+Figue \ref{fig:course}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{\figures/course.png}
+    \caption{Exempel på en fullständig karta.}
+    \label{fig:course}
+\end{figure}
+
+\subsection{Uppdrag}
+För att starta ett uppdrag navigerar man till Mission-Set mission och sedan
+trycker man på noden man vill starta uppdraget i, följt av noden man vill
+avsluta uppdraget i. Uppdraget borde endast sättas medan bilen är i manuellt
+körläge. För att sedan utföra uppdraget autonomn sätter man körläget till Auto.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{\figures/set_mission.png}
+    \caption{Hur man navigerar för att bestämma ett uppdrag.}
+    \label{fig:set_mission}
+\end{figure}
+
+\noindent
+Om man vill skapa ett längre uppdrag, så skapar man deluppdragen separat, och
+sedan sätter man bilen i körläget Auto. Ett uppdrag som exempelvis A-B-C-D,
+matas in som 3 separata uppdrag; A-B, B-C och C-D.
+
+För att rensa ett satt uppdrag navigerar man till Mission-Clear mission.
+
+\subsection{Position i banan}
+För att utmärka vilken position bilen är i på banan så lyses bågen bilen är på
+upp på kartan i rosa färg. Varje gång bilen passerar en linje på banan så
+ändras positionen genom att nästa segment lyses upp. För ett exempel på hur det
+ser ut när positionen visas, se Figur \ref{fig:pos}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{\figures/pos.png}
+    \caption{Hur man navigerar för att bestämma ett uppdrag.}
+    \label{fig:pos}
+\end{figure}

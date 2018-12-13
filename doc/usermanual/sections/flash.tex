@@ -10,9 +10,11 @@
     \label{fig:kretsabove}
 \end{figure}
 
-För flashning av moduler behöver man använda en jtag där man kopplar in usb:n i
-en dator med avrdude installerat. För att flasha sensormodulen kopplar man in
-jtagen i den blåa jtagporten till vänster om sensormodulen enligt bilden ovan,
-sedan skriver man \mono{make sens.prog}. För att flasha styrmodulen kopplar man in
-jtagen i port 2 längst ner till höger på virkortet under LCD-displayen. För att
-programmera styrmodulen skriver man \mono{make ctrl.prog}.
+För flashning av respektive modul behöver man använda en jtag där man kopplar
+in usb:n i en linux dator med Avrdude installerat. För att flasha sensormodulen
+kopplar man in jtagen i den blåa jtagporten till vänster om sensormodulen
+enligt bilden ovan, sedan skriver man \mono{make sens.prog}. För att flasha
+styrmodulen kopplar man in jtagen i port 2 längst ner till höger på virkortet
+under LCD-displayen. För att programmera styrmodulen skriver man \mono{make
+ctrl.prog}. Vid eventuella problem, kontrollera att du befinner dig i mappen
+\mono{tsea29-taxi/src}.
