@@ -46,10 +46,10 @@ Kameran har även stöd för två infrarödastrålkastare, men detta används in
 mörkerseende inte är något som prioriterats. Spänningskällor finns i både 3V3
 och 5V.
 
-\paragraph{Programstruktur}
+\subsection{Programstruktur}
 Programmet på kommandomodulen består av följande filer
 
-\begin{labeling}{wwww}
+\begin{labeling}{wwwwwwwwww}
     \item[server.c] Server som anropar kommandofunktioner vid förfrågan från
         klient från separat tråd.
 	\item[spi.c] Lågnivåfunktioner för SPI.
@@ -67,14 +67,34 @@ servern eller från uppdragshanteraren med hjälp av bildbehandling. Därefter s
 skrivning av de nya styrvärdena till styrmodulen. Dessutom schemaläggs hämtning
 av sensorvärden från sensorerna.
 
-\paragraph{Server}
-% TODO
+\paragraph{Servern} erhåller en sockel för nya anslutningar och en för att
+skicka och ta emot meddelanden för en aktiv anslutning. Servern kan därmed
+endast erhålla en anslutning i taget. Anslutningssockeln är bunden till en port
+mellan 9000 och 9100. När en anslutning förfrågas eller om ett meddelande tas
+emot väcks servern och accepterar eller tar emot meddelande. Om en
+anslutningsförfrågan tas emot skapas en ny sockel för meddelanden och
+överskrider den tidigare sockeln om den finns. Om ett meddelande med ett
+giltigt kommando tas emot anropas kommandots funktion som utför sin handling
+och genererar ett svarsmeddelande som servern sedan vidarebefogar till
+klienten. Därefter sover servern igen tills en ny förfrågan tas emot.
 
-\paragraph{Busshanterare} 
-% TODO
+\paragraph{Busshanteraren} fungerar på liknande sätt som servern. Den sover
+tills en förfrågan sker. Förfrågningarna kommer däremot från andra trådar i
+programmet istället för klienten. Om flera förfrågningar sker innan servern har
+utfört den nuvarande kommer de nya meddelandena köas i sockeln av
+operativsystemet. Det finns dock ingen sockel att köa förfrågningar i för
+busshanteraren. Därför har en länkad lista implementerats för att kunna erhålla
+flera förfrågningar. När en förfrågan sker läggs den sist i kön och
+busshanteraren väcks om den sover. Om kön redan innehåller en förfrågan med
+samma kommandotyp ersätts den med den nya förfrågan. Busshanteraren utför
+därefter förfrågan via SPI och om kommandot gick igenom anropas
+signalhanteraren för det kommandot. Om kommandot inte gick igenom läggs
+kommandot sist i kön om ett nyare förfrågan av samma typ inte redan finns i
+kön. Annars kastas den äldre förfrågan bort.
 
 \subsection{Bildbehandling}
 % TODO
+
 \paragraph{Upptäkt av linjer}
 
 \paragraph{Tolkning av linjer}
