@@ -90,14 +90,14 @@ Fjärrklienten byggs upp av följande filer
 	\item[gui.py] - Motsvarar det grafiska gränssnittet
 	
 	\item[remote.py] - Beskriver hur klienten kommunicerar med
-		kommunkationsmodul via en socket.
+		kommunkationsmodul via en sockel.
 
 	\item[worker.py] - En arbetare som sköter synkronisering av
 		fjärrklientens två trådar
 	
 	\item[tasks.py] - Här definieras kommandon som fjärrklienten kan skicka
-		till servern. Den definerar en stack av köer och en kö av
-		färdigställda kommandon.  Detta används främst av workern och
+		till servern. Den definerar en stack av tasks och en kö av
+		färdigställda tasks.  Detta används främst av workern och
 		det grafiska gränssnittet.
     
     \item[course.py] - Hanterar översättningen av noder till uppdrag. Utifrån
@@ -141,15 +141,15 @@ att klienten skickar den korresponderande kommandot till sockeln. Om
 tillbaka till workern som därefter markerar tasken som färdig och köar tasken
 och svaret som en tuple i kön med färdiga tasks. Som i figur \ref{boxclient} så
 kan det grafiska gränssnittet hämta svaret från tasken genom att avköa den
-färdiga tasken och läsa av svaret. Det är på detta sättet det grafiska
-gränssnittet kan hämta värden som styrparametrar och distans körd. Denna
-procedur förklaras bättre i figur \ref{sequenceremote}.
+färdiga tasken och läsa svaret. Det är på detta sättet det grafiska gränssnittet
+kan hämta värden som styrparametrar och distans körd. Denna procedur förklaras
+bättre i figur \ref{sequenceremote}.
 
 
 
 \begin{figure}[h]
 \centering
-	\includegraphics[width=0.6\linewidth]{\figures/SequenceDiagramClient.pdf}
+\includegraphics[width=0.6\linewidth]{\figures/SequenceDiagramClient.pdf}
 	\caption{Ett sekvensdiagram som beskriver vad som händer när användare trycker
     piltangent upp under fjärrstyrning}
 	\label{sequenceremote}
@@ -157,15 +157,14 @@ procedur förklaras bättre i figur \ref{sequenceremote}.
 
 I figur \ref{sequenceremote} fjärrstyr användaren bilen genom att trycka
 piltangent upp. Det är antaget att fjärrklienten och bilen har en anslutning
-till sockeln och att överföring mellan klient och bil inte misslyckades. Det
-grafiska gränssnittet köar tasken TASK\_MOVE i stacken när användaren trycker
-piltangent uppåt. Workern hämtar sedan tasken från stacken. Workern bearbetar
-tasken och formaterar om dom till en sträng som motsvarar ett kommando. Workern
-säger sedan till klienten att skicka kommandot till kommunikationsmodulen och
-samtidigt väntar workern på att klienten tills klienten har fått ett svar från
-sockeln. Klienten vidarebefodrar svaret till workern och workern markerar tasken
-som färdig genom att köa den till kön med färdiga tasks. Enkelriktningen av uppgiftern
-gör denna procedur trådsäker.
+till sockeln och att överföring mellan klienten och kommunikationsmodulen inte
+misslyckades. Det grafiska gränssnittet köar tasken TASK\_MOVE i stacken när
+användaren trycker piltangent uppåt. Workern hämtar sedan tasken från stacken.
+Workern bearbetar tasken och formaterar om det till en sträng som motsvarar ett
+kommando. Workern säger sedan till klienten att skicka kommandot till
+kommunikationsmodulen och samtidigt väntar workern på klienten tills klienten
+har fått ett svar från sockeln. Klienten vidarebefodrar svaret till workern och
+workern markerar tasken som färdig genom att köa den till kön med färdiga tasks.
 
 
 \subsubsection{Karta och uppdrag}
