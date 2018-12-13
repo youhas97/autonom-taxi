@@ -102,9 +102,9 @@ kön. Annars kastas den äldre förfrågan bort.
 \end{wrapfigure}
 % TODO
 
-\paragraph{Upptäkt av linjer}
+\subsubsection{Upptäckt av linjer}
 
-\paragraph{Tolkning av linjer}
+\subsubsection{Tolkning av linjer}
 Det första som görs med alla linjer som hittas på bilden är att klassificera de
 som vänsterlinje, högerlinje, stopplinje eller annan linje. Dessa färgas gröna,
 blå, röda och gråa respektive. Därefter beräknas x-positionen av filens
@@ -126,7 +126,14 @@ klassificeras som en högerlinje. På samma sätt klassificeras vänsterlinjer.
 Om antingen vänster eller höger kant inte skulle upptäckas används den
 uppskattade bredden för att räkna ut var mittpunkten av filen är.
 
-%TODO stopplinjer
+Linjer som klassificeras som stopplinjer används för att bestämma om en
+stopplinje har korsats. Stopplinjens position i y-led uppskattas utifrån den
+tidigare bilden. Endast linjer som är inom ett visst avstånd till den
+uppskattade positition antas vara del av stopplinjen. Till en början antas den
+vara högst upp i ROI:n. När stopplinjen har upptäckts hela vägen från toppen av
+ROI:n till botten av bilden utan att gå för långt ifrån uppskattningen
+registreras en passering av stopplinjen. Om linjen inte skulle upptäckas under
+en bild flyttas uppskattningen tillbaka till toppen av ROI:n.
 
 \subsection{Uppdrag} \label{sec:comm-mission}
 
