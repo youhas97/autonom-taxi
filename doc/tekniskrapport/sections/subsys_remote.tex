@@ -15,16 +15,21 @@ bilen utifrån användarens uppdrag.
 autonom eller manuell körning. Vid manuell körning skickas styrkommandon till
 taxin när användaren trycker på piltangenterna. Vid autonom körning ska
 gränssnittet tillåta användaren att mata in en karta samt ange startnod och
-destinationsnod. Gränssnittet skall även visa taxins position under aktiva
-uppdrag. Det uppnås genom att TODO
+destinationsnod. 
 
 \subsubsection{Kartpanel}
 I kartområdet i gränssnittet kan användaren skapa noder och bågar som ska
-representera kartan som bilen ska köra. Det sker genom att flytta musen dit
-man vill sätta en nod och sedan välja nodtyp. Gränssnittet räknar
-ut musens position på kartan och skapar sedan ett nodobjekt på den postitionen.
-Ett bågobjekt skapas genom att klicka startnod och slutnod för bågen.
-Bågen får då dessa start- och slutnoder associerat till sig.
+representera kartan som bilen ska köra. Det sker genom att flytta musen dit man
+vill sätta en nod och sedan välja nodtyp. Gränssnittet räknar ut musens
+position på kartan och skapar sedan ett nodobjekt på den postitionen.  Ett
+bågobjekt skapas genom att klicka startnod och slutnod för bågen.  Bågen får då
+dessa start- och slutnoder associerat till sig.  Gränssnittet skall även visa
+taxins position under aktiva uppdrag. Det uppnås genom att kolla på vilket
+nästa uppdrag är och vilka noder som finns i den kortaste vägen till punkten,
+därefter ignorerar den alla tomma noder och markerar de befintliga kanterna
+mellan noderna som uppdraget tar hänsyn till  med en rosa färg. När kommandot
+är slutfört så minskar listan av kommandon och nästa segment på kartan kan
+markeras.
 
 \subsubsection{Kommandorad}
 Längst ned i gränssnittet finns en kommandorad där det går skicka kommandon
@@ -41,9 +46,10 @@ framåt avstånd till objekt åt höger, hastighet angivet i m/s och felvärde
 respektive. 
 
 \subsubsection{Manuell styrning}
-När manuellt körläge är aktiverat kopplas piltangenterna till kommandon för att köra
-fram, bak, höger och vänster. När en knapp sedan trycks ned skickas motsvarande
-kommandot till kommunikationsmodulen som sedan får bilen att röra på sig.
+När manuellt körläge är aktiverat kopplas piltangenterna till kommandon för att
+köra fram, bak, höger och vänster. När en knapp sedan trycks ned skickas
+motsvarande kommandot till kommunikationsmodulen som sedan får bilen att röra
+på sig.
 
 \subsubsection{Autonom styrning}
 Vid autonom körning följer bilen den listan av kommandon som fjärrklienten
