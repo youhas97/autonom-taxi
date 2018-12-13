@@ -93,7 +93,8 @@ kommunikationsmodulen skickar styrkommandon till styrmodulen.
 \subsubsection{Kommandostruktur}
 Kommunikationsmodulen agerar som \emph{master} och har därmed full kontroll
 över bussen. Kommunikationsmodulen skickar därför kommandon till slavarna som
-antingen är läs eller skrivkommandon. 
+antingen är läs eller skrivkommandon. En lista av alla implementerade kommandon
+finns i bilaga \ref{bcmds}.
 
 Ett skrivkommando från kommunikationsmodulen är strukturerad som i figur
 \ref{bf:spi-write}. Under skrivkommandon skickar kommunikationsmodulen data
@@ -167,11 +168,5 @@ lägre bitarna för varje ord i datan samt de fyra bitarna för kommandot.
 ACK:en är implementerad för att låta kommunikationsmodulen veta att slaven
 lyssnar och att datan har kommit fram intakt. Sensormodulens ACK är
 $\mono{0x53}$ och styrmodulens är $\mono{0xc7}$.
-
-\subsubsection{Kommandon}
-En lista av alla implementerade kommandon finns i bilaga \ref{bcmds}.
-Sensormodulens kommando \mono{GET} används för att hämta sensordata från
-sensormodulen. Under autonom körning används därefter \mono{VVL} för att sätta
-bilens hastighet och \mono{RER} för att reglera styrningen.
 
 \end{document}

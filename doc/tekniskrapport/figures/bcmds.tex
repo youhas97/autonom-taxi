@@ -2,11 +2,11 @@
 
 \newenvironment{cmdlist}
 {
-    \renewcommand{\arraystretch}{1.5}
+    \renewcommand{\arraystretch}{1.8}
     \begin{table}[H]
         \centering
         \setlength{\tabcolsep}{8pt}
-        \begin{tabular}{@{}m{1cm}m{1cm}m{1cm}m{6cm}m{8cm}}
+        \begin{tabular}{@{}m{0.8cm}m{1.3cm}m{0.9cm}m{8cm}m{3cm}}
             \bfseries Kod &
             \bfseries Namn &
             \bfseries Typ &
@@ -29,82 +29,36 @@
 \subsection{Styrmodul}
 
 \begin{cmdlist}
-\cmd{01}{RST}{läs}{Återställ modul, sätt motorerna på neutral och återställ
-    regleringskonstanter.}{
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-}
-\cmd{08}{RKD}{skriv}{Sätt $k_d$ för reglering av svängning. Värdet är ett
-    32-bitars flyttal.}{
-    \bitbox{32}{$k_d$}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-}
-\cmd{09}{RKP}{skriv}{Sätt $k_p$ för svängreglering.}{
-    \bitbox{32}{$k_d$}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-}
-\cmd{0a}{RER}{skriv}{Sätt nuvarande felvärde för svängning och reglera
-    svängningen utefter värdet.}{
-    \bitbox{32}{$k_d$}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-}
-\cmd{0b}{RVL}{skriv}{Justera svängningen, -1 motsvarar max svängning till
-    vänster och 1 max svängning till höger.}{
-    \bitbox{32}{$k_d$}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-}
-\cmd{0c}{VKD}{skriv}{Sätt $k_d$ för hastighetsreglering.}{
-    \bitbox{32}{$k_d$}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-}
-\cmd{0d}{VKP}{skriv}{Sätt $k_p$ för hastighetsreglering.}{
-    \bitbox{32}{$k_d$}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-}
-\cmd{0e}{VER}{skriv}{Sätt felvärde för hastighet och justera motorn utefter
-    värdet.}{
-    \bitbox{32}{$k_d$}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-}
-    \cmd{0f}{VVL}{skriv}{Sätt motorns hastighet i m/s}{
-    \bitbox{32}{$k_d$}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-}
+\cmd{01}{RESET}{läs}{Återställ modul, sätt motorerna på neutral och återställ
+    regleringskonstanter.}{}
+\cmd{08}{ROT\_KD}{skriv}{Sätt $k_d$ för reglering av svängning. Värdet är ett
+    32-bitars flyttal.}{\bitbox{32}{$k_d$}}
+\cmd{09}{ROT\_KP}{skriv}{Sätt $k_p$ för svängreglering.}{\bitbox{32}{$k_p$}}
+\cmd{0a}{ROT\_ERR}{skriv}{Sätt nuvarande felvärde $e_r$ för svängning och
+    reglera svängningen utefter värdet.}{\bitbox{32}{$e_r$}}
+\cmd{0b}{ROT\_VAL}{skriv}{Justera svängningen, $r=-1$ motsvarar max svängning
+    till vänster och $r=1$ max svängning till höger.}{\bitbox{32}{$r$}}
+\cmd{0c}{VEL\_KD}{skriv}{Sätt $k_d$ för
+    hastighetsreglering.}{\bitbox{32}{$k_d$}}
+\cmd{0d}{VEL\_KP}{skriv}{Sätt $k_p$ för
+    hastighetsreglering.}{\bitbox{32}{$k_p$}}
+\cmd{0e}{VEL\_ERR}{skriv}{Sätt felvärde för hastighet och justera motorn
+    utefter värdet.}{\bitbox{32}{$e_v$}}
+\cmd{0f}{VEL\_VAL}{skriv}{Sätt motorns hastighet $v$ i m/s}{\bitbox{32}{$v$}}
 \end{cmdlist}
 
+\vspace{5mm}
 \subsection{Sensormodul}
 
 \begin{cmdlist}
-\cmd{01}{RST}{läs}{Återställ modul, nollställ alla sensorvärden.}{
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
-    \emptybox{8}\emptybox{8}\emptybox{8}\emptybox{8}
+\cmd{01}{RESET}{läs}{Återställ modul, nollställ alla sensorvärden.}{
 }
 \cmd{03}{GET}{läs}{Hämta lagrade sensorvärden; avstånd för frontsensor, avstånd
     för högersensor, avlagd distans och hastighet. Värdena är flyttal på 32
     bitar vardera som motsvarar SI-enheter.}{
-    \bitbox{32}{$d_f$}
-    \bitbox{32}{$d_r$}
-    \bitbox{32}{$d$}
+    \bitbox{32}{$d_f$}\\
+    \bitbox{32}{$d_r$}\\
+    \bitbox{32}{$d$}\\
     \bitbox{32}{$v$}
 }
 \end{cmdlist}

@@ -3,93 +3,75 @@
 \begin{document}
 
 \section{Kommunikationsmodul}
-Kommunikationsmodulen ska agera som taxins hjärna. Den styr bilen under autonom
-körning och kommunicerar med fjärrklienten. Sensorvärden från sensormodulen
-tolkas av kommunikationsmodulen som därefter skickar felvärden till
-styrmodulen.
+Kommunikationsmodulen styr bilen och kommunicerar med fjärrklienten.
+Sensorvärden från sensormodulen tolkas av kommunikationsmodulen som därefter
+skickar felvärden till styrmodulen.
 
-\subsection{Funktion}
-Kommunikationsmodulen har tre huvudsakliga uppgifter; bildbehandling,
-kommunicera med fjärrklienten och kontrollera taxin autonomt.
-
-\paragraph{Bildbehandling} skall utföras av kommunikationsmodulen för att
+Bildbehandling utförs av kommunikationsmodulen för att
 avgöra bilens position i vägfilen och upptäcka stopplinjer. Med hjälp av
 kamerans bilder på vägen skapas ett felvärde som kan användas för att justera
 taxins riktning.
 
-\paragraph{Kommunikation med fjärrklienten} sköts av kommunikationsmodulen för
-att skicka sensorvärden och annan relevant information. Modulen skall även ta
-emot ett uppdrag som har skapats utifrån en karta och destination som
-användaren har matat in via fjärrklienten.
+Kommunikation med fjärrklienten sköts av kommunikationsmodulen för
+att skicka sensorvärden och annan relevant information. Modulen tar
+även emot uppdrag.
 
-\paragraph{Autonomitet} utförs av kommunikationsmodulen för att utföra
-uppdraget. Kommunikationsmodulen hämtar sensordata från sensormodulen och
-bildbehandlar kamerabilderna för att utföra beslut i realtid. Besluten kommer
-därefter att översättas till felvärden som skickas till styrmodulen.
+Autonomitet utförs av kommunikationsmodulen för att utföra uppdraget.
+Kommunikationsmodulen hämtar sensordata från sensormodulen och bildbehandlar
+kamerabilderna för att utföra beslut i realtid. Besluten skickas i form av fel-
+och styrvärden till styrmodulen.
 
 \subsection{Hårdvaruimplementation} 
-Kommunikationsmodulen kommer att implementeras med hjälp av en Raspberry Pi 3,
-där en WLAN-komponent redan finns integrerat. Kameran kommer att kopplas direkt
-till kameraporten som finns på Raspberry Pi-kortet. GPIO-pinnarna kommer att
-användas för att ansluta till övriga moduler.  Eftersom SPI-protokollet ska
-användas, kommer GPIO-portar för de signalerna som protokollet kräver användas.
-Det kommer att finnas nivåskiftare som skiftar spänningen på signalerna som går
-mellan kommunikationsmodulen och mikrokontrollerna. Ett kretsschema för modulen
-finns i bilaga \ref{cdiag:comm}.
-
-\subsubsection{Budget}
-    Nedan komponenter i kommunikationsmodulen ingår inte i baschassit och
-    behöver beställas.
-\begin{itemize}
-    \item \textbf{Raspberry Pi Camera V2 Video Module} Kamera till Raspberry
-    Pi.
-    \item \textbf{2 $\times$ \modShifter} Nivåskiftare för 4 signaler
-    vardera.
-\end{itemize}
-
-\subsubsection{Kontroll och bedömning}
-För att kunna köra systemet med SPI-protokollet kommer ett antal pinnar att
-behövas. De signaler som kräver pinnar är:
-\begin{itemize}
-    \item \textbf{MOSI} Datasignal från master till slav.
-    \item \textbf{MISO} Datasignal från slav till master.
-    \item \textbf{SCLK} Synkron klocka från mastern till mikrokontrollerna.
-    \item \textbf{SS1} Slave select för sensormodulen.
-    \item \textbf{SS2} Slave select för styrmodulen.
-    slav.
-\end{itemize}
-Raspberry Pi:n har stöd för 2 bussar med SPI-protokollet varav 10 pinnar
-totalt. Eftersom endast 5 pinnar kommer användas räcker antalet pinnar. Två
-nivåskiftare kommer att användas vilket medför stöd för 8-signaler, men endast
-5-signaler kommer att användas.
-
-Det mest krävande för kommunikationsmodulen är bildbehandlingen. Raspberry Pi
-3 model B har en fyrakärnig BCM2837 klockad på 1.2GHz och 1GB internt minne.
-Detta bör vara tillräckligt för att uppnå 20 bilder per sekund med en effektiv
-implementation i C eller C++.
+% TODO
 
 \subsection{Mjukvaruimplementation}
-Raspberry:n kommer köra operativsystemet Raspbian och program som exempelvis
-wpa\_supplicant för att sätta upp anslutningen för WLAN. Ett program för
-kommunikationsmodulen kommer skrivas i C eller eventuellt C++ och ska bestå av
-två trådar; en huvudtråd som hanterar uppdrag, bildbehandlar och svarar på
-kommandon från fjärrklienten samt en tråd som sköter kommunikation med andra
-moduler.
+Kommunikationsmodulens program är skriven i både C och C++. Bildbehandlingen är
+skriven i C++ medan resten av programmet är implementerad med C. De olika
+delarna kompileras separat och länkas sedan ihop med kompilatorn för C++.
+Programmet består av tre trådar; en huvudtråd som hanterar uppdrag och
+bildbehandlar, samt en tråd som sköter kommunikation via SPI och en som svarar
+på kommandon från fjärrklienten via TCP/IP. SPI:n och servern sköts i separata
+trådar eftersom de väntar mycket och blockerar den nuvarande tråden.
 
-\paragraph{Huvudtråden} kommer att starta en TCP/IP-server för att lyssna på
-kommandon från fjärrklienten. Tråden kommer köra en while loop där den först
-accepterar inkommande anslutningar och agerar utefter protokollet som är
-specificerat i sektion \ref{sec:wlproto}. Därefter kommer den hantera uppdraget
-och eventuellt bildbehandla. Därefter uppdatera felvärde som ska skickas till
-styrmodulen.
+\paragraph{Filstruktur}
+Programmet på kommandomodulen består av följande filer
 
-\paragraph{SPI-bussen} kommer hanteras av en dedikerad tråd. Den skall
-kontinuerligt hämta värden från sensormodulen oberoende av andra trådar. När
-bildbehandlingen är färdig med nästa bild skall felvärdet skickas till
-styrmodulen. Detta sker i en separat tråd för att inte fördröja
-bildbehandlingen i väntan på bussen.
+\begin{labeling}{wwww}
+    \item[server.c] Server som anropar kommandofunktioner vid förfrågan från
+        klient från separat tråd.
+	\item[spi.c] Lågnivåfunktioner för SPI.
+    \item[bus.c] Hantering av SPI-buss, utför kommandon på bussen och anropar
+        signalhanterare från separat tråd.
+    \item[ip/img\_proc.cpp] Bildbehandling med OpenCV.
+    \item[objective.c] Utförarande av uppdrag.
+    \item[main.c] Huvudloop och implementation av signalhanterare för buss och
+        server.
+\end{labeling}
+
+\paragraph{Huvudtråden} startar servern och busshanteraren. Därefter startar
+den huvudloopen som antingen tar styrvärden utifrån användarens kommandon via
+servern eller från uppdragshanteraren med hjälp av bildbehandling. Därefter schemaläggs
+skrivning av de nya styrvärdena till styrmodulen. Dessutom schemaläggs hämtning
+av sensorvärden från sensorerna.
+
+\paragraph{Server}
+% TODO
+
+\paragraph{Busshanterare} 
+% TODO
+
+\paragraph{Uppdrag och bildbehandling}
+% TODO
+
+\begin{wrapfigure}{r}{0.3\linewidth}
+    \begin{center}
+        \includegraphics[width=\linewidth]{tekniskrapport/figures/opencv.jpg}
+    \end{center}
+    \caption{Klassificering och tolkning av linjer från kamera.}
+\end{wrapfigure}
 
 \subsubsection{Uppdrag} \label{sec:comm-mission}
+% TODO
 För att utföra uppdraget kommer en kö av kommandon tas emot från fjärrklienten.
 När uppdraget börjar kör taxin framåt och följer filen med hjälp av
 bildbehandling och reglering. Inför varje stopplinje tas ett kommando från kön
@@ -99,12 +81,13 @@ antal stopplinjer har passerats och kön är tom är uppdraget avklarat. Nedan �
 en lista av alla möjliga kommandon hur de utförs.
 \begin{labeling}{wwww}
     \item[\commIgnore] Kör förbi stopplinjen utan att stanna.
-    \item[\commEnter] Sväng höger in i rondellen och hitta rondellens körfil.
-    \item[\commExit] Sväng höger ut ur rondellen och hitta körfilen.
     \item[\commStop] Stanna framför stopplinjen, fortsätt efter några sekunder
     om kön inte är tom.
     \item[\commPark] Parkera i fickan till höger efter stopplinjen, lämna
     parkeringen och fortsätt efter några sekunder om kön inte är tom.
+    \item[\commEnter] Sväng höger in i rondellen och hitta rondellens körfil.
+    \item[\commContinue] Kör förbi stopplinje och håll till vänster.
+    \item[\commExit] Sväng höger ut ur rondellen och hitta körfilen.
 \end{labeling}
 
 \end{document}

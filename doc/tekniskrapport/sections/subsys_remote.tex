@@ -63,7 +63,7 @@ kartan. Filen kan sedan läsas in och återskapas i gränssnittet.
 \subsubsection{Skapa kommandon för uppdrag}
 Fjärrklienten ska utifrån den inmatade kartan och destinationen; räkna ut den
 kortaste vägen med hjälp av Djiktras algoritmen och utifrån vägen skapa en
-lista av kommandon som sedan skicas till bilen. Bilen kan då genom att utifrån
+lista av kommandon som sedan skickas till bilen. Bilen kan då genom att utifrån
 kommandona nå destinationen.
 
 \subsection{Mjukvaruimplementation}
@@ -71,11 +71,42 @@ Fjärrklienten kommer implementeras i Python och bestå av två olika trådar; e
 för det grafiska gränssnittet samt en huvudtråd för allt annat. Ett
 flödesdiagram för fjärrklienten kan ses i bilaga \ref{flow:remote}.
 
+\subsubsection{Filstruktur}
+Fjärrklienten byggs upp av följande filer
+
+\begin{labeling}{wwww}
+	\item[gui.py] 	Motsvarar det grafiska gränssnittet
+	
+	\item[remote.py] Beskriver hur klienten kommunicerar med
+		kommunkationsmodul via en socket.
+	
+	\item[worker.py] En arbetare som sköter synkronisering av
+		fjärrklientens två trådar
+	
+	\item[tasks.py]	Här definieras kommandon som fjärrklienten kan skicka
+		till servern.  Den definerar en stack av köer och en kö av
+		färdigställda kommandon.  Detta används främst av workern och
+		det grafiska gränssnittet.
+\end{labeling}
+Relationen mellan dessa mjukvarumoduler beskrivs i figur \ref{boxclient}
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=0.6\linewidth]{\figures/client-box-line-diagram.pdf}
+	\caption{Ett låd-diagram som beskriver relationen mellan GUI,
+	workern och klienten som pratar med servern}
+	\label{boxclient}
+\end{figure} 
+
 \subsubsection{Trådar}
 Programmet skall köras parallellt med två trådar för att förhindra att
 gränssnittet fryser för användaren. Programmet kommer behöva vänta på svar från
 taxin samt utföra längre beräkningar vilket innebär att programmet kanske inte
 hinner uppdatera gränssnittet tillräckligt ofta om det endast använder en tråd.
+Synkroniseringen av dessa två trådar sköts av en worker som består av
+en stack av tasks och en kö av färdiga 
+
+
 
 \subsubsection{Karta och uppdrag}
 Kartan representeras med en riktad graf där varje nod motsvarar en stopplinje

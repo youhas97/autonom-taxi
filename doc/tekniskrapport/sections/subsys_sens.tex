@@ -3,50 +3,33 @@
 \begin{document}
 
 \section{Sensormodul}
-Sensormodulen ska agera som taxins känselspröt. Den kommer att mäta av olika
-värden från de olika sensorerna som finns för att sedan skicka mätdata till
-kommunikationsmodulen.
+Hos sensormodulen hanteras de olika värdena från bilens sensorer och kommunicerar med kommunikationsmodulen vid efterfrågan av värden via SPI.
 
 \subsection{Funktion}
-Sensormodulen ska hämta eventuellt filtrerade värden från sensorerna, omvandla
-till linjära enheter och skicka vidare till kommunikationsmodulen.
-
-\paragraph{Sensorer} Taxin kommer att ha en optisk avståndsmätare som är riktad
-framåt för att upptäcka hinder framför bilen samt en optisk avståndsmätare på
-sidan för att detektera hinder höger om bilen, t.ex. vid omkörning.
+Sensormodulen hämtar filtrerade värden från sensorerna, värden som först hanteras hos mikrokontrollens AD/omvandlaren. Sensormodulen har i uppgift att läsa in värdena, uppdatera dem kontinuerligt, omvandla dem till linjära enheter (meter  eller meter per sek) och skicka de vidare till kommunikationsmodulen.
 
 \paragraph{Filtrering} Eftersom sensorerna kan bli påverkade av eventuella
-störningar kommer det eventuellt att finnas brusfilter som filtrerar bort dessa
-störningar för att skapa så noggranna sensorvärden som möjligt.
+störningar, används ett filter som filtrerar bort störningar. Ett filter används vid varje koppling sensor-mikrokontroller.
 
-\subsection{Hårdvaruimplementation} Sensormodulen består huvudsakligen av en
-mikrokontroller, och fyra sensorer; en avståndsmätare på framsidan, en
-avståndsmätare på höger sida samt två halleffektsensorer placerade på två av
-hjulen. Mikrokontrollern är klockad av en kristalloscillator på 16 MHz.
-Kontrollern är även kopplad till en LCD-display för att kunna visa värden vid
-felsökning. Ett detaljerat kretsschema över modulen finns i bilaga
-\ref{cdiag:sens}.
+\paragraph{Sensorer} Bilen innehåller två avståndsmätaren placerade på bilens fram och bakre högersida. Sensorn på framsidan används för att upptäcka hinder medan den andra sensor används för att detektera hinder vid omkörning. Dessutom innehåller bilen halleffektsensorer vid båda bakhjulen, sensorer som används för att mäta bilens hastighet samt avståndet från startpunkten.
 
-På LCD-panelen kommer R/W-pinnen att vara konstant jordad då ingenting behöver
-läsas från panelen samt för att skrivning ska kunna ske när som helst i samband
-med en signal till Enable-pinnen. Anod och katod som står för bakbelysning av
-LCD kommer inte att användas.
+\subsection{Hårdvaruimplementation} Sensormodulen består av en mikrokontroller, och fyra sensorer; en avståndsmätare på framsidan, en avståndsmätare på bakre högersida samt två halleffektsensorer placerade på båda bakhjulen. Mikrokontrollern är klockad av en kristalloscillator på 16 MHz och även kopplad till en LCD-display på vilken de olika värden från sensorerna visas; avstånd till hinder från både fram och höger sensor samt avståndet som bilen har från startpunkten. Ett detaljerat kretsschema över modulen finns i bilaga
+\ref{cdiag:sens}??.
 
-Avståndsmätarna skickar en spänning direkt till mikrokontrollens AD-omvandlare.
-Spänningens värde motsvarar ett avstånd. Brus i utspänningen filtreras genom
-ett passivt RC-filters.
+Avståndsmätarna skickar kontinuerligt en spänning (den analoga signalen) till mikrokontrollens AD-omvandlare. Den digitala signalen hanteras hos sensormodulen så att den onvandlas till meter för att bli skickad vidare till kommunikationsmodulen som ett avstånd till hinder. Avständmätaren placerad på bilens framsida är av typen GP2Y0A02YK vars analog utsignal är mellan 0V och 3V, medan sensorn placerad på bilens bakre högersida är av typen GP2Y0A41SK vars utsinal är en analog spänning mellan 0V and 3.2V. Hos båda typer av sensor gäller att ju närmare hindret befinner sig desto högre spänningen går. 
+
+Som tidigare nämnts, används det ett brusfilter vid varje sensor-mikrokontroller koppling. Varje filter består av en 18K resistans och en 100nF jordad kondesator; ett passivt RC-filter.
 
 \subsubsection{Budget}
-Nedan är produkter som ej medföljer baschassit och behöver beställas.
+Nedan är externa produkter som har använts vid sensormodulens konstruktion.
 \begin{itemize}
-	\item \textbf{\modMicrocontroller} Modulens microprocessor. 
-    \item \textbf{\modDistf} Avståndsmätare för hinder framför bilen.
-    \item \textbf{\modDists} Avståndsmätare för hinder höger om bilen.
-    \item \textbf{\modLcd} LCD-display för att visa parametrar under körning
-    i felsökningssyfte.
+	\item \textbf{\modMicrocontroller} ATMega1284, AVR. 
+    \item \textbf{\modDistf} Optisk avståndsmätare GP2Y0A02YK (20-150cm).
+    \item \textbf{\modDists} Optisk avståndsmätare GP2Y0A41SK (4-30cm).
+    \item \textbf{\modLcd} LCD-display.
     \item \textbf{IQEXO3} Kristalloscillator som systemklocka till AVR.
 \end{itemize}
-Modulen använder även en {\modJtag} och tryckknapp som delas med styrmodulen.
+Modulen använder även en {\modJtag} och tryckknapp (reset knapp) som delas med styrmodulen.
 
 \subsubsection{Kontroll och bedömning}
 Nedan är följande pinnar som används på mikrokontrollern.
@@ -54,8 +37,8 @@ Nedan är följande pinnar som används på mikrokontrollern.
    \item \textbf{PA0 \& PA1} Vardera port får insignal från en avståndsmätare.
    \item \textbf{PB4-PB7} SS, MOSI, MISO och SCLK för SPI-bussen.
    \item \textbf{PC2-PC5} TCK, TMS, TDO, TDI för JTAG.
-   \item \textbf{PD0} LCD-enable.
-   \item \textbf{PD1} Register-select signal till LCD-display.
+   \item \textbf{PA2} LCD-enable.
+   \item \textbf{PA3} Register-select signal till LCD-display.
    \item \textbf{PD2} Avbrottssignal från en odometer.
    \item \textbf{PD3} Avbrottssignal från den andra odometern.
    \item \textbf{PD4-PD7} Databuss till LCD-display.
@@ -64,18 +47,14 @@ Nedan är följande pinnar som används på mikrokontrollern.
    \item \textbf{AREF} Referensspänning för AD-omvandlare på 3.3V.
 
 \end{itemize}
-Mikrokontrollen behöver endast kommunicera med kommunikationsmodulen via SPI
-samt ta emot värden från sensorerna och göra enkla beräkningar vid omvandling.
-Mikrokontrollen bör inte ha något problem att utföra dessa uppgifter.
+Mikrokontrollen kommunicerar med kommunikationsmodulen via SPI och hanterar de värdena från alla sensorer. Från avståndsmätarna beräknar kontrollen avståndet till hinder genom att omvandla till meter den digitala signalen som hämtas från AD/onvandlare. Från halleffektsensorerna beräknar kontrollen bilens hastighet samt bilens avstånd från startpunkten genom att använda sig av antalet avbrott som sensorn orsakar samt hjulens omkrets.
 
 \subsection{Mjukvaruimplementation} 
-Sensormodulen ska bestå av en tom while loop och ett avbrott som aktiveras när
-kommunikationsmodulen efterfrågar värden. Sensormodulen skickar då de senaste
-sensorvärdena och samplar därefter nästa grupp av värden. Avbrottet aktiveras
+Mjukvaran på sensormodulen är skriven i programmeringspråk C, en fil där alla sensormodulens uppgifter hanteras. I filen implementeras en oändligt while loop där värdena från alla sensorer uppdateras kontinuerligt medan modulen väntar på avbrottet som orsakas via SPI när kommunikationsmodulen efterfrågar värden. Vid SPI avbrott, de senaste sensorvärdena hämtas och skickas vidare till kommunikationmodulen. Avbrottet aktiveras
 som beskrivet i sektion \ref{sec:ctrl-int}
 
-Halleffektsensorerna kommer skicka en avbrottssignal varje gång en magnet på
-hjulet passerar en sensor. Avbrottsrutinen ser då till att öka den körda
-distansen.
+Processen för att få avståndet till hinder (i meter) från varje avståndmätare sker genom att hämta den digitala signalen (hos AD-omvandlaren) och omvandla värdet till meter. Den formlen som används vid omvandligen från adc värdet till meter beror på sensors typ och är resultatet av den linjära regressionen applicerade med olika mätningar.
+  
+Varje bakhjul innehåller tio magneter vilka vardera orsakar ett avbrott. I filen hanteras de abvrotten, som orsakas från båda hjul, så att de tillsammans med bakhjuls omkrets används för att räkna ut bilens hastighet samt avståndet bilen har åkt sedan startpunkten.
 
 \end{document}
