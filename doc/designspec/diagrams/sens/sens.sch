@@ -58,7 +58,7 @@ Wire Wire Line
 Wire Wire Line
 	2300 1650 3100 1650
 $Comp
-L sens-rescue:JMA162A-jma162a _?
+L sens-rescue:JMA162A-jma162a-sens-rescue _?
 U 1 1 5BDF0219
 P 6200 5100
 F 0 "_?" H 6200 5050 50  0001 C CNN
@@ -429,9 +429,6 @@ Wire Wire Line
 	6700 2350 6700 1850
 Wire Wire Line
 	6700 1850 6200 1850
-Wire Wire Line
-	5700 1850 4950 1850
-Connection ~ 5700 1850
 $Comp
 L power:GNDREF #PWR?
 U 1 1 5BE81361
@@ -461,10 +458,6 @@ Wire Wire Line
 Wire Wire Line
 	4300 1450 5500 1450
 Connection ~ 5950 1050
-Wire Wire Line
-	4300 1550 4950 1550
-Wire Wire Line
-	4950 1550 4950 1850
 $Comp
 L pspice:CAP C?
 U 1 1 5BEA46CC
@@ -548,12 +541,6 @@ Wire Wire Line
 Wire Wire Line
 	6750 3900 6250 3900
 Wire Wire Line
-	5500 5050 5300 5050
-Wire Wire Line
-	5300 5050 5300 4550
-Wire Wire Line
-	5300 4550 4300 4550
-Wire Wire Line
 	4300 3450 4500 3450
 Wire Wire Line
 	4500 3450 4500 3150
@@ -568,27 +555,7 @@ Wire Wire Line
 Wire Wire Line
 	4900 3350 5250 3350
 Wire Wire Line
-	5000 3750 5000 3450
-Wire Wire Line
 	5000 3450 5250 3450
-Wire Wire Line
-	5500 5150 5150 5150
-Wire Wire Line
-	5150 5150 5150 4650
-Wire Wire Line
-	5150 4650 4300 4650
-Wire Wire Line
-	5500 5250 5050 5250
-Wire Wire Line
-	5050 5250 5050 4750
-Wire Wire Line
-	5050 4750 4300 4750
-Wire Wire Line
-	5500 5350 4950 5350
-Wire Wire Line
-	4950 5350 4950 4850
-Wire Wire Line
-	4950 4850 4300 4850
 Wire Wire Line
 	6250 3900 6250 4350
 Wire Wire Line
@@ -605,16 +572,6 @@ Wire Wire Line
 	5150 4300 5150 4350
 Wire Wire Line
 	5150 4350 4300 4350
-Wire Wire Line
-	5500 5450 4450 5450
-Wire Wire Line
-	4450 5450 4450 4250
-Wire Wire Line
-	4450 4250 4300 4250
-Wire Wire Line
-	6350 4150 4300 4150
-Wire Wire Line
-	6350 4150 6350 4500
 $Comp
 L power:GNDREF #PWR?
 U 1 1 5BE5E3AA
@@ -626,4 +583,61 @@ F 3 "" H 5750 3850 50  0001 C CNN
 	1    5750 3850
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	4300 1550 5700 1550
+Wire Wire Line
+	5700 1550 5700 1850
+Connection ~ 5700 1850
+Wire Wire Line
+	6350 4500 6350 4250
+Wire Wire Line
+	6350 4250 5150 4250
+Wire Wire Line
+	5000 3450 5000 3750
+Wire Wire Line
+	5150 4250 5150 1650
+Wire Wire Line
+	4300 1650 5150 1650
+Wire Wire Line
+	5500 5450 5100 5450
+Wire Wire Line
+	5100 5450 5100 1750
+Wire Wire Line
+	4300 1750 5100 1750
+Wire Wire Line
+	5500 5350 5050 5350
+Wire Wire Line
+	5050 5350 5050 5250
+Wire Wire Line
+	5500 5250 5050 5250
+Connection ~ 5050 5250
+Wire Wire Line
+	5050 5250 5050 5150
+Wire Wire Line
+	5500 5150 5050 5150
+Connection ~ 5050 5150
+Wire Wire Line
+	5050 5150 5050 5050
+Wire Wire Line
+	5050 5050 5500 5050
+Connection ~ 5050 5050
+Wire Wire Line
+	5050 5050 5050 2150
+Wire Wire Line
+	5050 1850 4300 1850
+Wire Wire Line
+	4300 1950 5050 1950
+Connection ~ 5050 1950
+Wire Wire Line
+	5050 1950 5050 1850
+Wire Wire Line
+	4300 2050 5050 2050
+Connection ~ 5050 2050
+Wire Wire Line
+	5050 2050 5050 1950
+Wire Wire Line
+	4300 2150 5050 2150
+Connection ~ 5050 2150
+Wire Wire Line
+	5050 2150 5050 2050
 $EndSCHEMATC

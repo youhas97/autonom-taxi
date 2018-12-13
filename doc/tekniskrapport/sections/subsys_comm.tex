@@ -94,17 +94,19 @@ kommandot sist i kön om ett nyare förfrågan av samma typ inte redan finns i
 kön. Annars kastas den äldre förfrågan bort.
 
 \subsection{Bildbehandling}
-Bildbehandlings processen sker genom ett program skrivet i C++.
+Bildbehandlings processen sker genom ett program skrivet i C++. För att utföra
+alla nödvändiga rutiner inom bildbehandling, vilka möjliggör vägens linjer
+upptäckande, används programvarubiblioteket OpenCV.
 
-\subsubsection{Upptäckt av linjer}
+\subsubsection{Upptäckande av linjer}
 Upptäckandet av linjer/kanter på banan sker genom hanteringen av varje
 bild/frame som programmet tar emot från kameran. Varje bild går igenom en
-process som börjar med att förberedda bilden genom att filtrera den för att
-först underlätta kanters upptäckande och sedan linjerna inom ett bestämt område
-av intresse (Region of Interest ROI).
+process som börjar med att förbereda bilden genom att filtrera den för att
+först underlätta kanternas upptäckande och sedan linjerna inom ett bestämt
+område av intresse (Region of Interest ROI).
 
-Processen börjar med att filtrera bilden med den så kallade Gauss filter där
-bilden faltas med en Gauss kernel med tanke på att filtrera bort brus. Den
+Processen börjar med att filtrera bilden med det så kallade Gauss filtret där
+bilden faltas med en Gauss kernel med syfte att filtrera bort brus. Den
 filtrerade bilden omvandlas sedan till en monokromatisk bild vilket underlättar
 bildbehandlingen och som är möjligt tack vare att bildbehandlingsprogrammet
 inte använder sig utav specifika färger för att upptäcka linjer på vägen utan
@@ -118,17 +120,18 @@ operationer vilka möjliggör att skilja mellan olika region/objekt som önskas
 analysera baserad på hur intensiteten hos varje pixel varierar mellan objektet
 och bakgrunden. Programmet använder sig av Otsu threshold metod vilken själv
 räknar ut en threshold värdet som bäst passar bilden. Den använda threshold
-funktionen returnera den nya bilden vilken visas på bilden...
+funktionen returnerar den nya bilden vilken visas i Figur
+\ref{fig:threshhold}.
 
 Nu när bilden är förbered för kanters upptäckande används funktionen Canny
 (från openCv), som applicerar Canny algoritmen vilken identifierar alla kanter
-som finns i bilden. Resultatet visas på bilden ... 
+som finns i bilden. Resultatet visas i Figur \ref{fig:edge_det}
 
 Som tidigare nämnts, upptäcks linjerna inom ROI. ROI bestäms baserad på hur
 mycket av bilden vill användas för att hitta linjer; hur mycket som är
 tillräckligt för tolkningen och senare hanteringen av alla linjer som hittas på
 vägen. ROI är en polygon av 6 punkter som enkelt kan anpassas vid behov och som
-visas på bilden ...   
+visas i Figur \ref{fig:mask}
 
 Efter att bilden är hel filtrerad och ROI bestämd, används Hough transformen
 för att hitta linjer enligt bestämda parametrar som varje linje ska uppfylla i
@@ -137,6 +140,52 @@ funktioner som applicerar transformen och programmet använder sig av den
 probabilistiska metoden vilken ökar beräknings hastighet utan att minska
 precisionen. Efter användningen av Hough transformen kan programmet tolka de
 upptäckade linjerna.
+
+Bildbehandlingsprocessen visas i Figur \ref{fig:gauss} - Figur \ref{fig:lines}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{\figures/gauss.png}
+    \caption{Resultat efter användning av \textit{gauss}-funktionen.}
+    \label{fig:gauss}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{\figures/monochromatic.png}
+    \caption{Omvandling till monochromatisk bild.}
+    \label{fig:monochromatic}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{\figures/threshhold.png}
+    \caption{Resultat från funktionen \textit{threshhold}.}
+    \label{fig:threshhold}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{\figures/edge_detection.png}
+    \caption{Resultat från funktionen \textit{canny}.}
+    \label{fig:edge_det}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{\figures/mask_roi.png}
+    \caption{Resultat efter att man maskar ut ROI.}
+    \label{fig:mask}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{\figures/lines.png}
+    \caption{De upptäckta linjerna.}
+    \label{fig:lines}
+\end{figure}
+
+
 
 \subsubsection{Tolkning av linjer}
 Det första som görs med alla linjer som hittas på bilden är att klassificera de
