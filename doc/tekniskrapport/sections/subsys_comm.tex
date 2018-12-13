@@ -31,7 +31,20 @@ trådar eftersom de väntar mycket och blockerar den nuvarande tråden.
 
 
 \subsection{Hårdvaruimplementation} 
-% TODO
+Kommunikationsmodulen har implementerats i en Raspberry Pi 3B. Raspberry Pi 3B,
+har en fyrkärnig processor med en hastighet på 1.2 GHz vilket har kunnat
+utnyttjas inte minst vid bildbehandlingen. Med 40-pinnar som kan utnyttjas som
+spänningskällor, jord, programmerbara GPIO-portar samt seriella bussar, har
+detta utnyttjats för att med SPI-protokollet använda Raspberry Pi:n som master
+för två slavar. Då kommunikationen med en fjärrklient sker via WiFi har det
+inbyggda 802.11n trådlösa LAN:et varit fullt kapabelt. Det trådlösa
+nätverkskortet hade med en bra implementation även kunnat strömma video. Mitt
+på Pi:en hittar man en CSI-port som används för att ansluta Raspberry Pi
+kompatibla kameror. Kameran som används på kommunikations modulen är en
+Raspberry Pi kamera med påsatt vidvinkelobjektiv som kan se i en 160 graders vy.
+Kameran har även stöd för två infrarödastrålkastare, men detta används inte då
+mörkerseende inte är något som prioriterats. Spänningskällor finns i både 3V3
+och 5V.
 
 \subsection{Programstruktur}
 Programmet på kommandomodulen består av följande filer
