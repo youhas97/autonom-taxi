@@ -56,7 +56,7 @@ Vid autonom körning följer bilen den listan av kommandon som fjärrklienten
 skickar i form av uppdraget.
 
 \subsubsection{Ansluta till kommunikationsmodulen}
-Genom att mata in ip-adressen till kommunikationsmodulen i gränssnittet erhålls
+Genom att mata in ip-addressen till kommunikationsmodulen i gränssnittet erhålls
 en anslutning utifrån protokollet TCP. När en anslutning är upprättad går det
 att använda alla funktioner som beror på en konstant anslutning till
 kommunikationsmodulen.
@@ -65,6 +65,12 @@ kommunikationsmodulen.
 Genom gränssnittet går det att både spara och öppna kartor som skapats. Det
 sker genom att gränssnittet sparar en kodrepresentation av alla objekt i
 kartan. Filen kan sedan läsas in och återskapas i gränssnittet.
+
+\subsubsection{Modifiering av reglerparametrar}
+Med användargränsnittet går det att modifiera reglerparametrarna. Värden matas
+in fönstret som dyker upp när man väljer mostvarande menyval. Värdena skickas
+med hjälp av motsvarande kommando för att ändra konstanterna K-proportionell
+och K-derivata för både rotation och hastighet.
 
 \subsubsection{Skapa kommandon för uppdrag}
 Fjärrklienten ska utifrån den inmatade kartan och destinationen räkna ut den
@@ -118,7 +124,18 @@ gränssnittet fryser för användaren. Programmet kommer behöva vänta på svar
 taxin samt utföra längre beräkningar vilket innebär att programmet kanske inte
 hinner uppdatera gränssnittet tillräckligt ofta om det endast använder en tråd.
 Synkroniseringen av dessa två trådar sköts av en worker som består av
-en stack av tasks och en kö av färdiga... TODO
+en stack av tasks och en kö av färdiga tasks. En task består av ett kommando
+som klienten ska skicka till kommunikationsmodulen. När användaren vill
+
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=0.6\linewidth]{\figures/SequenceDiagramClient.pdf}
+	\caption{Ett sekvesndiagram som beskriver vad som händer när användare trycker piltangent upp under fjärrstyrning}
+	\label{sequenceremote}
+\end{figure} 
+
+
 
 \subsubsection{Karta och uppdrag}
 \label{sec:mission}
