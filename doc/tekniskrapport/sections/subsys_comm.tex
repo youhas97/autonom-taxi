@@ -96,15 +96,15 @@ kön. Annars kastas den äldre förfrågan bort.
 \subsection{Bildbehandling}
 Bildbehandlings processen sker genom ett program skrivet i C++.
 
-\subsubsection{Upptäckt av linjer}
+\subsubsection{Upptäckande av linjer}
 Upptäckandet av linjer/kanter på banan sker genom hanteringen av varje
 bild/frame som programmet tar emot från kameran. Varje bild går igenom en
-process som börjar med att förberedda bilden genom att filtrera den för att
-först underlätta kanters upptäckande och sedan linjerna inom ett bestämt område
-av intresse (Region of Interest ROI).
+process som börjar med att förbereda bilden genom att filtrera den för att
+först underlätta kanternas upptäckande och sedan linjerna inom ett bestämt
+område av intresse (Region of Interest ROI).
 
-Processen börjar med att filtrera bilden med den så kallade Gauss filter där
-bilden faltas med en Gauss kernel med tanke på att filtrera bort brus. Den
+Processen börjar med att filtrera bilden med det så kallade Gauss filtret där
+bilden faltas med en Gauss kernel med syfte att filtrera bort brus. Den
 filtrerade bilden omvandlas sedan till en monokromatisk bild vilket underlättar
 bildbehandlingen och som är möjligt tack vare att bildbehandlingsprogrammet
 inte använder sig utav specifika färger för att upptäcka linjer på vägen utan
