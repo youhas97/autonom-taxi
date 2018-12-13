@@ -112,7 +112,18 @@ gränssnittet fryser för användaren. Programmet kommer behöva vänta på svar
 taxin samt utföra längre beräkningar vilket innebär att programmet kanske inte
 hinner uppdatera gränssnittet tillräckligt ofta om det endast använder en tråd.
 Synkroniseringen av dessa två trådar sköts av en worker som består av
-en stack av tasks och en kö av färdiga... TODO
+en stack av tasks och en kö av färdiga tasks. En task består av ett kommando
+som klienten ska skicka till kommunikationsmodulen. När användaren vill
+
+
+\begin{figure}[h]
+\centering
+	\includegraphics[width=0.6\linewidth]{\figures/SequenceDiagramClient.pdf}
+	\caption{Ett sekvesndiagram som beskriver vad som händer när användare trycker piltangent upp under fjärrstyrning}
+	\label{sequenceremote}
+\end{figure} 
+
+
 
 \subsubsection{Karta och uppdrag}
 \label{sec:mission}
