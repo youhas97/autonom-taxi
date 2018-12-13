@@ -1,4 +1,4 @@
-update=Thu Nov  8 16:30:27 2018
+update=Thu Dec 13 17:05:53 2018
 version=1
 last_client=kicad
 [general]
@@ -34,7 +34,7 @@ LibDir=
 [schematic_editor]
 version=1
 PageLayoutDescrFile=
-PlotDirectoryName=../pdfs/
+PlotDirectoryName=../../../tekniskrapport/figures/
 SubpartIdSeparator=0
 SubpartFirstId=65
 NetFmtName=
