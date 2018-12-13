@@ -128,7 +128,7 @@ grafen representeras i sin tur av nedanstående datastrukturer.
 
     \item[Nod] En nod är en klass som består av en nodtyp och en lista
         av utgående bågar. Det finns fem olika nodtyper; stopplinje,
-        parkeringsficka, inre-rondell, yttre-rondell och tomma noder. 
+        parkeringsficka, rondellinfarter, rondellutfarter och tomma noder. 
 
     \item[Båge] En båge är en klass som består av en startnod, en slutnod och
     en kostnad (längd).
@@ -146,15 +146,15 @@ varje nodtyp. Hur taxin agerar vid varje kommando är specificerat i sektion
 \ref{sec:comm-mission}.
 
 \begin{labeling}{wwwwwwwwww}
-\item[stopplinje] {\commStop} om markerad som destination/deldestination,
+\item[Stopplinjer] {\commStop} om markerad som destination/deldestination,
 annars \commIgnore.
 
-\item[parkeringsficka] {\commPark} om markerad som destination/deldestination,
+\item[Parkeringsfickor] {\commPark} om markerad som destination/deldestination,
 annars \commIgnore 
 
-\item[yttre-rondell] En \commEnter
+\item[Rondellinfarter] En \commEnter
 
-\item[inre-rondell] En {\commContinue} för varje
+\item[Rondellutfarter] En {\commContinue} för varje
 avfart den ska passera och slutligen en \commExit.
 
 \end{labeling}
