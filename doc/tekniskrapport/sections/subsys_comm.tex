@@ -136,14 +136,12 @@ registreras en passering av stopplinjen. Om linjen inte skulle upptäckas under
 en bild flyttas uppskattningen tillbaka till toppen av ROI:n.
 
 \subsection{Uppdrag} \label{sec:comm-mission}
+Uppdragshanteraren körs i huvudloopen. Det första uppdragshanteraren gör för
+varje iteration är att kolla om ett nuvarande kommando är aktivt. Annars hämtar
+den ett nytt från kommandokön. Om kön är tom är uppdraget avslutat. Om kön
+istället har ett nuvarande kommando utförs bildbehandling och styrvärdena sätts
+till normalhastighet och styrfelvärde från bildbehandlingen. 
 
-För att utföra uppdraget tas en kö av kommandon emot från fjärrklienten.
-När uppdraget börjar kör taxin framåt och följer filen med hjälp av
-bildbehandling och reglering. Inför varje stopplinje tas ett kommando från kön
-och utförs. Om ett hinder upptäcks under uppdraget kommer bilen att stanna
-tills hindret har försvunnit eller eventuellt passera hindret. När ett visst
-antal stopplinjer har passerats och kön är tom är uppdraget avklarat. Nedan är
-en lista av alla möjliga kommandon och hur de utförs.
 \begin{labeling}{wwww}
     \item[\commIgnore] Kör förbi stopplinjen utan att stanna.
     \item[\commStop] Stanna framför stopplinjen, fortsätt efter några sekunder
