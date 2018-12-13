@@ -149,9 +149,7 @@ $y=l_y$. Felvärdet beräknas därefter genom att jämföra $l_x$ med bildens
 mittpunkten.
 
 \begin{wrapfigure}{r}{0.3\linewidth}
-    \begin{center}
-        \includegraphics[width=\linewidth]{tekniskrapport/figures/opencv.jpg}
-    \end{center}
+    \includegraphics[width=\linewidth]{tekniskrapport/figures/opencv.jpg}
     \caption{Klassificering och tolkning av linjer från kamera.}
 \end{wrapfigure}
 
@@ -181,8 +179,21 @@ Uppdragshanteraren körs i huvudloopen. Det första uppdragshanteraren gör för
 varje iteration är att kolla om ett nuvarande kommando är aktivt. Annars hämtar
 den ett nytt från kommandokön. Om kön är tom är uppdraget avslutat. Om kön
 istället har ett nuvarande kommando utförs bildbehandling och styrvärdena sätts
-till normalhastighet och styrfelvärde från bildbehandlingen. 
+till normalhastighet samt styrfelvärde från bildbehandlingen. Därefter anropas
+kommandofunktionen som kan skriva över dessa samt ändra inställningar för
+bildbehandlingen. Funktioner returnerar om kommandot är avslutat eller inte. Om
+kommandot är färdigt tas kommandot bort från nuvarande och ett nytt hämtas vid
+nästa iteration.
 
+Inom kommandon håller en variabel \mono{pos} koll på var i kommandot bilen
+befinner sig i. Vid varje nytt kommando sätts den till \mono{BEFORE\_STOP}
+vilket innebär att bilen inte har passerat kommandots stopplinje än. När
+bildbehandlingen registrerar att en stopplinje har passerats sätts \mono{pos}
+till \mono{AFTER\_STOP}. Kommandon kan även ändra \mono{pos} själva för att
+kunna ha flera tillstånd. Vid varje ändring av \mono{pos} registreras den
+nuvarande tiden och distansen.
+
+% TODO detaljera uppdrag
 \begin{labeling}{wwww}
     \item[\commIgnore] Kör förbi stopplinjen utan att stanna.
     \item[\commStop] Stanna framför stopplinjen, fortsätt efter några sekunder
