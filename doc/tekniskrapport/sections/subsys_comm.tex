@@ -21,10 +21,6 @@ Kommunikationsmodulen hämtar sensordata från sensormodulen och bildbehandlar
 kamerabilderna för att utföra beslut i realtid. Besluten skickas i form av fel-
 och styrvärden till styrmodulen.
 
-\subsection{Hårdvaruimplementation} 
-% TODO
-
-\subsection{Mjukvaruimplementation}
 Kommunikationsmodulens program är skriven i både C och C++. Bildbehandlingen är
 skriven i C++ medan resten av programmet är implementerad med C. De olika
 delarna kompileras separat och länkas sedan ihop med kompilatorn för C++.
@@ -33,7 +29,11 @@ bildbehandlar, samt en tråd som sköter kommunikation via SPI och en som svarar
 på kommandon från fjärrklienten via TCP/IP. SPI:n och servern sköts i separata
 trådar eftersom de väntar mycket och blockerar den nuvarande tråden.
 
-\paragraph{Filstruktur}
+
+\subsection{Hårdvaruimplementation} 
+% TODO
+
+\paragraph{Programstruktur}
 Programmet på kommandomodulen består av följande filer
 
 \begin{labeling}{wwww}
@@ -60,8 +60,13 @@ av sensorvärden från sensorerna.
 \paragraph{Busshanterare} 
 % TODO
 
-\paragraph{Uppdrag och bildbehandling}
+\subsection{Bildbehandling}
 % TODO
+\paragraph{Upptäkt av linjer}
+
+\paragraph{Tolkning av linjer}
+
+\subsection{Uppdrag}
 
 \begin{wrapfigure}{r}{0.3\linewidth}
     \begin{center}
