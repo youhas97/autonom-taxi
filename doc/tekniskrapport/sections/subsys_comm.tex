@@ -96,15 +96,15 @@ kön. Annars kastas den äldre förfrågan bort.
 \subsection{Bildbehandling}
 Bildbehandlings processen sker genom ett program skrivet i C++. För att utföra alla nödvändiga rutiner inom bildbehandling, vilka möjliggör vägens linjer upptäckande, används programvarubiblioteket OpenCV.
 
-\subsubsection{Upptäckt av linjer}
+\subsubsection{Upptäckande av linjer}
 Upptäckandet av linjer/kanter på banan sker genom hanteringen av varje
 bild/frame som programmet tar emot från kameran. Varje bild går igenom en
-process som börjar med att förberedda bilden genom att filtrera den för att
-först underlätta kanters upptäckande och sedan linjerna inom ett bestämt område
-av intresse (Region of Interest ROI).
+process som börjar med att förbereda bilden genom att filtrera den för att
+först underlätta kanternas upptäckande och sedan linjerna inom ett bestämt
+område av intresse (Region of Interest ROI).
 
-Processen börjar med att filtrera bilden med den så kallade Gauss filter där
-bilden faltas med en Gauss kernel med tanke på att filtrera bort brus. Den
+Processen börjar med att filtrera bilden med det så kallade Gauss filtret där
+bilden faltas med en Gauss kernel med syfte att filtrera bort brus. Den
 filtrerade bilden omvandlas sedan till en monokromatisk bild vilket underlättar
 bildbehandlingen och som är möjligt tack vare att bildbehandlingsprogrammet
 inte använder sig utav specifika färger för att upptäcka linjer på vägen utan
@@ -193,16 +193,26 @@ till \mono{AFTER\_STOP}. Kommandon kan även ändra \mono{pos} själva för att
 kunna ha flera tillstånd. Vid varje ändring av \mono{pos} registreras den
 nuvarande tiden och distansen.
 
-% TODO detaljera uppdrag
 \begin{labeling}{wwww}
-    \item[\commIgnore] Kör förbi stopplinjen utan att stanna.
-    \item[\commStop] Stanna framför stopplinjen, fortsätt efter några sekunder
-    om kön inte är tom.
-    \item[\commPark] Parkera i fickan till höger efter stopplinjen, lämna
-    parkeringen och fortsätt efter några sekunder om kön inte är tom.
-    \item[\commEnter] Sväng höger in i rondellen och hitta rondellens körfil.
-    \item[\commContinue] Kör förbi stopplinje och håll till vänster.
-    \item[\commExit] Sväng höger ut ur rondellen och hitta körfilen.
+    \item[\commIgnore] Avslutar så fort \mono{pos} är \mono{AFTER\_STOP}.
+    \item[\commStop] Sätter hastigheten till noll när stopplinjen är synlig.
+        Avslutar när \mono{pos} är \mono{AFTER\_STOP} om kommandot är sist i
+        kön, annars vänta fem sekunder och avsluta därefter.
+    \item[\commPark] Sakta ner och sväng höger när \mono{pos} är
+        \mono{AFTER\_STOP}. Låt bildbehandlingen därefter i en viss distans.
+        Därefter sätt \mono{pos} till \mono{PARKED} och stanna. Om kommandot
+        var sist i kön avslutas det där. Annars sätts \mono{pos} till
+        \mono{UNPARKING} efter fem sekunder och svänger vänster i en viss
+        distans och därefter avslutar.
+    \item[\commEnter] Låt bildbehandlingen ignorera vänsterlinjen när
+        \mono{pos} är \mono{AFTER\_STOP} så att bilen följer högerlinjen. Efter
+        en viss distans avsluta kommandot.
+    \item[\commContinue] Låt bildbehandlingen ignorera högerlinjen när
+        \mono{pos} är \mono{AFTER\_STOP} så att bilen följen vänsterlinjen och
+        fortsätter i rondellen.
+    \item[\commExit] Låt bildbehandlingen ignorera vänsterlinjen när \mono{pos}
+        är \mono{AFTER\_STOP} så att bilen följer högerlinjen och åker ut ur
+        rondellen. Avsluta kommandot efter en viss distans.
 \end{labeling}
 
 \end{document}
