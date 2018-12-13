@@ -97,28 +97,46 @@ kön. Annars kastas den äldre förfrågan bort.
 Bildbehandlings processen sker genom ett program skrivet i C++.
 
 \subsubsection{Upptäckt av linjer}
-Upptäckandet av linjer/kanter på banan sker genom hanteringen av varje bild/frame som programmet tar emot från kameran. Varje bild går igenom en process som börjar med att förberedda bilden genom att filtrera den för att först underlätta kanters upptäckande och sedan linjerna inom ett bestämt område av intresse (Region of Interest ROI).
+Upptäckandet av linjer/kanter på banan sker genom hanteringen av varje
+bild/frame som programmet tar emot från kameran. Varje bild går igenom en
+process som börjar med att förberedda bilden genom att filtrera den för att
+först underlätta kanters upptäckande och sedan linjerna inom ett bestämt område
+av intresse (Region of Interest ROI).
 
-Processen börjar med att filtrera bilden med den så kallade Gauss filter där bilden faltas med en Gauss kernel med tanke på att filtrera bort brus. Den filtrerade bilden omvandlas sedan till en monokromatisk bild vilket underlättar bildbehandlingen och som är möjligt tack vare att bildbehandlingsprogrammet inte använder sig utav specifika färger för att upptäcka linjer på vägen utan det arbetar med de linjerna inom ROI och klassar dem enligt deras lutning och position. Det här innebär att upptäckandet av linjer ska vara möjligt utfört oberoende på vilka färger vägen kunde ha. 
+Processen börjar med att filtrera bilden med den så kallade Gauss filter där
+bilden faltas med en Gauss kernel med tanke på att filtrera bort brus. Den
+filtrerade bilden omvandlas sedan till en monokromatisk bild vilket underlättar
+bildbehandlingen och som är möjligt tack vare att bildbehandlingsprogrammet
+inte använder sig utav specifika färger för att upptäcka linjer på vägen utan
+det arbetar med de linjerna inom ROI och klassar dem enligt deras lutning och
+position. Det här innebär att upptäckandet av linjer ska vara möjligt utfört
+oberoende på vilka färger vägen kunde ha. 
 
-Det sista steget innan kanterna upptäcks är att segmentera bilden genom att från openCV använda threshold funktionen som erbjuder olika typer av threshold operationer vilka möjliggör att skilja mellan olika region/objekt som önskas analysera baserad på hur intensiteten hos varje pixel varierar mellan objektet och bakgrunden. Programmet använder sig av Otsu threshold metod vilken själv räknar ut en threshold värdet som bäst passar bilden. Den använda threshold funktionen returnera den nya bilden vilken visas på bilden...
+Det sista steget innan kanterna upptäcks är att segmentera bilden genom att
+från openCV använda threshold funktionen som erbjuder olika typer av threshold
+operationer vilka möjliggör att skilja mellan olika region/objekt som önskas
+analysera baserad på hur intensiteten hos varje pixel varierar mellan objektet
+och bakgrunden. Programmet använder sig av Otsu threshold metod vilken själv
+räknar ut en threshold värdet som bäst passar bilden. Den använda threshold
+funktionen returnera den nya bilden vilken visas på bilden...
 
-Nu när bilden är förbered för kanters upptäckande används funktionen Canny (från openCv), som applicerar Canny algoritmen vilken identifierar alla kanter som finns i bilden. Resultatet visas på bilden ... 
+Nu när bilden är förbered för kanters upptäckande används funktionen Canny
+(från openCv), som applicerar Canny algoritmen vilken identifierar alla kanter
+som finns i bilden. Resultatet visas på bilden ... 
 
-Som tidigare nämnts, upptäcks linjerna inom ROI. ROI bestäms baserad på hur mycket av bilden vill användas för att hitta linjer; hur mycket som är tillräckligt för tolkningen och senare hanteringen av alla linjer som hittas på vägen. ROI är en polygon av 6 punkter som enkelt kan anpassas vid behov och som visas på bilden ...   
+Som tidigare nämnts, upptäcks linjerna inom ROI. ROI bestäms baserad på hur
+mycket av bilden vill användas för att hitta linjer; hur mycket som är
+tillräckligt för tolkningen och senare hanteringen av alla linjer som hittas på
+vägen. ROI är en polygon av 6 punkter som enkelt kan anpassas vid behov och som
+visas på bilden ...   
 
-Efter att bilden är hel filtrerad och ROI bestämd, används Hough transformen för att hitta linjer enligt bestämda parametrar som varje linje ska uppfylla i transformen för att bli klassa som linje. OpenCV erbjuder två typer av funktioner som applicerar transformen och programmet använder sig av den probabilistiska metoden vilken ökar beräknings hastighet utan att minska precisionen. Efter användningen av Hough transformen kan programmet tolka de upptäckade linjerna.
-  
-\paragraph{Tolkning av linjer}
-
-\subsection{Uppdrag}
-
-\begin{wrapfigure}{r}{0.3\linewidth}
-    \begin{center}
-        \includegraphics[width=\linewidth]{tekniskrapport/figures/opencv.jpg}
-    \end{center}
-    \caption{Klassificering och tolkning av linjer från kamera.}
-\end{wrapfigure}
+Efter att bilden är hel filtrerad och ROI bestämd, används Hough transformen
+för att hitta linjer enligt bestämda parametrar som varje linje ska uppfylla i
+transformen för att bli klassa som linje. OpenCV erbjuder två typer av
+funktioner som applicerar transformen och programmet använder sig av den
+probabilistiska metoden vilken ökar beräknings hastighet utan att minska
+precisionen. Efter användningen av Hough transformen kan programmet tolka de
+upptäckade linjerna.
 
 \subsubsection{Tolkning av linjer}
 Det första som görs med alla linjer som hittas på bilden är att klassificera de
@@ -129,6 +147,13 @@ alla högerlinjer korsar $y=l_y$. På samma sätt räknas vänsterkantens positi
 x-led ut. Därifrån kan filens bredd $w$ och mittpunkten $l_x$ räknas ut vid
 $y=l_y$. Felvärdet beräknas därefter genom att jämföra $l_x$ med bildens
 mittpunkten.
+
+\begin{wrapfigure}{r}{0.3\linewidth}
+    \begin{center}
+        \includegraphics[width=\linewidth]{tekniskrapport/figures/opencv.jpg}
+    \end{center}
+    \caption{Klassificering och tolkning av linjer från kamera.}
+\end{wrapfigure}
 
 Vänster och högerlinjerna används dessutom för att uppskatta filens riktning.
 Detta görs genom att addera alla sidolinjer som vektorer och därmed få en
@@ -150,7 +175,7 @@ vara högst upp i ROI:n. När stopplinjen har upptäckts hela vägen från toppe
 ROI:n till botten av bilden utan att gå för långt ifrån uppskattningen
 registreras en passering av stopplinjen. Om linjen inte skulle upptäckas under
 en bild flyttas uppskattningen tillbaka till toppen av ROI:n.
-
+  
 \subsection{Uppdrag} \label{sec:comm-mission}
 Uppdragshanteraren körs i huvudloopen. Det första uppdragshanteraren gör för
 varje iteration är att kolla om ett nuvarande kommando är aktivt. Annars hämtar
