@@ -111,18 +111,49 @@ Programmet skall köras parallellt med två trådar för att förhindra att
 gränssnittet fryser för användaren. Programmet kommer behöva vänta på svar från
 taxin samt utföra längre beräkningar vilket innebär att programmet kanske inte
 hinner uppdatera gränssnittet tillräckligt ofta om det endast använder en tråd.
-Synkroniseringen av dessa två trådar sköts av en worker som består av
-en stack av tasks och en kö av färdiga tasks. En task består av ett kommando
-som klienten ska skicka till kommunikationsmodulen. När användaren vill
+Synkroniseringen av dessa två trådar sköts av en worker som innehåller en stack
+av tupler som består av en task och dess argument och en kö av tupler med
+färdiga tasks och responssträng från servern. Stacken och kön är en delad resurs
+mellan workern och GUI. GUI och workern körs vardera som en separat tråd. En
+task motsvarar ett kommando och dess argument som klienten ska skicka till
+kommunikationsmodulen. Det grafiska gränssnittet köar en task i stacken när
+användaren utnyttjar en funktion i gränssnittet som kräver kommunikation med
+servern. Ett exempel är när användaren har satt ett uppdrag och exekverar
+uppdraget. När ett uppdrag sätts så behöver klienten skicka en sekvens av
+kommandon till servern, klienten får indirekt en sekvens av kommandon från det
+grafiska gränssnittet. Detta sker genom att det grafiska gränssnittet köar i
+stacken en tuple bestående av \emph{tasken} SEND\_MISSION och dess argument.
+Därefter kommer workern till slut att plocka ut tasken ur stacken och se till
+att klienten skickar den korresponderande kommandot till sockeln. Om
+överföringen lyckades så kommer klienten att få ett svar. Detta svar skickas
+tillbaka till workern som därefter markerar tasken som färdig och köar tasken
+och svaret som en tuple i kön med färdiga tasks. Som i figur \ref{boxclient} så
+kan det grafiska gränssnittet hämta svaret från tasken genom att avköa den
+färdiga tasken och läsa av svaret. Det är på detta sättet det grafiska
+gränssnittet kan hämta värden som styrparametrar och distans körd. Denna
+procedur förklaras bättre i figur \ref{sequenceremote}.
+
 
 
 \begin{figure}[h]
 \centering
 	\includegraphics[width=0.6\linewidth]{\figures/SequenceDiagramClient.pdf}
-	\caption{Ett sekvesndiagram som beskriver vad som händer när användare trycker piltangent upp under fjärrstyrning}
+	\caption{Ett sekvensdiagram som beskriver vad som händer när användare trycker
+    piltangent upp under fjärrstyrning}
 	\label{sequenceremote}
-\end{figure} 
+\end{figure}
 
+I figur \ref{sequenceremote} fjärrstyr användaren bilen genom att trycka
+piltangent upp. Det är antaget att fjärrklienten och bilen har en anslutning
+till sockeln och att överföring mellan klient och bil inte misslyckades. Det
+grafiska gränssnittet köar tasken TASK_MOVE i stacken när användaren trycker
+piltangent uppåt. Workern hämtar sedan tasken från stacken. Workern bearbetar
+tasken och formaterar om dom till en sträng som motsvarar ett kommando. Workern
+säger sedan till klienten att skicka kommandot till kommunikationsmodulen och
+samtidigt väntar workern på att klienten tills klienten har fått ett svar från
+sockeln. Klienten vidarebefodrar svaret till workern och workern markerar tasken
+som färdig genom att köa den till kön med färdiga tasks. Enkelriktningen av uppgiftern
+gör denna procedur trådsäker.
 
 
 \subsubsection{Karta och uppdrag}
