@@ -33,16 +33,15 @@ modulen finns i bilaga \ref{cdiag:sens}.
 
 Avståndsmätarna skickar kontinuerligt en spänning (den analoga signalen) till
 mikrokontrollens AD-omvandlare. Den digitala signalen hanteras hos
-sensormodulen så att den omvandlas till meter för att bli skickad vidare till
-kommunikationsmodulen som ett avstånd till hinder. Avständmätaren placerad på
+sensormodulen så att den omvandlas till meter som sedan skickas vidare till
+kommunikationsmodulen som ett avstånd till hinder. Avståndsmätaren placerad på
 bilens framsida är av typen GP2Y0A02YK vars analoga utsignal är mellan 0V och
 3V, medan sensorn placerad på bilens bakre högersida är av typen GP2Y0A41SK
 vars utsignal är en analog spänning mellan 0V and 3.2V. Hos båda typer av
 sensor gäller att ju närmare hindret befinner sig desto högre blir spänningen. 
 
-Som tidigare nämnts, används det ett brusfilter vid varje
-sensor-mikrokontroller koppling. Varje filter består av en 18K resistans och en
-100nF jordad kondesator; ett passivt RC-filter.
+Utsignalen från vardera sensor är kopplat till ett passivt RC-lågpassfilter. Varje filter består av en 18K resistans och en
+100nF jordad kondesator.
 
 \subsubsection{Använda komponenter}
 Nedan är externa produkter som har använts vid sensormodulens konstruktion.
@@ -91,7 +90,7 @@ sektion \ref{sec:ctrl-int}.
 
 Processen för att få avståndet till hinder (i meter) från varje avståndmätare
 sker genom att hämta den digitala signalen (hos AD-omvandlaren) och omvandla
-värdet till meter. Formlen som används vid omvandligen från ADC-värdet till
+värdet till meter. Formeln som används vid omvandligen från ADC-värdet till
 meter beror på sensorns typ och är resultatet av den linjära regressionen
 applicerade med olika mätningar.
 

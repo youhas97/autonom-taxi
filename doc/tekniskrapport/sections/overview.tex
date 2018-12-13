@@ -35,22 +35,26 @@ kristalloscillator.
 Kommunikationsmodulen, vilken består av en Raspberry Pi, fungerar som en
 central kommun\-ikations- och beslutsenhet som ansvarar för att ta beslut om
 taxins beteende samt hantera kommunikationen mellan modulerna. Styrmodulen,
-vilken består av en motor och en mikrokontroller, står för drift samt reglering
+som består av en motor och en mikrokontroller, står för drift samt reglering
 av taxins hastighet och svängradie. Sensormodulen består av en mikrokontroller
 samt avståndsmätare och halleffektsensorer monterade på bilens hjul.
 
 \subsection{Sensorer}
-Kameran har satts upp på bilens framsida vid en specifik höjd och lutad neråt
-enligt bildbehandlings behov. Avståndsmätaren, vilken hjälper vid upptäckandet
-av hinder genom att mäta avståndet till det, har också placerats på bilens
-framsida längre ner kameras position.  Som tidigare sagts, innehåller bilen två
-avståndsmätare; den tidigare nämnda på framsidan och en till, vilken har fäst
-på bilens bakre högersida och som kan användas för att avgöra när ett hinder
-har passerats vid omkörning. Odometern som används till att mäta kördistans är
-redan färdigmonterad på chassit.
+Kameran är monterat på ett fäste vid bilens framsida där fästet befinner sig i
+en specifik höjd och där man har justerat kamerans lutning utefter behov från
+bildbehandlingen. En optiskt avståndsmätare har placerats på bilens framsida
+fäst i ett CAD:at fäste. Avståndsmätarenn används till att upptäcka hinder.
+Avståndsmätaren skapar avbrott när den har mätt ett distansvärde, detta värde
+A/D-omvandlas till ett digitalt 8-bitars värde. Detta värde använder
+kommunkationsmodulen för att avgöra när den ska stanna inför hinder. Det finns
+även en avståndsmätare placerad vid bilens bakre högersida. Den används till att
+avgöra när man har passerat ett hinder vid omkörning. Bilen har 2
+halleffektsensorer monterade på chassit där vardera hjul har 10 magneter
+monterade. Dessa används till att avgöra antalet rotationer av hjulen och på det
+sättet även räkna ut distans körd.
 
 \subsection{Ställdon}
 Hjulen, motorn och ställdonen är redan färdigmonterade. Motorn används
-för att få bilen att åka framåt och bakåt medan en servo används för att svänga.
+för att få bilen att åka framåt och bakåt medan en servo används till att svänga.
 
 \end{document}
