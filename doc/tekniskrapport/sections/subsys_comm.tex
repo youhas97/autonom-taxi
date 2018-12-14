@@ -99,8 +99,8 @@ upptäckande, används programvarubiblioteket OpenCV.
 
 \subsubsection{Upptäckande av linjer}
 
-\begin{wrapfigure}{r}{0.25\linewidth}
-    \vspace*{-5mm}
+\begin{wrapfigure}{r}{0.26\linewidth}
+    \vspace*{-8mm}
     Originalbild:\\[1mm]
     \includegraphics[width=\linewidth]{\figures/original.jpg}
     \label{fig:gauss}
@@ -124,43 +124,40 @@ upptäckande, används programvarubiblioteket OpenCV.
     \label{fig:lines}
 \end{wrapfigure}
 
-Upptäckandet av linjer/kanter på banan sker genom hanteringen av varje
-bild/frame som programmet tar emot från kameran. Varje bild går igenom en
-process som börjar med att förbereda bilden genom att filtrera den för att
-först underlätta kanternas upptäckande och sedan linjerna inom ett bestämt
-område av intresse (Region of Interest ROI).
+Upptäckandet av linjer/kanter på banan sker genom hanteringen av varje bild
+programmet tar emot från kameran. För varje bild gås en process igenom som
+börjar med att filtrera bilden för att först underlätta kanternas upptäckande
+och sedan linjerna inom ett bestämt område av intresse (Region of Interest
+ROI).
 
-Processen börjar med att filtrera bilden med det så kallade Gauss filtret där
-bilden faltas med en Gauss kernel med syfte att filtrera bort brus. Den
-filtrerade bilden omvandlas sedan till en monokromatisk bild vilket underlättar
-bildbehandlingen och som är möjligt tack vare att bildbehandlingsprogrammet
-inte använder sig utav specifika färger för att upptäcka linjer på vägen utan
-det arbetar med de linjerna inom ROI och klassar dem enligt deras lutning och
-position. Det här innebär att upptäckandet av linjer ska vara möjligt utfört
-oberoende på vilka färger vägen kunde ha. 
+Processen börjar med att filtrera bilden med det så kallade Gauss-filtret där
+bilden faltas med en Gauss-kernel med syfte att filtrera bort brus. Den
+filtrerade bilden omvandlas sedan till en gråskalabild vilket underlättar
+bildbehandlingen då mindre information behöver tas hänsyn till.
 
-Det sista steget innan kanterna upptäcks är att segmentera bilden genom att
-från OpenCV använda threshold funktionen som erbjuder olika typer av threshold
-operationer vilka möjliggör att skilja mellan olika region/objekt som önskas
-analysera baserad på hur intensiteten hos varje pixel varierar mellan objektet
-och bakgrunden. Programmet använder sig av Otsu threshold metod vilken själv
-räknar ut en threshold värdet som bäst passar bilden.
+Nästa steg är att segmentera bilden genom att använda
+\emph{threshold}-funktionen som möjliggör att skilja mellan olika objekt som
+önskas analyseras baserad på hur intensiteten hos varje pixel varierar mellan
+objektet och bakgrunden. Programmet använder sig av Otsu-metoden vilken själv
+räknar ut ett tröskelvärde som bäst passar bilden. Utifrån tröskelvärdet blir
+varje pixel antingen svart eller vit så att en binärfärgad bild skapas.
 
-Nu när bilden är förbered för kanters upptäckande används funktionen Canny, som
-applicerar Canny algoritmen vilken identifierar alla kanter som finns i bilden.
+När bilden är binär används Canny-operationen vilken identifierar alla kanter
+som finns i bilden.
 
-Som tidigare nämnts, upptäcks linjerna inom ROI. ROI bestäms baserad på hur
-mycket av bilden vill användas för att hitta linjer; hur mycket som är
-tillräckligt för tolkningen och senare hanteringen av alla linjer som hittas på
-vägen. ROI är en polygon av 6 punkter som enkelt kan anpassas vid behov.
+Som tidigare nämnts, upptäcks linjerna inom ROI. Eftersom kameran ser långt
+fram och även delar som är utanför banan är det bara intressant att se den
+närmaste delen av vägen. Därför väljs en ROI som bara innehåller väsentliga
+delar så att tolkningen endast behöver ta hänsyn till vänsterkant, högerkant
+och stopplinje. ROI är en polygon av 6 punkter som maskar resultatet från
+Canny-operationen.
 
-Efter att bilden är hel filtrerad och ROI bestämd, används Hough transformen
-för att hitta linjer enligt bestämda parametrar som varje linje ska uppfylla i
-transformen för att bli klassa som linje. OpenCV erbjuder två typer av
-funktioner som applicerar transformen och programmet använder sig av den
-probabilistiska metoden vilken ökar beräknings hastighet utan att minska
-precisionen. Efter användningen av Hough transformen kan programmet tolka de
-upptäckade linjerna.
+Efter att bilden är filtrerad och ROI maskad, används Hough-transformen för att
+hitta linjer enligt bestämda parametrar som varje linje ska uppfylla i
+transformen för att bli klassad som linje. Programmet använder sig av en
+probabilistisk metod vilket ökar beräknings hastighet utan att minska
+precisionen. Efter användningen av Hough-transformen fås en lista av linjer som
+programmet sedan kan tolka.
 
 \subsubsection{Tolkning av linjer}
 Det första som görs med alla linjer som hittas på bilden är att klassificera de

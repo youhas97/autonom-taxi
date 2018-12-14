@@ -1,24 +1,12 @@
 \documentclass[tekniskrapport/tech.tex]{subfiles}
 
-%Sammanfattningen bör innehålla:
-%
-%   -En beskrivning av de mest framträdande egenskaperna hos det totala
-%   systemet och de olika delsystemen.
-%
-%   -Ett blockschema som beskriver konstruktionens uppdelning i olika delar.
-%
-%   -En beskrivning av vilka sensorer som ska användas och hur de ska placeras.
-%
-%   -En beskrivning av vilka ställdon (motor etc,) som ska användas och hur
-%   de ska användas och hur de ska placeras.
-
 \begin{document}
 
 \section{Översikt}
 Under den här punkten förklaras designen av systemet översiktligt.
 
 \subsection{Framträdande egenskaper}
-Produkten består av tre moduler: Kommunikation-, sensor- och styrmodul, vilka
+Produkten består av tre moduler: kommunikation-, sensor- och styrmodul, vilka
 implementeras på ett virkort. Produkten, som ansluts till en fjärrklient via
 WLAN, har två avståndsmätare och en kamera till hjälp när information om
 produktens omgivning samlas in. Vardera mikrokontroller klockas med en
@@ -52,9 +40,5 @@ avgöra när man har passerat ett hinder vid omkörning. Bilen har 2
 halleffektsensorer monterade på chassit där vardera hjul har 10 magneter
 monterade. Dessa används till att avgöra antalet rotationer av hjulen och på det
 sättet även räkna ut distans körd.
-
-\subsection{Ställdon}
-Hjulen, motorn och ställdonen är redan färdigmonterade. Motorn används
-för att få bilen att åka framåt och bakåt medan en servo används till att svänga.
 
 \end{document}
