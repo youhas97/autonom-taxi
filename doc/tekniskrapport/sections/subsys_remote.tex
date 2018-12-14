@@ -11,16 +11,16 @@ Fjärrklientens uppgift är att bidra med ett gränssnitt till användaren för 
 kontrollera och se bilens position, samt skapa och skicka instruktioner till
 bilen utifrån användarens uppdrag.
 
-\subsection{Gränssnitt} Gränssnittet ska tillåta användaren att välja antingen
-autonom eller manuell körning. Vid manuell körning skickas styrkommandon till
-taxin när användaren trycker på piltangenterna. Vid autonom körning ska
-gränssnittet tillåta användaren att mata in en karta samt ange startnod och
-destinationsnod. 
+\subsection{Gränssnitt}
+Gränssnittet tillåter användaren att välja antingen autonom eller manuell
+körning. Vid manuell körning skickas styrkommandon till taxin när användaren
+trycker på piltangenterna. Vid autonom körning tillåter gränssnittet användaren
+att mata in en karta samt ange startnod och destinationsnod. 
 
 \subsubsection{Kartpanel}
 I kartområdet i gränssnittet kan användaren skapa noder och bågar som ska
-representera kartan som bilen ska köra. Det sker genom att flytta musen dit man
-vill sätta en nod och sedan välja nodtyp. Gränssnittet räknar ut musens
+representerar kartan som bilen ska köra. Det sker genom att flytta musen dit
+man vill sätta en nod och sedan välja nodtyp. Gränssnittet räknar ut musens
 position på kartan och skapar sedan ett nodobjekt på den postitionen.  Ett
 bågobjekt skapas genom att klicka startnod och slutnod för bågen.  Bågen får då
 dessa start- och slutnoder associerat till sig.  Gränssnittet skall även visa
@@ -79,34 +79,27 @@ lista av kommandon som sedan skickas till bilen. Bilen kan då genom att utifrå
 kommandona nå destinationen.
 
 \subsection{Mjukvaruimplementation}
-Fjärrklienten kommer implementeras i Python och bestå av två olika trådar. En
-för det grafiska gränssnittet samt en huvudtråd för allt annat. Ett
-flödesdiagram för fjärrklienten kan ses i bilaga \ref{flow:remote}.
+Fjärrklienten är implementerad i Python och består av två olika trådar. En för
+det grafiska gränssnittet samt en huvudtråd för allt annat.
 
 \subsubsection{Filstruktur}
 Fjärrklienten byggs upp av följande filer
 
 \begin{labeling}{wwww}
 	\item[gui.py] - Motsvarar det grafiska gränssnittet
-	
 	\item[remote.py] - Beskriver hur klienten kommunicerar med
 		kommunkationsmodul via en sockel.
-
 	\item[worker.py] - En arbetare som sköter synkronisering av
 		fjärrklientens två trådar
-	
 	\item[tasks.py] - Här definieras kommandon som fjärrklienten kan skicka
 		till servern. Den definerar en stack av tasks och en kö av
 		färdigställda tasks.  Detta används främst av workern och
 		det grafiska gränssnittet.
-    
     \item[course.py] - Hanterar översättningen av noder till uppdrag. Utifrån
     en lista av noder skapas en lista av strängar som beskrivet i sektion
     \ref{sec:mission}
-
     \item[main.py] - Här är fjärrklientens huvudloop som initierar de två
     trådarna för klient och gui.
-
 \end{labeling}
 Relationen mellan dessa mjukvarumoduler beskrivs i figur \ref{boxclient}
 
@@ -119,33 +112,32 @@ Relationen mellan dessa mjukvarumoduler beskrivs i figur \ref{boxclient}
 \end{figure} 
 
 \subsubsection{Trådar}
-Programmet skall köras parallellt med två trådar för att förhindra att
-gränssnittet fryser för användaren. Programmet kommer behöva vänta på svar från
-taxin samt utföra längre beräkningar vilket innebär att programmet kanske inte
-hinner uppdatera gränssnittet tillräckligt ofta om det endast använder en tråd.
-Synkroniseringen av dessa två trådar sköts av en worker som innehåller en stack
+Programmet körs parallellt med två trådar för att förhindra att gränssnittet
+fryser för användaren. Programmet behöver vänta på svar från taxin samt utföra
+längre beräkningar vilket innebär att programmet kanske inte hinner uppdatera
+gränssnittet tillräckligt ofta om det endast använder en tråd.
+
+Synkroniseringen av dessa två trådar sköts av en klass som innehåller en stack
 av tupler som består av en task och dess argument och en kö av tupler med
-färdiga tasks och responssträng från servern. Stacken och kön är en delad resurs
-mellan workern och GUI. GUI och workern körs vardera som en separat tråd. En
-task motsvarar ett kommando och dess argument som klienten ska skicka till
-kommunikationsmodulen. Det grafiska gränssnittet köar en task i stacken när
-användaren utnyttjar en funktion i gränssnittet som kräver kommunikation med
-servern. Ett exempel är när användaren har satt ett uppdrag och exekverar
+färdiga tasks och responssträng från servern. Stacken och kön är en delad
+resurs mellan workern och GUI. GUI och workern körs vardera som en separat
+tråd. En task motsvarar ett kommando och dess argument som klienten ska skicka
+till kommunikationsmodulen. Det grafiska gränssnittet köar en task i stacken
+när användaren utnyttjar en funktion i gränssnittet som kräver kommunikation
+med servern. Ett exempel är när användaren har satt ett uppdrag och exekverar
 uppdraget. När ett uppdrag sätts så behöver klienten skicka en sekvens av
 kommandon till servern, klienten får indirekt en sekvens av kommandon från det
-grafiska gränssnittet. Detta sker genom att det grafiska gränssnittet köar i
-stacken en tuple bestående av \emph{tasken} SEND\_MISSION och dess argument.
+grafiska gränssnittet. Detta sker genom att det grafiska gränssnittet köar i en
+tuple i stacken bestående av \emph{tasken} SEND\_MISSION och dess argument.
 Därefter kommer workern till slut att plocka ut tasken ur stacken och se till
 att klienten skickar den korresponderande kommandot till sockeln. Om
 överföringen lyckades så kommer klienten att få ett svar. Detta svar skickas
 tillbaka till workern som därefter markerar tasken som färdig och köar tasken
-och svaret som en tuple i kön med färdiga tasks. Som i figur \ref{boxclient} så
-kan det grafiska gränssnittet hämta svaret från tasken genom att avköa den
-färdiga tasken och läsa svaret. Det är på detta sättet det grafiska gränssnittet
-kan hämta värden som styrparametrar och distans körd. Denna procedur förklaras
-bättre i figur \ref{sequenceremote}.
-
-
+och svaret som en tuple i kön med färdiga tasks. Som kan ses i figur
+\ref{boxclient} så kan det grafiska gränssnittet hämta svaret från tasken genom
+att avköa den färdiga tasken och läsa svaret. Det är på detta sättet det
+grafiska gränssnittet kan hämta värden som styrparametrar och distans körd.
+Denna procedur förklaras bättre i figur \ref{sequenceremote}.
 
 \begin{figure}[h]
 \centering
@@ -164,8 +156,8 @@ Workern bearbetar tasken och formaterar om det till en sträng som motsvarar ett
 kommando. Workern säger sedan till klienten att skicka kommandot till
 kommunikationsmodulen och samtidigt väntar workern på klienten tills klienten
 har fått ett svar från sockeln. Klienten vidarebefodrar svaret till workern och
-workern markerar tasken som färdig genom att köa den till kön med färdiga tasks.
-
+workern markerar tasken som färdig genom att köa den till kön med färdiga
+tasks.
 
 \subsubsection{Karta och uppdrag}
 \label{sec:mission}
@@ -178,14 +170,11 @@ grafen representeras i sin tur av nedanstående datastrukturer.
 % datastrukturer
 \begin{labeling}{wwww}
     \item[Karta] Kartan utgörs av en lista med noder.
-
     \item[Nod] En nod är en klass som består av en nodtyp och en lista
         av utgående bågar. Det finns fem olika nodtyper; stopplinje,
         parkeringsficka, rondellinfarter, rondellutfarter och tomma noder. 
-
     \item[Båge] En båge är en klass som består av en startnod, en slutnod och
     en kostnad (längd).
-        
 \end{labeling}
 Ovanstående datastrukurer är valda för att göra det smidigt att räkna ut den
 närmaste vägen med Dijkstras alogritm. Med algoritmen utgår man från en nod och
@@ -199,20 +188,13 @@ varje nodtyp. Hur taxin agerar vid varje kommando är specificerat i sektion
 \ref{sec:comm-mission}.
 
 \begin{labeling}{wwwwwwwwww}
-\item[Stopplinjer] {\commStop} om markerad som destination/deldestination,
-annars \commIgnore.
-
-\item[Parkeringsfickor] {\commPark} om markerad som destination/deldestination,
-annars \commIgnore 
-
-\item[Rondellinfarter] En \commEnter
-
-\item[Rondellutfarter] En {\commContinue} för varje
-avfart den ska passera och slutligen en \commExit.
-
+    \item[Stopplinjer] {\commStop} om markerad som destination/deldestination,
+        annars \commIgnore.
+    \item[Parkeringsfickor] {\commPark} om markerad som
+        destination/deldestination, annars \commIgnore 
+    \item[Rondellinfarter] En \commEnter
+    \item[Rondellutfarter] En {\commContinue} för varje avfart den ska passera
+        och slutligen en \commExit.
 \end{labeling}
-För att kunna avgöra vilken avfart taxin ska ta i en rondell är det viktigt att
-de utgående bågarna i rondellens nod är sorterade i samma ordning som
-avfarterna är placerade i den riktiga banan.
 
 \end{document}

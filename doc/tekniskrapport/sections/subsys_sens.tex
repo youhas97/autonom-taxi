@@ -6,30 +6,33 @@
 Hos sensormodulen hanteras de olika värdena från bilens sensorer och
 kommunicerar med kommunikationsmodulen vid efterfrågan av värden via SPI.
 
-\subsection{Funktion} Sensormodulen hämtar filtrerade värden från sensorerna,
-värden som först hanteras hos mikrokontrollens AD/omvandlare. Sensormodulen
-har i uppgift att läsa in värdena, uppdatera dem kontinuerligt, omvandla dem
-till linjära enheter (meter eller meter/sek) och skicka dem vidare till
-kommunikationsmodulen.
+\subsection{Funktion}
+Sensormodulen hämtar filtrerade värden från sensorerna, värden som först
+hanteras hos mikrokontrollens AD/omvandlare. Sensormodulen har i uppgift att
+läsa in värdena, uppdatera dem kontinuerligt, omvandla dem till linjära enheter
+(meter eller meter/sek) och skicka dem vidare till kommunikationsmodulen.
 
-\paragraph{Filtrering} Eftersom sensorerna kan bli påverkade av eventuella
-störningar, används ett filter som filtrerar bort störningar. Ett filter
-används vid varje koppling sensor-mikrokontroller.
+\paragraph{Filtrering}
+Eftersom sensorerna kan bli påverkade av eventuella störningar, används ett
+filter som filtrerar bort störningar. Ett filter används vid varje koppling
+sensor-mikrokontroller.
 
-\paragraph{Sensorer} Bilen innehåller två avståndsmätaren placerade på bilens
-fram och bakre högersida. Sensorn på framsidan används för att upptäcka hinder
-medan den andra sensor används för att detektera hinder vid omkörning. Dessutom
-innehåller bilen halleffektsensorer vid båda bakhjulen, sensorer som används
-för att mäta bilens hastighet samt avståndet från startpunkten.
+\paragraph{Sensorer}
+Bilen innehåller två avståndsmätaren placerade på bilens fram och bakre
+högersida. Sensorn på framsidan används för att upptäcka hinder medan den andra
+sensor används för att detektera hinder vid omkörning. Dessutom innehåller
+bilen halleffektsensorer vid båda bakhjulen, sensorer som används för att mäta
+bilens hastighet samt avståndet från startpunkten.
 
-\subsection{Hårdvaruimplementation} Sensormodulen består av en mikrokontroller,
-och fyra sensorer; en avståndsmätare på framsidan, en avståndsmätare på bakre
-högersida samt två halleffektsensorer placerade på båda bakhjulen.
-Mikrokontrollern är en ATmega1284 som är klockad av en kristalloscillator på 16
-MHz. Mikrokontrollern är kopplad till en LCD-display i 4-bit mode där värden
-från sensorerna visas; avstånd till hinder från både fram och höger sensor samt
-avståndet som bilen har från startpunkten. Ett detaljerat kretsschema över
-modulen finns i bilaga \ref{cdiag:sens}.
+\subsection{Hårdvaruimplementation}
+Sensormodulen består av en mikrokontroller, och fyra sensorer; en
+avståndsmätare på framsidan, en avståndsmätare på bakre högersida samt två
+halleffektsensorer placerade på båda bakhjulen.  Mikrokontrollern är en
+ATmega1284 som är klockad av en kristalloscillator på 16 MHz. Mikrokontrollern
+är kopplad till en LCD-display i 4-bit mode där värden från sensorerna visas;
+avstånd till hinder från både fram och höger sensor samt avståndet som bilen
+har från startpunkten. Ett detaljerat kretsschema över modulen finns i bilaga
+\ref{cdiag:sens}.
 
 Avståndsmätarna skickar kontinuerligt en spänning (den analoga signalen) till
 mikrokontrollens AD-omvandlare. Den digitala signalen hanteras hos
@@ -40,8 +43,8 @@ bilens framsida är av typen GP2Y0A02YK vars analoga utsignal är mellan 0V och
 vars utsignal är en analog spänning mellan 0V and 3.2V. Hos båda typer av
 sensor gäller att ju närmare hindret befinner sig desto högre blir spänningen. 
 
-Utsignalen från vardera sensor är kopplat till ett passivt RC-lågpassfilter. Varje filter består av en 18K resistans och en
-100nF jordad kondesator.
+Utsignalen från vardera sensor är kopplat till ett passivt RC-lågpassfilter.
+Varje filter består av en 18K resistans och en 100nF jordad kondesator.
 
 \subsubsection{Använda komponenter}
 Nedan är externa produkter som har använts vid sensormodulens konstruktion.

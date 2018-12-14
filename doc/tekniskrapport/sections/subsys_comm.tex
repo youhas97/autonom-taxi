@@ -32,18 +32,15 @@ trådar eftersom de väntar mycket och blockerar den nuvarande tråden.
 \subsection{Hårdvaruimplementation} 
 Kommunikationsmodulen har implementerats i en Raspberry Pi 3B. Raspberry Pi 3B,
 har en fyrkärnig processor med en hastighet på 1.2 GHz vilket har kunnat
-utnyttjas inte minst vid bildbehandlingen. Med 40-pinnar som kan utnyttjas som
+utnyttjas inte minst vid bildbehandlingen. Med 40 pinnar som kan utnyttjas som
 spänningskällor, jord, programmerbara GPIO-portar samt seriella bussar, har
-detta utnyttjats för att med SPI-protokollet använda Raspberry Pi:n som master
-för två slavar. Då kommunikationen med en fjärrklient sker via WiFi har det
-inbyggda 802.11n trådlösa LAN:et varit fullt kapabelt. Det trådlösa
-nätverkskortet hade med en bra implementation även kunnat strömma video. Mitt
-på Pi:en hittar man en CSI-port som används för att ansluta Raspberry Pi
-kompatibla kameror. Kameran som används på kommunikations modulen är en
-Raspberry Pi kamera med påsatt vidvinkelobjektiv som kan se i en 160 graders vy.
-Kameran har även stöd för två infrarödastrålkastare, men detta används inte då
-mörkerseende inte är något som prioriterats. Spänningskällor finns i både 3V3
-och 5V.
+detta utnyttjats för att med SPI-protokollet använda Raspberry Pi:n som
+\emph{master} för två slavar. Då kommunikationen med en fjärrklient sker via
+WiFi har det inbyggda 802.11n trådlösa LAN:et varit fullt kapabelt. Det
+trådlösa nätverkskortet hade även kunnat strömma video. Mitt på Pi:en hittar
+man en CSI-port som används för att ansluta Raspberry Pi-kompatibla kameror.
+Kameran som används på kommunikationsmodulen är en Raspberry Pi-kamera med
+påsatt vidvinkelobjektiv som kan se med en vy på 160 grader.
 
 \subsection{Programstruktur}
 Programmet på kommandomodulen består av följande filer
@@ -206,34 +203,37 @@ bildbehandlingen. Funktioner returnerar om kommandot är avslutat eller inte. Om
 kommandot är färdigt tas kommandot bort från nuvarande och ett nytt hämtas vid
 nästa iteration.
 
+\clearpage
 Inom kommandon håller en variabel \mono{pos} koll på var i kommandot bilen
 befinner sig i. Vid varje nytt kommando sätts den till \mono{BEFORE\_STOP}
 vilket innebär att bilen inte har passerat kommandots stopplinje än. När
 bildbehandlingen registrerar att en stopplinje har passerats sätts \mono{pos}
 till \mono{AFTER\_STOP}. Kommandon kan även ändra \mono{pos} själva för att
 kunna ha flera tillstånd. Vid varje ändring av \mono{pos} registreras den
-nuvarande tiden och distansen.
+nuvarande tiden och distansen. Nedan följer en lista av alla tillgängliga
+kommandon och hur de utförs.
 
 \begin{labeling}{wwww}
     \item[\commIgnore] Avslutar så fort \mono{pos} är \mono{AFTER\_STOP}.
-    \item[\commStop] Sätter hastigheten till noll när stopplinjen är synlig.
-        Avslutar när \mono{pos} är \mono{AFTER\_STOP} om kommandot är sist i
-        kön, annars vänta fem sekunder och avsluta därefter.
-    \item[\commPark] Sakta ner och sväng höger när \mono{pos} är
-        \mono{AFTER\_STOP}. Låt bildbehandlingen därefter i en viss distans.
-        Därefter sätt \mono{pos} till \mono{PARKED} och stanna. Om kommandot
-        var sist i kön avslutas det där. Annars sätts \mono{pos} till
-        \mono{UNPARKING} efter fem sekunder och svänger vänster i en viss
+    \item[\commStop] Sätter hastigheten till noll när \mono{pos} är
+        \mono{BEFORE\_STOP} och stopplinjen är synlig.  Avslutar när \mono{pos}
+        är \mono{AFTER\_STOP} om kommandot är sist i kön, annars väntar fem
+        sekunder och avslutar därefter.
+    \item[\commPark] Saktar ner och svänger höger när \mono{pos} är
+        \mono{AFTER\_STOP}. Låter bildbehandlingen därefter ta över i en viss
+        distans. Därefter sätter \mono{pos} till \mono{PARKED} och stannar. Om
+        kommandot var sist i kön avslutas det där. Annars sätter den \mono{pos}
+        till \mono{UNPARKING} efter fem sekunder och svänger vänster i en viss
         distans och därefter avslutar.
-    \item[\commEnter] Låt bildbehandlingen ignorera vänsterlinjen när
+    \item[\commEnter] Låter bildbehandlingen ignorera vänsterlinjen när
         \mono{pos} är \mono{AFTER\_STOP} så att bilen följer högerlinjen. Efter
-        en viss distans avsluta kommandot.
-    \item[\commContinue] Låt bildbehandlingen ignorera högerlinjen när
+        en viss distans avslutar kommandot.
+    \item[\commContinue] Låter bildbehandlingen ignorera högerlinjen när
         \mono{pos} är \mono{AFTER\_STOP} så att bilen följen vänsterlinjen och
         fortsätter i rondellen.
-    \item[\commExit] Låt bildbehandlingen ignorera vänsterlinjen när \mono{pos}
-        är \mono{AFTER\_STOP} så att bilen följer högerlinjen och åker ut ur
-        rondellen. Avsluta kommandot efter en viss distans.
+    \item[\commExit] Låter bildbehandlingen ignorera vänsterlinjen när
+        \mono{pos} är \mono{AFTER\_STOP} så att bilen följer högerlinjen och
+        åker ut ur rondellen. Avslutar kommandot efter en viss distans.
 \end{labeling}
 
 \end{document}
