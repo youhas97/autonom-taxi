@@ -43,6 +43,13 @@ från kommandot. Exempelvis kan \mono{set\_miss} svara med \mono{success:mission
 set} eller \mono{failure:invalid mission} beroende på om argumenten innehåller
 korrekta kommandon eller inte.
 
+\clearpage
+\begin{figure}[h]
+    \centering
+    \subfile{\figures/bus_spi}
+    \caption{Den gemensamma databussen mellan modulerna.}
+    \label{fig:bus_inter}
+\end{figure}
 \subsection{Mellan taxins moduler}
 Mellan sensormodulen, kommunikationsmodulen och styrmodulen används
 gränssnittet SPI. Kommunikationsmodulen agerar som \emph{master} medan
@@ -51,12 +58,6 @@ till en gemensam SCLK-signal för synkronisering, en MISO-signal för data till
 master:n och MOSI för data från master:n som visat i figur \ref{fig:bus_inter}.
 Sensormodulen skickar sensorvärden till kommunikationsmodulen och
 kommunikationsmodulen skickar styrkommandon till styrmodulen.
-\begin{figure}[h]
-    \centering
-    \subfile{\figures/bus_spi}
-    \caption{Den gemensamma databussen mellan modulerna.}
-    \label{fig:bus_inter}
-\end{figure}
 
 \subsubsection{Kommandostruktur}
 Kommunikationsmodulen agerar som \emph{master} och har därmed full kontroll
